@@ -6950,34 +6950,43 @@ body {
 header {
   height: 70px;
   border-bottom: 1px solid #474747;
-  background-color: #515151;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#555555), color-stop(30%, #585858), to(#333333));
-  background-image: -webkit-linear-gradient(#555555, #585858 30%, #333333);
-  background-image: -moz-linear-gradient(top, #555555, #585858 30%, #333333);
-  background-image: -ms-linear-gradient(#555555, #585858 30%, #333333);
-  background-image: -o-linear-gradient(#555555, #585858 30%, #333333);
-  background-image: linear-gradient(#555555, #585858 30%, #333333);
+  background-color: #505050;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#555555), color-stop(25%, #585858), to(#313131));
+  background-image: -webkit-linear-gradient(#555555, #585858 25%, #313131);
+  background-image: -moz-linear-gradient(top, #555555, #585858 25%, #313131);
+  background-image: -ms-linear-gradient(#555555, #585858 25%, #313131);
+  background-image: -o-linear-gradient(#555555, #585858 25%, #313131);
+  background-image: linear-gradient(#555555, #585858 25%, #313131);
   background-repeat: no-repeat;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#555555', endColorstr='#333333', GradientType=0);
-  background-color: #515151;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#555555), color-stop(30%, #585858), to(#333333));
-  background-image: -webkit-linear-gradient(#555555, #585858 30%, #333333);
-  background-image: -moz-linear-gradient(top, #555555, #585858 30%, #333333);
-  background-image: -ms-linear-gradient(#555555, #585858 30%, #333333);
-  background-image: -o-linear-gradient(#555555, #585858 30%, #333333);
-  background-image: linear-gradient(#555555, #585858 30%, #333333);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#555555', endColorstr='#313131', GradientType=0);
+  background-color: #505050;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#555555), color-stop(25%, #585858), to(#313131));
+  background-image: -webkit-linear-gradient(#555555, #585858 25%, #313131);
+  background-image: -moz-linear-gradient(top, #555555, #585858 25%, #313131);
+  background-image: -ms-linear-gradient(#555555, #585858 25%, #313131);
+  background-image: -o-linear-gradient(#555555, #585858 25%, #313131);
+  background-image: linear-gradient(#555555, #585858 25%, #313131);
   background-repeat: no-repeat;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#555555', endColorstr='#333333', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#555555', endColorstr='#313131', GradientType=0);
 }
 ul.nav {
   margin: 0;
-  padding: 0 30px;
+  padding: 0 40px;
 }
 ul.nav li {
   float: left;
-  padding: 0 15px;
+  margin: 0 10px;
   line-height: 70px;
   text-shadow: 0 -1px 0 #000000;
+}
+ul.nav li.divider {
+  width: 38px;
+  height: 70px;
+  background: url(../img/caret.png) no-repeat;
+}
+ul.nav li.divider.primary {
+  width: 45px;
+  background: url(../img/plex_caret.png) no-repeat;
 }
 ul.nav [class^="icon-"],
 ul.nav [class*=" icon-"] {
