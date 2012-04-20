@@ -6980,13 +6980,13 @@ ul.nav li {
   text-shadow: 0 -1px 0 #000000;
 }
 ul.nav li.divider {
-  width: 38px;
+  width: 30px;
   height: 70px;
-  background: url(../img/caret.png) no-repeat;
+  background: url(../img/divider.png) no-repeat;
 }
 ul.nav li.divider.primary {
-  width: 45px;
-  background: url(../img/plex_caret.png) no-repeat;
+  width: 43px;
+  background: url(../img/divider_primary.png) no-repeat;
 }
 ul.nav [class^="icon-"],
 ul.nav [class*=" icon-"] {
