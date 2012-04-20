@@ -6951,21 +6951,21 @@ header {
   height: 70px;
   border-bottom: 1px solid #474747;
   background-color: #515151;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#555555), color-stop(30%, #595959), to(#333333));
-  background-image: -webkit-linear-gradient(#555555, #595959 30%, #333333);
-  background-image: -moz-linear-gradient(top, #555555, #595959 30%, #333333);
-  background-image: -ms-linear-gradient(#555555, #595959 30%, #333333);
-  background-image: -o-linear-gradient(#555555, #595959 30%, #333333);
-  background-image: linear-gradient(#555555, #595959 30%, #333333);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#555555), color-stop(30%, #585858), to(#333333));
+  background-image: -webkit-linear-gradient(#555555, #585858 30%, #333333);
+  background-image: -moz-linear-gradient(top, #555555, #585858 30%, #333333);
+  background-image: -ms-linear-gradient(#555555, #585858 30%, #333333);
+  background-image: -o-linear-gradient(#555555, #585858 30%, #333333);
+  background-image: linear-gradient(#555555, #585858 30%, #333333);
   background-repeat: no-repeat;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#555555', endColorstr='#333333', GradientType=0);
   background-color: #515151;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#555555), color-stop(30%, #595959), to(#333333));
-  background-image: -webkit-linear-gradient(#555555, #595959 30%, #333333);
-  background-image: -moz-linear-gradient(top, #555555, #595959 30%, #333333);
-  background-image: -ms-linear-gradient(#555555, #595959 30%, #333333);
-  background-image: -o-linear-gradient(#555555, #595959 30%, #333333);
-  background-image: linear-gradient(#555555, #595959 30%, #333333);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#555555), color-stop(30%, #585858), to(#333333));
+  background-image: -webkit-linear-gradient(#555555, #585858 30%, #333333);
+  background-image: -moz-linear-gradient(top, #555555, #585858 30%, #333333);
+  background-image: -ms-linear-gradient(#555555, #585858 30%, #333333);
+  background-image: -o-linear-gradient(#555555, #585858 30%, #333333);
+  background-image: linear-gradient(#555555, #585858 30%, #333333);
   background-repeat: no-repeat;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#555555', endColorstr='#333333', GradientType=0);
 }
@@ -6978,6 +6978,10 @@ ul.nav li {
   padding: 0 15px;
   line-height: 70px;
   text-shadow: 0 -1px 0 #000000;
+}
+ul.nav [class^="icon-"],
+ul.nav [class*=" icon-"] {
+  vertical-align: baseline;
 }
 #content {
   padding-bottom: 100px;
