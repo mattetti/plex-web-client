@@ -6921,6 +6921,8 @@ a.thumbnail:hover {
 }
 html,
 body {
+  margin: 0;
+  padding: 0;
   height: 100%;
 }
 body {
@@ -6993,7 +6995,7 @@ ul.nav [class*=" icon-"] {
   vertical-align: baseline;
 }
 #content {
-  padding-bottom: 160px;
+  padding: 40px 40px 160px;
 }
 footer {
   position: relative;
