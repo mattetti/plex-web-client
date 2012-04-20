@@ -3,16 +3,16 @@ require.config({
 	baseUrl: 'js',
 
 	paths: {
-		// Require
-		'use': 'libs/require/use-0.2.0',
-		'text': 'libs/require/text-1.0.7',
-
 		// Libraries
 		'jquery': 'libs/jquery-1.7.2',
 		'underscore': 'libs/underscore-1.3.3',
 		'backbone': 'libs/backbone-0.9.2',
 		'handlebars': 'libs/handlebars-1.0.0.beta.6',
 		
+		// Require
+		'use': 'libs/require/use-0.2.0',
+		'text': 'libs/require/text-1.0.7',
+
 		// Bootstrap
 		'transition': 'libs/bootstrap/bootstrap-transition',
 		'modal': 'libs/bootstrap/bootstrap-modal',
