@@ -1,11 +1,12 @@
 define(
 	[
+		'plex/control/Router'
 	],
 
-	function () {
+	function (Router) {
 		return {
 			init: function () {
-				console.log('## plex init');
+				new Router();
 			}
 		}
 	}

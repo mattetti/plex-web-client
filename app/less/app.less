@@ -52,12 +52,13 @@ ul.nav {
 	}
 
 	li.divider {
-		.size(30px, 70px);
+		width: 30px;
+		height: 70px;
 		background: url(../img/divider.png) no-repeat;
 	}
 
 	li.divider.primary {
-		.size(43px, 70px);
+		width: 43px;
 		background: url(../img/divider_primary.png) no-repeat;
 	}
 
@@ -66,17 +67,18 @@ ul.nav {
 	}
 }
 
-#content {
-	padding: 40px 40px 160px;
+section.content {
+	padding: 40px 40px 200px;
 }
 
-section.login {
+section.content.login {
 	text-align: center;
 }
 
 #login-form {
 	margin: 0 auto;
 	width: 380px;
+	.clearfix();
 
 	input[type=text] {
 		padding: 4px 15px;

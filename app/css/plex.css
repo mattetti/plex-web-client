@@ -7194,32 +7194,45 @@ ul.nav li {
   text-shadow: 0 -1px 0 #000000;
 }
 ul.nav li.divider {
-  width: 70px;
-  height: 30px;
-  width: 70px;
-  height: 30px;
+  width: 30px;
+  height: 70px;
   background: url(../img/divider.png) no-repeat;
 }
 ul.nav li.divider.primary {
-  width: 70px;
-  height: 43px;
-  width: 70px;
-  height: 43px;
+  width: 43px;
   background: url(../img/divider_primary.png) no-repeat;
 }
 ul.nav [class^="icon-"],
 ul.nav [class*=" icon-"] {
   vertical-align: baseline;
 }
-#content {
-  padding: 40px 40px 160px;
+section.content {
+  padding: 40px 40px 200px;
 }
-section.login {
+section.content.login {
   text-align: center;
 }
 #login-form {
   margin: 0 auto;
   width: 380px;
+  *zoom: 1;
+  *zoom: 1;
+}
+#login-form:before,
+#login-form:after {
+  display: table;
+  content: "";
+}
+#login-form:after {
+  clear: both;
+}
+#login-form:before,
+#login-form:after {
+  display: table;
+  content: "";
+}
+#login-form:after {
+  clear: both;
 }
 #login-form input[type=text] {
   padding: 4px 15px;
