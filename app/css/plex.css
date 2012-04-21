@@ -6929,6 +6929,8 @@ body {
   color: #eee;
 }
 #container {
+  position: relative;
+  z-index: 1;
   min-height: 100%;
   background-color: #1f1f1f;
   background-image: -moz-linear-gradient(top, #111111, #333333);
@@ -6952,12 +6954,12 @@ body {
 #container:before {
   content: "";
   position: absolute;
-  z-index: -2;
+  z-index: -1;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background: url(../img/noise.png);
+  background-image: url(../img/noise.png);
 }
 header {
   height: 70px;
@@ -7009,6 +7011,7 @@ ul.nav [class*=" icon-"] {
 }
 footer {
   position: relative;
+  z-index: 1;
   margin-top: -160px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;

@@ -9,19 +9,21 @@ body {
 }
 
 #container {
+	position: relative;
+	z-index: 1;
 	min-height: 100%;
 	#gradient > .vertical(#111, #333);
 }
 
 #container:before {
 	content: "";
-    position: absolute;
-    z-index: -2;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-	background: url(../img/noise.png);
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-image: url(../img/noise.png);
 }
 
 header {
@@ -63,6 +65,7 @@ ul.nav {
 
 footer {
 	position: relative;
+	z-index: 1;
 	margin-top: -160px;
 	.box-sizing(border-box);
 	height: 160px;
