@@ -9,7 +9,7 @@
 		<input type="text" class="span5" name="token" placeholder="token">
 	</div>
 
-	<div class="login-actions">
+	<div class="login-actions span5">
 		<button type="submit" class="btn btn-primary btn-large pull-right">Start</button>
 		<a href="https://my.plexapp.com">Go to myPlex</a>
 	</div>

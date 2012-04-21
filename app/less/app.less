@@ -76,8 +76,6 @@ section.content.login {
 }
 
 #login-form {
-	margin: 0 auto;
-	width: 380px;
 	.clearfix();
 
 	input[type=text] {
@@ -89,7 +87,10 @@ section.content.login {
 	}
 
 	.login-actions {
-		padding: 0 5px 0 20px;
+		float: none;
+		margin: 0 auto;
+		padding: 0 4px 0 24px;
+		.box-sizing(border-box);
 		text-align: left;
 	}
 }

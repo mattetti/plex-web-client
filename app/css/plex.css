@@ -7213,8 +7213,6 @@ section.content.login {
   text-align: center;
 }
 #login-form {
-  margin: 0 auto;
-  width: 380px;
   *zoom: 1;
   *zoom: 1;
 }
@@ -7249,7 +7247,17 @@ section.content.login {
   font-size: 24px;
 }
 #login-form .login-actions {
-  padding: 0 5px 0 20px;
+  float: none;
+  margin: 0 auto;
+  padding: 0 4px 0 24px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
   text-align: left;
 }
 footer {
