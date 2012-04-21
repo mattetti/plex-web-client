@@ -3,3 +3,35 @@
 
 @linkColor: #ffb406;
 @linkColorHover: #ffc763;
+
+@primaryButtonBackground: #ff8e0c;
+
+@placeholderText: #bbb;
+
+a {
+	.transition(color .1s linear);
+}
+
+.btn-large {
+	padding: 12px 40px;
+	.buttonBackground(#feb942, #ff8e0c);
+	.box-shadow(0 0 0 5px rgba(0, 0, 0, .3));
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.btn-large:hover {
+	background-position: 0 -40px;
+}
+
+input {
+	border: 2px solid #fff;
+	#gradient > .vertical(#eee, #fff);
+	.box-shadow(0 0 0 5px rgba(0, 0, 0, .3));
+}
+
+input:focus {
+	border: 2px solid #ffc763;
+	#gradient > .vertical(#fafafa, #fff);
+	.box-shadow(0 0 0 5px rgba(255, 255, 255, .15));
+}

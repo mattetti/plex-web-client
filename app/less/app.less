@@ -13,23 +13,31 @@ body {
 	z-index: 1;
 	min-height: 100%;
 	#gradient > .vertical(#111, #333);
-}
 
-#container:before {
-	content: "";
-	position: absolute;
-	z-index: -1;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background-image: url(../img/noise.png);
+	&:before {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background-image: url(../img/noise.png);
+	}
 }
 
 header {
 	height: 70px;
 	border-bottom: 1px solid #474747;
 	#gradient > .vertical-three-colors(#555, #585858, 25%, #313131);
+}
+
+h1.plex-icon {
+	display: inline-block;
+	margin: 10px 0 50px;
+	.square(250px);
+	background: url(../img/plex.png) no-repeat;
+	text-indent: -9999px;
 }
 
 ul.nav {
@@ -44,13 +52,12 @@ ul.nav {
 	}
 
 	li.divider {
-		width: 30px;
-		height: 70px;
+		.size(30px, 70px);
 		background: url(../img/divider.png) no-repeat;
 	}
 
 	li.divider.primary {
-		width: 43px;
+		.size(43px, 70px);
 		background: url(../img/divider_primary.png) no-repeat;
 	}
 
@@ -61,6 +68,28 @@ ul.nav {
 
 #content {
 	padding: 40px 40px 160px;
+}
+
+section.login {
+	text-align: center;
+}
+
+#login-form {
+	margin: 0 auto;
+	width: 380px;
+
+	input[type=text] {
+		padding: 4px 15px;
+		.box-sizing(border-box);
+		height: 50px;
+		line-height: 50px;
+		font-size: 24px;
+	}
+
+	.login-actions {
+		padding: 0 5px 0 20px;
+		text-align: left;
+	}
 }
 
 footer {
@@ -81,13 +110,14 @@ footer {
 	a.github {
 		display: inline-block;
 		margin: 10px 0;
-		width: 100px;
-		height: 100px;
+		.square(100px);
+		.opacity(50);
 		background: url(../img/github.png) no-repeat;
 		text-indent: -9999px;
+		.transition(opacity .1s linear);
 
 		&:hover {
-			background-position: 0 -100px;
+			.opacity(100);
 		}
 	}
 
