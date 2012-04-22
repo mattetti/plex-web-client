@@ -32,6 +32,9 @@ define(
 			}
 
 			options.url = '/api/' + options.url;
+			options.contentType = 'application/xml',
+			options.dataType = 'text';
+			options.processData = false;
 
 			originalSync(method, model, options);
 		}

@@ -1,14 +1,15 @@
 define(
 	[
-		'use!backbone'
+		'use!backbone',
+		'use!xml2json'
 	],
 
-	function (Backbone) {
+	function (Backbone, $) {
 		var ServerModel = Backbone.Model.extend({
 			url: '',
-			
+
 			parse: function (response) {
-				console.log(respose);
+				return $.xml2json(response);
 			}
 		});
 
