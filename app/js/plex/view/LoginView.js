@@ -34,6 +34,8 @@ define(
 					token: this.$('input[name=token]').val()
 				});
 
+				appModel.get('server').fetch();
+
 				dispatcher.trigger('navigate:sections');
 			}
 		});

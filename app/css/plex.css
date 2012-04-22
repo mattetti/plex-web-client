@@ -7274,6 +7274,7 @@ h1.plex-icon {
   text-align: left;
 }
 header {
+  padding: 0 30px;
   height: 70px;
   border-bottom: 1px solid #474747;
   background-color: #505050;
@@ -7297,7 +7298,7 @@ header {
 }
 ul.nav {
   margin: 0;
-  padding: 0 40px;
+  padding: 0;
 }
 ul.nav [class^="icon-"],
 ul.nav [class*=" icon-"] {
