@@ -1,10 +1,11 @@
 define(
 	[
 		'use!backbone',
-		'plex/model/ServerModel'
+		'plex/model/ServerModel',
+		'plex/model/collections/SectionCollection'
 	],
 
-	function (Backbone, ServerModel) {
+	function (Backbone, ServerModel, SectionCollection) {
 		var originalSync = Backbone.sync;
 
 		var AppModel = Backbone.Model.extend({
@@ -15,7 +16,8 @@ define(
 				showHeader: false,
 				view: undefined,
 
-				server: new ServerModel()
+				server: new ServerModel(),
+				sections: new SectionCollection()
 			}
 		});
 

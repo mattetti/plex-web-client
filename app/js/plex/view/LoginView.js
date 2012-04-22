@@ -35,6 +35,7 @@ define(
 				});
 
 				appModel.get('server').fetch();
+				appModel.get('sections').fetch();
 
 				dispatcher.trigger('navigate:sections');
 			}
