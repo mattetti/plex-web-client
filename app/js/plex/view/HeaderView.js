@@ -1,13 +1,15 @@
 define(
 	[
+		'text!plex/view/templates/HeaderView.tpl',
+		'plex/view/BaseView',
+
+		// Globals
 		'jquery', 
 		'use!backbone',
-		'use!handlebars',
-		'text!plex/view/templates/HeaderView.tpl',
-		'plex/view/BaseView'
+		'use!handlebars'
 	],
 
-	function ($, Backbone, Handlebars, template, BaseView) {
+	function (template, BaseView) {
 		var HeaderView = BaseView.extend({
 			tagName: 'header',
 			

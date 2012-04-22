@@ -1,13 +1,11 @@
 define(
 	[
-		'use!backbone',
-		'use!xml2json'
+		// Globals
+		'use!backbone'
 	],
 
-	function (Backbone, $) {
-		var SectionModel = Backbone.Model.extend({
-			
-		});
+	function () {
+		var SectionModel = Backbone.Model.extend({});
 
 		return SectionModel;
 	}

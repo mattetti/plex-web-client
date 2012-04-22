@@ -1,15 +1,16 @@
 define(
 	[
-		'jquery',
-		'use!backbone',
 		'plex/control/Dispatcher',
 		'plex/model/AppModel',
 		'plex/view/AppView',
 		'plex/view/LoginView',
-		'plex/view/SectionsView'
+		'plex/view/SectionsView',
+
+		// Globals
+		'use!backbone'
 	],
 
-	function ($, Backbone, dispatcher, appModel, AppView, LoginView, SectionsView) {
+	function (dispatcher, appModel, AppView, LoginView, SectionsView) {
 		var Router = Backbone.Router.extend({
 			postAuth: undefined,
 			postAuthArgs: undefined,

@@ -1,11 +1,13 @@
 define(
 	[
+		'plex/model/SectionModel',
+
+		// Globals
 		'use!backbone',
-		'use!xml2json',
-		'plex/model/SectionModel'
+		'use!xml2json'
 	],
 
-	function (Backbone, $, SectionModel) {
+	function (SectionModel) {
 		var SectionCollection = Backbone.Collection.extend({
 			model: SectionModel,
 			url: 'library/sections',

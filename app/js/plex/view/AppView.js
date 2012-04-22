@@ -1,14 +1,16 @@
 define(
 	[
-		'jquery', 
-		'use!backbone',
-		'use!handlebars',
 		'plex/control/Dispatcher',
 		'plex/model/AppModel',
 		'plex/view/HeaderView',
+
+		// Globals
+		'jquery', 
+		'use!backbone',
+		'use!handlebars'
 	],
 
-	function ($, Backbone, Handlebars, dispatcher, appModel, HeaderView) {
+	function (dispatcher, appModel, HeaderView) {
 		var AppView = Backbone.View.extend({
 			el: '#container',
 

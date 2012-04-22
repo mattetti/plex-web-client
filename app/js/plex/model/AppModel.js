@@ -1,11 +1,13 @@
 define(
 	[
-		'use!backbone',
 		'plex/model/ServerModel',
-		'plex/model/collections/SectionCollection'
+		'plex/model/collections/SectionCollection',
+
+		// Globals
+		'use!backbone'
 	],
 
-	function (Backbone, ServerModel, SectionCollection) {
+	function (ServerModel, SectionCollection) {
 		var originalSync = Backbone.sync;
 
 		var AppModel = Backbone.Model.extend({

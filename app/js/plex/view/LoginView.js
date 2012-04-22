@@ -1,15 +1,17 @@
 define(
 	[
-		'jquery', 
-		'use!backbone',
-		'use!handlebars',
 		'text!plex/view/templates/LoginView.tpl',
 		'plex/control/Dispatcher',
 		'plex/model/AppModel',
-		'plex/view/BaseView'
+		'plex/view/BaseView',
+
+		// Globals
+		'jquery', 
+		'use!backbone',
+		'use!handlebars'
 	],
 
-	function ($, Backbone, Handlebars, template, dispatcher, appModel, BaseView) {
+	function (template, dispatcher, appModel, BaseView) {
 		var LoginView = BaseView.extend({
 			tagName: 'section',
 			className: 'content login',

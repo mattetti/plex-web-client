@@ -1,10 +1,11 @@
 define(
 	[
+		// Globals
 		'use!backbone',
 		'use!xml2json'
 	],
 
-	function (Backbone, $) {
+	function () {
 		var ServerModel = Backbone.Model.extend({
 			url: '',
 
