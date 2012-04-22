@@ -1,9 +1,13 @@
 define(
 	[
+		'plex/model/ServerModel',
+		'plex/model/collections/SectionCollection',
+
+		// Globals
 		'use!backbone'
 	],
 
-	function (Backbone) {
+	function (ServerModel, SectionCollection) {
 		var originalSync = Backbone.sync;
 
 		var AppModel = Backbone.Model.extend({
@@ -11,7 +15,11 @@ define(
 				address: undefined,
 				token: undefined,
 				loading: undefined,
-				view: undefined
+				showHeader: false,
+				view: undefined,
+
+				server: new ServerModel(),
+				sections: new SectionCollection()
 			}
 		});
 
@@ -21,9 +29,14 @@ define(
 		Backbone.sync = function (method, model, options) {
 			if (!options.url && model.url) {
 				options.url = _.isFunction(model.url) ? model.url() : model.url;
+			} else {
+				options.url = '';
 			}
 
-			options.url = options.url + '?X_Plex_Token=' + appModel.get('token');
+			options.url = '/api/' + options.url;
+			options.contentType = 'application/xml',
+			options.dataType = 'text';
+			options.processData = false;
 
 			originalSync(method, model, options);
 		}

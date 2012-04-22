@@ -1,13 +1,15 @@
 define(
 	[
+		'text!plex/view/templates/SectionsView.tpl',
+		'plex/view/BaseView',
+
+		// Globals
 		'jquery', 
 		'use!backbone',
-		'use!handlebars',
-		'text!plex/view/templates/SectionsView.tpl',
-		'plex/view/BaseView'
+		'use!handlebars'
 	],
 
-	function ($, Backbone, Handlebars, template, BaseView) {
+	function (template, BaseView) {
 		var SectionsView = BaseView.extend({
 			tagName: 'section',
 			className: 'content',

@@ -1,9 +1,10 @@
 define(
 	[
+		// Globals
 		'use!backbone'
 	],
 
-	function (Backbone) {
+	function () {
 		var BaseView = function (options) {
 			this.views = [];
 			this.bindings = [];

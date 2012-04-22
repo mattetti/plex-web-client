@@ -1,9 +1,10 @@
 define(
 	[
+		// Globals
 		'use!backbone'
 	],
 
-	function (Backbone) {
+	function () {
 		return _.clone(Backbone.Events);
 	}
 );

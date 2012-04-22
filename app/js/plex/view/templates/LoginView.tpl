@@ -2,7 +2,7 @@
 
 <form id="login-form">
 	<div class="control-group">
-		<input type="text" class="span5" name="address" placeholder="ip address:port">
+		<input type="text" class="span5" name="address" placeholder="ip address:port" value="http://192.168.1.4:32400">
 	</div>
 
 	<div class="control-group">
