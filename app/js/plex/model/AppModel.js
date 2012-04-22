@@ -11,6 +11,7 @@ define(
 				address: undefined,
 				token: undefined,
 				loading: undefined,
+				showHeader: false,
 				view: undefined
 			}
 		});

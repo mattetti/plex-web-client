@@ -19,24 +19,27 @@ define(
 
 			initialize: function () {
 				this.model.on('change:loading', this.onLoadingChange, this);
+				this.model.on('change:showHeader', this.onShowHeaderChange, this);
 				this.model.on('change:view', this.onViewChange, this);
 
 				dispatcher.on('destroy:view', this.onViewDestroy, this);
 			},
 
-			onLoadingChange: function () {
+			onLoadingChange: function (model, loading) {
 				// TODO: Implement loading indicator
 			},
 
-			onViewChange: function () {
-				var view = this.model.get('view');
-
-				// Don't render the header until after login
-				if (typeof(appModel.get('address')) !== 'undefined' && typeof(this.header) === 'undefined') {
+			onShowHeaderChange: function (model, showHeader) {
+				if (showHeader === true && typeof(this.header) === 'undefined') {
 					this.header = new HeaderView();
 					this.$el.prepend(this.header.render().el);
+				} else if (typeof(this.header) !== 'undefined') {
+					this.header.destroy();
+					this.header = undefined;
 				}
+			},
 
+			onViewChange: function (model, view) {
 				// Destroy previous views
 				for (var i = this.views.length - 1; i >= 0; i--) {
 					this.views[i].destroy();

@@ -49,16 +49,18 @@ define(
 
 			// Route Methods
 			login: function () {
-				if (typeof(appModel.get('address')) === 'undefined') {
-					appModel.set('view', new LoginView());
-				} else {
-					this.sections();
-				}
+				appModel.set({
+					showHeader: false,
+					view: new LoginView()
+				});
 			},
 
 			sections: function () {
 				if (this.isAuthenticated(this.spaces) === true) {
-					appModel.set('view', new SectionsView());
+					appModel.set({
+						showHeader: true,
+						view: new SectionsView()
+					});
 				}
 			},
 
