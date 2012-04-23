@@ -14,6 +14,7 @@ define(
 	function (template, dispatcher, appModel, BaseView) {
 		var user = appModel.get('user');
 		var servers = appModel.get('servers');
+		var sections = appModel.get('sections');
 
 		var LoginView = BaseView.extend({
 			tagName: 'section',
@@ -39,7 +40,7 @@ define(
 					password: this.$('input[name=password]').val()
 				});
 
-				// TODO: Restructure this or extract into command
+				// TODO: This needs to be refactored
 				user.fetch({
 					success: function (response) {
 						appModel.set('authenticated', true);
@@ -52,6 +53,8 @@ define(
 								console.log('servers error');
 							}
 						});
+
+						sections.fetch();
 					},
 					error: function (xhr, status, error) {
 						console.log('user error');

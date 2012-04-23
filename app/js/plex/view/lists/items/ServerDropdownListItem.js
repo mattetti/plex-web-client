@@ -29,7 +29,7 @@ define(
 			onClick: function (event) {
 				event.preventDefault();
 
-				dispatcher.trigger('navigate:sections', this.model.get('machineIdentifier'));
+				dispatcher.trigger('navigate:sections', this.model.id);
 			}
 		});
 

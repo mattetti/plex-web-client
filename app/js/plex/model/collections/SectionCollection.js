@@ -10,12 +10,19 @@ define(
 	function (SectionModel) {
 		var SectionCollection = Backbone.Collection.extend({
 			model: SectionModel,
-			url: 'library/sections',
+			url: 'pms/system/library/sections',
+
+			sync: function (method, model, options) {
+				options.headers = {
+					'X-Plex-Proxy-Host': 'my.plexapp.com',
+					'X-Plex-Proxy-Port': 443
+				};
+
+				Backbone.sync(method, model, options);
+			},
 
 			parse: function (response) {
-				var sections = $.xml2json(response);
-
-				return sections.Directory;
+				return $.xml2json(response).Directory;
 			}
 		});
 

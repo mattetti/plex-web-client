@@ -12,6 +12,9 @@ define(
 	],
 
 	function (dispatcher, appModel, AppView, LoginView, ServersView, SectionsView) {
+		var servers = appModel.get('servers');
+		var sections = appModel.get('sections');
+
 		var Router = Backbone.Router.extend({
 			postAuth: undefined,
 			postAuthArgs: undefined,
@@ -20,7 +23,7 @@ define(
 				'': 'login',
 				'!/login': 'login',
 				'!/servers': 'servers',
-				'!/servers/:id': 'sections',
+				'!/servers/:serverID': 'sections',
 				'*404': 'error'
 			},
 			
@@ -63,21 +66,24 @@ define(
 				if (this.isAuthenticated(this.servers) === true) {
 					appModel.set({
 						showHeader: true,
-						view: new ServersView()
+						view: new ServersView(),
+						server: undefined
 					});
 				}
 			},
 
-			sections: function () {
+			sections: function (serverID) {
 				if (this.isAuthenticated(this.sections) === true) {
 					appModel.set({
 						showHeader: true,
-						view: new SectionsView()
+						view: new SectionsView(),
+						server: servers.get(serverID)
 					});
 				}
 			},
 
 			error: function () {
+				console.log('404');
 			},
 
 			// Navigate Methods

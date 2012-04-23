@@ -7336,7 +7336,7 @@ ul.nav .dropdown.open .dropdown-toggle {
   background: none;
 }
 ul.nav .dropdown-menu {
-  margin-top: -1px;
+  margin-top: -4px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;

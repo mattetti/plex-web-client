@@ -22,9 +22,7 @@ define(
 			},
 
 			parse: function (response) {
-				var sections = $.xml2json(response);
-
-				return sections.Server;
+				return $.xml2json(response).Server;
 			}
 		});
 

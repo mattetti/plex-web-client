@@ -6,7 +6,9 @@ define(
 	],
 
 	function () {
-		var ServerModel = Backbone.Model.extend({});
+		var ServerModel = Backbone.Model.extend({
+			idAttribute: 'machineIdentifier'
+		});
 
 		return ServerModel;
 	}

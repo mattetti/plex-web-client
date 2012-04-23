@@ -1,6 +1,7 @@
 define(
 	[
 		'text!templates/lists/ServerDropdownList.tpl',
+		'plex/model/AppModel',
 		'plex/view/BaseView',
 		'plex/view/lists/items/ServerDropdownListItem',
 
@@ -10,7 +11,7 @@ define(
 		'use!handlebars'
 	],
 
-	function (template, BaseView, ServerDropdownListItem) {
+	function (template, appModel, BaseView, ServerDropdownListItem) {
 		var ServerList = BaseView.extend({
 			id: 'servers-dropdown-list',
 			tagName: 'li',
@@ -24,7 +25,16 @@ define(
 			},
 			
 			render: function () {
-				this.$el.html(this.template());
+				var data = {},
+					server = appModel.get('server');
+
+				if (typeof(server) === 'undefined') {
+					data.title = 'Select a Server';
+				} else {
+					data.title = server.get('name');
+				}
+
+				this.$el.html(this.template(data));
 
 				// Keep the list populated
 				this.onAddAll();
