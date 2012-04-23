@@ -7,7 +7,7 @@ define(
 
 	function () {
 		var ServerModel = Backbone.Model.extend({
-			url: '',
+			url: 'pms/servers',
 
 			parse: function (response) {
 				return $.xml2json(response);

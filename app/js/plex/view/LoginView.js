@@ -41,7 +41,7 @@ define(
 				user.fetch({
 					success: function (response) {
 						appModel.set('authenticated', true);
-						
+
 						dispatcher.trigger('navigate:sections');
 					},
 					error: function (xhr, status, error) {
