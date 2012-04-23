@@ -15,21 +15,11 @@ define(
 			tagName: 'li',
 			
 			template: Handlebars.compile(template),
-
-			events: {
-				'click a': 'onClick'
-			},
 			
 			render: function () {
 				this.$el.html(this.template(this.model.toJSON()));
 
 				return this;
-			},
-
-			onClick: function (event) {
-				event.preventDefault();
-
-				dispatcher.trigger('navigate:sections', this.model.id);
 			}
 		});
 
