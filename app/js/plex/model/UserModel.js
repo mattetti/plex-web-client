@@ -11,7 +11,6 @@ define(
 
 			sync: function (method, model, options) {
 				options.type = 'POST';
-				options.data = '';
 
 				options.headers = {
 					'Authorization': 'Basic ' + btoa(model.get('username') + ':' + model.get('password')),
