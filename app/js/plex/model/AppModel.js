@@ -19,6 +19,9 @@ define(
 				view: undefined,
 
 				user: new UserModel(),
+				server: undefined,
+				section: undefined,
+
 				servers: new ServerCollection(),
 				sections: new SectionCollection()
 			}

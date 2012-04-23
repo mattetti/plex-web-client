@@ -1,6 +1,6 @@
 define(
 	[
-		'text!plex/view/templates/HeaderView.tpl',
+		'text!templates/HeaderView.tpl',
 		'plex/model/AppModel',
 		'plex/view/BaseView',
 		'plex/view/lists/ServerDropdownList',
@@ -21,6 +21,9 @@ define(
 			},
 
 			initialize: function () {
+				this.addBinding(appModel, 'change:server', this.onChange);
+				this.addBinding(appModel, 'change:section', this.onChange);
+
 				this.serversList = this.registerView(new ServerDropdownList({ collection: appModel.get('servers') }));
 			},
 			
@@ -29,6 +32,11 @@ define(
 				this.$('#breadcrumb').append(this.serversList.render().el);
 
 				return this;
+			},
+
+			onChange: function () {
+				this.removeAllViews();
+				this.render();
 			}
 		});
 

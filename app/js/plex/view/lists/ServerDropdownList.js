@@ -1,6 +1,6 @@
 define(
 	[
-		'text!plex/view/templates/lists/ServerDropdownList.tpl',
+		'text!templates/lists/ServerDropdownList.tpl',
 		'plex/view/BaseView',
 		'plex/view/lists/items/ServerDropdownListItem',
 

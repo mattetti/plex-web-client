@@ -1,6 +1,6 @@
 define(
 	[
-		'text!plex/view/templates/LoginView.tpl',
+		'text!templates/LoginView.tpl',
 		'plex/control/Dispatcher',
 		'plex/model/AppModel',
 		'plex/view/BaseView',

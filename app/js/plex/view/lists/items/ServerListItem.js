@@ -1,6 +1,6 @@
 define(
 	[
-		'text!plex/view/templates/lists/items/ServerListItem.tpl',
+		'text!templates/lists/items/ServerListItem.tpl',
 		'plex/view/BaseView',
 
 		// Globals
