@@ -46,7 +46,7 @@ define(
 					this.postAuthArgs = args;
 
 					// Go to the login screen
-					this.onNavigateLogin();
+					this.login();
 
 					return false;
 				} else {
