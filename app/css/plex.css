@@ -7245,7 +7245,8 @@ h1.plex-icon {
 #login-form:after {
   clear: both;
 }
-#login-form input[type=text] {
+#login-form input[type=text],
+#login-form input[type=password] {
   padding: 4px 15px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -7306,7 +7307,7 @@ ul.nav [class*=" icon-"] {
 }
 ul.nav > li {
   float: left;
-  margin: 0 10px;
+  margin: 0 8px 0 12px;
   line-height: 70px;
   text-shadow: 0 -1px 0 #000000;
 }
@@ -7319,6 +7320,7 @@ ul.nav > li > a:hover {
   color: #fff;
 }
 .divider {
+  margin: 0 !important;
   width: 30px;
   height: 70px;
   background: url(../img/divider.png) no-repeat;
