@@ -43,11 +43,9 @@ define(
 				// TODO: This needs to be refactored
 				user.fetch({
 					success: function (response) {
-						appModel.set('authenticated', true);
-
 						servers.fetch({
 							success: function (response) {
-								dispatcher.trigger('navigate:servers');
+								appModel.set('authenticated', true);
 							},
 							error: function (xhr, status, error) {
 								console.log('servers error');

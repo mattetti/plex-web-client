@@ -40,7 +40,7 @@ define(
 			options.url = '/api/' + options.url;
 
 			// Append the authentication token if the user has logged in
-			if (appModel.get('authenticated') === true) {
+			if (options.myPlex === true) {
 				options.url += '?X-Plex-Token=' + appModel.get('user').get('authentication_token');
 			}
 

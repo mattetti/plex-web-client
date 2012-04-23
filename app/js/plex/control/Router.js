@@ -35,6 +35,8 @@ define(
 				dispatcher.on('navigate:login', this.onNavigateLogin, this);
 				dispatcher.on('navigate:servers', this.onNavigateServers, this);
 				dispatcher.on('navigate:sections', this.onNavigateSections, this);
+
+				appModel.on('change:authenticated', this.onAuthenticated, this);
 			},
 
 			isAuthenticated: function (callback, args) {
@@ -54,6 +56,16 @@ define(
 				}
 			},
 
+			onAuthenticated: function (model, authenticated) {
+				if (authenticated === true) {
+					if (typeof(this.postAuth) === 'undefined') {
+						dispatcher.trigger('navigate:servers');
+					} else {
+						this.postAuth.apply(this, this.postAuthArgs);
+					}
+				}
+			},
+
 			// Route Methods
 			login: function () {
 				appModel.set({
@@ -63,7 +75,7 @@ define(
 			},
 
 			servers: function () {
-				if (this.isAuthenticated(this.servers) === true) {
+				if (this.isAuthenticated(this.servers, arguments) === true) {
 					appModel.set({
 						showHeader: true,
 						view: new ServersView(),
@@ -72,8 +84,10 @@ define(
 				}
 			},
 
-			sections: function (serverID) {
-				if (this.isAuthenticated(this.sections) === true) {
+			sections: function () {
+				var serverID = arguments[0];
+				
+				if (this.isAuthenticated(this.sections, arguments) === true) {
 					appModel.set({
 						showHeader: true,
 						view: new SectionsView(),
