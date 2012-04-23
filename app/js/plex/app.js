@@ -1,6 +1,9 @@
 define(
 	[
-		'plex/control/Router'
+		'plex/control/Router',
+
+		// Globals
+		'use!dropdown'
 	],
 
 	function (Router) {

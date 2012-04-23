@@ -1,9 +1,32 @@
 <ul class="nav">
-	<li><a href="#"><i class="icon-home icon-white"></i> Home</a></li>
+	<li>
+		<a href="#"><i class="icon-home icon-white"></i> Home</a>
+	</li>
+
 	<li class="divider primary"></li>
-	<li><a href="#">biggie <i class="icon-chevron-down icon-white"></i></a></li>
+
+	<li id="servers-menu" class="dropdown">
+		<a href="#servers-menu" class="dropdown-toggle" data-toggle="dropdown">biggie <i class="icon-chevron-down icon-white"></i></a>
+		<ul class="dropdown-menu">
+			<li><a href="#">biggie</a></li>
+			<li><a href="#">Leelo</a></li>
+		</ul>
+	</li>
+
 	<li class="divider"></li>
-	<li><a href="#">TV Shows <i class="icon-chevron-down icon-white"></i></a></li>
+
+	<li id="sections-menu" class="dropdown">
+		<a href="#sections-menu" class="dropdown-toggle" data-toggle="dropdown">TV Shows <i class="icon-chevron-down icon-white"></i></a>
+		<ul class="dropdown-menu">
+			<li><a href="#">Movies</a></li>
+			<li><a href="#">TV Shows</a></li>
+			<li><a href="#">Music</a></li>
+		</ul>
+	</li>
+
 	<li class="divider"></li>
-	<li><a href="#">Breaking Bad</a></li>
+
+	<li>
+		<a href="#">Breaking Bad</a>
+	</li>
 </ul>

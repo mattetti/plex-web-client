@@ -7329,3 +7329,6 @@ ul.nav > li > a:hover {
   width: 43px;
   background: url(../img/divider_primary.png) no-repeat;
 }
+.dropdown.open .dropdown-toggle {
+  background: none;
+}
