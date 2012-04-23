@@ -12,6 +12,8 @@ define(
 	],
 
 	function (template, dispatcher, appModel, BaseView) {
+		var user = appModel.get('user');
+
 		var LoginView = BaseView.extend({
 			tagName: 'section',
 			className: 'content login',
@@ -31,15 +33,38 @@ define(
 			onLoginSubmit: function (event) {
 				event.preventDefault();
 
-				appModel.set({
-					address: this.$('input[name=address]').val(),
-					token: this.$('input[name=token]').val()
+				user.set({
+					username: this.$('input[name=username]').val(),
+					password: this.$('input[name=password]').val()
 				});
 
-				appModel.get('server').fetch();
-				appModel.get('sections').fetch();
+				//appModel.get('server').fetch();
+				//appModel.get('sections').fetch();
 
-				dispatcher.trigger('navigate:sections');
+				$.ajax({
+					type: 'POST',
+					url: '/api/users/sign_in.xml',
+					headers: {
+						'Authorization': 'Basic ' + window.btoa(user.get('username') + ':' + user.get('password')),
+						'X-Plex-Proxy-Host': 'my.plexapp.com',
+						'X-Plex-Proxy-Port': 80,
+						'X-Plex-Platform': 'MacOSX',
+						'X-Plex-Platform-Version': '10.6.8',
+						'X-Plex-Provides': 'player, controller',
+						'X-Plex-Product': 'Web Client',
+						'X-Plex-Version': '0.0.1',
+						'X-Plex-Device': 'Macbook Pro',
+						'X-Plex-Client-Identifier': '0987654321'
+					},
+					success: function (response) {
+						console.log('success');
+					},
+					error: function (xhr, status, error) {
+						console.log('error');
+					}
+				})
+
+				//dispatcher.trigger('navigate:sections');
 			}
 		});
 
