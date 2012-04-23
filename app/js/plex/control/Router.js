@@ -33,7 +33,7 @@ define(
 
 			isAuthenticated: function (callback, args) {
 				// Kick the user out if we don't have an ip address
-				if (typeof(appModel.get('address')) === 'undefined') {
+				if (typeof(appModel.get('authenticated')) === false) {
 
 					// Store where the user was trying to go
 					this.postAuth = callback;

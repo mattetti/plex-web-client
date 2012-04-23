@@ -13,9 +13,8 @@ define(
 
 		var AppModel = Backbone.Model.extend({
 			defaults: {
-				address: undefined,
-				token: undefined,
-				loading: undefined,
+				authenticated: false,
+				loading: false,
 				showHeader: false,
 				view: undefined,
 
