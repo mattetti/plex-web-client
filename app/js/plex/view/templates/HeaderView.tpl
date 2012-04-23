@@ -5,8 +5,8 @@
 
 	<li class="divider primary"></li>
 
-	<li id="servers-menu" class="dropdown">
-		<a href="#servers-menu" class="dropdown-toggle" data-toggle="dropdown">biggie <i class="icon-chevron-down icon-white"></i></a>
+	<li id="servers-list" class="dropdown">
+		<a href="#servers-list" class="dropdown-toggle" data-toggle="dropdown">biggie <i class="icon-chevron-down icon-white"></i></a>
 		<ul class="dropdown-menu">
 			<li><a href="#"><i class="icon-ok"></i> biggie</a></li>
 			<li><a href="#">Leelo</a></li>
@@ -17,8 +17,8 @@
 
 	<li class="divider"></li>
 
-	<li id="sections-menu" class="dropdown">
-		<a href="#sections-menu" class="dropdown-toggle" data-toggle="dropdown">TV Shows <i class="icon-chevron-down icon-white"></i></a>
+	<li id="sections-list" class="dropdown">
+		<a href="#sections-list" class="dropdown-toggle" data-toggle="dropdown">TV Shows <i class="icon-chevron-down icon-white"></i></a>
 		<ul class="dropdown-menu">
 			<li><a href="#">Movies</a></li>
 			<li><a href="#"><i class="icon-ok"></i> TV Shows</a></li>
@@ -32,6 +32,12 @@
 
 	<li>
 		<a href="#">Breaking Bad</a>
+	</li>
+
+	<li class="divider"></li>
+
+	<li>
+		<a href="#">Season 5</a>
 	</li>
 </ul>
 
