@@ -7341,6 +7341,7 @@ ul.nav .dropdown-menu {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  font-size: 14px;
 }
 ul.nav .dropdown-menu:before {
   content: '';
