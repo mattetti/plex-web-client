@@ -1,44 +1,9 @@
-<ul class="nav">
+<ul id="breadcrumb" class="nav">
 	<li>
 		<a href="#"><i class="icon-home icon-white"></i> Home</a>
 	</li>
 
 	<li class="divider primary"></li>
-
-	<li id="servers-list" class="dropdown">
-		<a href="#servers-list" class="dropdown-toggle" data-toggle="dropdown">biggie <i class="icon-chevron-down icon-white"></i></a>
-		<ul class="dropdown-menu">
-			<li><a href="#"><i class="icon-ok"></i> biggie</a></li>
-			<li><a href="#">Leelo</a></li>
-			<li class="divider"></li>
-			<li><a href="#">Browse Servers</a></li>
-		</ul>
-	</li>
-
-	<li class="divider"></li>
-
-	<li id="sections-list" class="dropdown">
-		<a href="#sections-list" class="dropdown-toggle" data-toggle="dropdown">TV Shows <i class="icon-chevron-down icon-white"></i></a>
-		<ul class="dropdown-menu">
-			<li><a href="#">Movies</a></li>
-			<li><a href="#"><i class="icon-ok"></i> TV Shows</a></li>
-			<li><a href="#">Music</a></li>
-			<li class="divider"></li>
-			<li><a href="#">Browse Sections</a></li>
-		</ul>
-	</li>
-
-	<li class="divider"></li>
-
-	<li>
-		<a href="#">Breaking Bad</a>
-	</li>
-
-	<li class="divider"></li>
-
-	<li>
-		<a href="#">Season 5</a>
-	</li>
 </ul>
 
 <ul class="nav pull-right">

@@ -46,7 +46,7 @@ define(
 
 						servers.fetch({
 							success: function (response) {
-								dispatcher.trigger('navigate:sections');
+								dispatcher.trigger('navigate:servers');
 							},
 							error: function (xhr, status, error) {
 								console.log('servers error');

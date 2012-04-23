@@ -4,13 +4,13 @@ define(
 		'plex/model/AppModel',
 		'plex/view/AppView',
 		'plex/view/LoginView',
-		'plex/view/SectionsView',
+		'plex/view/ServersView',
 
 		// Globals
 		'use!backbone'
 	],
 
-	function (dispatcher, appModel, AppView, LoginView, SectionsView) {
+	function (dispatcher, appModel, AppView, LoginView, ServersView) {
 		var Router = Backbone.Router.extend({
 			postAuth: undefined,
 			postAuthArgs: undefined,
@@ -18,7 +18,7 @@ define(
 			routes: {
 				'': 'login',
 				'!/login': 'login',
-				'!/sections': 'sections',
+				'!/servers': 'servers',
 				'*404': 'error'
 			},
 			
@@ -28,7 +28,7 @@ define(
 				Backbone.history.start();
 
 				dispatcher.on('navigate:login', this.onNavigateLogin, this);
-				dispatcher.on('navigate:sections', this.onNavigateSections, this);
+				dispatcher.on('navigate:servers', this.onNavigateSections, this);
 			},
 
 			isAuthenticated: function (callback, args) {
@@ -56,11 +56,11 @@ define(
 				});
 			},
 
-			sections: function () {
+			servers: function () {
 				if (this.isAuthenticated(this.spaces) === true) {
 					appModel.set({
 						showHeader: true,
-						view: new SectionsView()
+						view: new ServersView()
 					});
 				}
 			},
@@ -74,7 +74,7 @@ define(
 			},
 
 			onNavigateSections: function () {
-				this.navigate('!/sections', {trigger: true});
+				this.navigate('!/servers', {trigger: true});
 			}
 		});
 

@@ -2425,7 +2425,7 @@ table .span24 {
 .dropdown-menu .active > a:hover {
   color: #ffffff;
   text-decoration: none;
-  background-color: #2a6094;
+  background-color: #2375af;
 }
 .dropdown.open {
   *z-index: 1000;
@@ -7138,6 +7138,10 @@ body {
 section.content {
   padding: 40px 40px 200px;
 }
+section.fixed-width {
+  margin: 0 auto;
+  width: 960px;
+}
 footer {
   position: relative;
   z-index: 1;
@@ -7346,6 +7350,9 @@ ul.nav .dropdown-menu {
   -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
   font-size: 14px;
+}
+ul.nav .dropdown-menu .divider {
+  margin: 4px 1px;
 }
 ul.nav .dropdown-menu:before {
   content: '';

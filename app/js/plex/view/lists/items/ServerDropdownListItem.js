@@ -1,6 +1,6 @@
 define(
 	[
-		'text!plex/view/templates/SectionsView.tpl',
+		'text!plex/view/templates/lists/items/ServerDropdownListItem.tpl',
 		'plex/view/BaseView',
 
 		// Globals
@@ -10,22 +10,18 @@ define(
 	],
 
 	function (template, BaseView) {
-		var SectionsView = BaseView.extend({
-			tagName: 'section',
-			className: 'content',
+		var ServerDropdownListItem = BaseView.extend({
+			tagName: 'li',
 			
 			template: Handlebars.compile(template),
-
-			events: {
-			},
 			
 			render: function () {
-				this.$el.html(this.template());
+				this.$el.html(this.template(this.model.toJSON()));
 
 				return this;
 			}
 		});
 
-		return SectionsView;
+		return ServerDropdownListItem;
 	}
 );
