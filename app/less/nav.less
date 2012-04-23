@@ -32,14 +32,14 @@ ul.nav > li > a {
 	}
 }
 
-.divider {
+ul.nav > li.divider {
 	margin: 0 !important;
 	width: 30px;
 	height: 70px;
 	background: url(../img/divider.png) no-repeat;
 }
 
-.divider.primary {
+ul.nav > li.divider.primary {
 	width: 43px;
 	background: url(../img/divider_primary.png) no-repeat;
 }
@@ -51,6 +51,7 @@ ul.nav .dropdown.open .dropdown-toggle {
 ul.nav .dropdown-menu {
 	margin-top: -10px;
 	.border-radius(5px);
+	.box-shadow(0 5px 10px rgba(0,0,0,.3));
 	font-size: 14px;
 
 	&:before {

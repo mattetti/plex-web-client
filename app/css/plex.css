@@ -7320,13 +7320,13 @@ ul.nav > li > a:hover {
   background: none;
   color: #fff;
 }
-.divider {
+ul.nav > li.divider {
   margin: 0 !important;
   width: 30px;
   height: 70px;
   background: url(../img/divider.png) no-repeat;
 }
-.divider.primary {
+ul.nav > li.divider.primary {
   width: 43px;
   background: url(../img/divider_primary.png) no-repeat;
 }
@@ -7341,6 +7341,12 @@ ul.nav .dropdown-menu {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
   font-size: 14px;
 }
 ul.nav .dropdown-menu:before {
