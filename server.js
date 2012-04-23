@@ -6,11 +6,10 @@ var express = require('express'),
 			if (req.url.match(pattern)) {
 				req.url = req.url.replace(pattern, '');
 
-				console.log(req.headers);
-
 				return routingProxy.proxyRequest(req, res, {
 					host: req.headers['x-plex-proxy-host'],
-					port: req.headers['x-plex-proxy-port']
+					port: req.headers['x-plex-proxy-port'],
+					https: (req.headers['x-plex-proxy-port'] === '443')
 				});
 			} else {
 				return next();

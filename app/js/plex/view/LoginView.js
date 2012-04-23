@@ -38,33 +38,16 @@ define(
 					password: this.$('input[name=password]').val()
 				});
 
-				//appModel.get('server').fetch();
-				//appModel.get('sections').fetch();
-
-				$.ajax({
-					type: 'POST',
-					url: '/api/users/sign_in.xml',
-					headers: {
-						'Authorization': 'Basic ' + window.btoa(user.get('username') + ':' + user.get('password')),
-						'X-Plex-Proxy-Host': 'my.plexapp.com',
-						'X-Plex-Proxy-Port': 80,
-						'X-Plex-Platform': 'MacOSX',
-						'X-Plex-Platform-Version': '10.6.8',
-						'X-Plex-Provides': 'player, controller',
-						'X-Plex-Product': 'Web Client',
-						'X-Plex-Version': '0.0.1',
-						'X-Plex-Device': 'Macbook Pro',
-						'X-Plex-Client-Identifier': '0987654321'
-					},
+				user.fetch({
 					success: function (response) {
-						console.log('success');
+						appModel.set('authenticated', true);
+						
+						dispatcher.trigger('navigate:sections');
 					},
 					error: function (xhr, status, error) {
 						console.log('error');
 					}
-				})
-
-				//dispatcher.trigger('navigate:sections');
+				});
 			}
 		});
 
