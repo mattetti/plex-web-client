@@ -1,14 +1,14 @@
 define(
 	[
 		'plex/model/UserModel',
-		'plex/model/ServerModel',
+		'plex/model/collections/ServerCollection',
 		'plex/model/collections/SectionCollection',
 
 		// Globals
 		'use!backbone'
 	],
 
-	function (UserModel, ServerModel, SectionCollection) {
+	function (UserModel, ServerCollection, SectionCollection) {
 		var originalSync = Backbone.sync;
 
 		var AppModel = Backbone.Model.extend({
@@ -19,7 +19,7 @@ define(
 				view: undefined,
 
 				user: new UserModel(),
-				server: new ServerModel(),
+				servers: new ServerCollection(),
 				sections: new SectionCollection()
 			}
 		});
@@ -35,6 +35,12 @@ define(
 			}
 
 			options.url = '/api/' + options.url;
+
+			// Append the authentication token if the user has logged in
+			if (appModel.get('authenticated') === true) {
+				options.url += '?X-Plex-Token=' + appModel.get('user').get('authentication_token');
+			}
+
 			options.contentType = 'application/xml',
 			options.dataType = 'text';
 			options.processData = false;

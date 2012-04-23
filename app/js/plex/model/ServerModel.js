@@ -6,13 +6,7 @@ define(
 	],
 
 	function () {
-		var ServerModel = Backbone.Model.extend({
-			url: 'pms/servers',
-
-			parse: function (response) {
-				return $.xml2json(response);
-			}
-		});
+		var ServerModel = Backbone.Model.extend({});
 
 		return ServerModel;
 	}

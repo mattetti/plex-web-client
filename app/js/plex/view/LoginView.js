@@ -13,6 +13,7 @@ define(
 
 	function (template, dispatcher, appModel, BaseView) {
 		var user = appModel.get('user');
+		var servers = appModel.get('servers');
 
 		var LoginView = BaseView.extend({
 			tagName: 'section',
@@ -38,14 +39,22 @@ define(
 					password: this.$('input[name=password]').val()
 				});
 
+				// TODO: Restructure this or extract into command
 				user.fetch({
 					success: function (response) {
 						appModel.set('authenticated', true);
 
-						dispatcher.trigger('navigate:sections');
+						servers.fetch({
+							success: function (response) {
+								dispatcher.trigger('navigate:sections');
+							},
+							error: function (xhr, status, error) {
+								console.log('servers error');
+							}
+						});
 					},
 					error: function (xhr, status, error) {
-						console.log('error');
+						console.log('user error');
 					}
 				});
 			}
