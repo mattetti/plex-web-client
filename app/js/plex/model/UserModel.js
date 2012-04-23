@@ -17,7 +17,7 @@ define(
 					dataType: 'text',
 					processData: false,
 					headers: {
-						'Authorization': 'Basic ' + window.btoa(model.get('username') + ':' + model.get('password')),
+						'Authorization': 'Basic ' + btoa(model.get('username') + ':' + model.get('password')),
 						'X-Plex-Proxy-Host': 'my.plexapp.com',
 						'X-Plex-Proxy-Port': 443,
 						'X-Plex-Provides': 'player, controller',

@@ -7276,7 +7276,7 @@ h1.plex-icon {
 }
 header {
   padding: 0 30px;
-  height: 70px;
+  height: 60px;
   border-bottom: 1px solid #474747;
   background-color: #505050;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#555555), color-stop(25%, #585858), to(#313131));
@@ -7308,7 +7308,7 @@ ul.nav [class*=" icon-"] {
 ul.nav > li {
   float: left;
   margin: 0 8px 0 12px;
-  line-height: 70px;
+  line-height: 60px;
 }
 ul.nav > li > a {
   border-bottom: 1px solid rgba(255, 255, 255, 0);
@@ -7322,19 +7322,18 @@ ul.nav > li > a:hover {
 }
 ul.nav > li.divider {
   margin: 0 !important;
-  width: 30px;
-  height: 70px;
+  width: 26px;
+  height: 60px;
   background: url(../img/divider.png) no-repeat;
 }
 ul.nav > li.divider.primary {
-  width: 43px;
+  width: 37px;
   background: url(../img/divider_primary.png) no-repeat;
 }
 ul.nav .dropdown.open .dropdown-toggle {
   background: none;
 }
 ul.nav .dropdown-menu {
-  margin-top: -10px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
