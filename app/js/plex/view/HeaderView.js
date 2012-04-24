@@ -1,6 +1,7 @@
 define(
 	[
 		'text!templates/HeaderView.tpl',
+		'plex/control/Dispatcher',
 		'plex/model/AppModel',
 		'plex/view/BaseView',
 		'plex/view/lists/ServerDropdownList',
@@ -11,13 +12,16 @@ define(
 		'use!handlebars'
 	],
 
-	function (template, appModel, BaseView, ServerDropdownList) {
+	function (template, dispatcher, appModel, BaseView, ServerDropdownList) {
 		var HeaderView = BaseView.extend({
 			tagName: 'header',
 			
 			template: Handlebars.compile(template),
 
 			events: {
+				'click #home-btn': 'onHomeClick',
+				'click #queue-btn': 'onQueueClick',
+				'click #log-out-btn': 'onLogOutClick'
 			},
 
 			initialize: function () {
@@ -37,6 +41,25 @@ define(
 			onChange: function () {
 				this.removeAllViews();
 				this.render();
+			},
+
+			onHomeClick: function (event) {
+				event.preventDefault();
+
+				dispatcher.trigger('navigate:servers');
+			},
+
+			onQueueClick: function (event) {
+				event.preventDefault();
+
+				dispatcher.trigger('navigate:queue');
+			},
+
+			onLogOutClick: function (event) {
+				event.preventDefault();
+
+				appModel.set('authenticated', false);
+				dispatcher.trigger('navigate:login');
 			}
 		});
 

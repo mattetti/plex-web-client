@@ -16,10 +16,14 @@
 	.box-shadow(0 0 0 5px rgba(0, 0, 0, .3));
 	font-size: 24px;
 	font-weight: bold;
-}
 
-.btn-large:hover {
-	background-position: 0 -40px;
+	&:hover {
+		background-position: 0 -40px;
+	}
+
+	&:active {
+		.box-shadow(0 0 0 5px rgba(0, 0, 0, .75));
+	}
 }
 
 input {

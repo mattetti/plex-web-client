@@ -1,5 +1,5 @@
 header {
-	padding: 0 30px;
+	padding: 0 20px;
 	height: 60px;
 	border-bottom: 1px solid #474747;
 	#gradient > .vertical-three-colors(#555, #585858, 25%, #313131);
@@ -16,24 +16,32 @@ ul.nav {
 
 ul.nav > li {
 	float: left;
-	margin: 0 8px 0 12px;
 	line-height: 60px;
 }
 
 ul.nav > li > a {
+	padding: 0 15px;
 	border-bottom: 1px solid rgba(255, 255, 255, 0);
 	color: #ddd;
 	text-shadow: 0 -1px 0 #000;
 
 	&:hover {
-		border-bottom: 1px solid rgba(255, 255, 255, .2);
 		background: none;
 		color: #fff;
 	}
 }
 
+#breadcrumb > li {
+	margin: 0 8px 0 12px;
+}
+
+#breadcrumb > li > a {
+	padding: 0;
+}
+
 ul.nav > li.divider {
 	margin: 0 !important;
+	padding: 0 !important;
 	width: 26px;
 	height: 60px;
 	background: url(../img/divider.png) no-repeat;
@@ -42,6 +50,13 @@ ul.nav > li.divider {
 ul.nav > li.divider.primary {
 	width: 37px;
 	background: url(../img/divider_primary.png) no-repeat;
+}
+
+ul.nav > li.divider.vertical {
+	width: 1px;
+	overflow: hidden;
+	background: #35383B;
+	border-right: 1px solid #414548;
 }
 
 ul.nav .dropdown.open .dropdown-toggle {
