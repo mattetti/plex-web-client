@@ -7544,8 +7544,9 @@ ul.nav .dropdown-menu:after {
   font-weight: normal;
 }
 .content-vertical-list li a:hover {
+  color: #fff;
   text-decoration: none;
 }
 .content-vertical-list li a:hover h2 {
-  border-bottom: 5px solid rgba(255, 255, 255, 0.25);
+  border-bottom: 5px solid rgba(255, 255, 255, 0.5);
 }
