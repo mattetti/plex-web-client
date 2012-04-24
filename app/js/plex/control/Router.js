@@ -95,8 +95,7 @@ define(
 				var serverID = arguments[0];
 				
 				if (this.isAuthenticated(this.sections, arguments) === true) {
-					// Set the active server silently so the header doesn't update until we're ready
-					appModel.set('server', servers.get(serverID), {silent: true});
+					appModel.set('server', servers.get(serverID));
 
 					sections.fetch({
 						success: function (response) {
@@ -121,8 +120,7 @@ define(
 				var section = sections.get(sectionID);
 
 				if (this.isAuthenticated(this.list, arguments) === true) {
-					// Set the active server silently so the header doesn't update until we're ready
-					appModel.set('server', servers.get(serverID), {silent: true});
+					appModel.set('server', servers.get(serverID));
 
 					if (typeof(section) === 'object') {
 						appModel.set({

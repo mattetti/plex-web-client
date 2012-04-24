@@ -41,7 +41,7 @@ define(
 			},
 
 			onChange: function () {
-				this.removeAllViews();
+				this.$el.empty();
 				this.render();
 			}
 		});
