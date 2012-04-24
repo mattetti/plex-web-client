@@ -6922,6 +6922,10 @@ a.thumbnail:hover {
 h1,
 h2 {
   font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-shadow: 0 1px 0 #000;
+}
+h1 {
+  margin-bottom: 20px;
 }
 .btn-large {
   padding: 12px 40px;
@@ -7421,7 +7425,7 @@ h1.plex-icon {
 header {
   padding: 0 20px;
   height: 60px;
-  border-bottom: 1px solid #474747;
+  border-bottom: 2px solid #474747;
   background-color: #505050;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#555555), color-stop(25%, #585858), to(#313131));
   background-image: -webkit-linear-gradient(#555555, #585858 25%, #313131);

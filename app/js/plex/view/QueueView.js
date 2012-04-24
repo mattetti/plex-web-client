@@ -1,5 +1,6 @@
 define(
 	[
+		'text!templates/QueueView.tpl',
 		'plex/model/AppModel',
 		'plex/view/BaseView',
 		'plex/view/lists/QueueList',
@@ -10,20 +11,19 @@ define(
 		'use!handlebars'
 	],
 
-	function (appModel, BaseView, QueueList) {
+	function (template, appModel, BaseView, QueueList) {
 		var ServersView = BaseView.extend({
 			tagName: 'section',
 			className: 'content fixed-width',
-
-			events: {
-			},
+			
+			template: Handlebars.compile(template),
 
 			initialize: function () {
 				this.list = this.registerView(new QueueList({ collection: appModel.get('queue') }));
 			},
 			
 			render: function () {
-				this.$el.html('<h1>Queue</h1>');
+				this.$el.html(this.template());
 				this.$el.append(this.list.render().el);
 
 				return this;

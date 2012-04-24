@@ -30,9 +30,12 @@ define(
 			
 			render: function () {
 				this.$el.html(this.template());
-				this.$('#breadcrumb').append(this.serverList.render().el);
 
 				if (typeof(appModel.get('server')) !== 'undefined') {
+					this.$('#breadcrumb').append(this.serverList.render().el);
+				}
+
+				if (typeof(appModel.get('section')) !== 'undefined') {
 					this.$('#breadcrumb').append('<li class="divider"></li>');
 					this.$('#breadcrumb').append(this.sectionList.render().el);
 				}
