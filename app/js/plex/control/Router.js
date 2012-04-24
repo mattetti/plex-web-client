@@ -69,6 +69,10 @@ define(
 						dispatcher.trigger('navigate:servers');
 					} else {
 						this.postAuth.apply(this, this.postAuthArgs);
+
+						// Reset postAuth in case user logs out again
+						this.postAuth = undefined;
+						this.postAuthArgs = undefined;
 					}
 				}
 			},
