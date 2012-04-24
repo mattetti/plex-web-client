@@ -1,6 +1,6 @@
 define(
 	[
-		'text!templates/lists/items/SectionListItem.tpl',
+		'text!templates/lists/items/SectionDropdownListItem.tpl',
 		'plex/view/BaseView',
 
 		// Globals
@@ -10,7 +10,7 @@ define(
 	],
 
 	function (template, BaseView) {
-		var SectionListItem = BaseView.extend({
+		var SectionDropdownListItem = BaseView.extend({
 			tagName: 'li',
 			
 			template: Handlebars.compile(template),
@@ -27,6 +27,6 @@ define(
 			}
 		});
 
-		return SectionListItem;
+		return SectionDropdownListItem;
 	}
 );

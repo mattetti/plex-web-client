@@ -12,8 +12,8 @@ define(
 	],
 
 	function (template, appModel, BaseView, ServerDropdownListItem) {
-		var ServerList = BaseView.extend({
-			id: 'servers-dropdown-list',
+		var ServerDropdownList = BaseView.extend({
+			id: 'server-dropdown-list',
 			tagName: 'li',
 			className: 'dropdown',
 			
@@ -59,6 +59,6 @@ define(
 			}
 		});
 
-		return ServerList;
+		return ServerDropdownList;
 	}
 );

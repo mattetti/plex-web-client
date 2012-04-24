@@ -1,7 +1,6 @@
 define(
 	[
 		'text!templates/lists/items/ServerDropdownListItem.tpl',
-		'plex/control/Dispatcher',
 		'plex/view/BaseView',
 
 		// Globals
@@ -10,7 +9,7 @@ define(
 		'use!handlebars'
 	],
 
-	function (template, dispatcher, BaseView) {
+	function (template, BaseView) {
 		var ServerDropdownListItem = BaseView.extend({
 			tagName: 'li',
 			

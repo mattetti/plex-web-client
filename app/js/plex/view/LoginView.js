@@ -43,16 +43,29 @@ define(
 				// TODO: This needs to be refactored
 				user.fetch({
 					success: function (response) {
+						var i = 0;
+
 						servers.fetch({
 							success: function (response) {
-								appModel.set('authenticated', true);
+								if (++i === 2) {
+									appModel.set('authenticated', true);
+								}
 							},
 							error: function (xhr, status, error) {
 								console.log('servers error');
 							}
 						});
 
-						sections.fetch();
+						sections.fetch({
+							success: function (response) {
+								if (++i === 2) {
+									appModel.set('authenticated', true);
+								}
+							},
+							error: function (xhr, status, error) {
+								console.log('sections error');
+							}
+						});
 					},
 					error: function (xhr, status, error) {
 						console.log('user error');
