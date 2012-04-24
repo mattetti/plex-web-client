@@ -27,6 +27,7 @@ define(
 
 			initialize: function () {
 				this.addBinding(appModel, 'change:server', this.onChange);
+				this.addBinding(appModel, 'change:sections', this.onChange);
 				this.addBinding(appModel, 'change:section', this.onChange);
 
 				this.serverList = this.registerView(new ServerDropdownList({ collection: appModel.get('servers') }));

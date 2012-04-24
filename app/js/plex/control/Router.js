@@ -88,7 +88,7 @@ define(
 				var serverID = arguments[0];
 				
 				if (this.isAuthenticated(this.sections, arguments) === true) {
-					appModel.set('server', servers.get(serverID));
+					appModel.set('server', servers.get(serverID), {silent: true});
 
 					sections.fetch({
 						success: function (response) {
