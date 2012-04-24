@@ -4,6 +4,7 @@ define(
 		'plex/model/AppModel',
 		'plex/view/AppView',
 		'plex/view/LoginView',
+		'plex/view/QueueView',
 		'plex/view/ServersView',
 		'plex/view/SectionsView',
 		'plex/view/MediaView',
@@ -12,7 +13,8 @@ define(
 		'use!backbone'
 	],
 
-	function (dispatcher, appModel, AppView, LoginView, ServersView, SectionsView, MediaView) {
+	function (dispatcher, appModel, AppView, LoginView, QueueView, ServersView, SectionsView, MediaView) {
+		var queue = appModel.get('queue');
 		var servers = appModel.get('servers');
 		var sections = appModel.get('sections');
 
@@ -23,6 +25,7 @@ define(
 			routes: {
 				'': 'login',
 				'!/login': 'login',
+				'!/queue': 'queue',
 				'!/servers': 'servers',
 				'!/servers/:serverID/sections': 'sections',
 				'!/servers/:serverID/sections/:sectionID/list': 'list',
@@ -35,6 +38,7 @@ define(
 				Backbone.history.start();
 
 				dispatcher.on('navigate:login', this.onNavigateLogin, this);
+				dispatcher.on('navigate:queue', this.onNavigateQueue, this);
 				dispatcher.on('navigate:servers', this.onNavigateServers, this);
 				dispatcher.on('navigate:sections', this.onNavigateSections, this);
 				dispatcher.on('navigate:list', this.onNavigateList, this);
@@ -78,6 +82,26 @@ define(
 					server: undefined,
 					section: undefined
 				});
+			},
+
+			queue: function () {
+				if (this.isAuthenticated(this.queue, arguments) === true) {
+					queue.fetch({
+						success: function (response) {
+							appModel.set({
+								loading: false,
+								showHeader: true,
+								view: new QueueView(),
+								server: undefined,
+								section: undefined
+							});
+						},
+
+						error: function (xhr, status, error) {
+
+						}
+					});
+				}
 			},
 
 			servers: function () {
@@ -156,6 +180,10 @@ define(
 			// Navigate Methods
 			onNavigateLogin: function () {
 				this.navigate('!/login', {trigger: true});
+			},
+
+			onNavigateQueue: function () {
+				this.navigate('!/queue', {trigger: true});
 			},
 
 			onNavigateServers: function () {
