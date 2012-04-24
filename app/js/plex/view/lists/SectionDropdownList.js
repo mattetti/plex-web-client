@@ -43,14 +43,12 @@ define(
 			},
 
 			onAdd: function (section) {
-				if (section.get('machineIdentifier') === appModel.get('server').id) {
-					var item = new SectionDropdownListItem({ model: section });
+				var item = new SectionDropdownListItem({ model: section });
 
-					// Register the view so it will be cleaned up on destroy
-					this.registerView(item);
+				// Register the view so it will be cleaned up on destroy
+				this.registerView(item);
 
-					this.$('.divider').before(item.render().el);
-				}
+				this.$('.divider').before(item.render().el);
 			},
 
 			onAddAll: function () {

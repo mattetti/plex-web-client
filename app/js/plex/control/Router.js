@@ -88,10 +88,19 @@ define(
 				var serverID = arguments[0];
 				
 				if (this.isAuthenticated(this.sections, arguments) === true) {
-					appModel.set({
-						showHeader: true,
-						view: new SectionsView(),
-						server: servers.get(serverID)
+					appModel.set('server', servers.get(serverID));
+
+					sections.fetch({
+						success: function (response) {
+							appModel.set({
+								showHeader: true,
+								view: new SectionsView(),
+							});
+						},
+
+						error: function (xhr, status, error) {
+
+						}
 					});
 				}
 			},

@@ -30,14 +30,12 @@ define(
 			},
 
 			onAdd: function (section) {
-				if (section.get('machineIdentifier') === appModel.get('server').id) {
-					var item = new SectionListItem({ model: section });
+				var item = new SectionListItem({ model: section });
 
-					// Register the view so it will be cleaned up on destroy
-					this.registerView(item);
+				// Register the view so it will be cleaned up on destroy
+				this.registerView(item);
 
-					this.$el.append(item.render().el);
-				}
+				this.$el.append(item.render().el);
 			},
 
 			onAddAll: function () {

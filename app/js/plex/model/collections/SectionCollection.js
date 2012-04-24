@@ -10,13 +10,7 @@ define(
 	function (SectionModel) {
 		var SectionCollection = Backbone.Collection.extend({
 			model: SectionModel,
-			url: 'pms/system/library/sections',
-
-			sync: function (method, model, options) {
-				options.myPlex = true;
-
-				Backbone.sync(method, model, options);
-			},
+			url: 'library/sections',
 
 			parse: function (response) {
 				return $.xml2json(response).Directory;
