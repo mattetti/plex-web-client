@@ -1,6 +1,7 @@
 define(
 	[
 		'text!templates/lists/items/SectionDropdownListItem.tpl',
+		'plex/model/AppModel',
 		'plex/view/BaseView',
 
 		// Globals
@@ -9,17 +10,15 @@ define(
 		'use!handlebars'
 	],
 
-	function (template, BaseView) {
+	function (template, appModel, BaseView) {
 		var SectionDropdownListItem = BaseView.extend({
 			tagName: 'li',
 			
 			template: Handlebars.compile(template),
 			
 			render: function () {
-				var key = _.last(this.model.get('key').split('/'));
-				
 				this.$el.html(this.template({
-					key: key,
+					serverID: appModel.get('server').id,
 					section: this.model.toJSON()
 				}));
 
