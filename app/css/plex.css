@@ -7152,6 +7152,7 @@ section.content {
 }
 section.fixed-width {
   margin: 0 auto;
+  padding: 40px 0 200px;
   width: 800px;
 }
 footer {
