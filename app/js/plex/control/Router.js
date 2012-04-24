@@ -23,7 +23,7 @@ define(
 				'': 'login',
 				'!/login': 'login',
 				'!/servers': 'servers',
-				'!/servers/:serverID': 'sections',
+				'!/servers/:serverID/sections': 'sections',
 				'*404': 'error'
 			},
 			
