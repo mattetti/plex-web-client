@@ -72,8 +72,11 @@ define(
 			// Route Methods
 			login: function () {
 				appModel.set({
+					authenticated: false,
 					showHeader: false,
-					view: new LoginView()
+					view: new LoginView(),
+					server: undefined,
+					section: undefined
 				});
 			},
 

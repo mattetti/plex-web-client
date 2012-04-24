@@ -19,12 +19,6 @@ define(
 			
 			template: Handlebars.compile(template),
 
-			events: {
-				'click #home-btn': 'onHomeClick',
-				'click #queue-btn': 'onQueueClick',
-				'click #log-out-btn': 'onLogOutClick'
-			},
-
 			initialize: function () {
 				this.addBinding(appModel, 'change:server', this.onChange);
 				this.addBinding(appModel, 'change:sections', this.onChange);
@@ -49,25 +43,6 @@ define(
 			onChange: function () {
 				this.removeAllViews();
 				this.render();
-			},
-
-			onHomeClick: function (event) {
-				event.preventDefault();
-
-				dispatcher.trigger('navigate:servers');
-			},
-
-			onQueueClick: function (event) {
-				event.preventDefault();
-
-				dispatcher.trigger('navigate:queue');
-			},
-
-			onLogOutClick: function (event) {
-				event.preventDefault();
-
-				appModel.set('authenticated', false);
-				dispatcher.trigger('navigate:login');
 			}
 		});
 
