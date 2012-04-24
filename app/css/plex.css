@@ -6919,6 +6919,10 @@ a.thumbnail:hover {
     margin-left: 30px;
   }
 }
+h1,
+h2 {
+  font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 .btn-large {
   padding: 12px 40px;
   background-color: #fea82c;
@@ -7531,7 +7535,15 @@ ul.nav .dropdown-menu:after {
 .content-vertical-list li {
   margin-bottom: 40px;
 }
-.content-vertical-list li a h2 {
+.content-vertical-list li a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+.content-vertical-list li a:hover .list-header {
+  border-bottom: 5px solid rgba(255, 255, 255, 0.5);
+}
+.list-header {
+  margin-bottom: 10px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -7543,10 +7555,17 @@ ul.nav .dropdown-menu:after {
   border-bottom: 5px solid rgba(255, 255, 255, 0.15);
   font-weight: normal;
 }
-.content-vertical-list li a:hover {
-  color: #fff;
-  text-decoration: none;
+.list-subheader {
+  float: right;
+  line-height: 50px;
+  color: #eee;
 }
-.content-vertical-list li a:hover h2 {
-  border-bottom: 5px solid rgba(255, 255, 255, 0.5);
+.list-label {
+  color: #999;
+}
+.list-detail {
+  margin: 2px 0;
+}
+.list-detail .list-label {
+  margin-right: 5px;
 }

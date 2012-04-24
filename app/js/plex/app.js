@@ -3,6 +3,7 @@ define(
 		'plex/control/Router',
 
 		// Globals
+		'use!helpers',
 		'use!dropdown'
 	],
 

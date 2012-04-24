@@ -6,20 +6,39 @@
 		margin-bottom: 40px;
 		
 		a {
-			h2 {
-				.box-sizing(border-box);
-				border-bottom: 5px solid rgba(255, 255, 255, 0.15);
-				font-weight: normal;
-			}
-
 			&:hover {
 				color: #fff;
 				text-decoration: none;
 
-				h2 {
+				.list-header {
 					border-bottom: 5px solid rgba(255, 255, 255, 0.5);
 				}
 			}
 		}
+	}
+}
+
+.list-header {
+	margin-bottom: 10px;
+	.box-sizing(border-box);
+	border-bottom: 5px solid rgba(255, 255, 255, 0.15);
+	font-weight: normal;
+}
+
+.list-subheader {
+	float: right;
+	line-height: 50px;
+	color: #eee;
+}
+
+.list-label {
+	color: #999;
+}
+
+.list-detail {
+	margin: 2px 0;
+
+	.list-label {
+		margin-right: 5px;
 	}
 }
