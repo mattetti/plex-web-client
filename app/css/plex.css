@@ -7349,8 +7349,8 @@ ul.nav > li.divider.primary {
 ul.nav > li.divider.vertical {
   width: 1px;
   overflow: hidden;
-  background: #404040;
-  border-right: 1px solid #505050;
+  background: #373737;
+  border-right: 1px solid #474747;
 }
 ul.nav .dropdown.open .dropdown-toggle {
   background: none;
