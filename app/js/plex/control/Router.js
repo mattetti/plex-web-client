@@ -6,12 +6,13 @@ define(
 		'plex/view/LoginView',
 		'plex/view/ServersView',
 		'plex/view/SectionsView',
+		'plex/view/MediaView',
 
 		// Globals
 		'use!backbone'
 	],
 
-	function (dispatcher, appModel, AppView, LoginView, ServersView, SectionsView) {
+	function (dispatcher, appModel, AppView, LoginView, ServersView, SectionsView, MediaView) {
 		var servers = appModel.get('servers');
 		var sections = appModel.get('sections');
 
@@ -24,17 +25,19 @@ define(
 				'!/login': 'login',
 				'!/servers': 'servers',
 				'!/servers/:serverID/sections': 'sections',
+				'!/servers/:serverID/sections/:sectionID/list': 'list',
 				'*404': 'error'
 			},
 			
 			initialize: function () {
-				new AppView();
+				new AppView().render();
 
 				Backbone.history.start();
 
 				dispatcher.on('navigate:login', this.onNavigateLogin, this);
 				dispatcher.on('navigate:servers', this.onNavigateServers, this);
 				dispatcher.on('navigate:sections', this.onNavigateSections, this);
+				dispatcher.on('navigate:list', this.onNavigateList, this);
 
 				appModel.on('change:authenticated', this.onAuthenticated, this);
 			},
@@ -79,7 +82,8 @@ define(
 					appModel.set({
 						showHeader: true,
 						view: new ServersView(),
-						server: undefined
+						server: undefined,
+						section: undefined
 					});
 				}
 			},
@@ -88,13 +92,16 @@ define(
 				var serverID = arguments[0];
 				
 				if (this.isAuthenticated(this.sections, arguments) === true) {
+					// Set the active server silently so the header doesn't update until we're ready
 					appModel.set('server', servers.get(serverID), {silent: true});
 
 					sections.fetch({
 						success: function (response) {
 							appModel.set({
+								loading: false,
 								showHeader: true,
 								view: new SectionsView(),
+								section: undefined
 							});
 						},
 
@@ -102,6 +109,42 @@ define(
 
 						}
 					});
+				}
+			},
+
+			list: function () {
+				var serverID = arguments[0];
+				var sectionID = arguments[1];
+				var section = sections.get(sectionID);
+
+				if (this.isAuthenticated(this.list, arguments) === true) {
+					// Set the active server silently so the header doesn't update until we're ready
+					appModel.set('server', servers.get(serverID), {silent: true});
+
+					if (typeof(section) === 'object') {
+						appModel.set({
+							showHeader: true,
+							view: new MediaView(),
+							section: section
+						});
+					} else {
+						sections.fetch({
+							success: function (response) {
+								section = response.get(sectionID);
+
+								appModel.set({
+									loading: false,
+									showHeader: true,
+									view: new MediaView(),
+									section: section
+								});
+							},
+
+							error: function (xhr, status, error) {
+
+							}
+						});
+					}
 				}
 			},
 
@@ -118,8 +161,12 @@ define(
 				this.navigate('!/servers', {trigger: true});
 			},
 
-			onNavigateSections: function (id) {
-				this.navigate('!/servers/' + id, {trigger: true});
+			onNavigateSections: function (serverID) {
+				this.navigate('!/servers/' + serverID + '/sections/', {trigger: true});
+			},
+
+			onNavigateList: function (serverID, sectionID) {
+				this.navigate('!/servers/' + serverID + '/sections/' + sectionID + '/list', {trigger: true});
 			}
 		});
 

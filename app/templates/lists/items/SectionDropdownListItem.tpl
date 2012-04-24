@@ -1,1 +1,1 @@
-<a href="#!/servers/{{serverID}}/sections/{{section.key}}">{{section.title}}</a>
+<a href="#!/servers/{{serverID}}/sections/{{section.key}}/list">{{section.title}}</a>

@@ -44,7 +44,10 @@ define(
 					success: function (response) {
 						servers.fetch({
 							success: function (response) {
-								appModel.set('authenticated', true);
+								appModel.set({
+									authenticated: true,
+									loading: false
+								});
 							},
 							error: function (xhr, status, error) {
 								console.log('servers error');

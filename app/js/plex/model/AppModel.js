@@ -64,6 +64,9 @@ define(
 			options.processData = false;
 
 			originalSync(method, model, options);
+
+			// Show the loading indicator
+			appModel.set('loading', true);
 		}
 
 		return appModel;

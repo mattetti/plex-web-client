@@ -1,0 +1,126 @@
+.loading {
+	position: fixed;
+	left: 50%;
+	top: 25%;
+	margin-left: -50px;
+	padding: 30px;
+	.border-radius(10px);
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+.loading-icon {
+	position: relative;
+	margin: 0 auto;
+	width: 40px;
+	height: 40px;
+}
+
+.loading-icon > div {
+	position: absolute;
+	left: 44.5%;
+	top: 37%;
+	width: 12%;
+	height: 26%;
+	.opacity(0);
+	.border-radius(40px);
+	background-color: #ffffff;
+	
+	-webkit-animation: loading-icon-fade 1s linear infinite;
+	-moz-animation: loading-icon-fade 1s linear infinite;
+	animation: loading-icon-fade 1s linear infinite;
+}
+
+.loading-icon > .loading-icon-bar1 {
+	-webkit-transform:rotate(0deg) translate(0, -142%);
+	-moz-transform:rotate(0deg) translate(0, -142%);
+	
+	-webkit-animation-delay: 0s;
+	-moz-animation-delay: 0s;
+}    
+.loading-icon > .loading-icon-bar2 {
+	-webkit-transform:rotate(30deg) translate(0, -142%);
+	-moz-transform:rotate(30deg) translate(0, -142%);
+	
+	-webkit-animation-delay: -0.9167s;
+	-moz-animation-delay: -0.9167s;
+}
+.loading-icon > .loading-icon-bar3 {
+	-webkit-transform:rotate(60deg) translate(0, -142%);
+	-moz-transform:rotate(60deg) translate(0, -142%);
+	
+	-webkit-animation-delay: -0.833s;
+	-moz-animation-delay: -0.833s;
+}
+.loading-icon > .loading-icon-bar4 {
+	-webkit-transform:rotate(90deg) translate(0, -142%);
+	-moz-transform:rotate(90deg) translate(0, -142%);
+	
+	-webkit-animation-delay: -0.75s;
+	-moz-animation-delay: -0.75s;
+}
+.loading-icon > .loading-icon-bar5 {
+	-webkit-transform:rotate(120deg) translate(0, -142%);
+	-moz-transform:rotate(120deg) translate(0, -142%);
+	
+	-webkit-animation-delay: -0.667s;
+	-moz-animation-delay: -0.667s;
+}
+.loading-icon > .loading-icon-bar6 {
+	-webkit-transform:rotate(150deg) translate(0, -142%);
+	-moz-transform:rotate(150deg) translate(0, -142%);
+	
+	-webkit-animation-delay: -0.5833s;
+	-moz-animation-delay: -0.5833s;
+}
+.loading-icon > .loading-icon-bar7 {
+	-webkit-transform:rotate(180deg) translate(0, -142%);
+	-moz-transform:rotate(180deg) translate(0, -142%);
+	
+	-webkit-animation-delay: -0.5s;
+	-moz-animation-delay: -0.5s;
+}
+.loading-icon > .loading-icon-bar8 {
+	-webkit-transform:rotate(210deg) translate(0, -142%);
+	-moz-transform:rotate(210deg) translate(0, -142%);
+	
+	-webkit-animation-delay: -0.41667s;
+	-moz-animation-delay: -0.41667s;
+}
+.loading-icon > .loading-icon-bar9 {
+	-webkit-transform:rotate(240deg) translate(0, -142%);
+	-moz-transform:rotate(240deg) translate(0, -142%);
+	
+	-webkit-animation-delay: -0.333s;
+	-moz-animation-delay: -0.333s;
+}
+.loading-icon > .loading-icon-bar10 {
+	-webkit-transform:rotate(270deg) translate(0, -142%);
+	-moz-transform:rotate(270deg) translate(0, -142%);
+	
+	-webkit-animation-delay: -0.25s;
+	-moz-animation-delay: -0.25s;
+}
+.loading-icon > .loading-icon-bar11 {
+	-webkit-transform:rotate(300deg) translate(0, -142%);
+	-moz-transform:rotate(300deg) translate(0, -142%);
+	
+	-webkit-animation-delay: -0.1667s;
+	-moz-animation-delay: -0.1667s;
+}
+.loading-icon > .loading-icon-bar12 {
+	-webkit-transform:rotate(330deg) translate(0, -142%);
+	-moz-transform:rotate(330deg) translate(0, -142%);
+	
+	-webkit-animation-delay: -0.0833s;
+	-moz-animation-delay: -0.0833s;
+}
+
+@-webkit-keyframes loading-icon-fade {
+	from {opacity: 1;}
+	to {opacity: 0.25;}
+}
+
+@-moz-keyframes loading-icon-fade {
+	from {opacity: 1;}
+	to {opacity: 0.25;}
+}
