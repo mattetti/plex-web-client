@@ -12,7 +12,7 @@ define(
 	function (BaseView, ServerListItem) {
 		var ServerList = BaseView.extend({
 			tagName: 'ul',
-			className: 'server-list',
+			className: 'content-vertical-list',
 
 			initialize: function () {
 				this.addBinding(this.collection, 'add', this.onAdd);

@@ -1,1 +1,1 @@
-<a href="#!/servers/{{machineIdentifier}}/sections">{{name}}</a>
+<a href="#!/servers/{{machineIdentifier}}/sections"><h2>{{name}}</h2></a>

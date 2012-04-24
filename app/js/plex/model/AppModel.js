@@ -51,6 +51,7 @@ define(
 				};
 			} else if (typeof(server) !== 'undefined') {
 				var token = server.get('accessToken') ? server.get('accessToken') : user.get('authentication_token');
+				
 				options.url += '?X-Plex-Token=' + token;
 				options.headers = {
 					'X-Plex-Proxy-Host': server.get('host'),

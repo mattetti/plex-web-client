@@ -13,7 +13,7 @@ define(
 	function (appModel, BaseView, SectionListItem) {
 		var SectionList = BaseView.extend({
 			tagName: 'ul',
-			className: 'section-list',
+			className: 'content-vertical-list',
 
 			initialize: function () {
 				this.addBinding(this.collection, 'add', this.onAdd);

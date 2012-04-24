@@ -7395,3 +7395,28 @@ ul.nav .dropdown-menu:after {
   top: -6px;
   left: 15px;
 }
+.content-vertical-list {
+  margin: 0;
+  list-style-type: none;
+}
+.content-vertical-list li {
+  margin-bottom: 40px;
+}
+.content-vertical-list li a h2 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  border-bottom: 5px solid rgba(255, 255, 255, 0.15);
+  font-weight: normal;
+}
+.content-vertical-list li a:hover {
+  text-decoration: none;
+}
+.content-vertical-list li a:hover h2 {
+  border-bottom: 5px solid rgba(255, 255, 255, 0.25);
+}
