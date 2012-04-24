@@ -1,4 +1,4 @@
-Handlebars.registerHelper('formatTimestamp', function (timestamp) {
+Handlebars.registerHelper('timeAgo', function (timestamp) {
 	var msPerMinute = 60 * 1000,
 		msPerHour = msPerMinute * 60,
 		msPerDay = msPerHour * 24,
