@@ -1,1 +1,1 @@
-{{name}}
+<a href="#!/servers/{{machineIdentifier}}">{{name}}</a>
