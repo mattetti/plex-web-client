@@ -6,19 +6,26 @@ Handlebars.registerHelper('formatTimestamp', function (timestamp) {
 		msPerYear = msPerDay * 365,
 		today = new Date(),
 		date = new Date(timestamp * 1000),
-		elapsed = today.getTime() - date.getTime();
+		elapsed = today.getTime() - date.getTime(),
+		r;
 
 	if (elapsed < msPerMinute) {
-		return Math.floor(elapsed / 1000) + ' seconds ago';   
+		r = Math.floor(elapsed / 1000);
+		return (r === 1) ? (r + ' second ago') : (r + ' seconds ago');
 	} else if (elapsed < msPerHour) {
-		return Math.floor(elapsed / msPerMinute) + ' minutes ago';   
+		r = Math.floor(elapsed / msPerMinute);
+		return (r === 1) ? (r + ' minute ago') : (r + ' minutes ago');
 	} else if (elapsed < msPerDay ) {
-		return Math.floor(elapsed / msPerHour) + ' hours ago';   
+		r = Math.floor(elapsed / msPerHour);
+		return (r === 1) ? (r + ' hour ago') : (r + ' hours ago');
 	} else if (elapsed < msPerMonth) {
-		return Math.floor(elapsed / msPerDay) + ' days ago';   
+		r = Math.floor(elapsed / msPerDay);
+		return (r === 1) ? (r + ' day ago') : (r + ' days ago');
 	} else if (elapsed < msPerYear) {
-		return Math.floor(elapsed / msPerMonth) + ' months ago';   
+		r = Math.floor(elapsed / msPerMonth);
+		return (r === 1) ? (r + ' month ago') : (r + ' months ago');
 	} else {
-		return Math.floor(elapsed / msPerYear) + ' years ago';   
+		r = Math.floor(elapsed / msPerYear);
+		return (r === 1) ? (r + ' year ago') : (r + ' years ago');
 	}
 });
