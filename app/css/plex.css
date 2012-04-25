@@ -7461,6 +7461,7 @@ h1.plex-icon {
 }
 header {
   padding: 0 20px;
+  min-width: 800px;
   height: 60px;
   border-bottom: 2px solid #474747;
   background-color: #505050;
@@ -7667,6 +7668,7 @@ ul.nav .dropdown-menu:after {
   position: relative;
   *zoom: 1;
   *zoom: 1;
+  font-size: 14px;
 }
 .video-detail:before,
 .video-detail:after {
@@ -7704,14 +7706,18 @@ ul.nav .dropdown-menu:after {
 .video-detail .video-summary {
   float: right;
   width: 600px;
-  font-size: 14px;
 }
-.video-detail .video-controls {
+.video-detail .video-detail-left {
+  position: absolute;
+  left: 170px;
+  bottom: 0;
+}
+.video-detail .video-detail-right {
   position: absolute;
   right: 0;
   bottom: 0;
   text-align: right;
 }
-.video-detail .video-controls a {
+.video-detail .video-detail-right a {
   margin-left: 8px;
 }
