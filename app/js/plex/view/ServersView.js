@@ -1,9 +1,9 @@
 define(
 	[
-		'text!templates/SectionsView.tpl',
+		'text!templates/ServersView.tpl',
 		'plex/model/AppModel',
 		'plex/view/BaseView',
-		'plex/view/lists/SectionList',
+		'plex/view/lists/ServerList',
 
 		// Globals
 		'jquery', 
@@ -11,7 +11,7 @@ define(
 		'use!handlebars'
 	],
 
-	function (template, appModel, BaseView, SectionList) {
+	function (template, appModel, BaseView, ServerList) {
 		var ServersView = BaseView.extend({
 			tagName: 'section',
 			className: 'content fixed-width',
@@ -19,11 +19,11 @@ define(
 			template: Handlebars.compile(template),
 
 			initialize: function () {
-				this.list = this.registerView(new SectionList({ collection: appModel.get('sections') }));
+				this.list = this.registerView(new ServerList({ collection: appModel.get('servers') }));
 			},
 			
 			render: function () {
-				this.$el.html(this.template(appModel.get('server').toJSON()));
+				this.$el.html(this.template());
 				this.$el.append(this.list.render().el);
 
 				return this;

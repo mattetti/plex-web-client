@@ -8,8 +8,15 @@
 
 @placeholderText: #bbb;
 
-a {
-	.transition(color .1s linear);
+@dropdownLinkBackgroundHover: #2375af;
+
+h1, h2 {
+	font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-shadow: 0 1px 0 #000;
+}
+
+h1 {
+	margin-bottom: 20px;
 }
 
 .btn-large {
@@ -18,10 +25,14 @@ a {
 	.box-shadow(0 0 0 5px rgba(0, 0, 0, .3));
 	font-size: 24px;
 	font-weight: bold;
-}
 
-.btn-large:hover {
-	background-position: 0 -40px;
+	&:hover {
+		background-position: 0 -40px;
+	}
+
+	&:active {
+		.box-shadow(0 0 0 5px rgba(0, 0, 0, .75));
+	}
 }
 
 input {

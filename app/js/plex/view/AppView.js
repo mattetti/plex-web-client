@@ -1,5 +1,6 @@
 define(
 	[
+		'text!templates/AppView.tpl',
 		'plex/control/Dispatcher',
 		'plex/model/AppModel',
 		'plex/view/HeaderView',
@@ -10,9 +11,11 @@ define(
 		'use!handlebars'
 	],
 
-	function (dispatcher, appModel, HeaderView) {
+	function (template, dispatcher, appModel, HeaderView) {
 		var AppView = Backbone.View.extend({
 			el: '#container',
+			
+			template: Handlebars.compile(template),
 
 			model: appModel,
 
@@ -27,8 +30,18 @@ define(
 				dispatcher.on('destroy:view', this.onViewDestroy, this);
 			},
 
+			render: function () {
+				this.$el.html(this.template());
+
+				return this;
+			},
+
 			onLoadingChange: function (model, loading) {
-				// TODO: Implement loading indicator
+				if (loading === true) {
+					this.$('.loading').show();
+				} else {
+					this.$('.loading').hide();
+				}
 			},
 
 			onShowHeaderChange: function (model, showHeader) {

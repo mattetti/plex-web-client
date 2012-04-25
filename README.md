@@ -17,7 +17,7 @@ Installing Build Dependencies
 
     `brew install node`
 
-   alternatively you can also download the respective package installer from node's website
+   Alternatively you can also download the respective package installer from node's website.
 
 2. Install node depencencies
 
@@ -30,10 +30,10 @@ Build Process
 -------------
 1. Run build script
 
-	`./ask.sh`
+	`./build.sh`
 
 2. Run web server
 
 	`node server.js`
 
-4. Navigate to `localhost:8888` (adding dev=true as URL param will point wrapper to development index)
+4. Navigate to `localhost:3000` (adding dev=true as URL param will point wrapper to development index)

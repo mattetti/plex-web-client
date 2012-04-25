@@ -5,7 +5,9 @@ define(
 	],
 
 	function () {
-		var SectionModel = Backbone.Model.extend({});
+		var SectionModel = Backbone.Model.extend({
+			idAttribute: 'key'
+		});
 
 		return SectionModel;
 	}

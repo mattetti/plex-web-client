@@ -7,11 +7,7 @@ define(
 
 	function () {
 		var ServerModel = Backbone.Model.extend({
-			url: '',
-
-			parse: function (response) {
-				return $.xml2json(response);
-			}
+			idAttribute: 'machineIdentifier'
 		});
 
 		return ServerModel;

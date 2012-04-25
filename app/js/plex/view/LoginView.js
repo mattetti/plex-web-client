@@ -1,6 +1,6 @@
 define(
 	[
-		'text!plex/view/templates/LoginView.tpl',
+		'text!templates/LoginView.tpl',
 		'plex/control/Dispatcher',
 		'plex/model/AppModel',
 		'plex/view/BaseView',
@@ -11,6 +11,9 @@ define(
 	],
 
 	function (template, dispatcher, appModel, BaseView) {
+		var user = appModel.get('user');
+		var servers = appModel.get('servers');
+
 		var LoginView = BaseView.extend({
 			tagName: 'section',
 			className: 'content login',
@@ -30,15 +33,30 @@ define(
 			onLoginSubmit: function (event) {
 				event.preventDefault();
 
-				appModel.set({
-					address: this.$('input[name=address]').val(),
-					token: this.$('input[name=token]').val()
+				user.set({
+					username: this.$('input[name=username]').val(),
+					password: this.$('input[name=password]').val()
 				});
 
-				appModel.get('server').fetch();
-				appModel.get('sections').fetch();
-
-				dispatcher.trigger('navigate:sections');
+				// TODO: This could be to be refactored
+				user.fetch({
+					success: function (response) {
+						servers.fetch({
+							success: function (response) {
+								appModel.set({
+									authenticated: true,
+									loading: false
+								});
+							},
+							error: function (xhr, status, error) {
+								console.log('servers error');
+							}
+						});
+					},
+					error: function (xhr, status, error) {
+						console.log('user error');
+					}
+				});
 			}
 		});
 

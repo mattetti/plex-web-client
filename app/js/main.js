@@ -3,11 +3,15 @@ require.config({
 	baseUrl: 'js',
 
 	paths: {
+		// Externals
+		'templates': '../templates',
+
 		// Libraries
 		'jquery': 'libs/jquery-1.7.2',
 		'underscore': 'libs/underscore-1.3.3',
 		'backbone': 'libs/backbone-0.9.2',
 		'handlebars': 'libs/handlebars-1.0.0.beta.6',
+		'helpers': 'libs/handlebars.helpers',
 		'signals': 'libs/signals-0.7.4.js',
 		'xml2json': 'libs/jquery.xml2json',
 		
@@ -36,8 +40,8 @@ require.config({
 		handlebars: {
 			attach: 'Handlebars'
 		},
-		signals: {
-			attach: 'signals'
+		helpers: {
+			deps: ['use!handlebars'],
 		},
 		xml2json: {
 			deps: ['jquery'],

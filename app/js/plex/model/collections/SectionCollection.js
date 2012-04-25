@@ -13,9 +13,7 @@ define(
 			url: 'library/sections',
 
 			parse: function (response) {
-				var sections = $.xml2json(response);
-
-				return sections.Directory;
+				return $.xml2json(response).Directory;
 			}
 		});
 

@@ -1,0 +1,1 @@
+<a href="#!/servers/{{machineIdentifier}}/sections">{{name}}</a>
