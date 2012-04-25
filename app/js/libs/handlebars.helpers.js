@@ -43,3 +43,7 @@ Handlebars.registerHelper('truncate', function (title, len) {
 		return title;
 	}
 });
+
+Handlebars.registerHelper('formatDuration', function (milliseconds) {
+
+}

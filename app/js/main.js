@@ -13,6 +13,7 @@ require.config({
 		'handlebars': 'libs/handlebars-1.0.0.beta.6',
 		'helpers': 'libs/handlebars.helpers',
 		'xml2json': 'libs/jquery.xml2json',
+		'date': 'libs/date',
 		
 		// Require
 		'use': 'libs/require/use-0.2.0',
@@ -45,6 +46,9 @@ require.config({
 		xml2json: {
 			deps: ['jquery'],
 			attach: '$'
+		},
+		date: {
+			attach: 'Date'
 		},
 
 		// Bootstrap
