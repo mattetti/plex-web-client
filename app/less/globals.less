@@ -1,3 +1,4 @@
+// Variables
 @baseFontSize: 16px;
 @baseLineHeight: 20px;
 
@@ -5,11 +6,16 @@
 @linkColorHover: #ffc763;
 
 @primaryButtonBackground: #ff8e0c;
+@btnDangerBackground: #ab4e4c;
+@btnDangerBackgroundHighlight: #751c17;
+@btnInverseBackground: #999;
+@btnInverseBackgroundHighlight: #666;
 
 @placeholderText: #bbb;
 
-@dropdownLinkBackgroundHover: #2375af;
+@dropdownLinkBackgroundHover: #1e90e0;
 
+// Headers
 h1, h2 {
 	font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	text-shadow: 0 1px 0 #000;
@@ -19,10 +25,28 @@ h1 {
 	margin-bottom: 20px;
 }
 
+// Icons
+[class^="icon-"], [class*=" icon-"] {
+	padding-bottom: 4px;
+	vertical-align: middle;
+}
+
+// Buttons
+.btn {
+	border: none;
+	.box-shadow(0 0 0 2px rgba(0, 0, 0, .3));
+	font-size: 14px;
+
+	&:active {
+		.box-shadow(0 0 0 2px rgba(0, 0, 0, .75));
+	}
+}
+
 .btn-large {
 	padding: 12px 40px;
-	.buttonBackground(#feb942, #ff8e0c);
 	.box-shadow(0 0 0 5px rgba(0, 0, 0, .3));
+	.buttonBackground(#feb942, #ff8e0c);
+	
 	font-size: 24px;
 	font-weight: bold;
 
@@ -35,6 +59,7 @@ h1 {
 	}
 }
 
+// Inputs
 input {
 	border: 2px solid #fff;
 	#gradient > .vertical(#eee, #fff);

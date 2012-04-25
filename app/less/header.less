@@ -5,13 +5,23 @@ header {
 	#gradient > .vertical-three-colors(#555, #585858, 25%, #313131);
 }
 
+#home-btn {
+	display: block;
+	margin-top: 17px;
+	.square(27px);
+	.opacity(75);
+	background: url(../img/home.png) no-repeat;
+	text-indent: -9999px;
+	.transition(color .1s opacity);
+
+	&:hover {
+		.opacity(100);
+	}
+}
+
 ul.nav {
 	margin: 0;
 	padding: 0;
-
-	[class^="icon-"], [class*=" icon-"] {
-		vertical-align: baseline;
-	}
 }
 
 ul.nav > li {
