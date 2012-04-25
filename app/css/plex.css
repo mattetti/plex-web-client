@@ -7592,7 +7592,7 @@ ul.nav .dropdown-menu:after {
 }
 .content-vertical-list > li {
   margin-bottom: 20px;
-  padding: 10px 20px;
+  padding: 10px 20px 20px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -7689,7 +7689,7 @@ ul.nav .dropdown-menu:after {
 .video-detail .video-controls {
   position: absolute;
   right: 0;
-  bottom: 10px;
+  bottom: 0;
   text-align: right;
 }
 .video-detail .video-controls a {
