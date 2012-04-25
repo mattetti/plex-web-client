@@ -7688,6 +7688,14 @@ ul.nav .dropdown-menu:after {
 }
 .video-detail img {
   float: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
   width: 150px;
   height: 112px;
   -webkit-border-radius: 5px;
@@ -7702,6 +7710,14 @@ ul.nav .dropdown-menu:after {
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+}
+.video-detail img:hover {
+  -webkit-box-shadow: 0 0 0 2px #bf6b0b;
+  -moz-box-shadow: 0 0 0 2px #bf6b0b;
+  box-shadow: 0 0 0 2px #bf6b0b;
+  -webkit-box-shadow: 0 0 0 2px #bf6b0b;
+  -moz-box-shadow: 0 0 0 2px #bf6b0b;
+  box-shadow: 0 0 0 2px #bf6b0b;
 }
 .video-detail .video-summary {
   float: right;

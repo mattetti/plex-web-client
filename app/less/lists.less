@@ -55,10 +55,15 @@
 
 	img {
 		float: left;
+		.box-sizing(border-box);
 		width: 150px;
 		height: 112px;
 		.border-radius(5px);
 		.box-shadow(0 0 10px rgba(0, 0, 0, .75));
+
+		&:hover {
+			.box-shadow(0 0 0 2px #bf6b0b);
+		}
 	}
 
 	.video-summary {
