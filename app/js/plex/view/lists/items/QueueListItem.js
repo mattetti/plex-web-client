@@ -17,6 +17,7 @@ define(
 
 			events: {
 				'click mark-watched-btn': 'onMarkWatchedClick',
+				'click mark-unwatched-btn': 'onMarkUnwatchedClick',
 				'click delete-btn': 'onDeleteClick'
 			},
 			
@@ -30,6 +31,10 @@ define(
 			},
 
 			onMarkWatchedClick: function (event) {
+				event.preventDefault();
+			},
+
+			onMarkUnwatchedClick: function (event) {
 				event.preventDefault();
 			},
 
