@@ -1,6 +1,7 @@
 define(
 	[
 		'text!templates/lists/items/QueueListItem.tpl',
+		'plex/control/signals/MarkQueueItemWatchedSignal',
 		'plex/view/BaseView',
 
 		// Globals
@@ -9,7 +10,7 @@ define(
 		'use!handlebars'
 	],
 
-	function (template, BaseView) {
+	function (template, markQueueItemWatchedSignal, BaseView) {
 		var ServerListItem = BaseView.extend({
 			tagName: 'li',
 			
@@ -48,6 +49,8 @@ define(
 
 			onMarkWatchedClick: function (event) {
 				event.preventDefault();
+
+				markQueueItemWatchedSignal.dispatch(this.model);
 			},
 
 			onMarkUnwatchedClick: function (event) {
