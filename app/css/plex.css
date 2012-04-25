@@ -7528,13 +7528,13 @@ ul.nav > li {
 ul.nav > li > a {
   padding: 0 15px;
   border-bottom: 1px solid rgba(255, 255, 255, 0);
-  color: #222;
+  color: #ddd;
   font-weight: bold;
-  text-shadow: 0 1px 0 #606060;
+  text-shadow: 0 -1px 0 #111111;
 }
 ul.nav > li > a:hover {
   background: none;
-  color: #000;
+  color: #fff;
 }
 #breadcrumb > li {
   margin: 0 8px 0 12px;
@@ -7549,19 +7549,43 @@ ul.nav > li.divider {
   height: 60px;
   background: url(../img/divider.png) no-repeat;
 }
-ul.nav > li.divider.primary {
+ul.nav > li.divider-primary {
   width: 37px;
   background: url(../img/divider_primary.png) no-repeat;
 }
-ul.nav > li.divider.vertical {
-  width: 1px;
-  overflow: hidden;
-  background: #373737;
-  border-right: 1px solid #474747;
+ul.nav > li.divider-dotted {
+  position: relative;
+  width: 3px;
+  background: none;
+}
+li.divider-dotted > .divider-dot {
+  position: absolute;
+  top: 52%;
+  width: 2px;
+  height: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background: #2f2f2f;
+  -webkit-box-shadow: 0 1px 1px #606060;
+  -moz-box-shadow: 0 1px 1px #606060;
+  box-shadow: 0 1px 1px #606060;
+  -webkit-box-shadow: 0 1px 1px #606060;
+  -moz-box-shadow: 0 1px 1px #606060;
+  box-shadow: 0 1px 1px #606060;
+}
+li.divider-dotted > .divider-dot:first-child {
+  top: 40%;
+}
+li.divider-dotted > .divider-dot:last-child {
+  top: 64%;
 }
 ul.nav .dropdown.open .dropdown-toggle {
   background: none;
-  color: #000;
+  color: #fff;
 }
 ul.nav .dropdown-menu {
   margin-top: -4px;
