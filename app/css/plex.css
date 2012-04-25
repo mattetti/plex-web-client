@@ -7189,11 +7189,12 @@ body {
   background-image: url(../img/noise.png);
 }
 section.content {
-  padding: 40px 40px 200px;
+  padding: 100px 40px 200px;
 }
 section.fixed-width {
   margin: 0 auto;
-  padding: 40px 0 200px;
+  padding-left: 0;
+  padding-right: 0;
   width: 800px;
 }
 footer {
@@ -7460,6 +7461,10 @@ h1.plex-icon {
   text-align: left;
 }
 header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
   padding: 0 20px;
   min-width: 800px;
   height: 60px;
@@ -7482,6 +7487,12 @@ header {
   background-image: linear-gradient(#5a5a5a, #5d5d5d 25%, #363636);
   background-repeat: no-repeat;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5a5a5a', endColorstr='#363636', GradientType=0);
+  -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 }
 #home-btn {
   display: block;
@@ -7500,16 +7511,16 @@ header {
   filter: alpha(opacity=75);
   background: url(../img/home.png) no-repeat;
   text-indent: -9999px;
-  -webkit-transition: color 0.1s opacity;
-  -moz-transition: color 0.1s opacity;
-  -ms-transition: color 0.1s opacity;
-  -o-transition: color 0.1s opacity;
-  transition: color 0.1s opacity;
-  -webkit-transition: color 0.1s opacity;
-  -moz-transition: color 0.1s opacity;
-  -ms-transition: color 0.1s opacity;
-  -o-transition: color 0.1s opacity;
-  transition: color 0.1s opacity;
+  -webkit-transition: opacity 0.1s linear;
+  -moz-transition: opacity 0.1s linear;
+  -ms-transition: opacity 0.1s linear;
+  -o-transition: opacity 0.1s linear;
+  transition: opacity 0.1s linear;
+  -webkit-transition: opacity 0.1s linear;
+  -moz-transition: opacity 0.1s linear;
+  -ms-transition: opacity 0.1s linear;
+  -o-transition: opacity 0.1s linear;
+  transition: opacity 0.1s linear;
 }
 #home-btn:hover {
   opacity: 1;
@@ -7529,7 +7540,6 @@ ul.nav > li > a {
   padding: 0 15px;
   border-bottom: 1px solid rgba(255, 255, 255, 0);
   color: #ddd;
-  font-weight: bold;
   text-shadow: 0 -1px 0 #111111;
 }
 ul.nav > li > a:hover {
@@ -7656,6 +7666,18 @@ ul.nav .dropdown-menu:after {
   -moz-box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.15);
 }
+.content-vertical-list > li > a {
+  -webkit-transition: color 0.1s linear;
+  -moz-transition: color 0.1s linear;
+  -ms-transition: color 0.1s linear;
+  -o-transition: color 0.1s linear;
+  transition: color 0.1s linear;
+  -webkit-transition: color 0.1s linear;
+  -moz-transition: color 0.1s linear;
+  -ms-transition: color 0.1s linear;
+  -o-transition: color 0.1s linear;
+  transition: color 0.1s linear;
+}
 .content-vertical-list > li > a:hover {
   color: #fff;
   text-decoration: none;
@@ -7675,6 +7697,16 @@ ul.nav .dropdown-menu:after {
   box-sizing: border-box;
   border-bottom: 5px solid rgba(255, 255, 255, 0.15);
   font-weight: normal;
+  -webkit-transition: border 0.1s linear;
+  -moz-transition: border 0.1s linear;
+  -ms-transition: border 0.1s linear;
+  -o-transition: border 0.1s linear;
+  transition: border 0.1s linear;
+  -webkit-transition: border 0.1s linear;
+  -moz-transition: border 0.1s linear;
+  -ms-transition: border 0.1s linear;
+  -o-transition: border 0.1s linear;
+  transition: border 0.1s linear;
 }
 .list-subheader {
   float: right;
