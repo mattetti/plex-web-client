@@ -12,7 +12,8 @@
 	</div>
 
 	<div class="video-detail-left">
-		{{item.originallyAvailableAt}} {{item.duration}}
+		<div class="list-detail"><span class="list-label">Available</span> {{formatDate item.originallyAvailableAt}}</div>
+		<div class="list-detail"><span class="list-label">Duration</span> {{formatDuration item.duration}}</div>
 	</div>
 
 	<div class="video-detail-right">

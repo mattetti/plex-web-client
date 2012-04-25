@@ -42,7 +42,7 @@ require.config({
 			attach: 'Handlebars'
 		},
 		helpers: {
-			deps: ['use!handlebars'],
+			deps: ['use!handlebars', 'use!date'],
 		},
 		xml2json: {
 			deps: ['jquery'],

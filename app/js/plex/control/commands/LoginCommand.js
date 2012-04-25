@@ -24,8 +24,9 @@ define(
 
 			// TODO: assign thumbnail collections server identifier so
 			// we know which server to assign the collection on response
-			servers.each(function (server) { 
-				appModel.set('server', server);
+			servers.each(function (server) {
+				// Eric: Don't set the server here. It screws up the dropdown list component.
+				// appModel.set('server', server);
 				var thumbnails = new ThumbnailCollection();
 				thumbnails.fetch({
 					success: onFetchThumbnailsSuccess,

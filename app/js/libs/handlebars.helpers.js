@@ -45,5 +45,30 @@ Handlebars.registerHelper('truncate', function (title, len) {
 });
 
 Handlebars.registerHelper('formatDuration', function (milliseconds) {
+	var seconds = Math.floor((milliseconds / 1000) % 60),
+		minutes = Math.floor((milliseconds / 1000 / 60) % 60),
+		hours = Math.floor((milliseconds / 1000 / 60 / 60) % 24),
+		duration = '';
 
-}
+	if (seconds < 10) {
+		duration = ':0' + seconds;
+	} else {
+		duration = ':' + seconds;
+	}
+
+	if (minutes < 10 && hours > 0) {
+		duration = '0' + minutes;
+	} else {
+		duration = minutes + duration;
+	}
+
+	if (hours > 0) {
+		duration = hours + ':' + duration;
+	}
+
+	return duration;
+});
+
+Handlebars.registerHelper('formatDate', function (date) {
+	return Date.parse(date).toString('MMM d, yyyy');
+});

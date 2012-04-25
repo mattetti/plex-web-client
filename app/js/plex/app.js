@@ -6,6 +6,7 @@ define(
 
 		// Globals
 		'use!helpers',
+		'use!date',
 		'use!dropdown'
 	],
 

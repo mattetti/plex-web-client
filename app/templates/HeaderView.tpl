@@ -7,15 +7,11 @@
 </ul>
 
 <ul class="nav pull-right">
-	<li class="divider vertical"></li>
-
 	<li>
-		<a id="queue-btn" href="#!/queue"><i class="icon-list icon-white"></i> Queue</a>
+		<a id="queue-btn" href="#!/queue"><i class="icon-list"></i> Queue</a>
 	</li>
 
-	<li class="divider vertical"></li>
-
 	<li>
-		<a id="log-out-btn" href="#!/login"><i class="icon-off icon-white"></i> Log Out</a>
+		<a id="log-out-btn" href="#!/login"><i class="icon-off"></i> Log Out</a>
 	</li>
 </ul>
