@@ -10,7 +10,7 @@ define(
 	],
 
 	function (appModel, BaseView) {
-		var MoviesView = BaseView.extend({
+		var MediaView = BaseView.extend({
 			tagName: 'section',
 			className: 'content animated-fast scaleIn',
 
@@ -29,6 +29,6 @@ define(
 			}
 		});
 
-		return MoviesView;
+		return MediaView;
 	}
 );

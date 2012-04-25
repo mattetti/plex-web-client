@@ -2,20 +2,28 @@ define(
 	[
 		// Signals
 		'plex/control/signals/LoginSignal',
+		'plex/control/signals/GetMediaListSignal',
 
 		// Commands
-		'plex/control/commands/LoginCommand'
+		'plex/control/commands/LoginCommand',
+		'plex/control/commands/GetMediaListCommand'
 	],
 
 	function (	// Signals
-				LoginSignal, 
+				LoginSignal,
+				GetMediaListSignal,
 
 				// Commands
-				LoginCommand) {
+				LoginCommand,
+				GetMediaListCommand) {
+
 		return {
+
 			initialize: function () {
 				LoginSignal.add(LoginCommand.execute);
+				GetMediaListSignal.add(GetMediaListCommand.execute);
 			}
+			
 		};
     }
 );
