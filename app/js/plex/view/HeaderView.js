@@ -16,6 +16,7 @@ define(
 	function (template, dispatcher, appModel, BaseView, ServerDropdownList, SectionDropdownList) {
 		var HeaderView = BaseView.extend({
 			tagName: 'header',
+			className: 'animated slideDown',
 			
 			template: Handlebars.compile(template),
 

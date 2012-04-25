@@ -14,7 +14,7 @@ define(
 	function (template, appModel, BaseView, QueueList) {
 		var ServersView = BaseView.extend({
 			tagName: 'section',
-			className: 'content fixed-width',
+			className: 'content fixed-width animated-fast scaleIn',
 			
 			template: Handlebars.compile(template),
 

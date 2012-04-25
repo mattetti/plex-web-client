@@ -12,7 +12,7 @@ define(
 	function (appModel, BaseView) {
 		var MediaView = BaseView.extend({
 			tagName: 'section',
-			className: 'content',
+			className: 'content animated scaleIn',
 
 			events: {
 			},
