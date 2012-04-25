@@ -1,6 +1,9 @@
 define(
 	[
-		'plex/model/AppModel'
+		'plex/model/AppModel',
+
+		// Globals
+		'use!backbone'
 	],
 
 	function (appModel) {

@@ -11,7 +11,6 @@ require.config({
 		'underscore': 'libs/underscore-1.3.3',
 		'backbone': 'libs/backbone-0.9.2',
 		'handlebars': 'libs/handlebars-1.0.0.beta.6',
-		'helpers': 'libs/handlebars.helpers',
 		'signals': 'libs/signals-0.7.4',
 		'xml2json': 'libs/jquery.xml2json',
 		'date': 'libs/date',
@@ -40,9 +39,6 @@ require.config({
 		},
 		handlebars: {
 			attach: 'Handlebars'
-		},
-		helpers: {
-			deps: ['use!handlebars', 'use!date'],
 		},
 		xml2json: {
 			deps: ['jquery'],

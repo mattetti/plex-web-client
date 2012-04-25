@@ -1,16 +1,16 @@
 define(
 	[
 		'plex/control/Router',
-		'plex/control/BackboneInit',
 		'plex/control/CommandMap',
 
 		// Globals
-		'use!helpers',
+		'plex/control/BackboneInit',
+		'plex/control/HandlebarsInit',
 		'use!date',
 		'use!dropdown'
 	],
 
-	function (Router, BackboneInit, commandMap) {
+	function (Router, commandMap) {
 		return {
 			init: function () {
 				new Router();
