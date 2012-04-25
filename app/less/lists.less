@@ -4,8 +4,8 @@
 }
 
 .content-vertical-list > li {
-	margin-bottom: 20px;
-	padding: 10px 20px 20px;
+	margin-bottom: 15px;
+	padding: 10px 15px 15px;
 	.box-sizing(border-box);
 	.border-radius(5px);
 	background-color: rgba(0, 0, 0, 0.15);
@@ -51,21 +51,33 @@
 .video-detail {
 	position: relative;
 	.clearfix();
+	font-size: 14px;
 
 	img {
 		float: left;
+		.box-sizing(border-box);
 		width: 150px;
 		height: 112px;
 		.border-radius(5px);
+		.box-shadow(0 0 10px rgba(0, 0, 0, .75));
+
+		&:hover {
+			.box-shadow(0 0 0 2px #a25600);
+		}
 	}
 
 	.video-summary {
 		float: right;
-		width: 590px;
-		font-size: 14px;
+		width: 600px;
 	}
 
-	.video-controls {
+	.video-detail-left {
+		position: absolute;
+		left: 170px;
+		bottom: 0;
+	}
+
+	.video-detail-right {
 		position: absolute;
 		right: 0;
 		bottom: 0;

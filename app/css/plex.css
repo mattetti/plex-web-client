@@ -7078,6 +7078,20 @@ h1 {
   -moz-box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.75);
   box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.75);
 }
+.btn-primary,
+.btn-primary:hover,
+.btn-warning,
+.btn-warning:hover,
+.btn-danger,
+.btn-danger:hover,
+.btn-success,
+.btn-success:hover,
+.btn-info,
+.btn-info:hover,
+.btn-inverse,
+.btn-inverse:hover {
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
 input {
   border: 2px solid #fff;
   background-color: #f5f5f5;
@@ -7447,6 +7461,7 @@ h1.plex-icon {
 }
 header {
   padding: 0 20px;
+  min-width: 800px;
   height: 60px;
   border-bottom: 2px solid #474747;
   background-color: #505050;
@@ -7591,8 +7606,8 @@ ul.nav .dropdown-menu:after {
   list-style-type: none;
 }
 .content-vertical-list > li {
-  margin-bottom: 20px;
-  padding: 10px 20px 20px;
+  margin-bottom: 15px;
+  padding: 10px 15px 15px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -7653,6 +7668,7 @@ ul.nav .dropdown-menu:after {
   position: relative;
   *zoom: 1;
   *zoom: 1;
+  font-size: 14px;
 }
 .video-detail:before,
 .video-detail:after {
@@ -7672,6 +7688,14 @@ ul.nav .dropdown-menu:after {
 }
 .video-detail img {
   float: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
   width: 150px;
   height: 112px;
   -webkit-border-radius: 5px;
@@ -7680,18 +7704,36 @@ ul.nav .dropdown-menu:after {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+}
+.video-detail img:hover {
+  -webkit-box-shadow: 0 0 0 2px #a25600;
+  -moz-box-shadow: 0 0 0 2px #a25600;
+  box-shadow: 0 0 0 2px #a25600;
+  -webkit-box-shadow: 0 0 0 2px #a25600;
+  -moz-box-shadow: 0 0 0 2px #a25600;
+  box-shadow: 0 0 0 2px #a25600;
 }
 .video-detail .video-summary {
   float: right;
-  width: 590px;
-  font-size: 14px;
+  width: 600px;
 }
-.video-detail .video-controls {
+.video-detail .video-detail-left {
+  position: absolute;
+  left: 170px;
+  bottom: 0;
+}
+.video-detail .video-detail-right {
   position: absolute;
   right: 0;
   bottom: 0;
   text-align: right;
 }
-.video-detail .video-controls a {
+.video-detail .video-detail-right a {
   margin-left: 8px;
 }

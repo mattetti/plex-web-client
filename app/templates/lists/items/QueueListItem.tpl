@@ -9,9 +9,18 @@
 
 	<div class="video-summary">
 		{{truncate item.summary 200}}
-		<div class="video-controls">
-			<a class="mark-watched-btn btn btn-inverse"><i class="icon-ok icon-white"></i> Mark as {{#if watched}}Unwatched{{else}}Watched{{/if}}</a>
-			<a class="delete-btn btn btn-danger"><i class="icon-remove icon-white"></i> Delete</a>
-		</div>
+	</div>
+
+	<div class="video-detail-left">
+		{{item.originallyAvailableAt}} {{item.duration}}
+	</div>
+
+	<div class="video-detail-right">
+		{{#if watched}}
+			<a class="mark-unwatched-btn btn btn-inverse"><i class="icon-minus-sign icon-white"></i> Mark as Unwatched</a>
+		{{else}}
+			<a class="mark-watched-btn btn btn-inverse"><i class="icon-ok-sign icon-white"></i> Mark as Watched</a>
+		{{/if}}
+		<a class="delete-btn btn btn-danger"><i class="icon-remove icon-white"></i> Delete</a>
 	</div>
 </div>
