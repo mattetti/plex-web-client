@@ -16,9 +16,13 @@ define(
 			template: Handlebars.compile(template),
 
 			events: {
-				'click mark-watched-btn': 'onMarkWatchedClick',
-				'click mark-unwatched-btn': 'onMarkUnwatchedClick',
-				'click delete-btn': 'onDeleteClick'
+				'click .mark-watched-btn': 'onMarkWatchedClick',
+				'click .mark-unwatched-btn': 'onMarkUnwatchedClick',
+				'click .delete-btn': 'onDeleteClick'
+			},
+
+			initialize: function () {
+				_.bindAll(this, ['onAnimationComplete']);
 			},
 			
 			render: function () {
@@ -28,6 +32,18 @@ define(
 				}));
 
 				return this;
+			},
+
+			close: function () {
+				var opts = {
+					'opacity': 0,
+					'height': 0,
+					'margin-bottom': 0,
+					'padding-top': 0,
+					'padding-bottom': 0
+				};
+
+				this.$el.animate(opts, 400, this.onAnimationComplete);
 			},
 
 			onMarkWatchedClick: function (event) {
@@ -40,6 +56,12 @@ define(
 
 			onDeleteClick: function (event) {
 				event.preventDefault();
+
+				this.close();
+			},
+
+			onAnimationComplete: function () {
+				this.destroy();
 			}
 		});
 

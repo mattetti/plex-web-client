@@ -7818,6 +7818,7 @@ ul.nav .dropdown-menu:after {
   list-style-type: none;
 }
 .content-vertical-list > li {
+  overflow: hidden;
   margin-bottom: 15px;
   padding: 10px 15px 15px;
   -webkit-box-sizing: border-box;
