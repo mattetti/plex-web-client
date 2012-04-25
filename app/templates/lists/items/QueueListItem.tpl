@@ -5,12 +5,13 @@
 </a>
 
 <div class="video-detail">
-	<img src="{{thumb}}" alt="{{title}}" />
+	<a href="{{url}}"><img src="{{thumb}}" alt="{{title}}" /></a>
 
 	<div class="video-summary">
 		{{truncate summary 200}}
 		<div class="video-controls">
-			<a class="btn">Mark as Watched</a> <a class="btn">Delete</a>
+			<a class="btn"><i class="icon-ok"></i> Mark as Watched</a>
+			<a class="btn"><i class="icon-remove"></i> Delete</a>
 		</div>
 	</div>
 </div>

@@ -1,6 +1,6 @@
 <ul id="breadcrumb" class="nav">
 	<li>
-		<a id="home-btn" href="#!/servers"><i class="icon-home icon-white"></i> Home</a>
+		<a id="home-btn" href="#!/servers">Home</a>
 	</li>
 
 	<li class="divider primary"></li>
