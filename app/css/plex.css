@@ -7712,12 +7712,12 @@ ul.nav .dropdown-menu:after {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
 }
 .video-detail img:hover {
-  -webkit-box-shadow: 0 0 0 2px #bf6b0b;
-  -moz-box-shadow: 0 0 0 2px #bf6b0b;
-  box-shadow: 0 0 0 2px #bf6b0b;
-  -webkit-box-shadow: 0 0 0 2px #bf6b0b;
-  -moz-box-shadow: 0 0 0 2px #bf6b0b;
-  box-shadow: 0 0 0 2px #bf6b0b;
+  -webkit-box-shadow: 0 0 0 2px #a25600;
+  -moz-box-shadow: 0 0 0 2px #a25600;
+  box-shadow: 0 0 0 2px #a25600;
+  -webkit-box-shadow: 0 0 0 2px #a25600;
+  -moz-box-shadow: 0 0 0 2px #a25600;
+  box-shadow: 0 0 0 2px #a25600;
 }
 .video-detail .video-summary {
   float: right;
