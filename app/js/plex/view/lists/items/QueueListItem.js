@@ -14,11 +14,27 @@ define(
 			tagName: 'li',
 			
 			template: Handlebars.compile(template),
+
+			events: {
+				'click mark-watched-btn': 'onMarkWatchedClick',
+				'click delete-btn': 'onDeleteClick'
+			},
 			
 			render: function () {
-				this.$el.html(this.template(this.model.toJSON()));
+				this.$el.html(this.template({
+					watched: (this.model.get('viewCount') > 0),
+					item: this.model.toJSON()
+				}));
 
 				return this;
+			},
+
+			onMarkWatchedClick: function (event) {
+				event.preventDefault();
+			},
+
+			onDeleteClick: function (event) {
+				event.preventDefault();
 			}
 		});
 

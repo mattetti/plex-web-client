@@ -1,17 +1,17 @@
-<a href="{{url}}">
-	<span class="list-subheader">{{sourceTitle}}</span>
+<a href="{{item.url}}">
+	<span class="list-subheader">{{item.sourceTitle}}</span>
 
-	<h2 class="list-header">{{truncate title 50}}</h2>
+	<h2 class="list-header">{{truncate item.title 50}}</h2>
 </a>
 
 <div class="video-detail">
-	<a href="{{url}}"><img src="{{thumb}}" alt="{{title}}" /></a>
+	<a href="{{item.url}}"><img src="{{item.thumb}}" alt="{{item.title}}" /></a>
 
 	<div class="video-summary">
-		{{truncate summary 200}}
+		{{truncate item.summary 200}}
 		<div class="video-controls">
-			<a class="btn"><i class="icon-ok"></i> Mark as Watched</a>
-			<a class="btn"><i class="icon-remove"></i> Delete</a>
+			<a class="mark-watched-btn btn btn-inverse"><i class="icon-ok icon-white"></i> Mark as {{#if watched}}Unwatched{{else}}Watched{{/if}}</a>
+			<a class="delete-btn btn btn-danger"><i class="icon-remove icon-white"></i> Delete</a>
 		</div>
 	</div>
 </div>
