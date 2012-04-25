@@ -29,3 +29,12 @@ Handlebars.registerHelper('timeAgo', function (timestamp) {
 		return (r === 1) ? (r + ' year ago') : (r + ' years ago');
 	}
 });
+
+Handlebars.registerHelper('truncate', function (title, len) {
+	if (title.length > len) {
+		var truncated = title.substring(0, len);
+		return truncated + '...';
+	} else {
+		return title;
+	}
+});

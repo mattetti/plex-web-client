@@ -19,10 +19,20 @@ h1 {
 	margin-bottom: 20px;
 }
 
+.btn {
+	font-size: 14px;
+	.box-shadow(0 0 0 2px rgba(0, 0, 0, .3));
+
+	&:active {
+		.box-shadow(0 0 0 2px rgba(0, 0, 0, .75));
+	}
+}
+
 .btn-large {
 	padding: 12px 40px;
-	.buttonBackground(#feb942, #ff8e0c);
 	.box-shadow(0 0 0 5px rgba(0, 0, 0, .3));
+	.buttonBackground(#feb942, #ff8e0c);
+	
 	font-size: 24px;
 	font-weight: bold;
 
