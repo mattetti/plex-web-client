@@ -7,7 +7,8 @@ define(
 
 	function () {
 		var ServerModel = Backbone.Model.extend({
-			idAttribute: 'machineIdentifier'
+			idAttribute: 'machineIdentifier',
+			thumbnails: undefined
 		});
 
 		return ServerModel;

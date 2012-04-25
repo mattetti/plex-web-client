@@ -2,18 +2,16 @@ define(
 	[
 		'text!templates/LoginView.tpl',
 		'plex/control/Dispatcher',
+		'plex/control/signals/LoginSignal',
 		'plex/model/AppModel',
 		'plex/view/BaseView',
 
 		// Globals
-		'jquery', 
 		'use!backbone',
 		'use!handlebars'
 	],
 
-	function (template, dispatcher, appModel, BaseView) {
-		var user = appModel.get('user');
-		var servers = appModel.get('servers');
+	function (template, dispatcher, loginSignal, appModel, BaseView) {
 
 		var LoginView = BaseView.extend({
 			tagName: 'section',
@@ -34,30 +32,8 @@ define(
 			onLoginSubmit: function (event) {
 				event.preventDefault();
 
-				user.set({
-					username: this.$('input[name=username]').val(),
-					password: this.$('input[name=password]').val()
-				});
-
-				// TODO: This could be to be refactored
-				user.fetch({
-					success: function (response) {
-						servers.fetch({
-							success: function (response) {
-								appModel.set({
-									authenticated: true,
-									loading: false
-								});
-							},
-							error: function (xhr, status, error) {
-								console.log('servers error');
-							}
-						});
-					},
-					error: function (xhr, status, error) {
-						console.log('user error');
-					}
-				});
+				loginSignal.dispatch(	this.$('input[name=username]').val(), 
+										this.$('input[name=password]').val());
 			}
 		});
 

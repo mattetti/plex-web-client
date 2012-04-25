@@ -12,6 +12,7 @@ require.config({
 		'backbone': 'libs/backbone-0.9.2',
 		'handlebars': 'libs/handlebars-1.0.0.beta.6',
 		'helpers': 'libs/handlebars.helpers',
+		'signals': 'libs/signals-0.7.4',
 		'xml2json': 'libs/jquery.xml2json',
 		'date': 'libs/date',
 		
