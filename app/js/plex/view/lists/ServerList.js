@@ -5,8 +5,7 @@ define(
 
 		// Globals
 		'jquery', 
-		'use!backbone',
-		'use!handlebars'
+		'use!backbone'
 	],
 
 	function (BaseView, ServerListItem) {
