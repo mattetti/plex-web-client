@@ -7473,10 +7473,10 @@ header {
   height: 27px;
   width: 27px;
   height: 27px;
-  opacity: 0.8;
-  filter: alpha(opacity=80);
-  opacity: 0.8;
-  filter: alpha(opacity=80);
+  opacity: 0.75;
+  filter: alpha(opacity=75);
+  opacity: 0.75;
+  filter: alpha(opacity=75);
   background: url(../img/home.png) no-repeat;
   text-indent: -9999px;
   -webkit-transition: color 0.1s opacity;
