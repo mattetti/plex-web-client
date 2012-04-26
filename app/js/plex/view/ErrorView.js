@@ -1,27 +1,23 @@
 define(
 	[
+		'text!templates/ErrorView.tpl',
 		'plex/view/BaseView',
 
 		// Globals
-		'use!backbone'
+		'use!backbone',
+		'use!handlebars'
 	],
 
-	function (BaseView) {
+	function (template, BaseView) {
+
+		var tpl = Handlebars.compile(template);
+
 		var ErrorView = BaseView.extend({
-			className: 'alert-smoke error animated-slow scaleInOut',
+			tagName: 'section',
+			className: 'content fixed-width animated-fast scaleIn',
 
-			initialize: function (options) {
-				var self = this;
-
-				this.error = options.error;
-
-				setTimeout(function () {
-					self.destroy();
-				}, 2400);
-			},
-			
 			render: function () {
-				this.$el.html(this.error);
+				this.$el.html(tpl());
 
 				return this;
 			}

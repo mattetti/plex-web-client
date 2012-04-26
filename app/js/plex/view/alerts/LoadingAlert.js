@@ -1,6 +1,6 @@
 define(
 	[
-		'text!templates/LoadingView.tpl',
+		'text!templates/alerts/LoadingView.tpl',
 		'plex/view/BaseView',
 
 		// Globals
@@ -11,7 +11,7 @@ define(
 
 		var tpl = Handlebars.compile(template);
 
-		var LoadingView = BaseView.extend({
+		var LoadingAlert = BaseView.extend({
 			className: 'alert-smoke loading',
 			
 			render: function () {
@@ -21,6 +21,6 @@ define(
 			}
 		});
 
-		return LoadingView;
+		return LoadingAlert;
 	}
 );

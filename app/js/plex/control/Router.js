@@ -12,12 +12,13 @@ define(
 		'plex/view/ServersView',
 		'plex/view/SectionsView',
 		'plex/view/MediaView',
+		'plex/view/ErrorView',
 
 		// Globals
 		'use!backbone'
 	],
 
-	function (dispatcher, showLoadingSignal, getQueueSignal, getSectionsSignal, getMediaListSignal, appModel, AppView, LoginView, QueueView, ServersView, SectionsView, MediaView) {
+	function (dispatcher, showLoadingSignal, getQueueSignal, getSectionsSignal, getMediaListSignal, appModel, AppView, LoginView, QueueView, ServersView, SectionsView, MediaView, ErrorView) {
 		
 		var queue = appModel.get('queue');
 		var servers = appModel.get('servers');
@@ -132,7 +133,12 @@ define(
 			},
 
 			error: function () {
-				console.log('404');
+				appModel.set({
+					showHeader: false,
+					view: new ErrorView(),
+					server: undefined,
+					section: undefined
+				});
 			},
 
 			// Navigate Methods

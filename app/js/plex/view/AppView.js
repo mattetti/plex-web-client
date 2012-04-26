@@ -2,8 +2,8 @@ define(
 	[
 		'plex/control/Dispatcher',
 		'plex/model/AppModel',
-		'plex/view/LoadingView',
-		'plex/view/ErrorView',
+		'plex/view/alerts/LoadingAlert',
+		'plex/view/alerts/ErrorAlert',
 		'plex/view/HeaderView',
 
 		// Globals
@@ -12,7 +12,7 @@ define(
 		'use!lazyload'
 	],
 
-	function (dispatcher, appModel, LoadingView, ErrorView, HeaderView) {
+	function (dispatcher, appModel, LoadingAlert, ErrorAlert, HeaderView) {
 		var AppView = Backbone.View.extend({
 			el: '#container',
 			
@@ -41,7 +41,7 @@ define(
 
 			onLoadingChange: function (model, loading) {
 				if (loading === true && typeof(this.loadingView) === 'undefined') {
-					this.loadingView = new LoadingView();
+					this.loadingView = new LoadingAlert();
 					this.$el.append(this.loadingView.render().el);
 				} else if (typeof(this.loadingView) !== 'undefined') {
 					this.loadingView.destroy();
@@ -51,13 +51,14 @@ define(
 
 			onErrorChange: function (model, error) {
 				if (typeof(error) !== 'undefined') {
-					this.errorView = new ErrorView({ error: error });
+					this.errorView = new ErrorAlert({ error: error });
 					this.$el.append(this.errorView.render().el);
 				} else {
 					this.errorView.destroy();
 					this.errorView = undefined;
 				}
 
+				// Reset the error silently so it doesn't trigger this again right away
 				appModel.set({ error: undefined }, { silent: true });
 			},
 
