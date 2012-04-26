@@ -64,6 +64,9 @@ define(
 				this.views.push(view);
 
 				this.$el.append(view.render().el);
+
+				// Trigger scroll for lazy loaded images
+				this.$el.trigger('scroll');
 			},
 
 			onViewDestroy: function (view) {

@@ -13,6 +13,7 @@ require.config({
 		'handlebars': 'libs/handlebars-1.0.0.beta.6',
 		'signals': 'libs/signals-0.7.4',
 		'xml2json': 'libs/jquery.xml2json',
+		'lazyload': 'libs/jquery.lazyload',
 		'date': 'libs/date',
 		
 		// Require
@@ -41,8 +42,10 @@ require.config({
 			attach: 'Handlebars'
 		},
 		xml2json: {
-			deps: ['jquery'],
-			attach: '$'
+			deps: ['jquery']
+		},
+		lazyload: {
+			deps: ['jquery']
 		},
 		date: {
 			attach: 'Date'
