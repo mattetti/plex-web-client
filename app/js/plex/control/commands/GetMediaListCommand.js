@@ -2,10 +2,11 @@ define(
 	[
 		'plex/model/AppModel',
 		'plex/model/collections/VideoCollection',
+		'plex/model/collections/MediaDirectoryCollection',
 		'plex/view/MoviesView'
 	],
 
-	function (appModel, VideoCollection, MoviesView) {
+	function (appModel, VideoCollection, MediaDirectoryCollection, MoviesView) {
 
 		var servers = appModel.get('servers');
 		var sections = appModel.get('sections');
@@ -30,11 +31,25 @@ define(
 					break;
 
 				case 'show':
-					onFetchShowsSuccess();
+					collection = new MediaDirectoryCollection({
+						url: 'library/sections/' + section.id + '/all'
+					});
+
+					collection.fetch({
+						success: onFetchShowsSuccess,
+						error: onError
+					});
 					break;
 
 				case 'artist':
-					onFetchMusicSuccess();
+					collection = new MediaDirectoryCollection({
+						url: 'library/sections/' + section.id + '/all'
+					});
+
+					collection.fetch({
+						success: onFetchMusicSuccess,
+						error: onError
+					});
 					break;
 
 				default:

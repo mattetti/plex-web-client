@@ -82,9 +82,8 @@
 	.clearfix();
 	font-size: 14px;
 
-	img {
+	.poster {
 		float: left;
-		.box-sizing(border-box);
 		width: 150px;
 		height: 112px;
 		.border-radius(5px);
@@ -115,5 +114,31 @@
 		a {
 			margin-left: 8px;
 		}
+	}
+}
+
+.poster-list {
+	margin: 0;
+	.clearfix();
+	list-style-type: none;
+}
+
+.poster-list > li {
+	float: left;
+	margin: 0 10px 20px 10px;
+	width: 150px;
+
+	.poster {
+		margin: 5px 0;
+	}
+
+	.poster-title {
+		overflow: hidden;
+		width: 150px;
+		text-align: center;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		font-size: 14px;
+		text-shadow: 0 1px 0 #000;
 	}
 }
