@@ -1,20 +1,22 @@
 define(
 	[
 		'plex/control/Dispatcher',
+		'plex/control/signals/ShowLoadingSignal',
+		'plex/control/signals/GetQueueSignal',
+		'plex/control/signals/GetSectionsSignal',
 		'plex/control/signals/GetMediaListSignal',
 		'plex/model/AppModel',
 		'plex/view/AppView',
 		'plex/view/LoginView',
-		'plex/view/QueueView',
 		'plex/view/ServersView',
-		'plex/view/SectionsView',
-		'plex/view/MediaView',
+		'plex/view/ErrorView',
 
 		// Globals
 		'use!backbone'
 	],
 
-	function (dispatcher, getMediaListSignal, appModel, AppView, LoginView, QueueView, ServersView, SectionsView, MediaView) {
+	function (dispatcher, showLoadingSignal, getQueueSignal, getSectionsSignal, getMediaListSignal, appModel, AppView, LoginView, ServersView, ErrorView) {
+		
 		var queue = appModel.get('queue');
 		var servers = appModel.get('servers');
 		var sections = appModel.get('sections');
@@ -30,6 +32,8 @@ define(
 				'!/servers': 'servers',
 				'!/servers/:serverID/sections': 'sections',
 				'!/servers/:serverID/sections/:sectionID/list': 'list',
+				'!/servers/:serverID/sections/:sectionID/details/:itemID': 'details',
+				'!/servers/:serverID/sections/:sectionID/player/:itemID': 'player',
 				'*404': 'error'
 			},
 			
@@ -91,21 +95,7 @@ define(
 
 			queue: function () {
 				if (this.isAuthenticated(this.queue, arguments) === true) {
-					queue.fetch({
-						success: function (response) {
-							appModel.set({
-								loading: false,
-								showHeader: true,
-								view: new QueueView(),
-								server: undefined,
-								section: undefined
-							});
-						},
-
-						error: function (xhr, status, error) {
-
-						}
-					});
+					getQueueSignal.dispatch();
 				}
 			},
 
@@ -126,20 +116,7 @@ define(
 				if (this.isAuthenticated(this.sections, arguments) === true) {
 					appModel.set('server', servers.get(serverID));
 
-					sections.fetch({
-						success: function (response) {
-							appModel.set({
-								loading: false,
-								showHeader: true,
-								view: new SectionsView(),
-								section: undefined
-							});
-						},
-
-						error: function (xhr, status, error) {
-
-						}
-					});
+					getSectionsSignal.dispatch();
 				}
 			},
 
@@ -154,8 +131,33 @@ define(
 				}
 			},
 
+			details: function () {
+				var serverID = arguments[0];
+				var sectionID = arguments[1];
+				var itemID = arguments[2];
+
+				if (this.isAuthenticated(this.list, arguments) === true) {
+					appModel.set('server', servers.get(serverID));
+				}
+			},
+
+			player: function () {
+				var serverID = arguments[0];
+				var sectionID = arguments[1];
+				var itemID = arguments[2];
+
+				if (this.isAuthenticated(this.list, arguments) === true) {
+					appModel.set('server', servers.get(serverID));
+				}
+			},
+
 			error: function () {
-				console.log('404');
+				appModel.set({
+					showHeader: false,
+					view: new ErrorView(),
+					server: undefined,
+					section: undefined
+				});
 			},
 
 			// Navigate Methods

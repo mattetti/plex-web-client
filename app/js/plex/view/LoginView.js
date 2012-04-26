@@ -13,18 +13,18 @@ define(
 
 	function (template, dispatcher, loginSignal, appModel, BaseView) {
 
+		var tpl = Handlebars.compile(template);
+
 		var LoginView = BaseView.extend({
 			tagName: 'section',
 			className: 'content login',
-			
-			template: Handlebars.compile(template),
 
 			events: {
 				'submit #login-form': 'onLoginSubmit'
 			},
 			
 			render: function () {
-				this.$el.html(this.template());
+				this.$el.html(tpl());
 
 				return this;
 			},

@@ -6,18 +6,18 @@ define(
 		'plex/view/lists/items/SectionDropdownListItem',
 
 		// Globals
-		'jquery', 
 		'use!backbone',
 		'use!handlebars'
 	],
 
 	function (template, appModel, BaseView, SectionDropdownListItem) {
+
+		var tpl = Handlebars.compile(template);
+
 		var SectionDropdownList = BaseView.extend({
 			id: 'section-dropdown-list',
 			tagName: 'li',
 			className: 'dropdown',
-			
-			template: Handlebars.compile(template),
 
 			initialize: function () {
 				this.addBinding(this.collection, 'add', this.onAdd);
@@ -34,7 +34,7 @@ define(
 					data.title = section.get('title');
 				}
 
-				this.$el.html(this.template(data));
+				this.$el.html(tpl(data));
 
 				// Keep the list populated
 				this.onAddAll();

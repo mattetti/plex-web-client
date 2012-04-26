@@ -1,16 +1,22 @@
-.alert {
+.alert-smoke {
 	position: fixed;
 	left: 50%;
-	top: 25%;
+	top: 20%;
 	padding: 30px;
 	z-index: 9999;
 	.border-radius(10px);
-	background-color: rgba(0, 0, 0, 0.6);
+	background-color: rgba(0, 0, 0, 0.75);
+	font-size: 20px;
+	line-height: 32px;
+	text-shadow: 0 1px 3px #000;
 }
 
 .error {
-	width: 300px;
+	margin-left: -220px;
+	padding-top: 120px;
+	width: 380px;
 	text-align: center;
+	background: rgba(0, 0, 0, 0.75) url(../img/error.png) no-repeat center 30px;
 }
 
 .loading {

@@ -4,7 +4,6 @@ define(
 		'plex/view/lists/items/ServerListItem',
 
 		// Globals
-		'jquery', 
 		'use!backbone'
 	],
 

@@ -26,6 +26,20 @@
 	animation-fill-mode: both;
 }
 
+.animated-slow {
+	-webkit-animation: 1.2s ease;
+	-moz-animation: 1.2s ease;
+	-ms-animation: 1.2s ease;
+	-o-animation: 1.2s ease;
+	animation: 1.2s ease;
+
+	-webkit-animation-fill-mode: both;
+	-moz-animation-fill-mode: both;
+	-ms-animation-fill-mode: both;
+	-o-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
 .scaleIn {
 	-webkit-animation-name: scaleIn;
 	-moz-animation-name: scaleIn;
@@ -82,6 +96,26 @@
 		opacity: 1;
 		transform: scale(1.0);
 	}
+}
+
+.scaleInOut {
+	-webkit-animation-name: scaleIn;
+	-moz-animation-name: scaleIn;
+	-ms-animation-name: scaleIn;
+	-o-animation-name: scaleIn;
+	animation-name: scaleIn;
+
+	-webkit-animation-iteration-count: 2;
+	-moz-animation-iteration-count: 2;
+	-ms-animation-iteration-count: 2;
+	-o-animation-iteration-count: 2;
+	animation-iteration-count: 2;
+
+	-webkit-animation-direction: alternate;
+	-moz-animation-direction: alternate;
+	-ms-animation-direction: alternate;
+	-o-animation-direction: alternate;
+	animation-direction: alternate;
 }
 
 .fadeIn {

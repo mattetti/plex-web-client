@@ -6,24 +6,24 @@ define(
 		'plex/view/lists/QueueList',
 
 		// Globals
-		'jquery', 
 		'use!backbone',
 		'use!handlebars'
 	],
 
 	function (template, appModel, BaseView, QueueList) {
+
+		var tpl = Handlebars.compile(template);
+
 		var ServersView = BaseView.extend({
 			tagName: 'section',
 			className: 'content fixed-width animated-fast scaleIn',
-			
-			template: Handlebars.compile(template),
 
 			initialize: function () {
 				this.list = this.registerView(new QueueList({ collection: appModel.get('queue') }));
 			},
 			
 			render: function () {
-				this.$el.html(this.template());
+				this.$el.html(tpl());
 				this.$el.append(this.list.render().el);
 
 				return this;

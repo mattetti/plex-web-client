@@ -5,16 +5,16 @@ define(
 		'signals',
 
 		// Globals
-		'jquery', 
 		'use!backbone',
 		'use!handlebars'
 	],
 
 	function (template, BaseView, signals) {
+
+		var tpl = Handlebars.compile(template);
+
 		var ThumbnailMarqueeListItem = BaseView.extend({
 			tagName: 'li',
-			
-			template: Handlebars.compile(template),
 
 			loadedSignal: undefined,
 			
@@ -23,7 +23,7 @@ define(
 			},
 
 			render: function () {
-				this.$el.html(this.template(this.model.toJSON()));
+				this.$el.html(tpl(this.model.toJSON()));
 				this.$('img').load(_.bind(this.onImageLoad, this));
 
 				return this;

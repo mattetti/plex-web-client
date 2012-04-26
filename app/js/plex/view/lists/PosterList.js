@@ -4,7 +4,6 @@ define(
 		'plex/view/lists/items/PosterListItem',
 
 		// Globals
-		'jquery', 
 		'use!backbone',
 		'use!handlebars'
 	],

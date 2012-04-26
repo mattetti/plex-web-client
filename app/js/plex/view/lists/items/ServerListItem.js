@@ -6,12 +6,14 @@ define(
 		'plex/model/collections/ThumbnailCollection',
 
 		// Globals
-		'jquery', 
 		'use!backbone',
 		'use!handlebars'
 	],
 
 	function (template, ThumbnailMarqueeList, BaseView, ThumbnailCollection) {
+
+		var tpl = Handlebars.compile(template);
+
 		var ServerListItem = BaseView.extend({
 
 			//
@@ -19,8 +21,6 @@ define(
 			//
 
 			tagName: 'li',
-			
-			template: Handlebars.compile(template),
 
 			thumbnailList: undefined,
 
@@ -45,7 +45,7 @@ define(
 			//
 
 			render: function () {
-				this.$el.html(this.template(this.model.toJSON()));
+				this.$el.html(tpl(this.model.toJSON()));
 				this.$('a').after(this.thumbnailList.render().el);
 
 				return this;

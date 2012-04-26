@@ -1,6 +1,6 @@
 define(
 	[
-		'text!templates/lists/items/ServerDropdownListItem.tpl',
+		'text!templates/ErrorView.tpl',
 		'plex/view/BaseView',
 
 		// Globals
@@ -12,16 +12,17 @@ define(
 
 		var tpl = Handlebars.compile(template);
 
-		var ServerDropdownListItem = BaseView.extend({
-			tagName: 'li',
-			
+		var ErrorView = BaseView.extend({
+			tagName: 'section',
+			className: 'content fixed-width animated-fast scaleIn',
+
 			render: function () {
-				this.$el.html(tpl(this.model.toJSON()));
+				this.$el.html(tpl());
 
 				return this;
 			}
 		});
 
-		return ServerDropdownListItem;
+		return ErrorView;
 	}
 );

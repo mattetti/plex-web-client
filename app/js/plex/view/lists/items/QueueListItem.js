@@ -5,16 +5,16 @@ define(
 		'plex/view/BaseView',
 
 		// Globals
-		'jquery', 
 		'use!backbone',
 		'use!handlebars'
 	],
 
 	function (template, markQueueItemWatchedSignal, BaseView) {
+
+		var tpl = Handlebars.compile(template);
+
 		var ServerListItem = BaseView.extend({
 			tagName: 'li',
-			
-			template: Handlebars.compile(template),
 
 			events: {
 				'click .mark-watched-btn': 'onMarkWatchedClick',
@@ -27,7 +27,7 @@ define(
 			},
 			
 			render: function () {
-				this.$el.html(this.template({
+				this.$el.html(tpl({
 					watched: (this.model.get('viewCount') > 0),
 					item: this.model.toJSON()
 				}));

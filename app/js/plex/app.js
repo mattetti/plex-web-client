@@ -4,9 +4,10 @@ define(
 		'plex/control/CommandMap',
 
 		// Globals
-		'plex/control/BackboneInit',
-		'plex/control/HandlebarsInit',
+		'plex/control/init/BackboneInit',
+		'plex/control/init/HandlebarsInit',
 		'use!date',
+		'use!button',
 		'use!dropdown'
 	],
 
