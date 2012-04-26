@@ -87,7 +87,7 @@ define(
 				window.scrollTo(0, 0);
 
 				// Trigger lazy loaded images
-				this.$('img.poster').lazyload();
+				this.$('img.poster').lazyload({ threshold: 500 });
 			},
 
 			onViewDestroy: function (view) {
