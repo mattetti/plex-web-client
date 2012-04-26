@@ -27,7 +27,10 @@ define(
 
 			onImageLoad: function (event) {
 				this.loaded.dispatch();
-				$(event.target).hide().fadeIn(400);
+				var $image = $(event.target);
+				var width = $image.css('width');
+				$image.css({'width': 0, 'opacity': 0})
+					.animate({'width': width, 'opacity': 1}, 300);
 			}
 		});
 
