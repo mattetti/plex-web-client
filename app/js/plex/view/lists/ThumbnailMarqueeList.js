@@ -4,14 +4,15 @@ define(
 		'plex/model/AppModel',
 		'plex/view/BaseView',
 		'plex/view/lists/items/ThumbnailMarqueeListItem',
+		'signals',
 
 		// Globals
 		'jquery', 
 		'use!backbone',
-		'use!handlebars'
+		'use!handlebars',
 	],
 
-	function (template, appModel, BaseView, ThumbnailMarqueeListItem) {
+	function (template, appModel, BaseView, ThumbnailMarqueeListItem, signals) {
 
 		var template = Handlebars.compile(template)
 
@@ -26,6 +27,8 @@ define(
 			numVisibleItems: 5,
 			speed: 1,
 			$list: undefined,
+			loadedThumbnails: 0,
+			loaded: new signals.Signal(),
 
 			//
 			// -------------------- Init --------------------
@@ -37,6 +40,8 @@ define(
 
 				this.addBinding(this.collection, 'add', this.onAdd);
 				this.addBinding(this.collection, 'reset', this.onAddAll);
+
+				_.bindAll(this, 'onThumbnailLoaded');
 			},
 			
 			render: function () {
@@ -54,11 +59,9 @@ define(
 			//
 
 			start: function () {
-
 			},
 
 			stop: function () {
-
 			},
 
 			//
@@ -66,7 +69,8 @@ define(
 			//
 
 			onAdd: function (thumbnail) {
-				var item = new ThumbnailMarqueeListItem({ model: thumbnail });
+				var item = new ThumbnailMarqueeListItem({model: thumbnail});
+				item.loaded.addOnce(this.onThumbnailLoaded);
 
 				// Register the view so it will be cleaned up on destroy
 				this.registerView(item);
@@ -78,10 +82,21 @@ define(
 				// Destroy any list items that have been registered already
 				this.removeAllViews();
 
-				for(var i=0; i < this.numVisibleItems; i++) {
-					if (i < this.numVisibleItems) {
-						this.onAdd(this.collection.at(i));
+				if (this.collection.length > 0) {
+					this.loadedThumbnails = 0;
+					for(var i=0; i < this.numVisibleItems; i++) {
+						if (i < this.numVisibleItems) {
+							this.onAdd(this.collection.at(i));
+						}
 					}
+				}
+			},
+
+			onThumbnailLoaded: function (event) {
+				this.loadedThumbnails++;
+
+				if (this.loadedThumbnails === this.numVisibleItems) {
+					this.loaded.dispatch();
 				}
 			}
 		});

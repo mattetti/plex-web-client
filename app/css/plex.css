@@ -7892,21 +7892,23 @@ ul.nav .dropdown-menu:after {
 .content-vertical-list > li > a:hover .list-header {
   border-bottom: 5px solid rgba(255, 255, 255, 0.5);
 }
-.server-list > li {
-  position: relative;
-}
 .server-list > li .thumbnail-marquee-list {
-  width: 300px;
-  height: 75px;
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
+  width: 305px;
+  height: 85px;
+  clear: both;
+  float: right;
+  overflow: hidden;
 }
 .server-list > li .thumbnail-marquee-list ul {
   list-style-type: none;
+  margin: 0;
 }
 .server-list > li .thumbnail-marquee-list ul li {
   float: left;
+  margin: 5px;
+}
+.server-list > li .thumbnail-marquee-list ul li img {
+  height: 75px;
 }
 .server-list > li .thumbnail-marquee-list .poster:hover {
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
@@ -8018,10 +8020,6 @@ ul.nav .dropdown-menu:after {
 }
 .video-detail .video-detail-right a {
   margin-left: 8px;
-}
-.content-marquee-list .thumbnail {
-  float: left;
-  margin: 0 5px;
 }
 .poster-list {
   margin: 0;

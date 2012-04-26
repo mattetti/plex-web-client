@@ -27,20 +27,24 @@
 }
 
 .server-list > li {
-	position: relative;
-
 	.thumbnail-marquee-list {
-		width: 300px;
-		height: 75px;
-		position: absolute;
-		bottom: 10px;
-		right: 10px;
+		width: 305px;
+		height: 85px;
+		clear: both;
+		float: right;
+		overflow: hidden;
 
 		ul {
 			list-style-type: none;
+			margin: 0;
 
 			li {
 				float: left;
+				margin: 5px;
+
+				img {
+					height: 75px;
+				}
 			}
 		}
 
