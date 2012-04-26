@@ -15,6 +15,8 @@ require.config({
 		'xml2json': 'libs/jquery.xml2json',
 		'lazyload': 'libs/jquery.lazyload',
 		'date': 'libs/date',
+		'base64': 'libs/base64',
+		'sha256': 'libs/jssha256-0.1',
 		
 		// Require
 		'use': 'libs/require/use-0.2.0',
@@ -47,9 +49,9 @@ require.config({
 		lazyload: {
 			deps: ['jquery']
 		},
-		date: {
-			attach: 'Date'
-		},
+		date: {},
+		base64: {},
+		sha256: {},
 
 		// Bootstrap
 		transition: { deps: ['jquery'] },
