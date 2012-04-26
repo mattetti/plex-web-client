@@ -12,6 +12,7 @@ define(
 	function (BaseView, PosterListItem) {
 		var PosterList = BaseView.extend({
 			tagName: 'ul',
+			className: 'poster-list',
 
 			initialize: function () {
 				this.addBinding(this.collection, 'add', this.onAdd);

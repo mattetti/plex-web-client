@@ -1,10 +1,13 @@
 define(
 	[
+		'plex/control/Transcoder',
+
 		// Globals
 		'use!handlebars'
 	],
 
-	function () {
+	function (transcoder) {
+
 		Handlebars.registerHelper('timeAgo', function (timestamp) {
 			var msPerMinute = 60 * 1000,
 				msPerHour = msPerMinute * 60,
@@ -78,6 +81,10 @@ define(
 
 		Handlebars.registerHelper('formatDate', function (date) {
 			return Date.parse(date).toString('MMM d, yyyy');
+		});
+
+		Handlebars.registerHelper('transcodeImage', function (path, width, height) {
+			return transcoder.image(path, width, height);
 		});
 	}
 );

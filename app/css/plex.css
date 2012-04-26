@@ -7146,6 +7146,36 @@ input:focus {
   -moz-box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.15);
   box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.15);
 }
+.poster {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+}
+.poster:hover {
+  -webkit-box-shadow: 0 0 0 2px #a25600;
+  -moz-box-shadow: 0 0 0 2px #a25600;
+  box-shadow: 0 0 0 2px #a25600;
+  -webkit-box-shadow: 0 0 0 2px #a25600;
+  -moz-box-shadow: 0 0 0 2px #a25600;
+  box-shadow: 0 0 0 2px #a25600;
+}
 .animated {
   -webkit-animation: .8s ease;
   -moz-animation: .8s ease;
@@ -7922,16 +7952,8 @@ ul.nav .dropdown-menu:after {
 .video-detail:after {
   clear: both;
 }
-.video-detail img {
+.video-detail .poster {
   float: left;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
   width: 150px;
   height: 112px;
   -webkit-border-radius: 5px;
@@ -7947,7 +7969,7 @@ ul.nav .dropdown-menu:after {
   -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
 }
-.video-detail img:hover {
+.video-detail .poster:hover {
   -webkit-box-shadow: 0 0 0 2px #a25600;
   -moz-box-shadow: 0 0 0 2px #a25600;
   box-shadow: 0 0 0 2px #a25600;
@@ -7976,4 +7998,43 @@ ul.nav .dropdown-menu:after {
 .content-marquee-list .thumbnail {
   float: left;
   margin: 0 5px;
+}
+.poster-list {
+  margin: 0;
+  *zoom: 1;
+  *zoom: 1;
+  list-style-type: none;
+}
+.poster-list:before,
+.poster-list:after {
+  display: table;
+  content: "";
+}
+.poster-list:after {
+  clear: both;
+}
+.poster-list:before,
+.poster-list:after {
+  display: table;
+  content: "";
+}
+.poster-list:after {
+  clear: both;
+}
+.poster-list > li {
+  float: left;
+  margin: 0 10px 20px 10px;
+  width: 150px;
+}
+.poster-list > li .poster {
+  margin: 5px 0;
+}
+.poster-list > li .poster-title {
+  overflow: hidden;
+  width: 150px;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  text-shadow: 0 1px 0 #000;
 }

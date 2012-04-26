@@ -5,7 +5,7 @@
 </a>
 
 <div class="video-detail">
-	<a href="{{item.url}}"><img src="{{item.thumb}}" alt="{{item.title}}" /></a>
+	<a href="{{item.url}}"><img class="poster" src="{{item.thumb}}" alt="{{item.title}}" /></a>
 
 	<div class="video-summary">
 		{{truncate item.summary 200}}
