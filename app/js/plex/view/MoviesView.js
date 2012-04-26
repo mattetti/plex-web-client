@@ -2,6 +2,7 @@ define(
 	[
 		'plex/model/AppModel',
 		'plex/view/BaseView',
+		'plex/view/lists/PosterList',
 
 		// Globals
 		'jquery', 
@@ -9,7 +10,7 @@ define(
 		'use!handlebars'
 	],
 
-	function (appModel, BaseView) {
+	function (appModel, BaseView, PosterList) {
 		var MediaView = BaseView.extend({
 			tagName: 'section',
 			className: 'content animated-fast scaleIn',
@@ -17,13 +18,13 @@ define(
 			events: {
 			},
 
-			initialize: function () {
-				//this.list = this.registerView(new SectionList({ collection: appModel.get('sections') }));
+			initialize: function (options) {
+				this.list = this.registerView(new PosterList({ collection: options.collection }));
 			},
 			
 			render: function () {
-				this.$el.html(appModel.get('section').get('title'));
-				//this.$el.append(this.list.render().el);
+				this.$el.html();
+				this.$el.append(this.list.render().el);
 
 				return this;
 			}
