@@ -1,14 +1,16 @@
 define(
 	[
+		'plex/model/collections/ThumbnailCollection',
+
 		// Globals
 		'use!backbone',
 		'use!xml2json'
 	],
 
-	function () {
+	function (ThumbnailCollection) {
 		var ServerModel = Backbone.Model.extend({
 			idAttribute: 'machineIdentifier',
-			thumbnails: undefined
+			thumbnails: new ThumbnailCollection()
 		});
 
 		return ServerModel;

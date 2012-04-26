@@ -1,37 +1,52 @@
 define(
 	[
+		'text!templates/lists/ThumbnailMarqueeList.tpl',
 		'plex/model/AppModel',
 		'plex/view/BaseView',
 		'plex/view/lists/items/ThumbnailMarqueeListItem',
+		'signals',
 
 		// Globals
 		'jquery', 
-		'use!backbone'
+		'use!backbone',
+		'use!handlebars',
 	],
 
-	function (appModel, BaseView, ThumbnailMarqueeListItem) {
-		var SectionList = BaseView.extend({
+	function (template, appModel, BaseView, ThumbnailMarqueeListItem, signals) {
+
+		var template = Handlebars.compile(template)
+
+		var ThumbnailMarqueeList = BaseView.extend({
 
 			//
 			// -------------------- Declarations --------------------
 			//
 
 			tagName: 'div',
-			className: 'content-marquee-list',
+			className: 'thumbnail-marquee-list',
 			numVisibleItems: 5,
 			speed: 1,
+			$list: undefined,
+			loadedThumbnails: 0,
+			loaded: new signals.Signal(),
 
 			//
 			// -------------------- Init --------------------
 			//
 
 			initialize: function () {
+				this.numVisibleItems = this.options.numVisibleItems ? this.options.numVisibleItems : 5;
+				this.speed = this.options.speed ? this.options.speed : 1;
+
 				this.addBinding(this.collection, 'add', this.onAdd);
 				this.addBinding(this.collection, 'reset', this.onAddAll);
+
+				_.bindAll(this, 'onThumbnailLoaded');
 			},
 			
 			render: function () {
-				this.$el.html();
+				this.$el.html(template());
+				this.$list = this.$el.find('ul');
 
 				// Keep the list populated
 				this.onAddAll();
@@ -44,11 +59,9 @@ define(
 			//
 
 			start: function () {
-
 			},
 
 			stop: function () {
-
 			},
 
 			//
@@ -56,27 +69,38 @@ define(
 			//
 
 			onAdd: function (thumbnail) {
-				var item = new ThumbnailMarqueeListItem({ model: thumbnail });
+				var item = new ThumbnailMarqueeListItem({model: thumbnail});
+				item.loaded.addOnce(this.onThumbnailLoaded);
 
 				// Register the view so it will be cleaned up on destroy
 				this.registerView(item);
 
-				this.$el.append(item.render().el);
+				this.$list.append(item.render().el);
 			},
 
 			onAddAll: function () {
 				// Destroy any list items that have been registered already
 				this.removeAllViews();
 
-				// Only render the first five
-				for (var i=1; i < this.numVisibleItems; i++) {
-					_.bind(this.onAdd(this.collection.at(i)), this);
+				if (this.collection.length > 0) {
+					this.loadedThumbnails = 0;
+					for(var i=0; i < this.numVisibleItems; i++) {
+						if (i < this.numVisibleItems) {
+							this.onAdd(this.collection.at(i));
+						}
+					}
 				}
+			},
 
-				this.collection.each(this.onAdd, this);
+			onThumbnailLoaded: function (event) {
+				this.loadedThumbnails++;
+
+				if (this.loadedThumbnails === this.numVisibleItems) {
+					this.loaded.dispatch();
+				}
 			}
 		});
 
-		return SectionList;
+		return ThumbnailMarqueeList;
 	}
 );

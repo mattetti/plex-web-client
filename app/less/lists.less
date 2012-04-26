@@ -26,6 +26,34 @@
 	}
 }
 
+.server-list > li {
+	.thumbnail-marquee-list {
+		width: 305px;
+		height: 85px;
+		clear: both;
+		float: right;
+		overflow: hidden;
+
+		ul {
+			list-style-type: none;
+			margin: 0;
+
+			li {
+				float: left;
+				margin: 5px;
+
+				img {
+					height: 75px;
+				}
+			}
+		}
+
+		.poster:hover {
+			.box-shadow(0 0 10px rgba(0, 0, 0, .75));
+		}
+	}
+}
+
 .list-header {
 	margin-bottom: 10px;
 	.box-sizing(border-box);
@@ -90,13 +118,6 @@
 		a {
 			margin-left: 8px;
 		}
-	}
-}
-
-.content-marquee-list {
-	.thumbnail {
-		float: left;
-		margin: 0 5px;
 	}
 }
 
