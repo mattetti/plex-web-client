@@ -6,7 +6,6 @@ define(
 		'plex/view/lists/items/ServerDropdownListItem',
 
 		// Globals
-		'jquery', 
 		'use!backbone',
 		'use!handlebars'
 	],

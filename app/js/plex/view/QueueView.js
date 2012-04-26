@@ -6,7 +6,6 @@ define(
 		'plex/view/lists/QueueList',
 
 		// Globals
-		'jquery', 
 		'use!backbone',
 		'use!handlebars'
 	],

@@ -5,7 +5,6 @@ define(
 		'plex/view/lists/items/SectionListItem',
 
 		// Globals
-		'jquery', 
 		'use!backbone',
 		'use!handlebars'
 	],

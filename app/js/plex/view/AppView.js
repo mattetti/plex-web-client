@@ -1,25 +1,23 @@
 define(
 	[
-		'text!templates/AppView.tpl',
 		'plex/control/Dispatcher',
 		'plex/model/AppModel',
+		'plex/view/LoadingView',
 		'plex/view/HeaderView',
 
 		// Globals
-		'jquery', 
 		'use!backbone',
 		'use!handlebars'
 	],
 
-	function (template, dispatcher, appModel, HeaderView) {
+	function (dispatcher, appModel, LoadingView, HeaderView) {
 		var AppView = Backbone.View.extend({
 			el: '#container',
 			
-			template: Handlebars.compile(template),
-
 			model: appModel,
 
-			header: undefined,
+			loadingView: undefined,
+			headerView: undefined,
 			views: [],
 
 			initialize: function () {
@@ -31,26 +29,28 @@ define(
 			},
 
 			render: function () {
-				this.$el.html(this.template());
+				this.$el.html();
 
 				return this;
 			},
 
 			onLoadingChange: function (model, loading) {
-				if (loading === true) {
-					this.$('.loading').show();
-				} else {
-					this.$('.loading').hide();
+				if (loading === true && typeof(this.loadingView) === 'undefined') {
+					this.loadingView = new LoadingView();
+					this.$el.append(this.loadingView.render().el);
+				} else if (typeof(this.loadingView) !== 'undefined') {
+					this.loadingView.destroy();
+					this.loadingView = undefined;
 				}
 			},
 
 			onShowHeaderChange: function (model, showHeader) {
-				if (showHeader === true && typeof(this.header) === 'undefined') {
-					this.header = new HeaderView();
-					this.$el.prepend(this.header.render().el);
-				} else if (typeof(this.header) !== 'undefined') {
-					this.header.destroy();
-					this.header = undefined;
+				if (showHeader === true && typeof(this.headerView) === 'undefined') {
+					this.headerView = new HeaderView();
+					this.$el.prepend(this.headerView.render().el);
+				} else if (typeof(this.headerView) !== 'undefined') {
+					this.headerView.destroy();
+					this.headerView = undefined;
 				}
 			},
 
@@ -64,6 +64,9 @@ define(
 				this.views.push(view);
 
 				this.$el.append(view.render().el);
+
+				// Reset the scroll position to the top of the page
+				window.scrollTo(0, 0);
 
 				// Trigger scroll for lazy loaded images
 				this.$el.trigger('scroll');

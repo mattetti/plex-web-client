@@ -4,7 +4,6 @@ define(
 		'plex/view/lists/items/QueueListItem',
 
 		// Globals
-		'jquery', 
 		'use!backbone',
 		'use!handlebars'
 	],

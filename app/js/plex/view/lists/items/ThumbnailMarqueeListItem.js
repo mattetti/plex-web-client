@@ -5,7 +5,6 @@ define(
 		'signals',
 
 		// Globals
-		'jquery', 
 		'use!backbone',
 		'use!handlebars'
 	],

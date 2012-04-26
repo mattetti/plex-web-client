@@ -6,7 +6,6 @@ define(
 		'plex/model/collections/ThumbnailCollection',
 
 		// Globals
-		'jquery', 
 		'use!backbone',
 		'use!handlebars'
 	],

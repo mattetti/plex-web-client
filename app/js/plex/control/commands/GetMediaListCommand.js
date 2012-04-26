@@ -3,10 +3,10 @@ define(
 		'plex/model/AppModel',
 		'plex/model/collections/VideoCollection',
 		'plex/model/collections/MediaDirectoryCollection',
-		'plex/view/MoviesView'
+		'plex/view/MediaView'
 	],
 
-	function (appModel, VideoCollection, MediaDirectoryCollection, MoviesView) {
+	function (appModel, VideoCollection, MediaDirectoryCollection, MediaView) {
 
 		var servers = appModel.get('servers');
 		var sections = appModel.get('sections');
@@ -61,7 +61,7 @@ define(
 			appModel.set({
 				loading: false,
 				showHeader: true,
-				view: new MoviesView({ collection: collection })
+				view: new MediaView({ collection: collection })
 			});
 		}
 
@@ -69,7 +69,7 @@ define(
 			appModel.set({
 				loading: false,
 				showHeader: true,
-				view: new MoviesView({ collection: collection })
+				view: new MediaView({ collection: collection })
 			});
 		}
 
@@ -77,7 +77,7 @@ define(
 			appModel.set({
 				loading: false,
 				showHeader: true,
-				view: new MoviesView({ collection: collection })
+				view: new MediaView({ collection: collection })
 			});
 		}
 

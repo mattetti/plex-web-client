@@ -4,7 +4,6 @@ define(
 		'plex/view/BaseView',
 
 		// Globals
-		'jquery', 
 		'use!backbone',
 		'use!handlebars'
 	],

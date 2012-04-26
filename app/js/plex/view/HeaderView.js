@@ -8,7 +8,6 @@ define(
 		'plex/view/lists/SectionDropdownList',
 
 		// Globals
-		'jquery', 
 		'use!backbone',
 		'use!handlebars'
 	],
