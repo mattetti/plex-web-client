@@ -8,17 +8,14 @@ define(
 		'plex/model/AppModel',
 		'plex/view/AppView',
 		'plex/view/LoginView',
-		'plex/view/QueueView',
 		'plex/view/ServersView',
-		'plex/view/SectionsView',
-		'plex/view/MediaView',
 		'plex/view/ErrorView',
 
 		// Globals
 		'use!backbone'
 	],
 
-	function (dispatcher, showLoadingSignal, getQueueSignal, getSectionsSignal, getMediaListSignal, appModel, AppView, LoginView, QueueView, ServersView, SectionsView, MediaView, ErrorView) {
+	function (dispatcher, showLoadingSignal, getQueueSignal, getSectionsSignal, getMediaListSignal, appModel, AppView, LoginView, ServersView, ErrorView) {
 		
 		var queue = appModel.get('queue');
 		var servers = appModel.get('servers');
