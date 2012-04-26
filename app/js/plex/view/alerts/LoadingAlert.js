@@ -1,6 +1,6 @@
 define(
 	[
-		'text!templates/alerts/LoadingView.tpl',
+		'text!templates/alerts/LoadingAlert.tpl',
 		'plex/view/BaseView',
 
 		// Globals
