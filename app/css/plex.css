@@ -7862,6 +7862,30 @@ ul.nav .dropdown-menu:after {
 .content-vertical-list > li > a:hover .list-header {
   border-bottom: 5px solid rgba(255, 255, 255, 0.5);
 }
+.server-list > li {
+  position: relative;
+}
+.server-list > li .thumbnail-marquee-list {
+  width: 300px;
+  height: 75px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+.server-list > li .thumbnail-marquee-list ul {
+  list-style-type: none;
+}
+.server-list > li .thumbnail-marquee-list ul li {
+  float: left;
+}
+.server-list > li .thumbnail-marquee-list .poster:hover {
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+}
 .list-header {
   margin-bottom: 10px;
   -webkit-box-sizing: border-box;
@@ -7972,8 +7996,4 @@ ul.nav .dropdown-menu:after {
 }
 .video-detail .video-detail-right a {
   margin-left: 8px;
-}
-.content-marquee-list .thumbnail {
-  float: left;
-  margin: 0 5px;
 }

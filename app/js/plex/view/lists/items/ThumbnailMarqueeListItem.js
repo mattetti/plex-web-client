@@ -10,7 +10,7 @@ define(
 	],
 
 	function (template, BaseView) {
-		var ServerListItem = BaseView.extend({
+		var ThumbnailMarqueeListItem = BaseView.extend({
 			tagName: 'li',
 			
 			template: Handlebars.compile(template),
@@ -22,6 +22,6 @@ define(
 			}
 		});
 
-		return ServerListItem;
+		return ThumbnailMarqueeListItem;
 	}
 );

@@ -1,1 +1,1 @@
-<img class="thumbnail" src="{{thumb}}" />
+<img class="poster" src="{{thumb}}" />

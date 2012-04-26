@@ -35,14 +35,15 @@ define(
 		}
 
 		function onFetchThumbnailsSuccess(response) {
+			// Unfortunetely with the myPlex API we can really only fetch all thumbnails
+			// so we assign the respective thumbnails to their servers here
 			var groupedThumbnails = thumbnails.groupBy(function (thumbnail) {
 				return thumbnail.get('machineIdentifier');
 			});
 
 			servers.each(function (server) {
-				server.set('thumbnails', new ThumbnailCollection(
-					groupedThumbnails[server.get('machineIdentifier')]
-				));
+				var thumbnails = groupedThumbnails[server.get('machineIdentifier')]
+				server.set('thumbnails', new ThumbnailCollection(thumbnails));
 			});
 
 			appModel.set({loading: false});

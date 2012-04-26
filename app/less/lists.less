@@ -26,6 +26,30 @@
 	}
 }
 
+.server-list > li {
+	position: relative;
+
+	.thumbnail-marquee-list {
+		width: 300px;
+		height: 75px;
+		position: absolute;
+		bottom: 10px;
+		right: 10px;
+
+		ul {
+			list-style-type: none;
+
+			li {
+				float: left;
+			}
+		}
+
+		.poster:hover {
+			.box-shadow(0 0 10px rgba(0, 0, 0, .75));
+		}
+	}
+}
+
 .list-header {
 	margin-bottom: 10px;
 	.box-sizing(border-box);
@@ -91,12 +115,5 @@
 		a {
 			margin-left: 8px;
 		}
-	}
-}
-
-.content-marquee-list {
-	.thumbnail {
-		float: left;
-		margin: 0 5px;
 	}
 }
