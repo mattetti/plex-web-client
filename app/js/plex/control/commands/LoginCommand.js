@@ -1,10 +1,11 @@
 define(
 	[
+		'plex/control/signals/ShowLoadingSignal',
 		'plex/model/AppModel',
 		'plex/model/collections/ThumbnailCollection'
 	],
 
-	function (appModel, ThumbnailCollection) {
+	function (showLoadingSignal, appModel, ThumbnailCollection) {
 
 		var user = appModel.get('user');
 		var servers = appModel.get('servers');
@@ -19,19 +20,23 @@ define(
 				success: onFetchServersSuccess,
 				error: onError
 			});
+
+			// Hide the loading indicator
+			showLoadingSignal.dispatch(false);
 		}
 
 		function onFetchServersSuccess(response) {
 			appModel.set({
-				authenticated: true,
-				loading: false
+				authenticated: true
 			});
 				
 			thumbnails.fetch({
 				success: onFetchThumbnailsSuccess,
 				error: onFetchThumbnailsError
 			});
-			
+
+			// Hide the loading indicator
+			showLoadingSignal.dispatch(false);
 		}
 
 		function onFetchThumbnailsSuccess(response) {
@@ -46,7 +51,8 @@ define(
 				server.set('thumbnails', new ThumbnailCollection(thumbnails));
 			});
 
-			appModel.set({loading: false});
+			// Hide the loading indicator
+			showLoadingSignal.dispatch(false);
 		}
 
 		function onFetchThumbnailsError(xhr, status, error) {
@@ -54,11 +60,16 @@ define(
 			// still get the server list if we decide to update
 			// the UI to reflect this failure handle that here
 
-			appModel.set({loading: false});
+			// Hide the loading indicator
+			showLoadingSignal.dispatch(false);
 		}
 
 		function onError(xhr, status, error) {
-			console.log('Service error: ' + xhr + '\n' + status + '\n' + error);
+			// Hide the loading indicator
+			showLoadingSignal.dispatch(false);
+
+			// Show an alert
+			appModel.set({ error: 'The username or password is incorrect.' });
 		}
 
 		return {

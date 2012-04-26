@@ -11,12 +11,13 @@ define(
 	],
 
 	function (template, appModel, BaseView, ServerDropdownListItem) {
+
+		var tpl = Handlebars.compile(template);
+
 		var ServerDropdownList = BaseView.extend({
 			id: 'server-dropdown-list',
 			tagName: 'li',
 			className: 'dropdown',
-			
-			template: Handlebars.compile(template),
 
 			initialize: function () {
 				this.addBinding(this.collection, 'add', this.onAdd);
@@ -33,7 +34,7 @@ define(
 					data.title = server.get('name');
 				}
 
-				this.$el.html(this.template(data));
+				this.$el.html(tpl(data));
 
 				// Keep the list populated
 				this.onAddAll();

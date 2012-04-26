@@ -3,25 +3,30 @@ define(
 		'plex/control/Dispatcher',
 		'plex/model/AppModel',
 		'plex/view/LoadingView',
+		'plex/view/ErrorView',
 		'plex/view/HeaderView',
 
 		// Globals
 		'use!backbone',
-		'use!handlebars'
+		'use!handlebars',
+		'use!lazyload'
 	],
 
-	function (dispatcher, appModel, LoadingView, HeaderView) {
+	function (dispatcher, appModel, LoadingView, ErrorView, HeaderView) {
 		var AppView = Backbone.View.extend({
 			el: '#container',
 			
 			model: appModel,
 
 			loadingView: undefined,
+			errorView: undefined,
 			headerView: undefined,
+
 			views: [],
 
 			initialize: function () {
 				this.model.on('change:loading', this.onLoadingChange, this);
+				this.model.on('change:error', this.onErrorChange, this);
 				this.model.on('change:showHeader', this.onShowHeaderChange, this);
 				this.model.on('change:view', this.onViewChange, this);
 
@@ -42,6 +47,18 @@ define(
 					this.loadingView.destroy();
 					this.loadingView = undefined;
 				}
+			},
+
+			onErrorChange: function (model, error) {
+				if (typeof(error) !== 'undefined') {
+					this.errorView = new ErrorView({ error: error });
+					this.$el.append(this.errorView.render().el);
+				} else {
+					this.errorView.destroy();
+					this.errorView = undefined;
+				}
+
+				appModel.set({ error: undefined }, { silent: true });
 			},
 
 			onShowHeaderChange: function (model, showHeader) {
@@ -68,8 +85,8 @@ define(
 				// Reset the scroll position to the top of the page
 				window.scrollTo(0, 0);
 
-				// Trigger scroll for lazy loaded images
-				this.$el.trigger('scroll');
+				// Trigger lazy loaded images
+				this.$('img.poster').lazyload();
 			},
 
 			onViewDestroy: function (view) {

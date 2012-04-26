@@ -1,12 +1,13 @@
 define(
 	[
+		'plex/control/signals/ShowLoadingSignal',
 		'plex/model/AppModel',
 
 		// Globals
 		'use!backbone'
 	],
 
-	function (appModel) {
+	function (showLoadingSignal, appModel) {
 
 		var originalSync = Backbone.sync;
 
@@ -43,11 +44,12 @@ define(
 			options.contentType = 'application/xml',
 			options.dataType = 'text';
 			options.processData = false;
+			options.timeout = 5000;
 
 			originalSync(method, model, options);
 
 			// Show the loading indicator
-			appModel.set('loading', true);
+			showLoadingSignal.dispatch(true);
 		}
 	}
 );

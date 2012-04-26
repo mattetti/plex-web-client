@@ -15,6 +15,7 @@ define(
 			defaults: {
 				authenticated: false,
 				loading: false,
+				error: undefined,
 				showHeader: false,
 				view: undefined,
 

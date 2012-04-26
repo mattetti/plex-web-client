@@ -10,13 +10,14 @@ define(
 	],
 
 	function (template, appModel, BaseView) {
+
+		var tpl = Handlebars.compile(template);
+
 		var SectionDropdownListItem = BaseView.extend({
 			tagName: 'li',
 			
-			template: Handlebars.compile(template),
-			
 			render: function () {
-				this.$el.html(this.template({
+				this.$el.html(tpl({
 					serverID: appModel.get('server').id,
 					section: this.model.toJSON()
 				}));

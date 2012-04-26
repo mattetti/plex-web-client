@@ -8,18 +8,19 @@ define(
 	],
 
 	function (template, BaseView) {
-		var HeaderView = BaseView.extend({
-			className: 'loading',
-			
-			template: Handlebars.compile(template),
+
+		var tpl = Handlebars.compile(template);
+
+		var LoadingView = BaseView.extend({
+			className: 'alert-smoke loading',
 			
 			render: function () {
-				this.$el.html(this.template());
+				this.$el.html(tpl());
 
 				return this;
 			}
 		});
 
-		return HeaderView;
+		return LoadingView;
 	}
 );

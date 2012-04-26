@@ -13,11 +13,12 @@ define(
 	],
 
 	function (template, dispatcher, appModel, BaseView, ServerDropdownList, SectionDropdownList) {
+
+		var tpl = Handlebars.compile(template);
+
 		var HeaderView = BaseView.extend({
 			tagName: 'header',
 			className: 'animated slideDown',
-			
-			template: Handlebars.compile(template),
 
 			initialize: function () {
 				this.addBinding(appModel, 'change:server', this.onChange);
@@ -29,7 +30,7 @@ define(
 			},
 			
 			render: function () {
-				this.$el.html(this.template());
+				this.$el.html(tpl());
 
 				if (typeof(appModel.get('server')) !== 'undefined') {
 					this.$('#breadcrumb').append(this.serverList.render().el);

@@ -6,23 +6,22 @@ define(
 
 		// Globals
 		'use!backbone',
-		'use!handlebars',
-		'use!lazyload',
+		'use!handlebars'
 	],
 
 	function (template, transcoder, BaseView) {
+
+		var tpl = Handlebars.compile(template);
+
 		var PosterListItem = BaseView.extend({
 			tagName: 'li',
 			
-			template: Handlebars.compile(template),
-
 			events: {
 				'click a': 'onClick'
 			},
 			
 			render: function () {
-				this.$el.html(this.template(this.model.toJSON()));
-				this.$('.poster').lazyload();
+				this.$el.html(tpl(this.model.toJSON()));
 
 				return this;
 			},

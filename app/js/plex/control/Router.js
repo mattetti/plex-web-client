@@ -1,6 +1,7 @@
 define(
 	[
 		'plex/control/Dispatcher',
+		'plex/control/signals/ShowLoadingSignal',
 		'plex/control/signals/GetMediaListSignal',
 		'plex/model/AppModel',
 		'plex/view/AppView',
@@ -14,7 +15,7 @@ define(
 		'use!backbone'
 	],
 
-	function (dispatcher, getMediaListSignal, appModel, AppView, LoginView, QueueView, ServersView, SectionsView, MediaView) {
+	function (dispatcher, showLoadingSignal, getMediaListSignal, appModel, AppView, LoginView, QueueView, ServersView, SectionsView, MediaView) {
 		var queue = appModel.get('queue');
 		var servers = appModel.get('servers');
 		var sections = appModel.get('sections');
@@ -94,16 +95,22 @@ define(
 					queue.fetch({
 						success: function (response) {
 							appModel.set({
-								loading: false,
 								showHeader: true,
 								view: new QueueView(),
 								server: undefined,
 								section: undefined
 							});
+
+							// Hide the loading indicator
+							showLoadingSignal.dispatch(false);
 						},
 
 						error: function (xhr, status, error) {
+							// Hide the loading indicator
+							showLoadingSignal.dispatch(false);
 
+							// Show an alert
+							appModel.set({ error: 'The queue is unavailable.' });
 						}
 					});
 				}
@@ -129,15 +136,21 @@ define(
 					sections.fetch({
 						success: function (response) {
 							appModel.set({
-								loading: false,
 								showHeader: true,
 								view: new SectionsView(),
 								section: undefined
 							});
+
+							// Hide the loading indicator
+							showLoadingSignal.dispatch(false);
 						},
 
 						error: function (xhr, status, error) {
+							// Hide the loading indicator
+							showLoadingSignal.dispatch(false);
 
+							// Show an alert
+							appModel.set({ error: 'This server is currently unavailable.' });
 						}
 					});
 				}

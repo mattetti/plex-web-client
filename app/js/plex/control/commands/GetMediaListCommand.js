@@ -1,12 +1,13 @@
 define(
 	[
+		'plex/control/signals/ShowLoadingSignal',
 		'plex/model/AppModel',
 		'plex/model/collections/VideoCollection',
 		'plex/model/collections/MediaDirectoryCollection',
 		'plex/view/MediaView'
 	],
 
-	function (appModel, VideoCollection, MediaDirectoryCollection, MediaView) {
+	function (showLoadingSignal, appModel, VideoCollection, MediaDirectoryCollection, MediaView) {
 
 		var servers = appModel.get('servers');
 		var sections = appModel.get('sections');
@@ -59,30 +60,40 @@ define(
 
 		function onFetchMoviesSuccess(response) {
 			appModel.set({
-				loading: false,
 				showHeader: true,
 				view: new MediaView({ collection: collection })
 			});
+
+			// Hide the loading indicator
+			showLoadingSignal.dispatch(false);
 		}
 
 		function onFetchShowsSuccess(response) {
 			appModel.set({
-				loading: false,
 				showHeader: true,
 				view: new MediaView({ collection: collection })
 			});
+
+			// Hide the loading indicator
+			showLoadingSignal.dispatch(false);
 		}
 
 		function onFetchMusicSuccess(response) {
 			appModel.set({
-				loading: false,
 				showHeader: true,
 				view: new MediaView({ collection: collection })
 			});
+
+			// Hide the loading indicator
+			showLoadingSignal.dispatch(false);
 		}
 
 		function onError(xhr, status, error) {
-			console.log('Service error: ' + xhr + '\n' + status + '\n' + error);
+			// Hide the loading indicator
+			showLoadingSignal.dispatch(false);
+
+			// Show an alert
+			appModel.set({ error: 'These items are currently unavailable.' });
 		}
 
 		return {
