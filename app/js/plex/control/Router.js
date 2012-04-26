@@ -35,7 +35,8 @@ define(
 				'!/servers': 'servers',
 				'!/servers/:serverID/sections': 'sections',
 				'!/servers/:serverID/sections/:sectionID/list': 'list',
-				'!/servers/:serverID/details/:itemID': 'details',
+				'!/servers/:serverID/sections/:sectionID/details/:itemID': 'details',
+				'!/servers/:serverID/sections/:sectionID/player/:itemID': 'player',
 				'*404': 'error'
 			},
 			
@@ -135,7 +136,18 @@ define(
 
 			details: function () {
 				var serverID = arguments[0];
-				var itemID = arguments[1];
+				var sectionID = arguments[1];
+				var itemID = arguments[2];
+
+				if (this.isAuthenticated(this.list, arguments) === true) {
+					appModel.set('server', servers.get(serverID));
+				}
+			},
+
+			player: function () {
+				var serverID = arguments[0];
+				var sectionID = arguments[1];
+				var itemID = arguments[2];
 
 				if (this.isAuthenticated(this.list, arguments) === true) {
 					appModel.set('server', servers.get(serverID));
