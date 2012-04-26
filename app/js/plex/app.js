@@ -7,6 +7,7 @@ define(
 		'plex/control/init/BackboneInit',
 		'plex/control/init/HandlebarsInit',
 		'use!date',
+		'use!button',
 		'use!dropdown'
 	],
 
