@@ -107,18 +107,30 @@
 }
 
 .poster-list > li {
+	position: relative;
 	float: left;
 	margin: 0 10px 20px 10px;
 	width: 150px;
+	min-height: 230px;
+	text-align: center;
+
+	a {
+		position: absolute;
+		bottom: 20px;
+		width: 100%;
+		text-align: center;
+	}
 
 	.poster {
 		margin: 5px 0;
 	}
 
 	.poster-title {
+		position: absolute;
 		overflow: hidden;
+		left: 0;
+		bottom: 0;
 		width: 150px;
-		text-align: center;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		font-size: 14px;
