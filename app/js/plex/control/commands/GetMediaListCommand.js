@@ -106,6 +106,9 @@ define(
 					sections.fetch({
 						success: function (response) {
 							fetchList(response.get(sectionID));
+							
+							// Hide the loading indicator
+							showLoadingSignal.dispatch(false);
 						},
 						error: onError
 					});
