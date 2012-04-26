@@ -9,6 +9,11 @@ define(
 		var user = appModel.get('user');
 		var servers = appModel.get('servers');
 
+		// This only exists here as it will hold all thumbnails which will
+		// then be separated onto their respective server in the model
+		var thumbnails = new ThumbnailCollection();
+
+
 		function onFetchUserSuccess(response) {
 			servers.fetch({
 				success: onFetchServersSuccess,
@@ -21,28 +26,25 @@ define(
 				authenticated: true,
 				loading: false
 			});
-
-			// TODO: assign thumbnail collections server identifier so
-			// we know which server to assign the collection on response
-			servers.each(function (server) {
-				// Eric: Don't set the server here. It screws up the dropdown list component.
-				// appModel.set('server', server);
-				var thumbnails = new ThumbnailCollection();
-				thumbnails.fetch({
-					success: onFetchThumbnailsSuccess,
-					error: onFetchThumbnailsError
-				});
+				
+			thumbnails.fetch({
+				success: onFetchThumbnailsSuccess,
+				error: onFetchThumbnailsError
 			});
 			
 		}
 
 		function onFetchThumbnailsSuccess(response) {
-			// TODO: find the respective server to assign the collection to
-			servers.each(function (server) {
-
+			var groupedThumbnails = thumbnails.groupBy(function (thumbnail) {
+				return thumbnail.get('machineIdentifier');
 			});
 
-			// TODO: check to see success/error count matches with number of servers
+			servers.each(function (server) {
+				server.set('thumbnails', new ThumbnailCollection(
+					groupedThumbnails[server.get('machineIdentifier')]
+				));
+			});
+
 			appModel.set({loading: false});
 		}
 
@@ -51,7 +53,6 @@ define(
 			// still get the server list if we decide to update
 			// the UI to reflect this failure handle that here
 
-			// TODO: check to see success/error count matches with number of servers
 			appModel.set({loading: false});
 		}
 

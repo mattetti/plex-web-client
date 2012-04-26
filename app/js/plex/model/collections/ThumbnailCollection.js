@@ -20,11 +20,17 @@ define(
 
 			parse: function (response) {
 				var sections = $.xml2json(response).Directory;
-				var i = sections.length - 1;
-				var thumbnails = sections[i].Thumb;
+				var i = sections.length;
+				var thumbnails = [];
 
 				while(i--) {
-					thumbnails = _.union(thumbnails, sections[i].Thumb);
+					var thumbs = sections[i].Thumb;
+
+					_.each(thumbs, function (thumb) {
+						thumb.machineIdentifier = sections[i].machineIdentifier;
+					});
+
+					thumbnails = _.union(thumbnails, thumbs);
 				}
 
 				return thumbnails;
