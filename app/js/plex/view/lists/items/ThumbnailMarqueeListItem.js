@@ -16,8 +16,12 @@ define(
 			
 			template: Handlebars.compile(template),
 
-			loaded: new signals.Signal(),
+			loadedSignal: undefined,
 			
+			initialize: function () {
+				this.loadedSignal = new signals.Signal();
+			},
+
 			render: function () {
 				this.$el.html(this.template(this.model.toJSON()));
 				this.$('img').load(_.bind(this.onImageLoad, this));
@@ -26,11 +30,7 @@ define(
 			},
 
 			onImageLoad: function (event) {
-				this.loaded.dispatch();
-				var $image = $(event.target);
-				var width = $image.css('width');
-				$image.css({'width': 0, 'opacity': 0})
-					.animate({'width': width, 'opacity': 1}, 300);
+				this.loadedSignal.dispatch(event);
 			}
 		});
 

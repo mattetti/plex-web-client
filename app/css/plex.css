@@ -7906,10 +7906,10 @@ ul.nav .dropdown-menu:after {
 }
 .server-list > li .thumbnail-marquee-list ul li {
   float: left;
-  margin: 5px;
 }
 .server-list > li .thumbnail-marquee-list ul li img {
   height: 75px;
+  margin: 5px;
 }
 .server-list > li .thumbnail-marquee-list .poster:hover {
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);

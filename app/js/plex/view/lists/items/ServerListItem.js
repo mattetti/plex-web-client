@@ -37,7 +37,6 @@ define(
 			initialize: function () {
 				this.addBinding(this.model, 'change:thumbnails', this.onThumbnailsChange);
 				this.thumbnailList = new ThumbnailMarqueeList({collection: this.model.thumbnails});
-				this.thumbnailList.loaded.add(function () { console.log('loaded')});
 			},
 
 
