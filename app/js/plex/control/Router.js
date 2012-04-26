@@ -35,6 +35,7 @@ define(
 				'!/servers': 'servers',
 				'!/servers/:serverID/sections': 'sections',
 				'!/servers/:serverID/sections/:sectionID/list': 'list',
+				'!/servers/:serverID/details/:itemID': 'details',
 				'*404': 'error'
 			},
 			
@@ -129,6 +130,15 @@ define(
 					appModel.set('server', servers.get(serverID));
 
 					getMediaListSignal.dispatch(sectionID);
+				}
+			},
+
+			details: function () {
+				var serverID = arguments[0];
+				var itemID = arguments[1];
+
+				if (this.isAuthenticated(this.list, arguments) === true) {
+					appModel.set('server', servers.get(serverID));
 				}
 			},
 

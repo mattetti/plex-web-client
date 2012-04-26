@@ -2,6 +2,7 @@ define(
 	[
 		'text!templates/lists/items/PosterListItem.tpl',
 		'plex/control/Transcoder',
+		'plex/model/AppModel',
 		'plex/view/BaseView',
 
 		// Globals
@@ -9,31 +10,20 @@ define(
 		'use!handlebars'
 	],
 
-	function (template, transcoder, BaseView) {
+	function (template, transcoder, appModel, BaseView) {
 
 		var tpl = Handlebars.compile(template);
 
 		var PosterListItem = BaseView.extend({
 			tagName: 'li',
 			
-			events: {
-				'click a': 'onClick'
-			},
-			
 			render: function () {
-				this.$el.html(tpl(this.model.toJSON()));
+				this.$el.html(tpl({
+					serverID: appModel.get('server').id,
+					item: this.model.toJSON()
+				}));
 
 				return this;
-			},
-
-			onClick: function (event) {
-				event.preventDefault();
-
-				var Media = this.model.get('Media');
-
-				if (typeof(Media) !== 'undefined') {
-					transcoder.video(Media.Part.key);
-				}
 			}
 		});
 
