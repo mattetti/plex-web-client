@@ -2,17 +2,18 @@ define(
 	[
 		'plex/control/signals/ShowLoadingSignal',
 		'plex/model/AppModel',
-		'plex/view/SectionsView'
+		'plex/view/QueueView'
 	],
 
-	function (showLoadingSignal, appModel, SectionsView) {
+	function (showLoadingSignal, appModel, QueueView) {
 		
-		var sections = appModel.get('sections');
+		var queue = appModel.get('queue');
 
 		function onSuccess(response) {
 			appModel.set({
 				showHeader: true,
-				view: new SectionsView(),
+				view: new QueueView(),
+				server: undefined,
 				section: undefined
 			});
 
@@ -25,12 +26,12 @@ define(
 			showLoadingSignal.dispatch(false);
 
 			// Show an alert
-			appModel.set({ error: 'This server is currently unavailable.' });
+			appModel.set({ error: 'The queue is unavailable.' });
 		}
 
 		return {
 			execute: function () {
-				sections.fetch({
+				queue.fetch({
 					success: onSuccess,
 					error: onError
 				});
