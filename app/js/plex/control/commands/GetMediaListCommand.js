@@ -69,7 +69,7 @@ define(
 			});
 
 			// Hide the loading indicator
-			//dispatcher.trigger('command:ShowLoading', false);
+			dispatcher.trigger('command:ShowLoading', false);
 		}
 
 		function onFetchShowsSuccess(response) {
@@ -79,7 +79,7 @@ define(
 			});
 
 			// Hide the loading indicator
-			//dispatcher.trigger('command:ShowLoading', false);
+			dispatcher.trigger('command:ShowLoading', false);
 		}
 
 		function onFetchMusicSuccess(response) {
@@ -89,12 +89,12 @@ define(
 			});
 
 			// Hide the loading indicator
-			//dispatcher.trigger('command:ShowLoading', false);
+			dispatcher.trigger('command:ShowLoading', false);
 		}
 
 		function onError(xhr, status, error) {
 			// Hide the loading indicator
-			//dispatcher.trigger('command:ShowLoading', false);
+			dispatcher.trigger('command:ShowLoading', false);
 
 			// Show an alert
 			appModel.set({ error: 'These items are currently unavailable.' });
@@ -116,7 +116,7 @@ define(
 						fetchList(response.get(sectionID));
 						
 						// Hide the loading indicator
-						//dispatcher.trigger('command:ShowLoading', false);
+						dispatcher.trigger('command:ShowLoading', false);
 					},
 					error: onError
 				});

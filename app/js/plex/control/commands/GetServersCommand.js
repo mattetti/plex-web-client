@@ -16,7 +16,7 @@ define(
 			});
 
 			// Hide the loading indicator
-			//dispatcher.trigger('command:ShowLoading', false);
+			dispatcher.trigger('command:ShowLoading', false);
 		}
 
 		function onFetchThumbnailsSuccess(response) {
@@ -32,7 +32,7 @@ define(
 			});
 
 			// Hide the loading indicator
-			//dispatcher.trigger('command:ShowLoading', false);
+			dispatcher.trigger('command:ShowLoading', false);
 		}
 
 		function onFetchThumbnailsError(xhr, status, error) {
@@ -41,15 +41,15 @@ define(
 			// the UI to reflect this failure handle that here
 
 			// Hide the loading indicator
-			//dispatcher.trigger('command:ShowLoading', false);
+			dispatcher.trigger('command:ShowLoading', false);
 		}
 
 		function onError(xhr, status, error) {
 			// Hide the loading indicator
-			//dispatcher.trigger('command:ShowLoading', false);
+			dispatcher.trigger('command:ShowLoading', false);
 
 			// Show an alert
-			appModel.set({ error: 'Servers unavailable.' });
+			appModel.set({error: 'Servers unavailable.'});
 		}
 
 

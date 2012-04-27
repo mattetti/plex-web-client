@@ -21,12 +21,12 @@ define(
 			});
 
 			// Hide the loading indicator
-			//dispatcher.trigger('command:ShowLoading', false);
+			dispatcher.trigger('command:ShowLoading', false);
 		}
 
 		function onError(xhr, status, error) {
 			// Hide the loading indicator
-			//dispatcher.trigger('command:ShowLoading', false);
+			dispatcher.trigger('command:ShowLoading', false);
 
 			// Show an alert
 			appModel.set({ error: 'The username or password is incorrect.' });
@@ -37,7 +37,7 @@ define(
 		// -------------------- Execute --------------------
 		//
 
-		function execute(username, password) {
+		function execute(username, password) {			
 			user.set('username', username);
 			user.set('password', password);
 

@@ -17,12 +17,12 @@ define(
 			});
 
 			// Hide the loading indicator
-			//dispatcher.trigger('command:ShowLoading', false);
+			dispatcher.trigger('command:ShowLoading', false);
 		}
 
 		function onError(xhr, status, error) {
 			// Hide the loading indicator
-			//dispatcher.trigger('command:ShowLoading', false);
+			dispatcher.trigger('command:ShowLoading', false);
 
 			// Show an alert
 			appModel.set({ error: 'This server is currently unavailable.' });
