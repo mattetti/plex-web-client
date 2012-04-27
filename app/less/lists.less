@@ -123,14 +123,19 @@
 
 .filter-list {
 	float: right;
-	margin: 0;
+	margin: 10px 0 0 0;
 	list-style-type: none;
 }
 
 .filter-list > li {
 	float: left;
-	margin-left: 10px;
+	margin-left: 20px;
+	padding: 5px 0;
 	font-size: 18px;
+
+	&.selected {
+		border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+	}
 }
 
 .poster-media-list {
