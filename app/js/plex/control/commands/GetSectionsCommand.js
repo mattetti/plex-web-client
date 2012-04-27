@@ -1,11 +1,11 @@
 define(
 	[
-		'plex/control/signals/ShowLoadingSignal',
+		'plex/control/Dispatcher',
 		'plex/model/AppModel',
 		'plex/view/SectionsView'
 	],
 
-	function (showLoadingSignal, appModel, SectionsView) {
+	function (dispatcher, appModel, SectionsView) {
 		
 		var sections = appModel.get('sections');
 
@@ -17,24 +17,29 @@ define(
 			});
 
 			// Hide the loading indicator
-			showLoadingSignal.dispatch(false);
+			//dispatcher.trigger('command:ShowLoading', false);
 		}
 
 		function onError(xhr, status, error) {
 			// Hide the loading indicator
-			showLoadingSignal.dispatch(false);
+			//dispatcher.trigger('command:ShowLoading', false);
 
 			// Show an alert
 			appModel.set({ error: 'This server is currently unavailable.' });
 		}
 
-		return {
-			execute: function () {
-				sections.fetch({
-					success: onSuccess,
-					error: onError
-				});
-			}
+
+		//
+		// -------------------- Execute --------------------
+		//
+
+		function execute() {
+			sections.fetch({
+				success: onSuccess,
+				error: onError
+			});
 		}
+
+		dispatcher.on('command:GetSections', execute);
 	}
 );

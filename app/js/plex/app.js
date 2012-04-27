@@ -1,7 +1,7 @@
 define(
 	[
 		'plex/control/Router',
-		'plex/control/CommandMap',
+		'plex/control/Commands',	
 
 		// Globals
 		'plex/control/init/BackboneInit',
@@ -15,8 +15,6 @@ define(
 		return {
 			init: function () {
 				new Router();
-
-				commandMap.initialize();
 			}
 		}
 	}

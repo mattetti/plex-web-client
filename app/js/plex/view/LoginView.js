@@ -2,7 +2,6 @@ define(
 	[
 		'text!templates/LoginView.tpl',
 		'plex/control/Dispatcher',
-		'plex/control/signals/LoginSignal',
 		'plex/model/AppModel',
 		'plex/view/BaseView',
 
@@ -11,7 +10,7 @@ define(
 		'use!handlebars'
 	],
 
-	function (template, dispatcher, loginSignal, appModel, BaseView) {
+	function (template, dispatcher, appModel, BaseView) {
 
 		var tpl = Handlebars.compile(template);
 
@@ -32,8 +31,8 @@ define(
 			onLoginSubmit: function (event) {
 				event.preventDefault();
 
-				loginSignal.dispatch(	this.$('input[name=username]').val(), 
-										this.$('input[name=password]').val());
+				dispatcher.trigger('command:Login',	this.$('input[name=username]').val(),
+													this.$('input[name=password]').val());
 			}
 		});
 

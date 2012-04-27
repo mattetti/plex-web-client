@@ -1,13 +1,17 @@
 define(
 	[
-		'plex/control/signals/ShowLoadingSignal',
+		'plex/control/Dispatcher',
 		'plex/model/AppModel',
 		'plex/model/collections/VideoCollection',
 		'plex/model/collections/MediaDirectoryCollection',
 		'plex/view/MediaView'
 	],
 
-	function (showLoadingSignal, appModel, VideoCollection, MediaDirectoryCollection, MediaView) {
+	function (	dispatcher, 
+				appModel, 
+				VideoCollection, 
+				MediaDirectoryCollection, 
+				MediaView) {
 
 		var servers = appModel.get('servers');
 		var sections = appModel.get('sections');
@@ -65,7 +69,7 @@ define(
 			});
 
 			// Hide the loading indicator
-			showLoadingSignal.dispatch(false);
+			//dispatcher.trigger('command:ShowLoading', false);
 		}
 
 		function onFetchShowsSuccess(response) {
@@ -75,7 +79,7 @@ define(
 			});
 
 			// Hide the loading indicator
-			showLoadingSignal.dispatch(false);
+			//dispatcher.trigger('command:ShowLoading', false);
 		}
 
 		function onFetchMusicSuccess(response) {
@@ -85,35 +89,40 @@ define(
 			});
 
 			// Hide the loading indicator
-			showLoadingSignal.dispatch(false);
+			//dispatcher.trigger('command:ShowLoading', false);
 		}
 
 		function onError(xhr, status, error) {
 			// Hide the loading indicator
-			showLoadingSignal.dispatch(false);
+			//dispatcher.trigger('command:ShowLoading', false);
 
 			// Show an alert
 			appModel.set({ error: 'These items are currently unavailable.' });
 		}
 
-		return {
-			execute: function (sectionID) {
-				var section = sections.get(sectionID);
 
-				if (typeof(section) === 'object') {
-					fetchList(section);
-				} else {
-					sections.fetch({
-						success: function (response) {
-							fetchList(response.get(sectionID));
-							
-							// Hide the loading indicator
-							showLoadingSignal.dispatch(false);
-						},
-						error: onError
-					});
-				}
+		//
+		// -------------------- Execute --------------------
+		//
+
+		function execute (sectionID) {
+			var section = sections.get(sectionID);
+
+			if (typeof(section) === 'object') {
+				fetchList(section);
+			} else {
+				sections.fetch({
+					success: function (response) {
+						fetchList(response.get(sectionID));
+						
+						// Hide the loading indicator
+						//dispatcher.trigger('command:ShowLoading', false);
+					},
+					error: onError
+				});
 			}
 		}
+
+		dispatcher.on('command:GetMediaList', execute);
 	}
 );
