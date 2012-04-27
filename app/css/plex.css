@@ -7147,14 +7147,6 @@ input:focus {
   box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.15);
 }
 .poster {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -8095,6 +8087,7 @@ ul.nav .dropdown-menu:after {
 }
 .poster-list > li a.poster-link {
   position: absolute;
+  left: 0;
   bottom: 20px;
   width: 100%;
   text-align: center;
@@ -8112,24 +8105,4 @@ ul.nav .dropdown-menu:after {
   white-space: nowrap;
   font-size: 14px;
   text-shadow: 0 1px 0 #000;
-}
-.poster-list > li .btn-group {
-  position: absolute;
-  bottom: 35px;
-  left: 50%;
-  margin-left: -45px;
-  opacity: 0;
-  filter: alpha(opacity=0);
-  opacity: 0;
-  filter: alpha(opacity=0);
-}
-.poster-list > li .dropdown-menu {
-  text-align: left;
-  font-size: 14px;
-}
-.poster-list > li:hover .btn-group {
-  opacity: 1;
-  filter: alpha(opacity=100);
-  opacity: 1;
-  filter: alpha(opacity=100);
 }
