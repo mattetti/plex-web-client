@@ -2,7 +2,8 @@
   "name": "plex-web-client",
   "version": "0.0.1",
   "engines": {
-    "node": "*"
+    "node": "latest",
+    "npm": "latest"
   },
   "scripts": {
     "start": "node server.js"
