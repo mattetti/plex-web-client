@@ -42,6 +42,9 @@ define(
 
 				this.$el.append(this.list.render().el);
 
+				// Trigger lazy loaded images
+				this.$('img.poster').lazyload({ threshold: 500, skip_invisible: false });
+
 				return this;
 			},
 			
