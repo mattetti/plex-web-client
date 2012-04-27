@@ -1,6 +1,6 @@
 define(
 	[
-		'plex/control/dispatcher',
+		'plex/control/Dispatcher',
 		'plex/model/AppModel',
 
 		// Globals
