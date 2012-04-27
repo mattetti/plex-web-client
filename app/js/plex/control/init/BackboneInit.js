@@ -1,13 +1,13 @@
 define(
 	[
-		'plex/control/signals/ShowLoadingSignal',
+		'plex/control/dispatcher',
 		'plex/model/AppModel',
 
 		// Globals
 		'use!backbone'
 	],
 
-	function (showLoadingSignal, appModel) {
+	function (dispatcher, appModel) {
 
 		var originalSync = Backbone.sync;
 
@@ -15,6 +15,9 @@ define(
 		Backbone.sync = function (method, model, options) {
 			var user = appModel.get('user');
 			var server = appModel.get('server');
+
+			// Show the loading indicator
+			dispatcher.trigger('command:ShowLoading', true);
 
 			if (!options.url && model.url) {
 				options.url = _.isFunction(model.url) ? model.url() : model.url;
@@ -47,9 +50,6 @@ define(
 			options.timeout = 5000;
 
 			originalSync(method, model, options);
-
-			// Show the loading indicator
-			showLoadingSignal.dispatch(true);
 		}
 	}
 );

@@ -1,7 +1,7 @@
 define(
 	[
 		'text!templates/lists/items/QueueListItem.tpl',
-		'plex/control/signals/MarkQueueItemWatchedSignal',
+		'plex/control/dispatcher',
 		'plex/view/BaseView',
 
 		// Globals
@@ -9,7 +9,7 @@ define(
 		'use!handlebars'
 	],
 
-	function (template, markQueueItemWatchedSignal, BaseView) {
+	function (template, dispatcher, BaseView) {
 
 		var tpl = Handlebars.compile(template);
 
@@ -50,7 +50,7 @@ define(
 			onMarkWatchedClick: function (event) {
 				event.preventDefault();
 
-				markQueueItemWatchedSignal.dispatch(this.model);
+				dispatcher.trigger('command:MarkQueueItemWatched', this.model);
 			},
 
 			onMarkUnwatchedClick: function (event) {

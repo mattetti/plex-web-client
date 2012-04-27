@@ -1,11 +1,11 @@
 define(
 	[
-		'plex/control/signals/ShowLoadingSignal',
+		'plex/control/Dispatcher',
 		'plex/model/AppModel',
 		'plex/view/QueueView'
 	],
 
-	function (showLoadingSignal, appModel, QueueView) {
+	function (dispatcher, appModel, QueueView) {
 		
 		var queue = appModel.get('queue');
 
@@ -18,24 +18,29 @@ define(
 			});
 
 			// Hide the loading indicator
-			showLoadingSignal.dispatch(false);
+			//dispatcher.trigger('command:ShowLoading', false);
 		}
 
 		function onError(xhr, status, error) {
 			// Hide the loading indicator
-			showLoadingSignal.dispatch(false);
+			//dispatcher.trigger('command:ShowLoading', false);
 
 			// Show an alert
 			appModel.set({ error: 'The queue is unavailable.' });
 		}
 
-		return {
-			execute: function () {
-				queue.fetch({
-					success: onSuccess,
-					error: onError
-				});
-			}
+
+		//
+		// -------------------- Execute --------------------
+		//
+
+		function execute() {
+			queue.fetch({
+				success: onSuccess,
+				error: onError
+			});
 		}
+
+		dispatcher.on('command:GetQueue', execute);
 	}
 );

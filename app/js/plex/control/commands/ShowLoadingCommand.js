@@ -1,27 +1,33 @@
 define(
 	[
+		'plex/control/Dispatcher',
 		'plex/model/AppModel'
 	],
 
-	function (appModel) {
+	function (dispatcher, appModel) {
 		var count = 0;
 
-		return {
-			execute: function (show) {
-				if (show === true) {
-					if (count === 0) {
-						appModel.set({ loading: true });
-					}
 
-					count++;
-				} else {
-					count--;
+		//
+		// -------------------- Execute --------------------
+		//
 
-					if (count === 0) {
-						appModel.set({ loading: false });
-					}
+		function execute(show) {
+			if (show === true) {
+				if (count === 0) {
+					appModel.set({ loading: true });
+				}
+
+				count++;
+			} else {
+				count--;
+
+				if (count === 0) {
+					appModel.set({ loading: false });
 				}
 			}
 		}
+
+		dispatcher.on('command:ShowLoading', execute);
 	}
 );

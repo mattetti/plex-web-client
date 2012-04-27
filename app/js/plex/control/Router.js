@@ -1,10 +1,6 @@
 define(
 	[
 		'plex/control/Dispatcher',
-		'plex/control/signals/ShowLoadingSignal',
-		'plex/control/signals/GetQueueSignal',
-		'plex/control/signals/GetSectionsSignal',
-		'plex/control/signals/GetMediaListSignal',
 		'plex/model/AppModel',
 		'plex/view/AppView',
 		'plex/view/LoginView',
@@ -15,7 +11,7 @@ define(
 		'use!backbone'
 	],
 
-	function (dispatcher, showLoadingSignal, getQueueSignal, getSectionsSignal, getMediaListSignal, appModel, AppView, LoginView, ServersView, ErrorView) {
+	function (dispatcher, appModel, AppView, LoginView, ServersView, ErrorView) {
 		
 		var queue = appModel.get('queue');
 		var servers = appModel.get('servers');
@@ -95,7 +91,7 @@ define(
 
 			queue: function () {
 				if (this.isAuthenticated(this.queue, arguments) === true) {
-					getQueueSignal.dispatch();
+					dispatcher.trigger('command:GetQueue');
 				}
 			},
 
@@ -107,6 +103,8 @@ define(
 						server: undefined,
 						section: undefined
 					});
+
+					dispatcher.trigger('command:GetServers');
 				}
 			},
 
@@ -116,7 +114,7 @@ define(
 				if (this.isAuthenticated(this.sections, arguments) === true) {
 					appModel.set('server', servers.get(serverID));
 
-					getSectionsSignal.dispatch();
+					dispatcher.trigger('command:GetSections', serverID);
 				}
 			},
 
@@ -127,7 +125,7 @@ define(
 				if (this.isAuthenticated(this.list, arguments) === true) {
 					appModel.set('server', servers.get(serverID));
 
-					getMediaListSignal.dispatch(sectionID);
+					dispatcher.trigger('command:GetMediaList', sectionID);
 				}
 			},
 

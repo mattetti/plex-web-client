@@ -71,14 +71,13 @@ define(
 
 			start: function () {
 				if (this.loaded && !this.running && !this.animating) {
-					this.addNextThumb();
 					this.running = true;
+					this.addNextThumb();
 				}
 			},
 
 			stop: function () {
 				this.running = false;
-				this.animating = false;
 			},
 
 			addNextThumb: function () {
@@ -100,7 +99,7 @@ define(
 			itemWidth: function(item) {
 				var $item = $(item);
 
-				return 	parseInt($item.css('width')) + 
+				return 	parseInt($item.css('width')) +
 						parseInt($item.css('marginLeft')) +
 						parseInt($item.css('marginRight'));
 			},
@@ -190,6 +189,8 @@ define(
 				var self = this;
 				var containerWidth = 0;
 				var $images = this.$list.find('img');
+
+				this.animating = false;
 
 				for (var i = 1 ; i < $images.length; i++) {
 					containerWidth += self.itemWidth($images[i]);
