@@ -1,6 +1,6 @@
 define(
 	[
-		'text!templates/lists/items/PosterListItem.tpl',
+		'text!templates/lists/media/items/ExpandedListItem.tpl',
 		'plex/control/Transcoder',
 		'plex/model/AppModel',
 		'plex/view/BaseView',
@@ -14,7 +14,7 @@ define(
 
 		var tpl = Handlebars.compile(template);
 
-		var PosterListItem = BaseView.extend({
+		var ExpandedListItem = BaseView.extend({
 			tagName: 'li',
 			
 			render: function () {
@@ -28,6 +28,6 @@ define(
 			}
 		});
 
-		return PosterListItem;
+		return ExpandedListItem;
 	}
 );

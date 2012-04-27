@@ -7092,6 +7092,30 @@ h1 {
 .btn-inverse:hover {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
 }
+.btn-group .btn {
+  border-left: 1px solid rgba(0, 0, 0, 0.25);
+  border-right: 1px solid rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.btn-group .btn:active {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.btn-group .btn:first-child {
+  border-left: none;
+}
+.btn-group .btn:last-child {
+  border-right: none;
+}
 input {
   border: 2px solid #fff;
   background-color: #f5f5f5;
@@ -7212,6 +7236,24 @@ body {
 }
 section.content {
   padding: 100px 40px 200px;
+  *zoom: 1;
+  *zoom: 1;
+}
+section.content:before,
+section.content:after {
+  display: table;
+  content: "";
+}
+section.content:after {
+  clear: both;
+}
+section.content:before,
+section.content:after {
+  display: table;
+  content: "";
+}
+section.content:after {
+  clear: both;
 }
 section.fixed-width {
   margin: 0 auto;
@@ -7699,7 +7741,7 @@ h1.plex-icon {
   box-sizing: border-box;
   text-align: left;
 }
-header {
+#container > header {
   position: fixed;
   left: 0;
   right: 0;
@@ -8055,29 +8097,12 @@ ul.nav .dropdown-menu:after {
 .video-detail .video-detail-right a {
   margin-left: 8px;
 }
-.poster-list {
-  margin: 0;
-  *zoom: 1;
-  *zoom: 1;
+.poster-media-list {
+  float: left;
+  margin: 0 0 0 260px;
   list-style-type: none;
 }
-.poster-list:before,
-.poster-list:after {
-  display: table;
-  content: "";
-}
-.poster-list:after {
-  clear: both;
-}
-.poster-list:before,
-.poster-list:after {
-  display: table;
-  content: "";
-}
-.poster-list:after {
-  clear: both;
-}
-.poster-list > li {
+.poster-media-list > li {
   position: relative;
   float: left;
   margin: 0 10px 20px 10px;
@@ -8085,17 +8110,17 @@ ul.nav .dropdown-menu:after {
   min-height: 230px;
   text-align: center;
 }
-.poster-list > li a.poster-link {
+.poster-media-list > li a.poster-link {
   position: absolute;
   left: 0;
   bottom: 20px;
   width: 100%;
   text-align: center;
 }
-.poster-list > li .poster {
+.poster-media-list > li .poster {
   margin: 5px 0;
 }
-.poster-list > li .poster-title {
+.poster-media-list > li .poster-title {
   position: absolute;
   overflow: hidden;
   left: 0;
@@ -8105,4 +8130,51 @@ ul.nav .dropdown-menu:after {
   white-space: nowrap;
   font-size: 14px;
   text-shadow: 0 1px 0 #000;
+}
+.expanded-media-list {
+  float: left;
+  margin: 0 0 0 260px;
+  list-style-type: none;
+}
+.compact-media-list {
+  float: left;
+  margin: 0 0 0 260px;
+  list-style-type: none;
+}
+.sidebar {
+  position: fixed;
+  float: left;
+  width: 250px;
+  margin-top: 5px;
+  padding: 10px 15px 15px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+.sidebar > header {
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 5px solid rgba(255, 255, 255, 0.05);
+  font-size: 18px;
+}
+.sidebar > .btn-group {
+  margin-left: 57px;
 }

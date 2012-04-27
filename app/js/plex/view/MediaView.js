@@ -1,31 +1,87 @@
 define(
 	[
+		'text!templates/MediaView.tpl',
 		'plex/model/AppModel',
 		'plex/view/BaseView',
-		'plex/view/lists/PosterList',
+		'plex/view/lists/media/PosterList',
+		'plex/view/lists/media/ExpandedList',
+		'plex/view/lists/media/CompactList',
 
 		// Globals
 		'use!backbone',
 		'use!handlebars'
 	],
 
-	function (appModel, BaseView, PosterList) {
+	function (template, appModel, BaseView, PosterList, ExpandedList, CompactList) {
+
+		var tpl = Handlebars.compile(template);
+
 		var MediaView = BaseView.extend({
 			tagName: 'section',
 			className: 'content',
 
+			view: 'poster',
+			collection: undefined,
+
 			events: {
+				'click .poster-view-btn': 'onPosterViewClick',
+				'click .expanded-view-btn': 'onExpandedViewClick',
+				'click .compact-view-btn': 'onCompactViewClick'
 			},
 
 			initialize: function (options) {
-				this.list = this.registerView(new PosterList({ collection: options.collection }));
+				this.collection = options.collection;
+
+				this.list = this.registerView(new PosterList({ collection: this.collection }));
 			},
 			
 			render: function () {
-				this.$el.html();
+				this.$el.html(tpl({
+					view: this.view
+				}));
+
 				this.$el.append(this.list.render().el);
 
 				return this;
+			},
+			
+			onPosterViewClick: function (event) {
+				if (this.view !== 'poster') {
+					event.preventDefault();
+
+					this.view = 'poster';
+
+					this.removeView(this.list);
+					this.list = this.registerView(new PosterList({ collection: this.collection }));
+
+					this.render();
+				}
+			},
+			
+			onExpandedViewClick: function (event) {
+				if (this.view !== 'expanded') {
+					event.preventDefault();
+
+					this.view = 'expanded';
+
+					this.removeView(this.list);
+					this.list = this.registerView(new ExpandedList({ collection: this.collection }));
+
+					this.render();
+				}
+			},
+			
+			onCompactViewClick: function (event) {
+				if (this.view !== 'compact') {
+					event.preventDefault();
+
+					this.view = 'compact';
+
+					this.removeView(this.list);
+					this.list = this.registerView(new CompactList({ collection: this.collection }));
+
+					this.render();
+				}
 			}
 		});
 
