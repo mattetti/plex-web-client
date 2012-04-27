@@ -1,3 +1,5 @@
+var port = process.env.PORT || 3000;
+
 var express = require('express'),
 	httpProxy = require('http-proxy'),
 	routingProxy = new httpProxy.RoutingProxy(),
@@ -35,4 +37,4 @@ app.get('/', function (req, res) {
 	res.redirect('/app/index-dev.html');
 });
 
-app.listen(3000);
+app.listen(port);
