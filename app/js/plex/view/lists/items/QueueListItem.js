@@ -60,6 +60,8 @@ define(
 			onDeleteClick: function (event) {
 				event.preventDefault();
 
+				dispatcher.trigger('command:DeleteQueueItem', this.model);
+
 				this.close();
 			},
 

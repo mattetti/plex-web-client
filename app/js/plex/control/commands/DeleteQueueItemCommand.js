@@ -33,6 +33,6 @@ define(
 			});
 		}
 
-		dispatcher.on('command:MarkQueueItemWatched', execute);
+		dispatcher.on('command:DeleteQueueItem', execute);
 	}
 );
