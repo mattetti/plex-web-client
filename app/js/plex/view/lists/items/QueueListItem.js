@@ -23,7 +23,7 @@ define(
 			},
 
 			initialize: function () {
-				_.bindAll(this, ['onAnimationComplete']);
+				_.bindAll(this, 'onAnimationComplete');
 			},
 			
 			render: function () {
