@@ -8111,6 +8111,10 @@ ul.nav .dropdown-menu:after {
 .filter-list > li.selected {
   border-bottom: 2px solid rgba(255, 255, 255, 0.15);
 }
+.filter-list > li.selected a {
+  color: #eee;
+  text-decoration: none;
+}
 .poster-media-list {
   float: left;
   margin: 0 0 0 270px;

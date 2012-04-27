@@ -10,7 +10,7 @@ define(
 
 		function onError(xhr, status, error) {
 			// Show an alert
-			appModel.set({ error: 'This item could not be marked as watched.' });
+			appModel.set({ error: 'This video could not be deleted.' });
 		}
 
 
