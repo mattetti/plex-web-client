@@ -8,6 +8,15 @@ define(
 
 	function (transcoder) {
 
+		Handlebars.registerHelper('eq', function(arg1, arg2, ok, bad) {
+			if (arg1 === arg2)
+			{
+				return new Handlebars.SafeString(ok);
+			}
+			
+			return new Handlebars.SafeString(bad);
+		});
+
 		Handlebars.registerHelper('timeAgo', function (timestamp) {
 			var msPerMinute = 60 * 1000,
 				msPerHour = msPerMinute * 60,

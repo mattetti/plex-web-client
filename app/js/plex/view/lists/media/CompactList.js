@@ -1,17 +1,17 @@
 define(
 	[
 		'plex/view/BaseView',
-		'plex/view/lists/items/PosterListItem',
+		'plex/view/lists/media/items/CompactListitem',
 
 		// Globals
 		'use!backbone',
 		'use!handlebars'
 	],
 
-	function (BaseView, PosterListItem) {
-		var PosterList = BaseView.extend({
+	function (BaseView, CompactListitem) {
+		var CompactList = BaseView.extend({
 			tagName: 'ul',
-			className: 'poster-list',
+			className: 'compact-media-list',
 
 			initialize: function () {
 				this.addBinding(this.collection, 'add', this.onAdd);
@@ -28,7 +28,7 @@ define(
 			},
 
 			onAdd: function (media) {
-				var item = new PosterListItem({ model: media });
+				var item = new CompactListitem({ model: media });
 
 				// Register the view so it will be cleaned up on destroy
 				this.registerView(item);
@@ -44,6 +44,6 @@ define(
 			}
 		});
 
-		return PosterList;
+		return CompactList;
 	}
 );

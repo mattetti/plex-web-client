@@ -121,13 +121,13 @@
 	}
 }
 
-.poster-list {
-	margin: 0;
-	.clearfix();
+.poster-media-list {
+	float: left;
+	margin: 0 0 0 270px;
 	list-style-type: none;
 }
 
-.poster-list > li {
+.poster-media-list > li {
 	position: relative;
 	float: left;
 	margin: 0 10px 20px 10px;
@@ -137,6 +137,7 @@
 
 	a.poster-link {
 		position: absolute;
+		left: 0;
 		bottom: 20px;
 		width: 100%;
 		text-align: center;
@@ -157,4 +158,16 @@
 		font-size: 14px;
 		text-shadow: 0 1px 0 #000;
 	}
+}
+
+.expanded-media-list {
+	float: left;
+	margin: 0 0 0 270px;
+	list-style-type: none;
+}
+
+.compact-media-list {
+	float: left;
+	margin: 0 0 0 270px;
+	list-style-type: none;
 }
