@@ -47,7 +47,7 @@ define(
 			options.contentType = 'application/xml',
 			options.dataType = 'text';
 			options.processData = false;
-			options.timeout = 5000;
+			options.timeout = 8000;
 
 			originalSync(method, model, options);
 		}

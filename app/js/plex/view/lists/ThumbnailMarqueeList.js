@@ -136,15 +136,7 @@ define(
 			onThumbnailLoaded: function (event) {
 				this.loadedThumbnails++;
 
-				var $image = $(event.target);
-				var width = $image.css('width');
-
-				$image.css({'width': 0, 'opacity': 0})
-					.animate(
-						{
-							'width': width, 
-							'opacity': 1
-						}, 400);
+				$(event.target).css('opacity', 0).animate({ opacity: 1 }, 400);
 
 				if (this.loadedThumbnails === this.numVisibleItems) {
 					this.loadedSignal.dispatch();

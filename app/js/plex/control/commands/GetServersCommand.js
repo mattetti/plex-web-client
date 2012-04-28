@@ -36,7 +36,7 @@ define(
 		}
 
 		function onFetchThumbnailsError(xhr, status, error) {
-			// For now ail silently on error here, the user will 
+			// For now fail silently on error here, the user will 
 			// still get the server list if we decide to update
 			// the UI to reflect this failure handle that here
 

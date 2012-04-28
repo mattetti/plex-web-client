@@ -29,7 +29,11 @@ define(
 			dispatcher.trigger('command:ShowLoading', false);
 
 			// Show an alert
-			appModel.set({ error: 'The username or password is incorrect.' });
+			if (status.statusText === 'timeout') {
+				appModel.set({ error: 'The myPlex server is not responding.'})
+			} else {
+				appModel.set({ error: 'The username or password is incorrect.' });
+			}
 		}
 
 
