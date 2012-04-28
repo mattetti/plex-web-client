@@ -26,7 +26,7 @@ define(
 			dispatcher.trigger('command:ShowLoading', false);
 
 			// Show an alert
-			appModel.set({ error: 'The queue is unavailable.' });
+			appModel.set({ error: 'The queue is currently unavailable.' });
 		}
 
 

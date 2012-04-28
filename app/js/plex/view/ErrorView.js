@@ -14,7 +14,7 @@ define(
 
 		var ErrorView = BaseView.extend({
 			tagName: 'section',
-			className: 'content fixed-width animated-fast scaleIn',
+			className: 'content fatal animated scaleIn',
 
 			render: function () {
 				this.$el.html(tpl());
