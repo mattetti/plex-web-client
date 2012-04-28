@@ -89,7 +89,13 @@ define(
 		});
 
 		Handlebars.registerHelper('formatDate', function (date) {
-			return Date.parse(date).toString('MMM d, yyyy');
+			var parsed = Date.parse(date);
+
+			if (parsed) {
+				return parsed.toString('MMM d, yyyy');
+			} else {
+				return 'Unknown';
+			}
 		});
 
 		Handlebars.registerHelper('transcodeImage', function (path, width, height) {
