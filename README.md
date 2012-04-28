@@ -40,7 +40,7 @@ Build Process
 
 	`node server.js`
 
-4. Navigate to `localhost:3000` (adding dev=true as URL param will point wrapper to development index)
+4. Navigate to `localhost:3000`
 
 
 Heroku Environment
