@@ -22,18 +22,21 @@ define(
 
 			view: 'poster',
 			collection: undefined,
+			search: '',
 
 			events: {
 				'resize': 'onResize',
 				'click .poster-view-btn': 'onPosterViewClick',
 				'click .expanded-view-btn': 'onExpandedViewClick',
-				'click .compact-view-btn': 'onCompactViewClick'
+				'click .compact-view-btn': 'onCompactViewClick',
+				'blur .search-query': 'onSearchChange',
+				'keyup .search-query': 'onSearchChange'
 			},
 
-			initialize: function (options) {
-				this.collection = options.collection;
+			initialize: function () {
+				this.listCollection = new Backbone.Collection(this.collection.models);
 
-				this.list = this.registerView(new PosterList({ collection: this.collection }));
+				this.list = this.registerView(new PosterList({ collection: this.listCollection }));
 
 				_.bindAll(this, 'onResize', 'loadPosters');
 
@@ -42,7 +45,8 @@ define(
 			
 			render: function () {
 				this.$el.html(tpl({
-					view: this.view
+					view: this.view,
+					search: this.search
 				}));
 
 				this.$el.append(this.list.render().el);
@@ -77,7 +81,7 @@ define(
 					this.view = 'poster';
 
 					this.removeView(this.list);
-					this.list = this.registerView(new PosterList({ collection: this.collection }));
+					this.list = this.registerView(new PosterList({ collection: this.listCollection }));
 
 					this.render();
 				}
@@ -90,7 +94,7 @@ define(
 					this.view = 'expanded';
 
 					this.removeView(this.list);
-					this.list = this.registerView(new ExpandedList({ collection: this.collection }));
+					this.list = this.registerView(new ExpandedList({ collection: this.listCollection }));
 
 					this.render();
 				}
@@ -103,9 +107,22 @@ define(
 					this.view = 'compact';
 
 					this.removeView(this.list);
-					this.list = this.registerView(new CompactList({ collection: this.collection }));
+					this.list = this.registerView(new CompactList({ collection: this.listCollection }));
 
 					this.render();
+				}
+			},
+
+			onSearchChange: function (event) {
+				var val = $(event.target).val();
+
+				if (this.search !== val) {
+					this.listCollection.reset(this.collection.search(val));
+
+					// Delay the lazy loading of images so they will already be in the DOM
+					setTimeout(this.loadPosters, 500);
+
+					this.search = val;
 				}
 			}
 		});

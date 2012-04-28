@@ -8331,6 +8331,42 @@ ul.nav .dropdown-menu:after {
 .sidebar-options > .btn-group {
   margin-left: 57px;
 }
+.sidebar-options > .search-query {
+  margin-top: 15px;
+  padding: 0 10px;
+  width: 100%;
+  height: 25px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  border-color: #777;
+  background: #505050;
+  -webkit-box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  line-height: 25px;
+  color: #eee;
+}
+.sidebar-options > .search-query:focus {
+  border-color: #ffc763;
+  background: #eee;
+  -webkit-box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
+  -moz-box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
+  -webkit-box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
+  -moz-box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
+  color: #555;
+}
 .rating {
   float: right;
   font-size: 16px;

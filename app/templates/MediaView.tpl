@@ -12,6 +12,7 @@
 			<a class="compact-view-btn btn btn-inverse {{eq view "compact" "selected active"}}">
 				<i class="icon-align-justify icon-white"></i>
 			</a>
-		</a>
+		</div>
+		<input type="text" class="search-query" placeholder="Search..." value="{{search}}">
 	</div>
 </div>

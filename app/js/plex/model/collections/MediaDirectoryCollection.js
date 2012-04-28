@@ -18,6 +18,14 @@ define(
 
 			parse: function (response) {
 				return $.xml2json(response).Directory;
+			},
+
+			search: function (input) {
+				var regex = new RegExp(input, 'i');
+
+				return this.filter(function (item) {
+					return regex.test(item.get('title'));
+				});
 			}
 		});
 
