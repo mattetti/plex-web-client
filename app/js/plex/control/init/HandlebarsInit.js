@@ -95,5 +95,21 @@ define(
 		Handlebars.registerHelper('transcodeImage', function (path, width, height) {
 			return transcoder.image(path, width, height);
 		});
+
+		Handlebars.registerHelper('starRating', function (rating) {
+			// Ratings will usually be 4 or 5 stars so distribute the ratings a little more to give some variety
+			var normalized = Math.round(rating - 4);
+			var starRating = '';
+
+			for (var i = 0; i < 5; i++) {
+				if (i < normalized) {
+					starRating += '<span class="star selected">&#9733;</span>';
+				} else {
+					starRating += '<span class="star">&#9733;</span>';
+				}
+			}
+
+			return new Handlebars.SafeString(starRating);
+		});
 	}
 );

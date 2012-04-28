@@ -8241,3 +8241,13 @@ ul.nav .dropdown-menu:after {
 .sidebar-options > .btn-group {
   margin-left: 57px;
 }
+.rating {
+  float: right;
+  font-size: 16px;
+}
+.rating > .star {
+  color: #666;
+}
+.rating > .star.selected {
+  color: #1e90e0;
+}
