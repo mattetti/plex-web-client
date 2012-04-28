@@ -6,6 +6,7 @@ define(
 		'plex/control/commands/GetServersCommand',
 		'plex/control/commands/LoginCommand',
 		'plex/control/commands/MarkQueueItemWatchedCommand',
+		'plex/control/commands/MarkQueueItemUnwatchedCommand',
 		'plex/control/commands/DeleteQueueItemCommand',
 		'plex/control/commands/ShowLoadingCommand',
 	],

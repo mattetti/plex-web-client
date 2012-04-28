@@ -22,7 +22,9 @@ define(
 				'click .delete-btn': 'onDeleteClick'
 			},
 
-			initialize: function () {
+			initialize: function (options) {
+				this.filtered = options.filtered;
+
 				_.bindAll(this, 'onAnimationComplete');
 			},
 			
@@ -51,10 +53,26 @@ define(
 				event.preventDefault();
 
 				dispatcher.trigger('command:MarkQueueItemWatched', this.model);
+
+				if (this.filtered === true) {
+					this.close();
+				} else {
+					// Tell the list to recalculate stats
+					this.trigger('refresh');
+				}
 			},
 
 			onMarkUnwatchedClick: function (event) {
 				event.preventDefault();
+
+				dispatcher.trigger('command:MarkQueueItemUnwatched', this.model);
+
+				if (this.filtered === true) {
+					this.close();
+				} else {
+					// Tell the list to recalculate stats
+					this.trigger('refresh');
+				}
 			},
 
 			onDeleteClick: function (event) {
@@ -67,6 +85,9 @@ define(
 
 			onAnimationComplete: function () {
 				this.destroy();
+
+				// Tell the list to recalculate stats
+				this.trigger('refresh');
 			}
 		});
 
