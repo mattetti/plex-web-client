@@ -1,8 +1,8 @@
 define(
 	[
 		'text!templates/lists/items/ServerListItem.tpl',
-		'plex/view/lists/ThumbnailMarqueeList',
 		'plex/view/BaseView',
+		'plex/view/lists/ThumbnailMarqueeList',
 		'plex/model/collections/ThumbnailCollection',
 
 		// Globals
@@ -10,7 +10,7 @@ define(
 		'use!handlebars'
 	],
 
-	function (template, ThumbnailMarqueeList, BaseView, ThumbnailCollection) {
+	function (template, BaseView, ThumbnailMarqueeList, ThumbnailCollection) {
 
 		var tpl = Handlebars.compile(template);
 

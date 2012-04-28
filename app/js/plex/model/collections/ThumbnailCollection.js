@@ -28,6 +28,7 @@ define(
 
 					_.each(thumbs, function (thumb) {
 						thumb.machineIdentifier = sections[i].machineIdentifier;
+						thumb.section = _.last(sections[i].path.split('/'));
 					});
 
 					thumbnails = _.union(thumbnails, thumbs);
