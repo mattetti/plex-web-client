@@ -1,4 +1,6 @@
 var port = process.env.PORT || 3000;
+var index;
+var NODE_ENV = NODE_ENV || 'development';
 
 var express = require('express'),
 	httpProxy = require('http-proxy'),
@@ -33,8 +35,19 @@ app.configure(function () {
 	app.use(app.router);
 });
 
+switch (NODE_ENV) {
+	case 'production':
+		index = '/app/build/index.html';
+		break;
+	case 'development':
+	default:
+		index = '/app/index-dev.html';
+		break;
+}
+
 app.get('/', function (req, res) {
-	res.redirect('/app/index-dev.html');
+	res.redirect(index);
 });
+
 
 app.listen(port);

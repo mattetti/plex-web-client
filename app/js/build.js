@@ -8,6 +8,9 @@
 	paths: {
 		'almond': '../../node_modules/almond/almond',
 
+		// Externals
+		'templates': '../templates',
+
 		// Libraries
 		'jquery': 'libs/jquery-1.7.2',
 		'underscore': 'libs/underscore-1.3.3',
