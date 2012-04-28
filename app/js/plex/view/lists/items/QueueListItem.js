@@ -1,7 +1,7 @@
 define(
 	[
 		'text!templates/lists/items/QueueListItem.tpl',
-		'plex/control/dispatcher',
+		'plex/control/Dispatcher',
 		'plex/view/BaseView',
 
 		// Globals

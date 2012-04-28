@@ -19,9 +19,11 @@ define(
 		//
 
 		function execute(item) {
+			item.set('viewCount', 1);
+
 			$.ajax({
-				type: 'POST',
-				url: '/api/queue/items/' + item.id + '/watch' + '?X-Plex-Token=' + user.get('authentication_token'),
+				type: 'GET',
+				url: '/api/pms/:/scrobble?key=' + encodeURIComponent(item.get('ratingKey')) + '&identifier=' + item.id + '&X-Plex-Token=' + user.get('authentication_token'),
 				headers: {
 					'X-Plex-Proxy-Host': 'my.plexapp.com',
 					'X-Plex-Proxy-Port': 443
@@ -29,7 +31,6 @@ define(
 				contentType: 'application/xml',
 				dataType: 'text',
 				processData: false,
-				success: onSuccess,
 				error: onError
 			});
 		}
