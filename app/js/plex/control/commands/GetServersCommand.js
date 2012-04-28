@@ -15,6 +15,9 @@ define(
 				error: onFetchThumbnailsError
 			});
 
+			// Notify that servers have loaded
+			dispatcher.trigger('response:GetServers', true);
+
 			// Hide the loading indicator
 			dispatcher.trigger('command:ShowLoading', false);
 		}
@@ -45,11 +48,14 @@ define(
 		}
 
 		function onError(xhr, status, error) {
+			// Notify that servers have loaded
+			dispatcher.trigger('response:GetServers', false);
+
 			// Hide the loading indicator
 			dispatcher.trigger('command:ShowLoading', false);
 
 			// Show an alert
-			appModel.set({error: 'Servers unavailable.'});
+			appModel.set({error: 'The servers are currently unavailable.'});
 		}
 
 

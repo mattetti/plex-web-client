@@ -16,12 +16,21 @@ define(
 
 
 		function onFetchUserSuccess(response) {
-			appModel.set({
-				authenticated: true
-			});
+			dispatcher.on('response:GetServers', onGetServersResponse);
+			dispatcher.trigger('command:GetServers');
 
 			// Hide the loading indicator
 			dispatcher.trigger('command:ShowLoading', false);
+		}
+
+		function onGetServersResponse(response) {
+			dispatcher.off('response:GetServers', onGetServersResponse);
+
+			if (response === true) {
+				appModel.set({
+					authenticated: true
+				});
+			}
 		}
 
 		function onError(xhr, status, error) {
