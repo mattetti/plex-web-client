@@ -6,10 +6,13 @@ define(
 	],
 
 	function (dispatcher, appModel, ThumbnailCollection) {
+		var cached = false;
 		var servers = appModel.get('servers');
 		var thumbnails = new ThumbnailCollection();
 		
 		function onFetchServersSuccess(response) {
+			cached = true;
+
 			thumbnails.fetch({
 				success: onFetchThumbnailsSuccess,
 				error: onFetchThumbnailsError
@@ -64,10 +67,15 @@ define(
 		//
 
 		function execute() {
-			servers.fetch({
-				success: onFetchServersSuccess,
-				error: onError
-			});
+			if (cached === true) {
+				// Notify that servers have loaded
+				dispatcher.trigger('response:GetServers', true);
+			} else {
+				servers.fetch({
+					success: onFetchServersSuccess,
+					error: onError
+				});
+			}
 		}
 
 		dispatcher.on('command:GetServers', execute);
