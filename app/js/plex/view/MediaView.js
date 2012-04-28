@@ -21,7 +21,6 @@ define(
 			className: 'content',
 
 			view: 'poster',
-			collection: undefined,
 			search: '',
 
 			events: {
@@ -29,8 +28,8 @@ define(
 				'click .poster-view-btn': 'onPosterViewClick',
 				'click .expanded-view-btn': 'onExpandedViewClick',
 				'click .compact-view-btn': 'onCompactViewClick',
-				'blur .search-query': 'onSearchChange',
-				'keyup .search-query': 'onSearchChange'
+				'submit #sidebar-search': 'onSearchSubmit',
+				'blur #sidebar-search': 'onSearchSubmit'
 			},
 
 			initialize: function () {
@@ -113,8 +112,10 @@ define(
 				}
 			},
 
-			onSearchChange: function (event) {
-				var val = $(event.target).val();
+			onSearchSubmit: function (event) {
+				event.preventDefault();
+
+				var val = this.$('.search-query').val();
 
 				if (this.search !== val) {
 					this.listCollection.reset(this.collection.search(val));

@@ -13,6 +13,9 @@
 				<i class="icon-align-justify icon-white"></i>
 			</a>
 		</div>
-		<input type="text" class="search-query" placeholder="Search..." value="{{search}}">
+
+		<form id="sidebar-search">
+			<input type="text" class="search-query" placeholder="Search..." value="{{search}}">
+		</form>
 	</div>
 </div>

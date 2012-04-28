@@ -8328,10 +8328,7 @@ ul.nav .dropdown-menu:after {
   border-bottom: 5px solid rgba(255, 255, 255, 0.05);
   font-size: 18px;
 }
-.sidebar-options > .btn-group {
-  margin-left: 57px;
-}
-.sidebar-options > .search-query {
+.sidebar-options .search-query {
   margin-top: 15px;
   padding: 0 10px;
   width: 100%;
@@ -8356,7 +8353,7 @@ ul.nav .dropdown-menu:after {
   line-height: 25px;
   color: #eee;
 }
-.sidebar-options > .search-query:focus {
+.sidebar-options .search-query:focus {
   border-color: #ffc763;
   background: #eee;
   -webkit-box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
@@ -8366,6 +8363,9 @@ ul.nav .dropdown-menu:after {
   -moz-box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
   color: #555;
+}
+.sidebar-options > .btn-group {
+  margin-left: 57px;
 }
 .rating {
   float: right;
