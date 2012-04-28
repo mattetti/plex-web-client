@@ -11,8 +11,10 @@ define(
 		var ServerModel = Backbone.Model.extend({
 			idAttribute: 'machineIdentifier',
 
-			defaults: {
-				'thumbnails': new ThumbnailCollection()
+			initialize: function () {
+				// Instantiate a collection in initialize because defaults are applied
+				// to the prototype
+				this.set('thumbnails', new ThumbnailCollection());
 			}
 		});
 

@@ -33,7 +33,7 @@ define(
 			});
 
 			servers.each(function (server) {
-				var thumbnails = groupedThumbnails[server.get('machineIdentifier')]
+				var thumbnails = groupedThumbnails[server.get('machineIdentifier')];
 				server.get('thumbnails').reset(thumbnails);
 			});
 
