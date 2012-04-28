@@ -12,6 +12,10 @@
 		<div class="list-tagline">{{truncate item.tagline 55}}</div>
 	{{/if}}
 
+	{{#if item.studio}}
+		<span class="list-label">Studio</span> {{item.studio}}<br />
+	{{/if}}
+
 	{{#if item.originallyAvailableAt}}
 		<span class="list-label">Release Date</span> {{formatDate item.originallyAvailableAt}}<br />
 	{{else}}
