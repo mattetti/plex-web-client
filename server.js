@@ -1,5 +1,6 @@
 var port = process.env.PORT || 3000;
 var index;
+
 var NODE_ENV = NODE_ENV || 'development';
 
 var express = require('express'),
@@ -7,10 +8,14 @@ var express = require('express'),
 	routingProxy = new httpProxy.RoutingProxy(),
 	app = express.createServer();
 
+console.log('Starting Plex Client web server on port ' + port + ' in \'' + NODE_ENV + '\' environment');
+
 function apiProxy(pattern) {
 	return function (req, res, next) {
 		if (req.url.match(pattern)) {
 			req.url = req.url.replace(pattern, '');
+
+			console.log('Proxying response at ' + req.url);
 
 			return routingProxy.proxyRequest(req, res, {
 				host: req.headers['x-plex-proxy-host'],
@@ -37,7 +42,7 @@ app.configure(function () {
 
 switch (NODE_ENV) {
 	case 'production':
-		index = '/app/build/index.html';
+		index = '/build/index.html';
 		break;
 	case 'development':
 	default:

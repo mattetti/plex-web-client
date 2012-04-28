@@ -4,13 +4,10 @@
 	dir: '../../build',
 	mainConfigFile: 'main.js',
 	wrap: true,
-
+	
 	paths: {
 		'almond': '../../node_modules/almond/almond',
-
-		// Externals
-		'templates': '../templates',
-
+		
 		// Libraries
 		'jquery': 'libs/jquery-1.7.2',
 		'underscore': 'libs/underscore-1.3.3',
@@ -22,6 +19,9 @@
 		'date': 'libs/date',
 		'base64': 'libs/base64',
 		'sha256': 'libs/jssha256-0.1',
+		
+		// Externals
+		'templates': '../templates',
 		
 		// Require
 		'use': 'libs/require/use-0.2.0',

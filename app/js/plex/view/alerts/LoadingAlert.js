@@ -4,7 +4,8 @@ define(
 		'plex/view/BaseView',
 
 		// Globals
-		'use!backbone'
+		'use!backbone',
+		'use!handlebars'
 	],
 
 	function (template, BaseView) {
