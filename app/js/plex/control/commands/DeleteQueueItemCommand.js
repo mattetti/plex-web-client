@@ -10,7 +10,7 @@ define(
 
 		function onError(xhr, status, error) {
 			// Show an alert
-			appModel.set({ error: 'This item could not be marked as watched.' });
+			appModel.set({ error: 'This video could not be deleted.' });
 		}
 
 
@@ -19,11 +19,12 @@ define(
 		//
 
 		function execute(item) {
-			item.set('viewCount', 1);
+			appModel.get('queue').remove(item);
 
 			$.ajax({
-				type: 'GET',
-				url: '/api/pms/:/scrobble?key=' + encodeURIComponent(item.get('ratingKey')) + '&identifier=' + item.id + '&X-Plex-Token=' + user.get('authentication_token'),
+				type: 'DELETE',
+				url: '/api/pms/playlists/queue/items/' + item.id + '?X-Plex-Token=' + user.get('authentication_token'),
+				data: '<queue_item></queue_item>',
 				headers: {
 					'X-Plex-Proxy-Host': 'my.plexapp.com',
 					'X-Plex-Proxy-Port': 443
@@ -35,6 +36,6 @@ define(
 			});
 		}
 
-		dispatcher.on('command:MarkQueueItemWatched', execute);
+		dispatcher.on('command:DeleteQueueItem', execute);
 	}
 );

@@ -24,6 +24,7 @@ define(
 			collection: undefined,
 
 			events: {
+				'resize': 'onResize',
 				'click .poster-view-btn': 'onPosterViewClick',
 				'click .expanded-view-btn': 'onExpandedViewClick',
 				'click .compact-view-btn': 'onCompactViewClick'
@@ -33,6 +34,10 @@ define(
 				this.collection = options.collection;
 
 				this.list = this.registerView(new PosterList({ collection: this.collection }));
+
+				_.bindAll(this, 'onResize', 'loadPosters');
+
+				$(window).on('resize', this.onResize);
 			},
 			
 			render: function () {
@@ -42,10 +47,27 @@ define(
 
 				this.$el.append(this.list.render().el);
 
-				// Trigger lazy loaded images
-				this.$('img.poster').lazyload({ threshold: 500, skip_invisible: false });
+				// Calculate the width of the list view
+				this.onResize();
+
+				// Delay the lazy loading of images so they will already be in the DOM
+				setTimeout(this.loadPosters, 500);
 
 				return this;
+			},
+
+			loadPosters: function () {
+				this.$('img.poster').lazyload({ threshold: 100 });
+			},
+
+			destroy: function () {
+				$(window).off('resize', this.onResize);
+
+				BaseView.prototype.destroy.call(this);
+			},
+
+			onResize: function () {
+				this.list.$el.width(this.$el.width() - 270);
 			},
 			
 			onPosterViewClick: function (event) {

@@ -1,7 +1,7 @@
 define(
 	[
 		'plex/model/UserModel',
-		'plex/model/collections/VideoCollection',
+		'plex/model/collections/QueueCollection',
 		'plex/model/collections/ServerCollection',
 		'plex/model/collections/SectionCollection',
 
@@ -9,7 +9,7 @@ define(
 		'use!backbone'
 	],
 
-	function (UserModel, VideoCollection, ServerCollection, SectionCollection) {
+	function (UserModel, QueueCollection, ServerCollection, SectionCollection) {
 
 		var AppModel = Backbone.Model.extend({
 			defaults: {
@@ -25,10 +25,7 @@ define(
 				section: undefined,
 
 				// Collections
-				queue: new VideoCollection({
-					url: 'pms/playlists/queue/all',
-					myPlex: true
-				}),
+				queue: new QueueCollection(),
 				servers: new ServerCollection(),
 				sections: new SectionCollection()
 			}

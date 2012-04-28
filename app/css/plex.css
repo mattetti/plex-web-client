@@ -8097,6 +8097,24 @@ ul.nav .dropdown-menu:after {
 .video-detail .video-detail-right a {
   margin-left: 8px;
 }
+.filter-list {
+  float: right;
+  margin: 10px 0 0 0;
+  list-style-type: none;
+}
+.filter-list > li {
+  float: left;
+  margin-left: 20px;
+  padding: 5px 0;
+  font-size: 18px;
+}
+.filter-list > li.selected {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+}
+.filter-list > li.selected a {
+  color: #eee;
+  text-decoration: none;
+}
 .poster-media-list {
   float: left;
   margin: 0 0 0 270px;
@@ -8110,7 +8128,7 @@ ul.nav .dropdown-menu:after {
   min-height: 230px;
   text-align: center;
 }
-.poster-media-list > li a.poster-link {
+.poster-media-list > li a {
   position: absolute;
   left: 0;
   bottom: 20px;
@@ -8140,6 +8158,44 @@ ul.nav .dropdown-menu:after {
   float: left;
   margin: 0 0 0 270px;
   list-style-type: none;
+}
+.compact-media-list > li {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+  -webkit-transition: border 0.1s linear;
+  -moz-transition: border 0.1s linear;
+  -ms-transition: border 0.1s linear;
+  -o-transition: border 0.1s linear;
+  transition: border 0.1s linear;
+  -webkit-transition: border 0.1s linear;
+  -moz-transition: border 0.1s linear;
+  -ms-transition: border 0.1s linear;
+  -o-transition: border 0.1s linear;
+  transition: border 0.1s linear;
+}
+.compact-media-list > li:hover {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+.compact-media-list > li a {
+  display: block;
+  padding: 5px 0px;
+  color: #eee;
+  text-decoration: none;
+  -webkit-transition: color 0.1s linear;
+  -moz-transition: color 0.1s linear;
+  -ms-transition: color 0.1s linear;
+  -o-transition: color 0.1s linear;
+  transition: color 0.1s linear;
+  -webkit-transition: color 0.1s linear;
+  -moz-transition: color 0.1s linear;
+  -ms-transition: color 0.1s linear;
+  -o-transition: color 0.1s linear;
+  transition: color 0.1s linear;
+}
+.compact-media-list > li a:hover {
+  color: #fff;
+}
+.compact-media-list > li .list-label {
+  margin-left: 10px;
 }
 .sidebar {
   position: fixed;

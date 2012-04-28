@@ -1,7 +1,7 @@
 define(
 	[
 		'text!templates/lists/items/QueueListItem.tpl',
-		'plex/control/dispatcher',
+		'plex/control/Dispatcher',
 		'plex/view/BaseView',
 
 		// Globals
@@ -23,7 +23,7 @@ define(
 			},
 
 			initialize: function () {
-				_.bindAll(this, ['onAnimationComplete']);
+				_.bindAll(this, 'onAnimationComplete');
 			},
 			
 			render: function () {
@@ -59,6 +59,8 @@ define(
 
 			onDeleteClick: function (event) {
 				event.preventDefault();
+
+				dispatcher.trigger('command:DeleteQueueItem', this.model);
 
 				this.close();
 			},
