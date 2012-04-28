@@ -1,7 +1,7 @@
 define(
 	[
 		'plex/view/BaseView',
-		'plex/view/lists/media/items/CompactListitem',
+		'plex/view/lists/media/items/CompactListItem',
 
 		// Globals
 		'use!backbone',
