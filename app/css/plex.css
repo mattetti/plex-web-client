@@ -7685,6 +7685,7 @@ footer p.credits {
   }
 }
 section.content.login {
+  padding-top: 50px;
   text-align: center;
 }
 h1.plex-icon {

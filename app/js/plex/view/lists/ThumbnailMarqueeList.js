@@ -136,8 +136,6 @@ define(
 			onThumbnailLoaded: function (event) {
 				this.loadedThumbnails++;
 
-				$(event.target).css('opacity', 0).animate({ opacity: 1 }, 400);
-
 				if (this.loadedThumbnails === this.numVisibleItems) {
 					this.loadedSignal.dispatch();
 					this.loaded = true;
