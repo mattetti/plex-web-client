@@ -8159,7 +8159,7 @@ ul.nav .dropdown-menu:after {
 }
 .expanded-media-list {
   float: left;
-  margin: 0 0 0 270px;
+  margin: 0 0 0 280px;
   list-style-type: none;
 }
 .expanded-media-list > li {
@@ -8252,7 +8252,7 @@ ul.nav .dropdown-menu:after {
 }
 .compact-media-list {
   float: left;
-  margin: 0 0 0 270px;
+  margin: 0 0 0 280px;
   list-style-type: none;
 }
 .compact-media-list > li {
