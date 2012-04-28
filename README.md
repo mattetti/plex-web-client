@@ -62,6 +62,7 @@ Heroku Environment
 5. Application can be tested locally in a Heroku environment
 
 	`echo "NODE_ENV=production" > .env` or `echo "NODE_ENV=development" > .env`
+	
 	`foreman start`
 
 6. Navigate to `localhost:5000`
