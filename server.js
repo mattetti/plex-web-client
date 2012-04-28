@@ -1,7 +1,7 @@
 var port = process.env.PORT || 3000;
 var index;
 
-var NODE_ENV = NODE_ENV || 'development';
+var NODE_ENV = process.env.NODE_ENV || 'development';
 
 var express = require('express'),
 	httpProxy = require('http-proxy'),
