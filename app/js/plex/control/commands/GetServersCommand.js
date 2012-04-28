@@ -34,7 +34,7 @@ define(
 
 			servers.each(function (server) {
 				var thumbnails = groupedThumbnails[server.get('machineIdentifier')]
-				server.set('thumbnails', new ThumbnailCollection(thumbnails));
+				server.get('thumbnails').reset(thumbnails);
 			});
 
 			// Hide the loading indicator

@@ -25,8 +25,8 @@ define(
 			thumbnailList: undefined,
 
 			events: {
-				'mouseenter'	: 'onMouseEnter',
-				'mouseleave'	: 'onMouseLeave'
+				'mouseenter': 'onMouseEnter',
+				'mouseleave': 'onMouseLeave'
 			},
 			
 
@@ -35,7 +35,6 @@ define(
 			//
 
 			initialize: function () {
-				this.addBinding(this.model, 'change:thumbnails', this.onThumbnailsChange);
 				this.thumbnailList = new ThumbnailMarqueeList({ collection: this.model.get('thumbnails') });
 			},
 
@@ -55,11 +54,6 @@ define(
 			//
 			// -------------------- Listeners --------------------
 			//
-
-			onThumbnailsChange: function (model) {
-				this.thumbnailList.collection = model.get('thumbnails');
-				this.thumbnailList.render();
-			},
 
 			onMouseEnter: function (event) {
 				this.thumbnailList.start();

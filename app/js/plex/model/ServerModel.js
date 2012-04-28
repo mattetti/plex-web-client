@@ -10,7 +10,10 @@ define(
 	function (ThumbnailCollection) {
 		var ServerModel = Backbone.Model.extend({
 			idAttribute: 'machineIdentifier',
-			thumbnails: new ThumbnailCollection()
+
+			defaults: {
+				'thumbnails': new ThumbnailCollection()
+			}
 		});
 
 		return ServerModel;
