@@ -20,7 +20,9 @@ define(
 			tagName: 'section',
 			className: 'content',
 
+			type: '',
 			view: 'poster',
+			filter: 'all',
 			search: '',
 
 			events: {
@@ -29,10 +31,18 @@ define(
 				'click .expanded-view-btn': 'onExpandedViewClick',
 				'click .compact-view-btn': 'onCompactViewClick',
 				'submit #sidebar-search': 'onSearchSubmit',
-				'blur #sidebar-search': 'onSearchSubmit'
+				'blur #sidebar-search': 'onSearchSubmit',
+				'click .all-filter a': 'onAllClick',
+				'click .added-filter a': 'onAddedClick',
+				'click .released-filter a': 'onReleasedClick',
+				'click .rated-filter a': 'onRatedClick',
+				'click .unwatched-filter a': 'onUnwatchedClick',
+				'click .watched-filter a': 'onWatchedClick'
 			},
 
-			initialize: function () {
+			initialize: function (options) {
+				this.type = options.type;
+
 				this.listCollection = new Backbone.Collection(this.collection.models);
 
 				this.list = this.registerView(new PosterList({ collection: this.listCollection }));
@@ -44,7 +54,9 @@ define(
 			
 			render: function () {
 				this.$el.html(tpl({
+					type: this.type,
 					view: this.view,
+					filter: this.filter,
 					search: this.search
 				}));
 
@@ -61,6 +73,11 @@ define(
 
 			loadPosters: function () {
 				this.$('img.poster').lazyload({ threshold: 100 });
+			},
+
+			resetSearch: function () {
+				this.$('.search-query').val('');
+				this.search = '';
 			},
 
 			destroy: function () {
@@ -125,6 +142,96 @@ define(
 
 					this.search = val;
 				}
+			},
+
+			onAllClick: function (event) {
+				event.preventDefault();
+
+				this.filter = 'all';
+				this.$('.filter').removeClass('selected');
+				this.$('.all-filter').addClass('selected');
+
+				this.listCollection.reset(this.collection.all());
+
+				this.resetSearch();
+				
+				// Delay the lazy loading of images so they will already be in the DOM
+				setTimeout(this.loadPosters, 500);
+			},
+
+			onAddedClick: function (event) {
+				event.preventDefault();
+
+				this.filter = 'added';
+				this.$('.filter').removeClass('selected');
+				this.$('.added-filter').addClass('selected');
+
+				this.listCollection.reset(this.collection.added());
+
+				this.resetSearch();
+				
+				// Delay the lazy loading of images so they will already be in the DOM
+				setTimeout(this.loadPosters, 500);
+			},
+
+			onReleasedClick: function (event) {
+				event.preventDefault();
+
+				this.filter = 'released';
+				this.$('.filter').removeClass('selected');
+				this.$('.released-filter').addClass('selected');
+
+				this.listCollection.reset(this.collection.released());
+
+				this.resetSearch();
+				
+				// Delay the lazy loading of images so they will already be in the DOM
+				setTimeout(this.loadPosters, 500);
+			},
+
+			onRatedClick: function (event) {
+				event.preventDefault();
+
+				this.filter = 'rated';
+				this.$('.filter').removeClass('selected');
+				this.$('.rated-filter').addClass('selected');
+
+				this.listCollection.reset(this.collection.rated());
+
+				this.resetSearch();
+				
+				// Delay the lazy loading of images so they will already be in the DOM
+				setTimeout(this.loadPosters, 500);
+			},
+
+			onUnwatchedClick: function (event) {
+				event.preventDefault();
+
+				this.filter = 'unwatched';
+				this.$('.filter').removeClass('selected');
+				this.$('.unwatched-filter').addClass('selected');
+
+				this.listCollection.reset(this.collection.unwatched());
+
+				this.resetSearch();
+				
+				// Delay the lazy loading of images so they will already be in the DOM
+				setTimeout(this.loadPosters, 500);
+			},
+
+			onWatchedClick: function (event) {
+				event.preventDefault();
+
+				this.filter = 'watched';
+				this.$('.filter').removeClass('selected');
+				this.$('.watched-filter').addClass('selected');
+
+				this.listCollection.reset(this.collection.watched());
+
+				this.resetSearch();
+
+				// Delay the lazy loading of images so they will already be in the DOM
+				setTimeout(this.loadPosters, 500);
 			}
 		});
 

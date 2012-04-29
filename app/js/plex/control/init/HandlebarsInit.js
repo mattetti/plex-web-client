@@ -8,13 +8,19 @@ define(
 
 	function (transcoder) {
 
-		Handlebars.registerHelper('eq', function(arg1, arg2, ok, bad) {
+		Handlebars.registerHelper('eq', function (arg1, arg2, ok, bad) {
 			if (arg1 === arg2)
 			{
 				return new Handlebars.SafeString(ok);
 			}
 			
 			return new Handlebars.SafeString(bad);
+		});
+
+		Handlebars.registerHelper('if_eq', function (item, value, block) {
+			if (item === value) {
+				return block(item);
+			}
 		});
 
 		Handlebars.registerHelper('timeAgo', function (timestamp) {

@@ -65,7 +65,7 @@ define(
 		function onFetchMoviesSuccess(response) {
 			appModel.set({
 				showHeader: true,
-				view: new MediaView({ collection: collection })
+				view: new MediaView({ type: 'movies', collection: collection })
 			});
 
 			// Hide the loading indicator
@@ -75,7 +75,7 @@ define(
 		function onFetchShowsSuccess(response) {
 			appModel.set({
 				showHeader: true,
-				view: new MediaView({ collection: collection })
+				view: new MediaView({ type: 'shows', collection: collection })
 			});
 
 			// Hide the loading indicator
@@ -85,7 +85,7 @@ define(
 		function onFetchMusicSuccess(response) {
 			appModel.set({
 				showHeader: true,
-				view: new MediaView({ collection: collection })
+				view: new MediaView({ type: 'music', collection: collection })
 			});
 
 			// Hide the loading indicator
