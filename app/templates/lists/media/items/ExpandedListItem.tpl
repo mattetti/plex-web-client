@@ -17,7 +17,7 @@
 	{{/if}}
 
 	{{#if item.originallyAvailableAt}}
-		<span class="list-label">Release Date</span> {{formatDate item.originallyAvailableAt}}<br>
+		<span class="list-label">{{eq item.type "show" "Start Date" "Release Date"}}</span> {{formatDate item.originallyAvailableAt}}<br>
 	{{else}}
 		{{#if item.year}}
 			<span class="list-label">Year</span> {{item.year}}<br>
@@ -25,6 +25,6 @@
 	{{/if}}
 
 	{{#if item.duration}}
-		<span class="list-label">Duration</span> {{formatDuration item.duration}}
+		<span class="list-label">{{eq item.type "show" "Episode Duration" "Duration"}}</span> {{formatDuration item.duration}}
 	{{/if}}
 </div>
