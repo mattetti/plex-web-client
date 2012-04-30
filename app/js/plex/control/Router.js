@@ -27,9 +27,9 @@ define(
 				'!/queue': 'queue',
 				'!/servers': 'servers',
 				'!/servers/:serverID/sections': 'sections',
-				'!/servers/:serverID/sections/:sectionID/list': 'list',
 				'!/servers/:serverID/sections/:sectionID/details/:itemID': 'details',
 				'!/servers/:serverID/sections/:sectionID/player/:itemID': 'player',
+				'!/servers/:serverID/sections/:sectionID/list': 'list',
 				'*404': 'error'
 			},
 			
@@ -85,7 +85,8 @@ define(
 					showHeader: false,
 					view: new LoginView(),
 					server: undefined,
-					section: undefined
+					section: undefined,
+					item: undefined
 				});
 			},
 
@@ -101,7 +102,8 @@ define(
 						showHeader: true,
 						view: new ServersView(),
 						server: undefined,
-						section: undefined
+						section: undefined,
+						item: undefined
 					});
 
 					dispatcher.trigger('command:GetServers');
@@ -134,8 +136,10 @@ define(
 				var sectionID = arguments[1];
 				var itemID = arguments[2];
 
-				if (this.isAuthenticated(this.list, arguments) === true) {
+				if (this.isAuthenticated(this.details, arguments) === true) {
 					appModel.set('server', servers.get(serverID));
+
+					dispatcher.trigger('command:GetMediaDetails', sectionID, itemID);
 				}
 			},
 
@@ -144,7 +148,7 @@ define(
 				var sectionID = arguments[1];
 				var itemID = arguments[2];
 
-				if (this.isAuthenticated(this.list, arguments) === true) {
+				if (this.isAuthenticated(this.player, arguments) === true) {
 					appModel.set('server', servers.get(serverID));
 				}
 			},

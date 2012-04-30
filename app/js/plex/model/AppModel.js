@@ -23,6 +23,7 @@ define(
 				user: new UserModel(),
 				server: undefined,
 				section: undefined,
+				item: undefined,
 
 				// Collections
 				queue: new QueueCollection(),

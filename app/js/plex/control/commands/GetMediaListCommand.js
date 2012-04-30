@@ -13,7 +13,6 @@ define(
 				MediaDirectoryCollection, 
 				MediaView) {
 
-		var servers = appModel.get('servers');
 		var sections = appModel.get('sections');
 		var collection;
 
@@ -65,7 +64,8 @@ define(
 		function onFetchMoviesSuccess(response) {
 			appModel.set({
 				showHeader: true,
-				view: new MediaView({ type: 'movies', collection: collection })
+				view: new MediaView({ type: 'movies', collection: collection }),
+				item: undefined
 			});
 
 			// Hide the loading indicator
@@ -75,7 +75,8 @@ define(
 		function onFetchShowsSuccess(response) {
 			appModel.set({
 				showHeader: true,
-				view: new MediaView({ type: 'shows', collection: collection })
+				view: new MediaView({ type: 'shows', collection: collection }),
+				item: undefined
 			});
 
 			// Hide the loading indicator
@@ -85,7 +86,8 @@ define(
 		function onFetchMusicSuccess(response) {
 			appModel.set({
 				showHeader: true,
-				view: new MediaView({ type: 'music', collection: collection })
+				view: new MediaView({ type: 'music', collection: collection }),
+				item: undefined
 			});
 
 			// Hide the loading indicator

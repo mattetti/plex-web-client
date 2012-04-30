@@ -13,7 +13,8 @@ define(
 			appModel.set({
 				showHeader: true,
 				view: new SectionsView(),
-				section: undefined
+				section: undefined,
+				item: undefined
 			});
 
 			// Hide the loading indicator

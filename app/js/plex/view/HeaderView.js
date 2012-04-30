@@ -24,6 +24,7 @@ define(
 				this.addBinding(appModel, 'change:server', this.onChange);
 				this.addBinding(appModel, 'change:sections', this.onChange);
 				this.addBinding(appModel, 'change:section', this.onChange);
+				this.addBinding(appModel, 'change:item', this.onChange);
 
 				this.serverList = this.registerView(new ServerDropdownList({ collection: appModel.get('servers') }));
 				this.sectionList = this.registerView(new SectionDropdownList({ collection: appModel.get('sections') }));
@@ -39,6 +40,11 @@ define(
 				if (typeof(appModel.get('section')) !== 'undefined') {
 					this.$('#breadcrumb').append('<li class="divider"></li>');
 					this.$('#breadcrumb').append(this.sectionList.render().el);
+				}
+
+				if (typeof(appModel.get('item')) !== 'undefined') {
+					this.$('#breadcrumb').append('<li class="divider"></li>');
+					this.$('#breadcrumb').append('<li>' + appModel.get('item').get('title') + '</li>');
 				}
 
 				return this;
