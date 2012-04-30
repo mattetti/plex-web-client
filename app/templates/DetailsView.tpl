@@ -8,7 +8,7 @@
 		<a class="btn btn-inverse"><i class="icon-pencil icon-white"></i> Edit Metadata</a>
 	</div>
 
-	<p>{{summary}}</p>
+	<p>{{truncate summary 750}}</p>
 </div>
 
 <div class="fanart" style="background-image: url({{transcodeImage art 1280 720}});">
