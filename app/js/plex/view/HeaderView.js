@@ -41,13 +41,13 @@ define(
 					item: item.toJSON()
 				}));
 
-				if (typeof(server) !== 'undefined') {
-					this.$('.divider-primary').after(this.serverList.render().el);
+				if (typeof(section) !== 'undefined') {
+					this.$('.divider-primary').after(this.sectionList.render().el);
+					this.$('.divider-primary').after('<li class="divider"></li>');
 				}
 
-				if (typeof(section) !== 'undefined') {
-					this.$('.divider-primary').after('<li class="divider"></li>');
-					this.$('.divider-primary').after(this.sectionList.render().el);
+				if (typeof(server) !== 'undefined') {
+					this.$('.divider-primary').after(this.serverList.render().el);
 				}
 
 				return this;
