@@ -4,6 +4,16 @@
 	</li>
 
 	<li class="divider divider-primary"></li>
+
+	{{#if item}}
+		<li class="divider"></li>
+
+		<li>
+			<a href="#!/servers/{{server.machineIdentifier}}/sections/{{section.key}}/details/{{item.ratingKey}}">
+				{{item.title}}
+			</a>
+		</li>
+	{{/if}}
 </ul>
 
 <ul class="nav pull-right">

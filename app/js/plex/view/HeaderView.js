@@ -35,20 +35,19 @@ define(
 				var section = appModel.get('section');
 				var item = appModel.get('item');
 
-				this.$el.html(tpl());
+				this.$el.html(tpl({
+					server: server.toJSON(),
+					section: section.toJSON(),
+					item: item.toJSON()
+				}));
 
 				if (typeof(server) !== 'undefined') {
-					this.$('#breadcrumb').append(this.serverList.render().el);
+					this.$('.divider-primary').after(this.serverList.render().el);
 				}
 
 				if (typeof(section) !== 'undefined') {
-					this.$('#breadcrumb').append('<li class="divider"></li>');
-					this.$('#breadcrumb').append(this.sectionList.render().el);
-				}
-
-				if (typeof(item) !== 'undefined') {
-					this.$('#breadcrumb').append('<li class="divider"></li>');
-					this.$('#breadcrumb').append('<li><a href="#!/servers/' + server.id + '/sections/' + section.id + '/details/' + item.id + '">' + item.get('title') + '</a></li>');
+					this.$('.divider-primary').after('<li class="divider"></li>');
+					this.$('.divider-primary').after(this.sectionList.render().el);
 				}
 
 				return this;
