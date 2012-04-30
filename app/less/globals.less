@@ -34,21 +34,23 @@ h1 {
 // Buttons
 .btn {
 	border: none;
-	.box-shadow(0 0 0 2px rgba(0, 0, 0, .3));
+	.box-shadow(0 0 0 3px rgba(0, 0, 0, .3));
 	font-size: 14px;
 
 	&:active {
-		.box-shadow(0 0 0 2px rgba(0, 0, 0, .75));
+		.box-shadow(0 0 0 3px rgba(0, 0, 0, .75));
 	}
+}
+
+.btn-primary {
+	.buttonBackground(#feb942, #ff8e0c);
 }
 
 .btn-large {
 	padding: 12px 40px;
-	.box-shadow(0 0 0 5px rgba(0, 0, 0, .3));
-	.buttonBackground(#feb942, #ff8e0c);
-	
 	font-size: 24px;
 	font-weight: bold;
+	.box-shadow(0 0 0 5px rgba(0, 0, 0, .3));
 
 	&:hover {
 		background-position: 0 -40px;
