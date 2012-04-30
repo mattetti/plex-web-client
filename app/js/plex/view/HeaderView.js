@@ -34,12 +34,21 @@ define(
 				var server = appModel.get('server');
 				var section = appModel.get('section');
 				var item = appModel.get('item');
+				var data = {};
 
-				this.$el.html(tpl({
-					server: server.toJSON(),
-					section: section.toJSON(),
-					item: item.toJSON()
-				}));
+				if (typeof(server) !== 'undefined') {
+					data.server = server.toJSON();
+				}
+
+				if (typeof(section) !== 'undefined') {
+					data.section = section.toJSON();
+				}
+
+				if (typeof(item) !== 'undefined') {
+					data.item = item.toJSON();
+				}
+
+				this.$el.html(tpl(data));
 
 				if (typeof(section) !== 'undefined') {
 					this.$('.divider-primary').after(this.sectionList.render().el);

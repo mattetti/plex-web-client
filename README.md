@@ -2,9 +2,6 @@ Plex Web Client
 ===============
 
 
-###http://plex.herokuapp.com
-
-
 Build Dependencies
 ------------------
 + node.js (http://www.nodejs.org)
