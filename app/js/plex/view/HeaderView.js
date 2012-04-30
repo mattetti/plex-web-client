@@ -31,20 +31,24 @@ define(
 			},
 			
 			render: function () {
+				var server = appModel.get('server');
+				var section = appModel.get('section');
+				var item = appModel.get('item');
+
 				this.$el.html(tpl());
 
-				if (typeof(appModel.get('server')) !== 'undefined') {
+				if (typeof(server) !== 'undefined') {
 					this.$('#breadcrumb').append(this.serverList.render().el);
 				}
 
-				if (typeof(appModel.get('section')) !== 'undefined') {
+				if (typeof(section) !== 'undefined') {
 					this.$('#breadcrumb').append('<li class="divider"></li>');
 					this.$('#breadcrumb').append(this.sectionList.render().el);
 				}
 
-				if (typeof(appModel.get('item')) !== 'undefined') {
+				if (typeof(item) !== 'undefined') {
 					this.$('#breadcrumb').append('<li class="divider"></li>');
-					this.$('#breadcrumb').append('<li>' + appModel.get('item').get('title') + '</li>');
+					this.$('#breadcrumb').append('<li><a href="#!/servers/' + server.id + '/sections/' + section.id + '/details/' + item.id + '">' + item.get('title') + '</a></li>');
 				}
 
 				return this;

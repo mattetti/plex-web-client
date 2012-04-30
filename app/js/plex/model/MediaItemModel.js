@@ -7,6 +7,8 @@ define(
 
 	function () {
 		var MediaItemModel = Backbone.Model.extend({
+			idAttribute: 'ratingKey',
+			
 			initialize: function (options) {
 				this.url = options.url;
 			},

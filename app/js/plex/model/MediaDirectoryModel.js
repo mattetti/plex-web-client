@@ -5,7 +5,9 @@ define(
 	],
 
 	function () {
-		var MediaDirectoryModel = Backbone.Model.extend();
+		var MediaDirectoryModel = Backbone.Model.extend({
+			idAttribute: 'ratingKey'
+		});
 
 		return MediaDirectoryModel;
 	}
