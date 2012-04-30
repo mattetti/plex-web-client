@@ -12,7 +12,13 @@ define(
 			},
 
 			parse: function (response) {
-				return $.xml2json(response).Video;
+				var json = $.xml2json(response);
+
+				if (typeof(json.Video) !== 'undefined') {
+					return json.Video;
+				} else {
+					return json.Directory;
+				}
 			}
 		});
 
