@@ -10,7 +10,7 @@
 
 		<li>
 			<a href="#!/servers/{{server.machineIdentifier}}/sections/{{section.key}}/details/{{item.ratingKey}}">
-				{{item.title}}
+				{{truncate item.title 20}}
 			</a>
 		</li>
 	{{/if}}

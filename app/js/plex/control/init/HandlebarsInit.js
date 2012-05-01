@@ -1,12 +1,14 @@
 define(
 	[
-		'plex/control/Transcoder',
+		'plex/control/utils/StringUtil',
+		'plex/control/utils/NumberUtil',
+		'plex/control/utils/Transcoder',
 
 		// Globals
 		'use!handlebars'
 	],
 
-	function (transcoder) {
+	function (StringUtil, NumberUtil, Transcoder) {
 
 		Handlebars.registerHelper('eq', function (arg1, arg2, ok, bad) {
 			if (arg1 === arg2)
@@ -55,18 +57,8 @@ define(
 			}
 		});
 
-		Handlebars.registerHelper('truncate', function (title, len) {
-			if (title.length > len) {
-				var truncated = title.substring(0, len);
-
-				if (truncated.charAt(truncated.length - 1) === ' ') {
-					truncated = truncated.slice(0, -1);
-				}
-
-				return truncated + '...';
-			} else {
-				return title;
-			}
+		Handlebars.registerHelper('truncate', function (str, len) {
+			return StringUtil.truncate(str, len);
 		});
 
 		Handlebars.registerHelper('formatDuration', function (milliseconds) {
@@ -105,7 +97,7 @@ define(
 		});
 
 		Handlebars.registerHelper('transcodeImage', function (path, width, height) {
-			return transcoder.image(path, width, height);
+			return Transcoder.image(path, width, height);
 		});
 
 		Handlebars.registerHelper('starRating', function (rating) {
@@ -122,6 +114,53 @@ define(
 			}
 
 			return new Handlebars.SafeString(starRating);
+		});
+
+		Handlebars.registerHelper('truncateTagList', function (arr, len) {
+			// If it is just a single object, return the tag
+			if (typeof(arr) === 'object' && !(arr instanceof Array)) {
+				return arr.tag;
+			}
+
+			var arrLen = arr.length;
+			var list = '';
+
+			// Convert the array of objects into a comma separated list
+			for (var i = 0; i < arrLen; i++) {
+				list += arr[i].tag;
+
+				if (i + 1 < arrLen) {
+					list += ', ';
+				}
+			}
+
+			return StringUtil.truncate(list, len);
+		});
+
+		Handlebars.registerHelper('createDownloadButtons', function (media) {
+			var parts = media.Part;
+			var buttons = '';
+
+			// Return a download button for each part
+			if (typeof(parts) === 'object') {
+				if (parts instanceof Array) {
+					var count = parts.length;
+
+					for (var i = 0; i < count; i++) {
+						buttons += '<a class="btn btn-inverse" href="' + Transcoder.file(parts[i].key) + '">';
+						buttons += '<i class="icon-inbox icon-white"></i> Download (';
+						buttons += NumberUtil.convertBytes(parts[i].size, 1);
+						buttons += ')</a>';
+					}
+				} else {
+					buttons += '<a class="btn btn-inverse" href="' + Transcoder.file(parts.key) + '">';
+					buttons += '<i class="icon-inbox icon-white"></i> Download (';
+					buttons += NumberUtil.convertBytes(parts.size, 1);
+					buttons += ')</a>';
+				}
+			}
+
+			return new Handlebars.SafeString(buttons);
 		});
 	}
 );

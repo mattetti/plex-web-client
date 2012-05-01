@@ -15,10 +15,14 @@ define(
 
 		var DetailsView = BaseView.extend({
 			tagName: 'section',
-			className: 'content',
+			className: 'content animated-fast scaleIn',
 			
 			render: function () {
-				this.$el.html(tpl(this.model.toJSON()));
+				this.$el.html(tpl({
+					serverID: appModel.get('server').id,
+					sectionID: appModel.get('section').id,
+					item: this.model.toJSON()
+				}));
 
 				return this;
 			}

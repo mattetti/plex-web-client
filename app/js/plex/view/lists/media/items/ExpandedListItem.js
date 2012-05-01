@@ -1,7 +1,6 @@
 define(
 	[
 		'text!templates/lists/media/items/ExpandedListItem.tpl',
-		'plex/control/Transcoder',
 		'plex/model/AppModel',
 		'plex/view/BaseView',
 
@@ -10,7 +9,7 @@ define(
 		'use!handlebars'
 	],
 
-	function (template, transcoder, appModel, BaseView) {
+	function (template, appModel, BaseView) {
 
 		var tpl = Handlebars.compile(template);
 

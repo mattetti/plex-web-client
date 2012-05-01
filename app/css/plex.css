@@ -8435,15 +8435,15 @@ ul.nav .dropdown-menu:after {
   filter: alpha(opacity=5);
 }
 .details > .tagline {
-  font-size: 18px;
+  font-size: 18px !important;
   line-height: 36px;
 }
 .details > .metadata {
-  margin-bottom: 8px;
-  border-top: 2px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: 5px;
+  padding-bottom: 5px;
   border-bottom: 2px solid rgba(255, 255, 255, 0.15);
   font-size: 14px;
-  line-height: 36px;
+  line-height: 24px;
 }
 .details > .metadata .metadata-label {
   margin: 0 5px 0 15px;
@@ -8474,7 +8474,7 @@ ul.nav .dropdown-menu:after {
 .details-controls > a {
   display: block;
   margin: 8px auto;
-  width: 160px;
+  width: 175px;
 }
 .rating {
   float: right;
