@@ -37,6 +37,7 @@ define(
 						this.detailsView = this.registerView(new ArtistDetailsView({ model: this.model }));
 						break;
 					default:
+						this.$el.addClass('fatal');
 						this.detailsView = this.registerView(new UnknownDetailsView({ model: this.model }));
 				}
 			},
