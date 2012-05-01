@@ -15,7 +15,7 @@ define(
 
 		var DetailsView = BaseView.extend({
 			tagName: 'section',
-			className: 'content animated-fast scaleIn',
+			className: 'content',
 			
 			render: function () {
 				this.$el.html(tpl({

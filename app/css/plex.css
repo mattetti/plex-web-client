@@ -8432,10 +8432,10 @@ ul.nav .dropdown-menu:after {
   background-repeat: no-repeat;
   background-size: auto 100%;
   background-position: center;
-  opacity: 0.05;
-  filter: alpha(opacity=5);
-  opacity: 0.05;
-  filter: alpha(opacity=5);
+  opacity: 0.1;
+  filter: alpha(opacity=10);
+  opacity: 0.1;
+  filter: alpha(opacity=10);
 }
 .details > .tagline {
   font-size: 18px !important;
