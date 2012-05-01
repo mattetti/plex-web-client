@@ -24,6 +24,11 @@ define(
 					item: this.model.toJSON()
 				}));
 
+				this.$el.tooltip({
+					selector: '.download-btn',
+					placement: 'right'
+				});
+
 				return this;
 			}
 		});

@@ -147,13 +147,13 @@ define(
 					var count = parts.length;
 
 					for (var i = 0; i < count; i++) {
-						buttons += '<a class="btn btn-inverse" href="' + Transcoder.file(parts[i].key) + '">';
+						buttons += '<a class="download-btn btn btn-inverse" rel="tooltip" title="Right Click &rsaquo; Save As..." href="' + Transcoder.file(parts[i].key) + '">';
 						buttons += '<i class="icon-inbox icon-white"></i> Download (';
 						buttons += NumberUtil.convertBytes(parts[i].size, 1);
 						buttons += ')</a>';
 					}
 				} else {
-					buttons += '<a class="btn btn-inverse" href="' + Transcoder.file(parts.key) + '">';
+					buttons += '<a class="download-btn btn btn-inverse" rel="tooltip" title="Right Click &rsaquo; Save As..." href="' + Transcoder.file(parts.key) + '">';
 					buttons += '<i class="icon-inbox icon-white"></i> Download (';
 					buttons += NumberUtil.convertBytes(parts.size, 1);
 					buttons += ')</a>';

@@ -8,7 +8,8 @@ define(
 		'plex/control/init/HandlebarsInit',
 		'use!date',
 		'use!button',
-		'use!dropdown'
+		'use!dropdown',
+		'use!tooltip'
 	],
 
 	function (Router, commandMap) {
