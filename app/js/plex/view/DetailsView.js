@@ -46,7 +46,14 @@ define(
 				this.$el.html(tpl(this.model.toJSON()));
 				this.$el.prepend(this.detailsView.render().el);
 
+				// Delay the lazy loading of images so they will already be in the DOM
+				setTimeout(this.loadPosters, 500);
+
 				return this;
+			},
+
+			loadPosters: function () {
+				this.$('img.poster').lazyload({ threshold: 100 });
 			}
 		});
 
