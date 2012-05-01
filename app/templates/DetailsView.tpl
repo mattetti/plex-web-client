@@ -17,7 +17,12 @@
 
 	<div class="tagline metadata">
 		<span class="rating">{{starRating item.rating}}</span>
-		{{item.tagline}}
+
+		{{#if item.tagline}}
+			{{item.tagline}}
+		{{else}}
+			&nbsp;
+		{{/if}}
 	</div>
 
 	<div class="metadata">
