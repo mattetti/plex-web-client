@@ -32,9 +32,9 @@ define(
 			file: function (path) {
 				var server = appModel.get('server');
 				var user = appModel.get('user');
-				
+
 				var url = 'http://' + server.get('host') + ':' + server.get('port') + path;
-				url += '&X-Plex-Token=' + (server.get('accessToken') ? server.get('accessToken') : user.get('authentication_token'));
+				url += '?X-Plex-Token=' + (server.get('accessToken') ? server.get('accessToken') : user.get('authentication_token'));
 
 				return url;
 			},
