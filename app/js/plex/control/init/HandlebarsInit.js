@@ -117,20 +117,21 @@ define(
 		});
 
 		Handlebars.registerHelper('truncateTagList', function (arr, len) {
+			var list = '';
+
 			// If it is just a single object, return the tag
 			if (typeof(arr) === 'object' && !(arr instanceof Array)) {
 				return arr.tag;
-			}
+			} else if (typeof(arr) !== 'undefined') {
+				var arrLen = arr.length;
 
-			var arrLen = arr.length;
-			var list = '';
+				// Convert the array of objects into a comma separated list
+				for (var i = 0; i < arrLen; i++) {
+					list += arr[i].tag;
 
-			// Convert the array of objects into a comma separated list
-			for (var i = 0; i < arrLen; i++) {
-				list += arr[i].tag;
-
-				if (i + 1 < arrLen) {
-					list += ', ';
+					if (i + 1 < arrLen) {
+						list += ', ';
+					}
 				}
 			}
 
