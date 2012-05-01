@@ -7195,6 +7195,9 @@ input:focus {
   -moz-box-shadow: 0 0 0 2px #a25600;
   box-shadow: 0 0 0 2px #a25600;
 }
+.tooltip {
+  font-size: 12px;
+}
 html,
 body {
   margin: 0;
