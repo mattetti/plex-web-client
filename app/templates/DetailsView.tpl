@@ -8,7 +8,26 @@
 		<a class="btn btn-inverse"><i class="icon-pencil icon-white"></i> Edit Metadata</a>
 	</div>
 
-	<p>{{truncate summary 750}}</p>
+	<div class="tagline">
+		<span class="rating">{{starRating rating}}</span>
+		{{tagline}}
+	</div>
+
+	<div class="metadata">
+		{{#if originallyAvailableAt}}
+			<span class="metadata-label">Release Date</span>{{formatDate originallyAvailableAt}}
+		{{else}}
+			{{#if year}}
+				<span class="metadata-label">Year</span>{{formatDate year}}
+			{{/if}}
+		{{/if}}
+		
+		<span class="metadata-label">Duration</span>{{formatDuration duration}}
+
+		<span class="metadata-label">Rating</span>{{contentRating}}
+	</div>
+
+	<div class="summary">{{truncate summary 750}}</div>
 </div>
 
 <div class="fanart" style="background-image: url({{transcodeImage art 1280 720}});">

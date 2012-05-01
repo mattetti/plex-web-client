@@ -8434,6 +8434,27 @@ ul.nav .dropdown-menu:after {
   opacity: 0.05;
   filter: alpha(opacity=5);
 }
+.details > .tagline {
+  font-size: 18px;
+  line-height: 36px;
+}
+.details > .metadata {
+  margin-bottom: 8px;
+  border-top: 2px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+  font-size: 14px;
+  line-height: 36px;
+}
+.details > .metadata .metadata-label {
+  margin: 0 5px 0 15px;
+  color: #999;
+}
+.details > .metadata .metadata-label:first-child {
+  margin-left: 0;
+}
+.details > .summary {
+  font-size: 14px;
+}
 .details-controls {
   float: left;
   margin-right: 20px;
@@ -8452,7 +8473,7 @@ ul.nav .dropdown-menu:after {
 }
 .details-controls > a {
   display: block;
-  margin: 6px auto;
+  margin: 8px auto;
   width: 160px;
 }
 .rating {
