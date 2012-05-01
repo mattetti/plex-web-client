@@ -8441,7 +8441,7 @@ ul.nav .dropdown-menu:after {
 .details > .metadata {
   margin-bottom: 5px;
   padding-bottom: 5px;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
   font-size: 14px;
   line-height: 24px;
 }
