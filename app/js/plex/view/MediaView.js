@@ -66,7 +66,7 @@ define(
 				this.onResize();
 
 				// Delay the lazy loading of images so they will already be in the DOM
-				setTimeout(this.loadPosters, 500);
+				setTimeout(this.loadPosters, 200);
 
 				return this;
 			},
@@ -138,7 +138,7 @@ define(
 					this.listCollection.reset(this.collection.search(val));
 
 					// Delay the lazy loading of images so they will already be in the DOM
-					setTimeout(this.loadPosters, 500);
+					setTimeout(this.loadPosters, 200);
 
 					this.search = val;
 				}
@@ -156,7 +156,7 @@ define(
 				this.resetSearch();
 				
 				// Delay the lazy loading of images so they will already be in the DOM
-				setTimeout(this.loadPosters, 500);
+				setTimeout(this.loadPosters, 200);
 			},
 
 			onAddedClick: function (event) {
@@ -171,7 +171,7 @@ define(
 				this.resetSearch();
 				
 				// Delay the lazy loading of images so they will already be in the DOM
-				setTimeout(this.loadPosters, 500);
+				setTimeout(this.loadPosters, 200);
 			},
 
 			onReleasedClick: function (event) {
@@ -186,7 +186,7 @@ define(
 				this.resetSearch();
 				
 				// Delay the lazy loading of images so they will already be in the DOM
-				setTimeout(this.loadPosters, 500);
+				setTimeout(this.loadPosters, 200);
 			},
 
 			onRatedClick: function (event) {
@@ -201,7 +201,7 @@ define(
 				this.resetSearch();
 				
 				// Delay the lazy loading of images so they will already be in the DOM
-				setTimeout(this.loadPosters, 500);
+				setTimeout(this.loadPosters, 200);
 			},
 
 			onUnwatchedClick: function (event) {
@@ -216,7 +216,7 @@ define(
 				this.resetSearch();
 				
 				// Delay the lazy loading of images so they will already be in the DOM
-				setTimeout(this.loadPosters, 500);
+				setTimeout(this.loadPosters, 200);
 			},
 
 			onWatchedClick: function (event) {
@@ -231,7 +231,7 @@ define(
 				this.resetSearch();
 
 				// Delay the lazy loading of images so they will already be in the DOM
-				setTimeout(this.loadPosters, 500);
+				setTimeout(this.loadPosters, 200);
 			}
 		});
 

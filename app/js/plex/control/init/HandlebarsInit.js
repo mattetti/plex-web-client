@@ -127,10 +127,14 @@ define(
 
 				// Convert the array of objects into a comma separated list
 				for (var i = 0; i < arrLen; i++) {
-					list += arr[i].tag;
+					var item = arr[i];
 
-					if (i + 1 < arrLen) {
-						list += ', ';
+					if (typeof(item.tag) !== 'undefined' && item.tag !== '') {
+						list += item.tag;
+
+						if (i + 1 < arrLen) {
+							list += ', ';
+						}
 					}
 				}
 			}
@@ -162,6 +166,16 @@ define(
 			}
 
 			return new Handlebars.SafeString(buttons);
+		});
+
+		Handlebars.registerHelper('unwatchedCount', function (val1, val2, str1, str2) {
+			var rs = val1 - val2;
+
+			if (rs === 1) {
+				return new Handlebars.SafeString(rs + ' ' + str2);
+			} else {
+				return new Handlebars.SafeString(rs + ' ' + str1)
+			}
 		});
 	}
 );

@@ -3,11 +3,11 @@
 		{{#if owned}}
 			Personal
 		{{else}}
-			<span class="list-label">Shared by</span> {{sourceTitle}}
+			<span class="list-label">Shared by</span> {{truncate sourceTitle 20}}
 		{{/if}}
 	</span>
 
-	<h2 class="list-header">{{name}}</h2>
+	<h2 class="list-header">{{truncate name 30}}</h2>
 </a>
 
 <div class="list-detail"><span class="list-label">Last Seen</span> {{timeAgo updatedAt}}</a></div>

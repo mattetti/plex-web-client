@@ -32,10 +32,14 @@
 			<span class="metadata-label">Year</span>{{item.year}}
 		{{/if}}
 	{{/if}}
-		
-	<span class="metadata-label">Duration</span>{{formatDuration item.duration}}
-
-	<span class="metadata-label">Rating</span>{{item.contentRating}}
+	
+	{{#if item.duration}}
+		<span class="metadata-label">Duration</span>{{formatDuration item.duration}}
+	{{/if}}
+	
+	{{#if item.contentRating}}
+		<span class="metadata-label">Rating</span>{{item.contentRating}}
+	{{/if}}
 </div>
 
 <div class="metadata">

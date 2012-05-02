@@ -8422,6 +8422,20 @@ ul.nav .dropdown-menu:after {
   border-bottom: 5px solid rgba(255, 255, 255, 0.15);
   font-weight: normal;
 }
+.details > h3 {
+  clear: both;
+  margin-bottom: 20px;
+  padding-top: 40px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  border-bottom: 5px solid rgba(255, 255, 255, 0.15);
+}
 .fanart {
   position: absolute;
   left: 0;

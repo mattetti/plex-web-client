@@ -47,7 +47,7 @@ define(
 				this.$el.prepend(this.detailsView.render().el);
 
 				// Delay the lazy loading of images so they will already be in the DOM
-				setTimeout(this.loadPosters, 500);
+				setTimeout(this.loadPosters, 200);
 
 				return this;
 			},
