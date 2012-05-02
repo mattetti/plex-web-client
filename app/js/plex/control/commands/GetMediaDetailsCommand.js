@@ -3,14 +3,16 @@ define(
 		'plex/control/Dispatcher',
 		'plex/model/AppModel',
 		'plex/model/MediaItemModel',
-		'plex/model/collections/MediaDirectoryCollection',
+		'plex/model/collections/MediaItemCollection',
+		'plex/model/collections/VideoCollection',
 		'plex/view/DetailsView'
 	],
 
 	function (	dispatcher, 
 				appModel,
 				MediaItemModel,
-				MediaDirectoryCollection,
+				MediaItemCollection,
+				VideoCollection,
 				DetailsView) {
 
 		var sections = appModel.get('sections');
@@ -31,7 +33,7 @@ define(
 		}
 
 		function fetchChildren() {
-			var children = new MediaDirectoryCollection({
+			var children = new MediaItemCollection({
 				url: model.get('key')
 			});
 
@@ -39,10 +41,6 @@ define(
 				success: onFetchChildrenSuccess,
 				error: onError
 			})
-		}
-
-		function fetchAllChildren() {
-			// TODO: Fetch all children for music artists
 		}
 
 		function ready() {
@@ -62,7 +60,7 @@ define(
 					break;
 
 				case 'artist':
-					fetchAllChildren();
+					fetchChildren();
 					break;
 
 				default:
@@ -76,7 +74,45 @@ define(
 		function onFetchChildrenSuccess(response) {
 			model.set('children', response);
 
-			ready();
+			var pending = 0;
+			var episodes = new VideoCollection();
+
+			response.each(function (child) {
+				if (child.get('leafCount') > 0) {
+					pending++;
+
+					var descendants = new MediaItemCollection({
+						url: child.get('key')
+					});
+
+					descendants.fetch({
+						success: function (response) {
+							pending--;
+
+							child.set('children', response);
+							episodes.add(response.models);
+
+							// Hide the loading indicator
+							dispatcher.trigger('command:ShowLoading', false);
+
+							if (pending === 0) {
+								// Keep a collection of all the episodes on the parent model
+								model.set('descendants', episodes);
+
+								ready();
+							}
+						},
+						error: onError
+					})
+				}
+			});
+
+			if (pending === 0) {
+				// Keep a collection of all the episodes on the parent model
+				model.set('descendants', episodes);
+
+				ready();
+			}
 			
 			// Hide the loading indicator
 			dispatcher.trigger('command:ShowLoading', false);

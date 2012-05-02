@@ -13,7 +13,9 @@ define(
 			cachedModels: undefined,
 
 			initialize: function (options) {
-				this.url = options.url;
+				if (typeof(options) !== 'undefined') {
+					this.url = options.url;
+				}
 			},
 
 			parse: function (response) {
@@ -92,6 +94,25 @@ define(
 
 			unwatched: function () {
 				return this.filter(function (video) { return !video.get('viewCount'); });
+			},
+
+			next: function () {
+				this.comparator = function (video1, video2) {
+					var date1 = Date.parse(video1.get('originallyAvailableAt'));
+					var date2 = Date.parse(video2.get('originallyAvailableAt'));
+
+					if (date1 == date2) {
+						return 0;
+					} else if (!date2 || date1 > date2) {
+						return 1;
+					} else {
+						return -1;
+					}
+				};
+
+				this.sort();
+
+				return _.first(this.unwatched());
 			}
 		});
 

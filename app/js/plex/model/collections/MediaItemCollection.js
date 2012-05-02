@@ -1,14 +1,17 @@
 define(
 	[
+		'plex/model/MediaItemModel',
+
 		// Globals
 		'use!backbone',
 		'use!xml2json'
 	],
 
-	function () {
-		var MediaItemModel = Backbone.Model.extend({
-			idAttribute: 'ratingKey',
-			
+	function (MediaItemModel) {
+		var MediaItemCollection = Backbone.Collection.extend({
+			model: MediaItemModel,
+			myPlex: false,
+
 			initialize: function (options) {
 				this.url = options.url;
 			},
@@ -16,9 +19,7 @@ define(
 			parse: function (response) {
 				var json = $.xml2json(response);
 
-				if (typeof(json) === 'undefined') {
-					return response;
-				} else if (typeof(json.Video) !== 'undefined') {
+				if (typeof(json.Video) !== 'undefined') {
 					return json.Video;
 				} else if (typeof(json.Track) !== 'undefined') {
 					return json.Track;
@@ -28,6 +29,6 @@ define(
 			}
 		});
 
-		return MediaItemModel;
+		return MediaItemCollection;
 	}
 );
