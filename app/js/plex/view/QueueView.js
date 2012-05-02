@@ -19,8 +19,6 @@ define(
 			className: 'content fixed-width animated-fast scaleIn',
 
 			view: 'unwatched',
-			watchedCount: 0,
-			unwatchedCount: 0,
 
 			events: {
 				'click .all-filter a': 'onAllClick',
@@ -43,8 +41,8 @@ define(
 
 				this.$el.html(tpl({
 					view: this.view,
-					unwatchedCount: unwatchedCount,
-					watchedCount: watchedCount
+					unwatched: unwatchedCount,
+					watched: watchedCount
 				}));
 
 				this.$el.append(this.list.render().el);
@@ -94,7 +92,7 @@ define(
 					case 'watched':
 						this.listCollection.reset(this.collection.watched());
 						break;
-						
+
 					default:
 						this.listCollection.reset(this.collection.models);
 				}
