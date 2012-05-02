@@ -213,7 +213,7 @@
 	}
 
 	.rating {
-		line-height: 30px;
+		line-height: 38px;
 	}
 
 	.poster-link {
@@ -264,4 +264,40 @@
 .season-list {
 	margin: 0 !important;
 	list-style-type: none;
+}
+
+.episode {
+	list-style-type: none;
+
+	a {
+		display: block;
+		.clearfix();
+		text-decoration: none;
+		.transition(color .1s linear);
+
+		&:hover {
+			color: #fff;
+		}
+	}
+
+	.poster-title {
+		display: block;
+		margin-bottom: 8px;
+		padding: 5px 0 0;
+		border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+		.transition(border .1s linear);
+
+		&:hover {
+			border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+		}
+	}
+
+	.rating {
+		line-height: 38px;
+	}
+
+	.poster-link {
+		float: left;
+		margin-right: 15px;
+	}
 }

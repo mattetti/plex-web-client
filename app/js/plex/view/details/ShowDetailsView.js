@@ -4,13 +4,14 @@ define(
 		'plex/model/AppModel',
 		'plex/view/BaseView',
 		'plex/view/lists/media/SeasonList',
+		'plex/view/lists/media/items/EpisodeListItem',
 
 		// Globals
 		'use!backbone',
 		'use!handlebars'
 	],
 
-	function (template, appModel, BaseView, SeasonList) {
+	function (template, appModel, BaseView, SeasonList, EpisodeListItem) {
 
 		var tpl = Handlebars.compile(template);
 
@@ -18,17 +19,17 @@ define(
 			className: 'details',
 
 			seasonList: undefined,
-			episodeList: undefined,
+			episodeListItem: undefined,
 			nextEpisode: undefined,
 
 			initialize: function () {
 				this.nextEpisode = this.model.get('descendants').next();
 
-				this.seasonList = this.registerView(new SeasonList({ collection: this.model.get('children') }));
-
 				if (typeof(this.nextEpisode) !== 'undefined') {
-					this.episodeList = this.registerView(new SeasonList({ collection: this.model.get('descendants') }));
+					this.episodeListItem = this.registerView(new EpisodeListItem({ model: this.nextEpisode }));
 				}
+
+				this.seasonList = this.registerView(new SeasonList({ collection: this.model.get('children') }));
 			},
 			
 			render: function () {
@@ -39,11 +40,11 @@ define(
 					nextEpisode: this.nextEpisode
 				}));
 
-				this.$('.seasons-header').after(this.seasonList.render().el);
-
 				if (typeof(this.nextEpisode) !== 'undefined') {
-					this.$('.next-header').after(this.episodeList.render().el);
+					this.$('.next-header').after(this.episodeListItem.render().el);
 				}
+
+				this.$('.seasons-header').after(this.seasonList.render().el);
 
 				return this;
 			}
