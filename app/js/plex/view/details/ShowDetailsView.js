@@ -1,6 +1,7 @@
 define(
 	[
 		'text!templates/details/ShowDetailsView.tpl',
+		'plex/control/Dispatcher',
 		'plex/model/AppModel',
 		'plex/view/BaseView',
 		'plex/view/lists/media/SeasonList',
@@ -11,7 +12,7 @@ define(
 		'use!handlebars'
 	],
 
-	function (template, appModel, BaseView, SeasonList, EpisodeListItem) {
+	function (template, dispatcher, appModel, BaseView, SeasonList, EpisodeListItem) {
 
 		var tpl = Handlebars.compile(template);
 
@@ -22,7 +23,13 @@ define(
 			episodeListItem: undefined,
 			nextEpisode: undefined,
 
+			events: {
+				'click .next-episode-btn': 'onNextEpisodeClick'
+			},
+
 			initialize: function () {
+				dispatcher.on('navigate:season', this.onNavigateSeason, this);
+
 				this.nextEpisode = this.model.get('descendants').next();
 
 				if (typeof(this.nextEpisode) !== 'undefined') {
@@ -47,6 +54,16 @@ define(
 				this.$('.seasons-header').after(this.seasonList.render().el);
 
 				return this;
+			},
+
+			onNextEpisodeClick: function (event) {
+				event.preventDefault();
+
+				dispatcher.trigger('navigate:player', appModel.get('server').id, appModel.get('section').id, this.nextEpisode.id)
+			},
+
+			onNavigateSeason: function (season) {
+				console.log(season);
 			}
 		});
 

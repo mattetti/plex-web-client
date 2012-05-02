@@ -43,6 +43,8 @@ define(
 				dispatcher.on('navigate:servers', this.onNavigateServers, this);
 				dispatcher.on('navigate:sections', this.onNavigateSections, this);
 				dispatcher.on('navigate:list', this.onNavigateList, this);
+				dispatcher.on('navigate:details', this.onNavigateDetails, this);
+				dispatcher.on('navigate:player', this.onNavigatePlayer, this);
 
 				appModel.on('change:authenticated', this.onAuthenticated, this);
 			},
@@ -181,6 +183,14 @@ define(
 
 			onNavigateList: function (serverID, sectionID) {
 				this.navigate('!/servers/' + serverID + '/sections/' + sectionID + '/list', {trigger: true});
+			},
+
+			onNavigateDetails: function (serverID, sectionID, itemID) {
+				this.navigate('!/servers/' + serverID + '/sections/' + sectionID + '/details/' + itemID, {trigger: true});
+			},
+
+			onNavigatePlayer: function (serverID, sectionID, itemID) {
+				this.navigate('!/servers/' + serverID + '/sections/' + sectionID + '/player/' + itemID, {trigger: true});
 			}
 		});
 
