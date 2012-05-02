@@ -42,20 +42,30 @@
 	{{/if}}
 </div>
 
-<div class="metadata">
-	<span class="metadata-label">Genre</span>{{truncateTagList item.Genre 150}}
-</div>
+{{#if item.Genre}}
+	<div class="metadata">
+		<span class="metadata-label">Genre</span>{{truncateTagList item.Genre 150}}
+	</div>
+{{/if}}
 
-<div class="metadata">
-	<span class="metadata-label">Director</span>{{truncateTagList item.Director 150}}
-</div>
+{{#if item.Director}}
+	<div class="metadata">
+		<span class="metadata-label">Director</span>{{truncateTagList item.Director 150}}
+	</div>
+{{/if}}
 
-<div class="metadata">
-	<span class="metadata-label">Writer</span>{{truncateTagList item.Writer 150}}
-</div>
+{{#if item.Writer}}
+	<div class="metadata">
+		<span class="metadata-label">Writer</span>{{truncateTagList item.Writer 150}}
+	</div>
+{{/if}}
 
-<div class="metadata">
-	<span class="metadata-label">Actors</span>{{truncateTagList item.Role 150}}
-</div>
+{{#if item.Role}}
+	<div class="metadata">
+		<span class="metadata-label">Actors</span>{{truncateTagList item.Role 150}}
+	</div>
+{{/if}}
 
-<div class="summary">{{truncate item.summary 700}}</div>
+{{#if item.summary}}
+	<div class="summary">{{truncate item.summary 700}}</div>
+{{/if}}
