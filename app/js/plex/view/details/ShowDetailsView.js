@@ -20,6 +20,8 @@ define(
 			className: 'details',
 
 			seasonList: undefined,
+			season: undefined,
+
 			episodeListItem: undefined,
 			nextEpisode: undefined,
 
@@ -40,18 +42,22 @@ define(
 			},
 			
 			render: function () {
-				this.$el.html(tpl({
-					serverID: appModel.get('server').id,
-					sectionID: appModel.get('section').id,
-					item: this.model.toJSON(),
-					nextEpisode: this.nextEpisode
-				}));
+				if (typeof(this.season) === 'undefined') {
+					this.$el.html(tpl({
+						serverID: appModel.get('server').id,
+						sectionID: appModel.get('section').id,
+						item: this.model.toJSON(),
+						nextEpisode: this.nextEpisode
+					}));
 
-				if (typeof(this.nextEpisode) !== 'undefined') {
-					this.$('.next-header').after(this.episodeListItem.render().el);
+					if (typeof(this.nextEpisode) !== 'undefined') {
+						this.$('.next-header').after(this.episodeListItem.render().el);
+					}
+
+					this.$('.seasons-header').after(this.seasonList.render().el);
+				} else {
+					// TODO: Make episodes list
 				}
-
-				this.$('.seasons-header').after(this.seasonList.render().el);
 
 				return this;
 			},
@@ -63,7 +69,8 @@ define(
 			},
 
 			onNavigateSeason: function (season) {
-				console.log(season);
+				this.season = season;
+				this.render();
 			}
 		});
 
