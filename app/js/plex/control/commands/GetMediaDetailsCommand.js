@@ -75,30 +75,30 @@ define(
 			model.set('children', response);
 
 			var pending = 0;
-			var episodes = new VideoCollection();
+			var descendants = new VideoCollection();
+
+			// Keep a collection of all the descendants on the parent model
+			model.set('descendants', descendants);
 
 			response.each(function (child) {
 				if (child.get('leafCount') > 0) {
 					pending++;
 
-					var descendants = new MediaItemCollection({
+					var children = new MediaItemCollection({
 						url: child.get('key')
 					});
 
-					descendants.fetch({
+					children.fetch({
 						success: function (response) {
 							pending--;
 
 							child.set('children', response);
-							episodes.add(response.models);
+							descendants.add(response.models);
 
 							// Hide the loading indicator
 							dispatcher.trigger('command:ShowLoading', false);
 
 							if (pending === 0) {
-								// Keep a collection of all the episodes on the parent model
-								model.set('descendants', episodes);
-
 								ready();
 							}
 						},
@@ -108,9 +108,6 @@ define(
 			});
 
 			if (pending === 0) {
-				// Keep a collection of all the episodes on the parent model
-				model.set('descendants', episodes);
-
 				ready();
 			}
 			
