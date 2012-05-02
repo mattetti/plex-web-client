@@ -8299,6 +8299,10 @@ ul.nav .dropdown-menu:after {
 .compact-media-list > li .list-label {
   margin-left: 10px;
 }
+.season-list {
+  margin: 0 !important;
+  list-style-type: none;
+}
 .sidebar {
   position: fixed;
   float: left;

@@ -3,12 +3,14 @@ define(
 		'plex/control/Dispatcher',
 		'plex/model/AppModel',
 		'plex/model/MediaItemModel',
+		'plex/model/collections/MediaDirectoryCollection',
 		'plex/view/DetailsView'
 	],
 
 	function (	dispatcher, 
 				appModel,
 				MediaItemModel,
+				MediaDirectoryCollection,
 				DetailsView) {
 
 		var sections = appModel.get('sections');
@@ -28,13 +30,54 @@ define(
 			});
 		}
 
-		function onFetchMetadataSuccess(response) {
+		function fetchChildren() {
+			var children = new MediaDirectoryCollection({
+				url: model.get('key')
+			});
+
+			children.fetch({
+				success: onFetchChildrenSuccess,
+				error: onError
+			})
+		}
+
+		function fetchAllChildren() {
+			// TODO: Fetch all children for music artists
+		}
+
+		function ready() {
 			appModel.set({
 				showHeader: true,
 				view: new DetailsView({ model: model }),
 				item: model
 			});
+		}
 
+		function onFetchMetadataSuccess(response) {
+			var type = model.get('type');
+
+			switch (type) {
+				case 'show':
+					fetchChildren();
+					break;
+
+				case 'artist':
+					fetchAllChildren();
+					break;
+
+				default:
+					ready();
+			}
+			
+			// Hide the loading indicator
+			dispatcher.trigger('command:ShowLoading', false);
+		}
+
+		function onFetchChildrenSuccess(response) {
+			model.set('children', response);
+
+			ready();
+			
 			// Hide the loading indicator
 			dispatcher.trigger('command:ShowLoading', false);
 		}

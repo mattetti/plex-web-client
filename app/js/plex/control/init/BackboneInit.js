@@ -25,8 +25,13 @@ define(
 				options.url = '';
 			}
 
-			options.url = '/api/' + options.url;
-
+			// Test for a leading slash
+			if (options.url.slice(0, 1) === '/') {
+				options.url = '/api' + options.url;
+			} else {
+				options.url = '/api/' + options.url;
+			}
+			
 			// Append the authentication token if the user has logged in
 			if (options.myPlex === true) {
 				options.url += '?X-Plex-Token=' + user.get('authentication_token');

@@ -90,9 +90,11 @@ define(
 					case 'unwatched':
 						this.listCollection.reset(this.collection.unwatched());
 						break;
+
 					case 'watched':
 						this.listCollection.reset(this.collection.watched());
 						break;
+						
 					default:
 						this.listCollection.reset(this.collection.models);
 				}

@@ -30,12 +30,15 @@ define(
 					case 'movie':
 						this.detailsView = this.registerView(new MovieDetails({ model: this.model }));
 						break;
+
 					case 'show':
 						this.detailsView = this.registerView(new ShowDetailsView({ model: this.model }));
 						break;
+
 					case 'artist':
 						this.detailsView = this.registerView(new ArtistDetailsView({ model: this.model }));
 						break;
+						
 					default:
 						this.$el.addClass('fatal');
 						this.detailsView = this.registerView(new UnknownDetailsView({ model: this.model }));
