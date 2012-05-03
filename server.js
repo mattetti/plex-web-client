@@ -15,8 +15,6 @@ function apiProxy(pattern) {
 		if (req.url.match(pattern)) {
 			req.url = req.url.replace(pattern, '');
 
-			console.log('Proxying response at ' + req.url);
-
 			return routingProxy.proxyRequest(req, res, {
 				host: req.headers['x-plex-proxy-host'],
 				port: req.headers['x-plex-proxy-port'],
