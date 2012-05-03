@@ -5,6 +5,7 @@ define(
 		'plex/model/AppModel',
 		'plex/view/BaseView',
 		'plex/view/lists/media/SeasonList',
+		'plex/view/lists/media/EpisodeList',
 		'plex/view/lists/media/items/EpisodeListItem',
 
 		// Globals
@@ -12,7 +13,7 @@ define(
 		'use!handlebars'
 	],
 
-	function (template, dispatcher, appModel, BaseView, SeasonList, EpisodeListItem) {
+	function (template, dispatcher, appModel, BaseView, SeasonList, EpisodeList, EpisodeListItem) {
 
 		var tpl = Handlebars.compile(template);
 
@@ -22,10 +23,12 @@ define(
 			seasonList: undefined,
 			season: undefined,
 
+			episodeList: undefined,
 			episodeListItem: undefined,
 			nextEpisode: undefined,
 
 			events: {
+				'click .show-btn': 'onShowClick',
 				'click .next-episode-btn': 'onNextEpisodeClick'
 			},
 
@@ -42,24 +45,43 @@ define(
 			},
 			
 			render: function () {
-				if (typeof(this.season) === 'undefined') {
-					this.$el.html(tpl({
-						serverID: appModel.get('server').id,
-						sectionID: appModel.get('section').id,
-						item: this.model.toJSON(),
-						nextEpisode: this.nextEpisode
-					}));
+				var season;
 
+				if (typeof(this.season) !== 'undefined') {
+					season = this.season.get('title');
+				}
+
+				this.$el.html(tpl({
+					serverID: appModel.get('server').id,
+					sectionID: appModel.get('section').id,
+					item: this.model.toJSON(),
+					nextEpisode: this.nextEpisode,
+					season: season
+				}));
+
+				if (typeof(this.season) === 'undefined') {
 					if (typeof(this.nextEpisode) !== 'undefined') {
 						this.$('.next-header').after(this.episodeListItem.render().el);
 					}
 
 					this.$('.seasons-header').after(this.seasonList.render().el);
 				} else {
-					// TODO: Make episodes list
+					this.$el.append(this.episodeList.render().el);
 				}
 
 				return this;
+			},
+
+			onShowClick: function (event) {
+				event.preventDefault();
+
+				this.season = undefined;
+				this.removeView(this.episodeList);
+
+				this.render();
+
+				// Delay the lazy loading of images so they will already be in the DOM
+				setTimeout(this.loadPosters, 200);
 			},
 
 			onNextEpisodeClick: function (event) {
@@ -70,7 +92,19 @@ define(
 
 			onNavigateSeason: function (season) {
 				this.season = season;
+				this.episodeList = this.registerView(new EpisodeList({ collection: season.get('children') }));
+
 				this.render();
+
+				// Reset the scroll position to the top of the page
+				window.scrollTo(0, 0);
+
+				// Delay the lazy loading of images so they will already be in the DOM
+				setTimeout(this.loadPosters, 200);
+			},
+
+			loadPosters: function () {
+				this.$('img.poster').lazyload({ threshold: 100 });
 			}
 		});
 

@@ -21,7 +21,7 @@ define(
 			},
 			
 			render: function () {
-				this.$el.html();
+				this.$el.empty();
 
 				// Keep the list populated
 				this.onAddAll();
