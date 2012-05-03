@@ -27,6 +27,7 @@ define(
 				'!/queue': 'queue',
 				'!/servers': 'servers',
 				'!/servers/:serverID/sections': 'sections',
+				'!/servers/:serverID/sections/:sectionID/details/:itemID/season/:seasonID': 'season',
 				'!/servers/:serverID/sections/:sectionID/details/:itemID': 'details',
 				'!/servers/:serverID/sections/:sectionID/player/:itemID': 'player',
 				'!/servers/:serverID/sections/:sectionID/list': 'list',
@@ -44,6 +45,8 @@ define(
 				dispatcher.on('navigate:sections', this.onNavigateSections, this);
 				dispatcher.on('navigate:list', this.onNavigateList, this);
 				dispatcher.on('navigate:details', this.onNavigateDetails, this);
+				dispatcher.on('navigate:show', this.onNavigateShow, this);
+				dispatcher.on('navigate:season', this.onNavigateSeason, this);
 				dispatcher.on('navigate:player', this.onNavigatePlayer, this);
 
 				appModel.on('change:authenticated', this.onAuthenticated, this);
@@ -88,7 +91,8 @@ define(
 					view: new LoginView(),
 					server: undefined,
 					section: undefined,
-					item: undefined
+					item: undefined,
+					childID: undefined
 				});
 			},
 
@@ -105,7 +109,8 @@ define(
 						view: new ServersView(),
 						server: undefined,
 						section: undefined,
-						item: undefined
+						item: undefined,
+						childID: undefined
 					});
 
 					dispatcher.trigger('command:GetServers');
@@ -140,6 +145,22 @@ define(
 
 				if (this.isAuthenticated(this.details, arguments) === true) {
 					appModel.set('server', servers.get(serverID));
+
+					dispatcher.trigger('command:GetMediaDetails', sectionID, itemID);
+				}
+			},
+
+			season: function () {
+				var serverID = arguments[0];
+				var sectionID = arguments[1];
+				var itemID = arguments[2];
+				var seasonID = arguments[3];
+
+				if (this.isAuthenticated(this.season, arguments) === true) {
+					appModel.set({
+						server: servers.get(serverID),
+						childID: seasonID
+					});
 
 					dispatcher.trigger('command:GetMediaDetails', sectionID, itemID);
 				}
@@ -187,6 +208,25 @@ define(
 
 			onNavigateDetails: function (serverID, sectionID, itemID) {
 				this.navigate('!/servers/' + serverID + '/sections/' + sectionID + '/details/' + itemID, {trigger: true});
+			},
+
+			onNavigateShow: function () {
+				var serverID = appModel.get('server').id;
+				var sectionID = appModel.get('section').id;
+				var itemID = appModel.get('item').id;
+
+				// Do not set trigger since ShowDetailsView is handling navigating back to the show
+				this.navigate('!/servers/' + serverID + '/sections/' + sectionID + '/details/' + itemID);
+			},
+
+			onNavigateSeason: function (season) {
+				var serverID = appModel.get('server').id;
+				var sectionID = appModel.get('section').id;
+				var itemID = appModel.get('item').id;
+				var seasonID = season.get('index');
+
+				// Do not set trigger since ShowDetailsView is handling navigating to the episode list
+				this.navigate('!/servers/' + serverID + '/sections/' + sectionID + '/details/' + itemID + '/season/' + seasonID);
 			},
 
 			onNavigatePlayer: function (serverID, sectionID, itemID) {

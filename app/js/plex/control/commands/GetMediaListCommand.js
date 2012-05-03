@@ -65,7 +65,8 @@ define(
 			appModel.set({
 				showHeader: true,
 				view: new MediaView({ type: 'movies', collection: collection }),
-				item: undefined
+				item: undefined,
+				childID: undefined
 			});
 
 			// Hide the loading indicator
@@ -76,7 +77,8 @@ define(
 			appModel.set({
 				showHeader: true,
 				view: new MediaView({ type: 'shows', collection: collection }),
-				item: undefined
+				item: undefined,
+				childID: undefined
 			});
 
 			// Hide the loading indicator
@@ -87,7 +89,8 @@ define(
 			appModel.set({
 				showHeader: true,
 				view: new MediaView({ type: 'music', collection: collection }),
-				item: undefined
+				item: undefined,
+				childID: undefined
 			});
 
 			// Hide the loading indicator

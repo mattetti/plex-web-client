@@ -14,7 +14,8 @@ define(
 				showHeader: true,
 				view: new SectionsView(),
 				section: undefined,
-				item: undefined
+				item: undefined,
+				childID: undefined
 			});
 
 			// Hide the loading indicator

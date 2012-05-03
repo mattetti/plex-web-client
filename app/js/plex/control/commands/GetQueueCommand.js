@@ -15,7 +15,8 @@ define(
 				view: new QueueView(),
 				server: undefined,
 				section: undefined,
-				item: undefined
+				item: undefined,
+				childID: undefined
 			});
 
 			// Hide the loading indicator

@@ -33,7 +33,15 @@ define(
 			},
 
 			initialize: function () {
+				var seasonID = appModel.get('childID');
+				var seasons = this.model.get('children');
+
 				dispatcher.on('navigate:season', this.onNavigateSeason, this);
+
+				if (typeof(seasonID) !== 'undefined') {
+					this.season = _.first(seasons.where({ index: seasonID }));
+					this.episodeList = this.registerView(new EpisodeList({ collection: this.season.get('children') }));
+				}
 
 				this.nextEpisode = this.model.get('descendants').next();
 
@@ -79,6 +87,8 @@ define(
 				this.removeView(this.episodeList);
 
 				this.render();
+
+				dispatcher.trigger('navigate:show');
 
 				// Delay the lazy loading of images so they will already be in the DOM
 				setTimeout(this.loadPosters, 200);

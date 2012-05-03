@@ -24,6 +24,7 @@ define(
 				server: undefined,
 				section: undefined,
 				item: undefined,
+				childID: undefined,
 
 				// Collections
 				queue: new QueueCollection(),
