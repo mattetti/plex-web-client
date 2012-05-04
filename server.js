@@ -50,6 +50,14 @@ switch (NODE_ENV) {
 		break;
 }
 
+app.get('*', function (req,res,next) {
+	if (req.headers['x-forwarded-proto'] !== 'https') {
+		res.redirect('https://plex.herokuapp.com' + req.url);
+	} else {
+		next();
+	}
+});
+
 app.get('/', function (req, res) {
 	res.redirect(index);
 });
