@@ -42,21 +42,13 @@ app.configure(function () {
 
 switch (NODE_ENV) {
 	case 'production':
-		index = '/build/index.html';
+		index = 'https://plex.herokuapp.com/build/index.html';
 		break;
 	case 'development':
 	default:
 		index = '/app/index-dev.html';
 		break;
 }
-
-app.get('*', function (req,res,next) {
-	if (req.headers['x-forwarded-proto'] !== 'https') {
-		res.redirect('https://plex.herokuapp.com' + req.url);
-	} else {
-		next();
-	}
-});
 
 app.get('/', function (req, res) {
 	res.redirect(index);
