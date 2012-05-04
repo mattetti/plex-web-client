@@ -35,10 +35,6 @@ define(
 			},
 			
 			initialize: function () {
-				new AppView().render();
-
-				Backbone.history.start();
-
 				this.bind('all', this.track);
 
 				dispatcher.on('navigate:login', this.onNavigateLogin, this);
@@ -52,6 +48,10 @@ define(
 				dispatcher.on('navigate:player', this.onNavigatePlayer, this);
 
 				appModel.on('change:authenticated', this.onAuthenticated, this);
+
+				new AppView().render();
+
+				Backbone.history.start();
 			},
 
 			track: function () {
