@@ -39,6 +39,8 @@ define(
 
 				Backbone.history.start();
 
+				this.bind('all', this.track);
+
 				dispatcher.on('navigate:login', this.onNavigateLogin, this);
 				dispatcher.on('navigate:queue', this.onNavigateQueue, this);
 				dispatcher.on('navigate:servers', this.onNavigateServers, this);
@@ -50,6 +52,13 @@ define(
 				dispatcher.on('navigate:player', this.onNavigatePlayer, this);
 
 				appModel.on('change:authenticated', this.onAuthenticated, this);
+			},
+
+			track: function () {
+				if (typeof(_gaq) !== 'undefined') {
+					var url = Backbone.history.getFragment();
+					return _gaq.push(['_trackPageview', '/' + url]);
+				}
 			},
 
 			isAuthenticated: function (callback, args) {
