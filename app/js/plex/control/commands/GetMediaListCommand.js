@@ -66,7 +66,7 @@ define(
 				showHeader: true,
 				view: new MediaView({ type: 'movies', collection: collection }),
 				item: undefined,
-				childID: undefined
+				season: undefined
 			});
 
 			// Hide the loading indicator
@@ -78,7 +78,7 @@ define(
 				showHeader: true,
 				view: new MediaView({ type: 'shows', collection: collection }),
 				item: undefined,
-				childID: undefined
+				season: undefined
 			});
 
 			// Hide the loading indicator
@@ -90,7 +90,7 @@ define(
 				showHeader: true,
 				view: new MediaView({ type: 'music', collection: collection }),
 				item: undefined,
-				childID: undefined
+				season: undefined
 			});
 
 			// Hide the loading indicator

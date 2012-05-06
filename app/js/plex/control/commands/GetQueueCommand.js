@@ -16,7 +16,7 @@ define(
 				server: undefined,
 				section: undefined,
 				item: undefined,
-				childID: undefined
+				season: undefined
 			});
 
 			// Hide the loading indicator

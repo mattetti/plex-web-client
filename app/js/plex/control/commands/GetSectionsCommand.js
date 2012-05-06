@@ -15,7 +15,7 @@ define(
 				view: new SectionsView(),
 				section: undefined,
 				item: undefined,
-				childID: undefined
+				season: undefined
 			});
 
 			// Hide the loading indicator

@@ -43,7 +43,6 @@ define(
 				dispatcher.on('navigate:sections', this.onNavigateSections, this);
 				dispatcher.on('navigate:list', this.onNavigateList, this);
 				dispatcher.on('navigate:details', this.onNavigateDetails, this);
-				dispatcher.on('navigate:show', this.onNavigateShow, this);
 				dispatcher.on('navigate:season', this.onNavigateSeason, this);
 				dispatcher.on('navigate:player', this.onNavigatePlayer, this);
 
@@ -101,7 +100,7 @@ define(
 					server: undefined,
 					section: undefined,
 					item: undefined,
-					childID: undefined
+					season: undefined
 				});
 			},
 
@@ -119,7 +118,7 @@ define(
 						server: undefined,
 						section: undefined,
 						item: undefined,
-						childID: undefined
+						season: undefined
 					});
 
 					dispatcher.trigger('command:GetServers');
@@ -166,12 +165,9 @@ define(
 				var seasonID = arguments[3];
 
 				if (this.isAuthenticated(this.season, arguments) === true) {
-					appModel.set({
-						server: servers.get(serverID),
-						childID: seasonID
-					});
+					appModel.set('server', servers.get(serverID));
 
-					dispatcher.trigger('command:GetMediaDetails', sectionID, itemID);
+					dispatcher.trigger('command:GetMediaDetails', sectionID, itemID, seasonID);
 				}
 			},
 
@@ -219,23 +215,8 @@ define(
 				this.navigate('!/servers/' + serverID + '/sections/' + sectionID + '/details/' + itemID, {trigger: true});
 			},
 
-			onNavigateShow: function () {
-				var serverID = appModel.get('server').id;
-				var sectionID = appModel.get('section').id;
-				var itemID = appModel.get('item').id;
-
-				// Do not set trigger since ShowDetailsView is handling navigating back to the show
-				this.navigate('!/servers/' + serverID + '/sections/' + sectionID + '/details/' + itemID);
-			},
-
-			onNavigateSeason: function (season) {
-				var serverID = appModel.get('server').id;
-				var sectionID = appModel.get('section').id;
-				var itemID = appModel.get('item').id;
-				var seasonID = season.get('index');
-
-				// Do not set trigger since ShowDetailsView is handling navigating to the episode list
-				this.navigate('!/servers/' + serverID + '/sections/' + sectionID + '/details/' + itemID + '/season/' + seasonID);
+			onNavigateSeason: function (serverID, sectionID, itemID, seasonID) {
+				this.navigate('!/servers/' + serverID + '/sections/' + sectionID + '/details/' + itemID + '/season/' + seasonID, {trigger: true});
 			},
 
 			onNavigatePlayer: function (serverID, sectionID, itemID) {

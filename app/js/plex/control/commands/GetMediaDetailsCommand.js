@@ -3,116 +3,81 @@ define(
 		'plex/control/Dispatcher',
 		'plex/model/AppModel',
 		'plex/model/MediaItemModel',
-		'plex/model/collections/MediaItemCollection',
-		'plex/model/collections/VideoCollection',
 		'plex/view/DetailsView'
 	],
 
-	function (	dispatcher, 
-				appModel,
-				MediaItemModel,
-				MediaItemCollection,
-				VideoCollection,
-				DetailsView) {
+	function ( dispatcher, appModel, MediaItemModel, DetailsView) {
 
 		var sections = appModel.get('sections');
-		var model;
+		var item;
+		var childID;
 
 		function fetchDetails(section, itemID) {
 			// Set the active section on the model
 			appModel.set('section', section);
 
-			model = new MediaItemModel({
+			item = new MediaItemModel({
 				url: 'library/metadata/' + itemID
 			});
 
-			model.fetch({
+			item.fetch({
 				success: onFetchMetadataSuccess,
 				error: onError
 			});
 		}
 
-		function fetchChildren() {
-			var children = new MediaItemCollection({
-				url: model.get('key')
-			});
-
-			children.fetch({
-				success: onFetchChildrenSuccess,
-				error: onError
-			})
-		}
-
-		function ready() {
-			appModel.set({
-				showHeader: true,
-				view: new DetailsView({ model: model }),
-				item: model
-			});
-		}
-
 		function onFetchMetadataSuccess(response) {
-			var type = model.get('type');
+			var type = item.get('type');
 
 			switch (type) {
 				case 'show':
-					fetchChildren();
+					dispatcher.on('response:GetSeasons', onGetSeasonsResponse);
+					dispatcher.trigger('command:GetSeasons', item);
 					break;
 
 				case 'artist':
-					fetchChildren();
 					break;
 
 				default:
-					ready();
+					appModel.set({
+						showHeader: true,
+						view: new DetailsView({ model: item }),
+						item: item,
+						season: undefined
+					});
 			}
 			
 			// Hide the loading indicator
 			dispatcher.trigger('command:ShowLoading', false);
 		}
 
-		function onFetchChildrenSuccess(response) {
-			model.set('children', response);
+		function onGetSeasonsResponse(response) {
+			dispatcher.off('response:GetSeasons', onGetSeasonsResponse);
 
-			var pending = 0;
-			var descendants = new VideoCollection();
+			if (response === true) {
+				var seasons = appModel.get('seasons');
+				var season;
+				var model;
 
-			// Keep a collection of all the descendants on the parent model
-			model.set('descendants', descendants);
+				seasons.each(function (child) {
+					if (child.get('index') === childID) {
+						season = child;
+					}
+				});
 
-			response.each(function (child) {
-				if (child.get('leafCount') > 0) {
-					pending++;
-
-					var children = new MediaItemCollection({
-						url: child.get('key')
-					});
-
-					children.fetch({
-						success: function (response) {
-							pending--;
-
-							child.set('children', response);
-							descendants.add(response.models);
-
-							// Hide the loading indicator
-							dispatcher.trigger('command:ShowLoading', false);
-
-							if (pending === 0) {
-								ready();
-							}
-						},
-						error: onError
-					})
+				if (typeof(season) === 'undefined') {
+					model = item;
+				} else {
+					model = season;
 				}
-			});
 
-			if (pending === 0) {
-				ready();
+				appModel.set({
+					showHeader: true,
+					view: new DetailsView({ model: model }),
+					item: item,
+					season: season
+				});
 			}
-			
-			// Hide the loading indicator
-			dispatcher.trigger('command:ShowLoading', false);
 		}
 
 		function onError(xhr, status, error) {
@@ -128,8 +93,10 @@ define(
 		// -------------------- Execute --------------------
 		//
 
-		function execute (sectionID, itemID) {
+		function execute (sectionID, itemID, seasonID) {
 			var section = sections.get(sectionID);
+
+			childID = seasonID;
 
 			if (typeof(section) === 'object') {
 				fetchDetails(section, itemID);

@@ -4,12 +4,13 @@ define(
 		'plex/model/collections/QueueCollection',
 		'plex/model/collections/ServerCollection',
 		'plex/model/collections/SectionCollection',
+		'plex/model/collections/MediaItemCollection',
 
 		// Globals
 		'use!backbone'
 	],
 
-	function (UserModel, QueueCollection, ServerCollection, SectionCollection) {
+	function (UserModel, QueueCollection, ServerCollection, SectionCollection, MediaItemCollection) {
 
 		var AppModel = Backbone.Model.extend({
 			defaults: {
@@ -24,12 +25,13 @@ define(
 				server: undefined,
 				section: undefined,
 				item: undefined,
-				childID: undefined,
+				season: undefined,
 
 				// Collections
 				queue: new QueueCollection(),
 				servers: new ServerCollection(),
-				sections: new SectionCollection()
+				sections: new SectionCollection(),
+				seasons: new MediaItemCollection()
 			}
 		});
 
