@@ -31,7 +31,8 @@ define(
 				queue: new QueueCollection(),
 				servers: new ServerCollection(),
 				sections: new SectionCollection(),
-				seasons: new MediaItemCollection()
+				seasons: new MediaItemCollection(),
+				albums: new MediaItemCollection()
 			}
 		});
 

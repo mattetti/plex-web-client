@@ -36,6 +36,8 @@ define(
 					break;
 
 				case 'artist':
+					dispatcher.on('response:GetAlbums', onGetAlbumsResponse);
+					dispatcher.trigger('command:GetAlbums', item);
 					break;
 
 				default:
@@ -76,6 +78,19 @@ define(
 					view: new DetailsView({ model: model }),
 					item: item,
 					season: season
+				});
+			}
+		}
+
+		function onGetAlbumsResponse(response) {
+			dispatcher.off('response:GetAlbums', onGetAlbumsResponse);
+
+			if (response === true) {
+				appModel.set({
+					showHeader: true,
+					view: new DetailsView({ model: item }),
+					item: item,
+					season: undefined
 				});
 			}
 		}

@@ -21,7 +21,7 @@ define(
 
 			seasonList: undefined,
 
-			episodeListItem: undefined,
+			nextEpisodeItem: undefined,
 			nextEpisode: undefined,
 
 			events: {
@@ -32,7 +32,7 @@ define(
 				this.nextEpisode = this.model.get('episodes').next();
 
 				if (typeof(this.nextEpisode) !== 'undefined') {
-					this.episodeListItem = this.registerView(new EpisodeListItem({ model: this.nextEpisode }));
+					this.nextEpisodeItem = this.registerView(new EpisodeListItem({ model: this.nextEpisode }));
 				}
 
 				this.seasonList = this.registerView(new SeasonList({ collection: this.model.get('children') }));
@@ -47,7 +47,7 @@ define(
 				}));
 
 				if (typeof(this.nextEpisode) !== 'undefined') {
-					this.$('.next-header').after(this.episodeListItem.render().el);
+					this.$('.next-header').after(this.nextEpisodeItem.render().el);
 				}
 
 				this.$('.seasons-header').after(this.seasonList.render().el);
