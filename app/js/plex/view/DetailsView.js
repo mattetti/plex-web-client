@@ -5,6 +5,7 @@ define(
 		'plex/view/BaseView',
 		'plex/view/details/MovieDetailsView',
 		'plex/view/details/ShowDetailsView',
+		'plex/view/details/SeasonDetailsView',
 		'plex/view/details/ArtistDetailsView',
 		'plex/view/details/UnknownDetailsView',
 
@@ -13,7 +14,7 @@ define(
 		'use!handlebars'
 	],
 
-	function (template, appModel, BaseView, MovieDetails, ShowDetailsView, ArtistDetailsView, UnknownDetailsView) {
+	function (template, appModel, BaseView, MovieDetails, ShowDetailsView, SeasonDetailsView, ArtistDetailsView, UnknownDetailsView) {
 
 		var tpl = Handlebars.compile(template);
 
@@ -33,6 +34,10 @@ define(
 
 					case 'show':
 						this.detailsView = this.registerView(new ShowDetailsView({ model: this.model }));
+						break;
+
+					case 'season':
+						this.detailsView = this.registerView(new SeasonDetailsView({ model: this.model }));
 						break;
 
 					case 'artist':

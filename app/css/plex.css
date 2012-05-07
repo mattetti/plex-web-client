@@ -8303,6 +8303,30 @@ ul.nav .dropdown-menu:after {
   margin: 0 !important;
   list-style-type: none;
 }
+.episode-list {
+  margin: 0;
+}
+.episode-list > .episode {
+  margin-bottom: 15px;
+  *zoom: 1;
+  *zoom: 1;
+}
+.episode-list > .episode:before,
+.episode-list > .episode:after {
+  display: table;
+  content: "";
+}
+.episode-list > .episode:after {
+  clear: both;
+}
+.episode-list > .episode:before,
+.episode-list > .episode:after {
+  display: table;
+  content: "";
+}
+.episode-list > .episode:after {
+  clear: both;
+}
 .episode {
   list-style-type: none;
 }
@@ -8345,7 +8369,7 @@ ul.nav .dropdown-menu:after {
   display: block;
   margin-bottom: 8px;
   padding: 5px 0 0;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.15);
   -webkit-transition: border 0.1s linear;
   -moz-transition: border 0.1s linear;
   -ms-transition: border 0.1s linear;
@@ -8489,6 +8513,9 @@ ul.nav .dropdown-menu:after {
   box-sizing: border-box;
   border-bottom: 5px solid rgba(255, 255, 255, 0.15);
   font-weight: normal;
+}
+.details-header-divider {
+  margin: 0 8px;
 }
 .details > h3 {
   clear: both;

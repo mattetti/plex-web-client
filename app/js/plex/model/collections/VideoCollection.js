@@ -10,7 +10,6 @@ define(
 	function (VideoModel) {
 		var VideoCollection = Backbone.Collection.extend({
 			model: VideoModel,
-			cachedModels: undefined,
 
 			initialize: function (options) {
 				if (typeof(options) !== 'undefined') {

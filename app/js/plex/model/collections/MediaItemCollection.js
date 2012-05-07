@@ -13,7 +13,9 @@ define(
 			myPlex: false,
 
 			initialize: function (options) {
-				this.url = options.url;
+				if (typeof(options) !== 'undefined') {
+					this.url = options.url;
+				}
 			},
 
 			parse: function (response) {

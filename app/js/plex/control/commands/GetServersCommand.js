@@ -51,7 +51,7 @@ define(
 		}
 
 		function onError(xhr, status, error) {
-			// Notify that servers have loaded
+			// Notify that there was an error
 			dispatcher.trigger('response:GetServers', false);
 
 			// Hide the loading indicator

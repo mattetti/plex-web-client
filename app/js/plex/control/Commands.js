@@ -6,6 +6,8 @@ define(
 		'plex/control/commands/GetSectionsCommand',
 		'plex/control/commands/GetMediaListCommand',
 		'plex/control/commands/GetMediaDetailsCommand',
+		'plex/control/commands/GetSeasonsCommand',
+		'plex/control/commands/GetAlbumsCommand',
 		'plex/control/commands/MarkQueueItemWatchedCommand',
 		'plex/control/commands/MarkQueueItemUnwatchedCommand',
 		'plex/control/commands/DeleteQueueItemCommand',
