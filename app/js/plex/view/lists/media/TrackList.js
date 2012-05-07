@@ -1,17 +1,17 @@
 define(
 	[
 		'plex/view/BaseView',
-		'plex/view/lists/media/items/AlbumListItem',
+		'plex/view/lists/media/items/TrackListItem',
 
 		// Globals
 		'use!backbone',
 		'use!handlebars'
 	],
 
-	function (BaseView, AlbumListItem) {
-		var Albumlist = BaseView.extend({
+	function (BaseView, TrackListItem) {
+		var TrackList = BaseView.extend({
 			tagName: 'ul',
-			className: 'album-list',
+			className: 'track-list',
 
 			initialize: function () {
 				this.addBinding(this.collection, 'add', this.onAdd);
@@ -28,14 +28,12 @@ define(
 			},
 
 			onAdd: function (album) {
-				if (typeof(album.get('index')) !== 'undefined') {
-					var item = new AlbumListItem({ model: album });
+				var item = new TrackListItem({ model: album });
 
-					// Register the view so it will be cleaned up on destroy
-					this.registerView(item);
+				// Register the view so it will be cleaned up on destroy
+				this.registerView(item);
 
-					this.$el.append(item.render().el);
-				}
+				this.$el.append(item.render().el);
 			},
 
 			onAddAll: function () {
@@ -46,6 +44,6 @@ define(
 			}
 		});
 
-		return Albumlist;
+		return TrackList;
 	}
 );
