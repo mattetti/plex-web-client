@@ -1,0 +1,72 @@
+.album-list {
+	margin: 0;
+	list-style-type: none;
+}
+
+.album-list > li {
+	.clearfix();
+	margin-bottom: 30px;
+}
+
+.album-art {
+	float: left;
+	text-align: center;
+}
+
+.album-art > .album-title {
+	overflow: hidden;
+	margin-top: 5px;
+	width: 150px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.track-list {
+	margin: 0 0 0 200px;
+	list-style-type: none;
+}
+
+.track-list > li {
+	background-color: rgba(0, 0, 0, .4);
+	font-size: 14px;
+
+	a {
+		display: block;
+		padding: 4px 8px;
+		color: #eee;
+
+		&:hover {
+			text-decoration: none;
+
+			.track-number,
+			.track-duration {
+				color: #fff;
+			}
+		}
+	}
+
+	&:nth-child(odd) {
+		background-color: rgba(0, 0, 0, .3);
+	}
+
+	&:hover {
+		background-color: #1E90E0;
+	}
+}
+
+.track-number {
+	display: inline-block;
+	width: 25px;
+	color: #999;
+}
+
+.track-duration {
+	float: right;
+	color: #999;
+}
+
+.mejs-audio {
+	position: fixed !important;
+	left: 0;
+	top: 60px;
+}

@@ -27,6 +27,7 @@ define(
 				'!/queue': 'queue',
 				'!/servers': 'servers',
 				'!/servers/:serverID/sections': 'sections',
+				'!/servers/:serverID/sections/:sectionID/details/:itemID/season/:seasonID': 'season',
 				'!/servers/:serverID/sections/:sectionID/details/:itemID': 'details',
 				'!/servers/:serverID/sections/:sectionID/player/:itemID': 'player',
 				'!/servers/:serverID/sections/:sectionID/list': 'list',
@@ -34,9 +35,7 @@ define(
 			},
 			
 			initialize: function () {
-				new AppView().render();
-
-				Backbone.history.start();
+				this.bind('all', this.track);
 
 				dispatcher.on('navigate:login', this.onNavigateLogin, this);
 				dispatcher.on('navigate:queue', this.onNavigateQueue, this);
@@ -44,9 +43,21 @@ define(
 				dispatcher.on('navigate:sections', this.onNavigateSections, this);
 				dispatcher.on('navigate:list', this.onNavigateList, this);
 				dispatcher.on('navigate:details', this.onNavigateDetails, this);
+				dispatcher.on('navigate:season', this.onNavigateSeason, this);
 				dispatcher.on('navigate:player', this.onNavigatePlayer, this);
 
 				appModel.on('change:authenticated', this.onAuthenticated, this);
+
+				new AppView().render();
+
+				Backbone.history.start();
+			},
+
+			track: function () {
+				if (typeof(_gaq) !== 'undefined') {
+					var url = Backbone.history.getFragment();
+					return _gaq.push(['_trackPageview', '/' + url]);
+				}
 			},
 
 			isAuthenticated: function (callback, args) {
@@ -88,7 +99,8 @@ define(
 					view: new LoginView(),
 					server: undefined,
 					section: undefined,
-					item: undefined
+					item: undefined,
+					season: undefined
 				});
 			},
 
@@ -105,7 +117,8 @@ define(
 						view: new ServersView(),
 						server: undefined,
 						section: undefined,
-						item: undefined
+						item: undefined,
+						season: undefined
 					});
 
 					dispatcher.trigger('command:GetServers');
@@ -142,6 +155,19 @@ define(
 					appModel.set('server', servers.get(serverID));
 
 					dispatcher.trigger('command:GetMediaDetails', sectionID, itemID);
+				}
+			},
+
+			season: function () {
+				var serverID = arguments[0];
+				var sectionID = arguments[1];
+				var itemID = arguments[2];
+				var seasonID = arguments[3];
+
+				if (this.isAuthenticated(this.season, arguments) === true) {
+					appModel.set('server', servers.get(serverID));
+
+					dispatcher.trigger('command:GetMediaDetails', sectionID, itemID, seasonID);
 				}
 			},
 
@@ -187,6 +213,10 @@ define(
 
 			onNavigateDetails: function (serverID, sectionID, itemID) {
 				this.navigate('!/servers/' + serverID + '/sections/' + sectionID + '/details/' + itemID, {trigger: true});
+			},
+
+			onNavigateSeason: function (serverID, sectionID, itemID, seasonID) {
+				this.navigate('!/servers/' + serverID + '/sections/' + sectionID + '/details/' + itemID + '/season/' + seasonID, {trigger: true});
 			},
 
 			onNavigatePlayer: function (serverID, sectionID, itemID) {

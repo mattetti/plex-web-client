@@ -266,6 +266,15 @@
 	list-style-type: none;
 }
 
+.episode-list {
+	margin: 0;
+}
+
+.episode-list > .episode {
+	margin-bottom: 15px;
+	.clearfix();
+}
+
 .episode {
 	list-style-type: none;
 
@@ -284,7 +293,7 @@
 		display: block;
 		margin-bottom: 8px;
 		padding: 5px 0 0;
-		border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+		border-bottom: 2px solid rgba(255, 255, 255, 0.15);
 		.transition(border .1s linear);
 
 		&:hover {

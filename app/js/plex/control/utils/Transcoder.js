@@ -11,6 +11,7 @@ define(
 	function (appModel) {
 		var imagePath = '/photo/:/transcode?url=';
 		var m3u8Path = '/video/:/transcode/segmented/start.m3u8?identifier=com.plexapp.plugins.library&';
+		var flvPath = '/video/:/transcode/generic.flv?format=flv&videoCodec=libx264&vpre=video-embedded-h264&videoBitrate=5000&audioCodec=libfaac&apre=audio-embedded-aac&audioBitrate=128&size=640x480&fakeContentLength=2000000000&';
 
 		var publicKey = 'KQMIY6GATPC63AIMC4R2';
 		var privateKey = decode64('k3U6GLkZOoNIoSgjDshPErvqMIFdE0xMTx8kgsrhnC0=');

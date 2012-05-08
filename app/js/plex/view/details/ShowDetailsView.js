@@ -20,9 +20,8 @@ define(
 			className: 'details',
 
 			seasonList: undefined,
-			season: undefined,
 
-			episodeListItem: undefined,
+			nextEpisodeItem: undefined,
 			nextEpisode: undefined,
 
 			events: {
@@ -30,34 +29,28 @@ define(
 			},
 
 			initialize: function () {
-				dispatcher.on('navigate:season', this.onNavigateSeason, this);
-
-				this.nextEpisode = this.model.get('descendants').next();
+				this.nextEpisode = this.model.get('episodes').next();
 
 				if (typeof(this.nextEpisode) !== 'undefined') {
-					this.episodeListItem = this.registerView(new EpisodeListItem({ model: this.nextEpisode }));
+					this.nextEpisodeItem = this.registerView(new EpisodeListItem({ model: this.nextEpisode }));
 				}
 
 				this.seasonList = this.registerView(new SeasonList({ collection: this.model.get('children') }));
 			},
 			
 			render: function () {
-				if (typeof(this.season) === 'undefined') {
-					this.$el.html(tpl({
-						serverID: appModel.get('server').id,
-						sectionID: appModel.get('section').id,
-						item: this.model.toJSON(),
-						nextEpisode: this.nextEpisode
-					}));
+				this.$el.html(tpl({
+					serverID: appModel.get('server').id,
+					sectionID: appModel.get('section').id,
+					show: this.model.toJSON(),
+					nextEpisode: this.nextEpisode
+				}));
 
-					if (typeof(this.nextEpisode) !== 'undefined') {
-						this.$('.next-header').after(this.episodeListItem.render().el);
-					}
-
-					this.$('.seasons-header').after(this.seasonList.render().el);
-				} else {
-					// TODO: Make episodes list
+				if (typeof(this.nextEpisode) !== 'undefined') {
+					this.$('.next-header').after(this.nextEpisodeItem.render().el);
 				}
+
+				this.$('.seasons-header').after(this.seasonList.render().el);
 
 				return this;
 			},
@@ -66,11 +59,6 @@ define(
 				event.preventDefault();
 
 				dispatcher.trigger('navigate:player', appModel.get('server').id, appModel.get('section').id, this.nextEpisode.id)
-			},
-
-			onNavigateSeason: function (season) {
-				this.season = season;
-				this.render();
 			}
 		});
 

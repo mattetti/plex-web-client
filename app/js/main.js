@@ -17,6 +17,7 @@ require.config({
 		'date': 'libs/date',
 		'base64': 'libs/base64',
 		'sha256': 'libs/jssha256-0.1',
+		'mediaelement': 'libs/mediaelement-2.8.1',
 		
 		// Require
 		'use': 'libs/require/use-0.2.0',
@@ -52,6 +53,7 @@ require.config({
 		date: {},
 		base64: {},
 		sha256: {},
+		mediaelement: {},
 
 		// Bootstrap
 		transition: { deps: ['jquery'] },

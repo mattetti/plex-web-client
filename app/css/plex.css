@@ -8303,6 +8303,30 @@ ul.nav .dropdown-menu:after {
   margin: 0 !important;
   list-style-type: none;
 }
+.episode-list {
+  margin: 0;
+}
+.episode-list > .episode {
+  margin-bottom: 15px;
+  *zoom: 1;
+  *zoom: 1;
+}
+.episode-list > .episode:before,
+.episode-list > .episode:after {
+  display: table;
+  content: "";
+}
+.episode-list > .episode:after {
+  clear: both;
+}
+.episode-list > .episode:before,
+.episode-list > .episode:after {
+  display: table;
+  content: "";
+}
+.episode-list > .episode:after {
+  clear: both;
+}
 .episode {
   list-style-type: none;
 }
@@ -8345,7 +8369,7 @@ ul.nav .dropdown-menu:after {
   display: block;
   margin-bottom: 8px;
   padding: 5px 0 0;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.15);
   -webkit-transition: border 0.1s linear;
   -moz-transition: border 0.1s linear;
   -ms-transition: border 0.1s linear;
@@ -8490,6 +8514,9 @@ ul.nav .dropdown-menu:after {
   border-bottom: 5px solid rgba(255, 255, 255, 0.15);
   font-weight: normal;
 }
+.details-header-divider {
+  margin: 0 8px;
+}
 .details > h3 {
   clear: both;
   margin-bottom: 20px;
@@ -8573,4 +8600,80 @@ ul.nav .dropdown-menu:after {
 }
 .rating > .star.selected {
   color: #1e90e0;
+}
+.album-list {
+  margin: 0;
+  list-style-type: none;
+}
+.album-list > li {
+  *zoom: 1;
+  *zoom: 1;
+  margin-bottom: 30px;
+}
+.album-list > li:before,
+.album-list > li:after {
+  display: table;
+  content: "";
+}
+.album-list > li:after {
+  clear: both;
+}
+.album-list > li:before,
+.album-list > li:after {
+  display: table;
+  content: "";
+}
+.album-list > li:after {
+  clear: both;
+}
+.album-art {
+  float: left;
+  text-align: center;
+}
+.album-art > .album-title {
+  overflow: hidden;
+  margin-top: 5px;
+  width: 150px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.track-list {
+  margin: 0 0 0 200px;
+  list-style-type: none;
+}
+.track-list > li {
+  background-color: rgba(0, 0, 0, 0.4);
+  font-size: 14px;
+}
+.track-list > li a {
+  display: block;
+  padding: 4px 8px;
+  color: #eee;
+}
+.track-list > li a:hover {
+  text-decoration: none;
+}
+.track-list > li a:hover .track-number,
+.track-list > li a:hover .track-duration {
+  color: #fff;
+}
+.track-list > li:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.track-list > li:hover {
+  background-color: #1E90E0;
+}
+.track-number {
+  display: inline-block;
+  width: 25px;
+  color: #999;
+}
+.track-duration {
+  float: right;
+  color: #999;
+}
+.mejs-audio {
+  position: fixed !important;
+  left: 0;
+  top: 60px;
 }

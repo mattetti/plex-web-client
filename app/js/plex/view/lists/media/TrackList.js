@@ -1,17 +1,17 @@
 define(
 	[
 		'plex/view/BaseView',
-		'plex/view/lists/media/items/PosterListItem',
+		'plex/view/lists/media/items/TrackListItem',
 
 		// Globals
 		'use!backbone',
 		'use!handlebars'
 	],
 
-	function (BaseView, PosterListItem) {
-		var PosterList = BaseView.extend({
+	function (BaseView, TrackListItem) {
+		var TrackList = BaseView.extend({
 			tagName: 'ul',
-			className: 'poster-media-list',
+			className: 'track-list',
 
 			initialize: function () {
 				this.addBinding(this.collection, 'add', this.onAdd);
@@ -27,8 +27,8 @@ define(
 				return this;
 			},
 
-			onAdd: function (media) {
-				var item = new PosterListItem({ model: media });
+			onAdd: function (album) {
+				var item = new TrackListItem({ model: album });
 
 				// Register the view so it will be cleaned up on destroy
 				this.registerView(item);
@@ -44,6 +44,6 @@ define(
 			}
 		});
 
-		return PosterList;
+		return TrackList;
 	}
 );
