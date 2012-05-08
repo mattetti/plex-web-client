@@ -138,6 +138,7 @@ define(
 
 				if (this.loadedThumbnails === this.numVisibleItems) {
 					this.loadedSignal.dispatch();
+					console.log('loaded');
 					this.loaded = true;
 				}
 			},
