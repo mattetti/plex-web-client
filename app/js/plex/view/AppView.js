@@ -78,6 +78,8 @@ define(
 			},
 
 			onPlayMusic: function (model) {
+				this.$el.addClass('music-player-active');
+				
 				if (typeof(this.musicPlayerView) === 'undefined') {
 					this.musicPlayerView = new MusicPlayerView({ model: model });
 					this.$el.prepend(this.musicPlayerView.render().el);

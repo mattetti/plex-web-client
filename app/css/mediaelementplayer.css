@@ -216,26 +216,6 @@
 	text-align: center;
 }
 
-.mejs-controls .mejs-time-rail .mejs-time-float {
-	position: absolute;
-	display: none;
-	background: #eee;
-	width: 36px;
-	height: 17px;
-	border: solid 1px #333;
-	top: -26px;
-	margin-left: -18px;
-	text-align: center;
-	color: #111;
-}
-
-.mejs-controls .mejs-time-rail .mejs-time-float-current {
-	margin: 2px;
-	width: 30px;
-	display: block;
-	text-align: center;
-	left: 0;
-}
 .mejs-controls .mejs-time-rail .mejs-time-float-corner {
 	position: absolute;
 	display: block;

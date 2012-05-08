@@ -6923,6 +6923,7 @@ h1,
 h2,
 h3 {
   font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
   text-shadow: 0 1px 0 #000;
 }
 h1 {
@@ -7239,6 +7240,9 @@ body {
   left: 0;
   right: 0;
   background-image: url(../img/noise.png);
+}
+#container.music-player-active > section.content {
+  padding-top: 165px;
 }
 section.content {
   padding: 100px 40px 200px;
@@ -8677,7 +8681,7 @@ ul.nav .dropdown-menu:after {
   left: 0;
   top: 60px;
   width: 100%;
-  height: 60px;
+  height: 65px;
   z-index: 3;
   border-bottom: 1px solid #333;
   background-color: #141414;
@@ -8706,8 +8710,15 @@ ul.nav .dropdown-menu:after {
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
 }
 .now-playing {
-  padding: 8px 8px 0;
+  padding: 10px 8px 0;
   font-size: 14px;
+}
+.now-playing-label {
+  margin-right: 4px;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+  filter: alpha(opacity=50);
 }
 .mejs-container {
   position: relative;
@@ -8765,6 +8776,31 @@ ul.nav .dropdown-menu:after {
   background-image: linear-gradient(top, #e5a433, #cb6d00);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e5a433', endColorstr='#cb6d00', GradientType=0);
+}
+.mejs-controls .mejs-time-rail .mejs-time-float {
+  position: absolute;
+  display: none;
+  top: -26px;
+  width: 36px;
+  height: 17px;
+  margin-left: -18px;
+  border: solid 1px #333;
+  background: #eee;
+  text-align: center;
+  color: #111;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.mejs-controls .mejs-time-rail .mejs-time-float-current {
+  display: block;
+  left: 0;
+  margin: 3px;
+  width: 30px;
+  text-align: center;
 }
 .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
   position: absolute;

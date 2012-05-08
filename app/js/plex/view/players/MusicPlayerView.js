@@ -1,7 +1,6 @@
 define(
 	[
 		'text!templates/players/MusicPlayerView.tpl',
-		'plex/control/Dispatcher',
 		'plex/control/utils/Transcoder',
 		'plex/model/AppModel',
 		'plex/view/BaseView',
@@ -12,7 +11,7 @@ define(
 		'use!mediaelement'
 	],
 
-	function (template, dispatcher, Transcoder, appModel, BaseView) {
+	function (template, Transcoder, appModel, BaseView) {
 
 		var tpl = Handlebars.compile(template);
 
@@ -21,9 +20,6 @@ define(
 			className: 'animated slideDown',
 
 			player: undefined,
-
-			initialize: function () {
-			},
 			
 			render: function () {
 				this.$el.html(tpl(this.model.toJSON()));
@@ -35,19 +31,28 @@ define(
 				var file = Transcoder.file(this.model.get('Media').Part.key);
 
 				console.log(file);
+
 				this.$('audio').attr('src', file);
+				this.$('.now-playing-title').html(this.model.get('title'));
 
 				if (typeof(this.player) === 'undefined') {
 					this.player = new MediaElementPlayer('#music-player audio', {
-						enablePluginDebug: false,
 						plugins: ['flash'],
 						pluginPath: 'swf/',
-						flashName: 'flashmediaelement.swf'
+						flashName: 'flashmediaelement.swf',
+						success: function (player, element) {
+							console.log('success!');
+							player.addEventListener('ended', this.onEnded, false);
+						}
 					});
 				}
 
 				this.player.load();
 				this.player.play();
+			},
+
+			onEnded: function (event) {
+				console.log('ended!');
 			}
 		});
 

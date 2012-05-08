@@ -4,14 +4,13 @@ define(
 		'plex/model/AppModel',
 		'plex/view/BaseView',
 		'plex/view/lists/items/ThumbnailMarqueeListItem',
-		'signals',
 
 		// Globals
 		'use!backbone',
 		'use!handlebars',
 	],
 
-	function (template, appModel, BaseView, ThumbnailMarqueeListItem, signals) {
+	function (template, appModel, BaseView, ThumbnailMarqueeListItem) {
 
 		var template = Handlebars.compile(template)
 
@@ -35,7 +34,6 @@ define(
 
 			loaded: false,
 			loadedThumbnails: 0,
-			loadedSignal: new signals.Signal(),
 
 			//
 			// -------------------- Init --------------------
@@ -87,8 +85,8 @@ define(
 					this.index = 0;
 				}
 
-				item = new ThumbnailMarqueeListItem({model: this.collection.at(this.index)});
-				item.loadedSignal.addOnce(this.onNextThumbnailLoaded);
+				item = new ThumbnailMarqueeListItem({ model: this.collection.at(this.index) });
+				item.on('thumbnailLoaded', this.onNextThumbnailLoaded);
 
 				// Register the view so it will be cleaned up on destroy
 				this.registerView(item);
@@ -109,8 +107,8 @@ define(
 			//
 
 			onAdd: function (thumbnail) {
-				var item = new ThumbnailMarqueeListItem({model: thumbnail});
-				item.loadedSignal.addOnce(this.onThumbnailLoaded);
+				var item = new ThumbnailMarqueeListItem({ model: thumbnail });
+				item.on('thumbnailLoaded', this.onThumbnailLoaded);
 
 				// Register the view so it will be cleaned up on destroy
 				this.registerView(item);
@@ -123,26 +121,40 @@ define(
 				this.removeAllViews();
 
 				if (this.collection.length > 0) {
+					this.$el.css('opacity', 0);
+
 					this.loaded = false;
 					this.loadedThumbnails = 0;
-					for(var i=0; i < this.numVisibleItems; i++) {
+
+					for (var i = 0; i < this.collection.length; i++) {
 						if (i < this.numVisibleItems) {
 							this.onAdd(this.collection.at(i));
+						} else if (i < this.numVisibleItems + 1) {
+							// Load the first off-screen thumbnail upfront to avoid some jankyness
+							var thumb = this.collection.at(i);
+							var img = new Image();
+
+							$(img).attr('src', thumb.get('thumb'));
 						}
 					}
 				}
 			},
 
-			onThumbnailLoaded: function (event) {
+			onThumbnailLoaded: function (item) {
+				item.off('thumbnailLoaded', this.onThumbnailLoaded);
+
 				this.loadedThumbnails++;
 
 				if (this.loadedThumbnails === this.numVisibleItems) {
-					this.loadedSignal.dispatch();
+					this.$el.addClass('animated fadeIn');
+
 					this.loaded = true;
 				}
 			},
 
-			onNextThumbnailLoaded: function (event) {
+			onNextThumbnailLoaded: function (item) {
+				item.off('thumbnailLoaded', this.onThumbnailLoaded);
+
 				var self = this;
 				var containerWidth = 0;
 				var duration = this.speed * 1000;

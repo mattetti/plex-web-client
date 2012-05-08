@@ -178,6 +178,8 @@ define(
 
 				if (this.isAuthenticated(this.player, arguments) === true) {
 					appModel.set('server', servers.get(serverID));
+
+					dispatcher.trigger('command:GetPlayerDetails', sectionID, itemID);
 				}
 			},
 
