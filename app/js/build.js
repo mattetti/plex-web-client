@@ -19,6 +19,7 @@
 		'date': 'libs/date',
 		'base64': 'libs/base64',
 		'sha256': 'libs/jssha256-0.1',
+		'mediaelement': 'libs/mediaelement-2.8.1',
 		
 		// Externals
 		'templates': '../templates',
