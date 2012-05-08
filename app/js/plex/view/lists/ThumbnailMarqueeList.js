@@ -125,6 +125,7 @@ define(
 				if (this.collection.length > 0) {
 					this.loaded = false;
 					this.loadedThumbnails = 0;
+					this.$el.hide();
 					for(var i=0; i < this.numVisibleItems; i++) {
 						if (i < this.numVisibleItems) {
 							this.onAdd(this.collection.at(i));
@@ -138,7 +139,7 @@ define(
 
 				if (this.loadedThumbnails === this.numVisibleItems) {
 					this.loadedSignal.dispatch();
-					console.log('loaded');
+					this.$el.fadeIn(350);
 					this.loaded = true;
 				}
 			},
