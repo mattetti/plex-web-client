@@ -5,6 +5,7 @@ define(
 		'plex/view/alerts/LoadingAlert',
 		'plex/view/alerts/ErrorAlert',
 		'plex/view/HeaderView',
+		'plex/view/players/MusicPlayerView',
 
 		// Globals
 		'use!backbone',
@@ -12,7 +13,7 @@ define(
 		'use!lazyload'
 	],
 
-	function (dispatcher, appModel, LoadingAlert, ErrorAlert, HeaderView) {
+	function (dispatcher, appModel, LoadingAlert, ErrorAlert, HeaderView, MusicPlayerView) {
 		var AppView = Backbone.View.extend({
 			el: '#container',
 			
@@ -21,6 +22,7 @@ define(
 			loadingView: undefined,
 			errorView: undefined,
 			headerView: undefined,
+			musicPlayerView: undefined,
 
 			views: [],
 
@@ -28,8 +30,11 @@ define(
 				this.model.on('change:loading', this.onLoadingChange, this);
 				this.model.on('change:error', this.onErrorChange, this);
 				this.model.on('change:showHeader', this.onShowHeaderChange, this);
-				this.model.on('change:view', this.onViewChange, this);
 
+				dispatcher.on('play:music', this.onPlayMusic, this);
+
+				// Listen for changing and destroying subviews
+				this.model.on('change:view', this.onViewChange, this);
 				dispatcher.on('destroy:view', this.onViewDestroy, this);
 			},
 
@@ -70,6 +75,17 @@ define(
 					this.headerView.destroy();
 					this.headerView = undefined;
 				}
+			},
+
+			onPlayMusic: function (model) {
+				if (typeof(this.musicPlayerView) === 'undefined') {
+					this.musicPlayerView = new MusicPlayerView({ model: model });
+					this.$el.prepend(this.musicPlayerView.render().el);
+				} else {
+					this.musicPlayerView.model = model;
+				}
+
+				this.musicPlayerView.play();
 			},
 
 			onViewChange: function (model, view) {
