@@ -1,13 +1,11 @@
 <div class="now-playing">
-	{{#if nextTrack}}
-		<div class="pull-right">
-			<span class="next-label">Next</span>
-			<span class="next-title">{{nextTrack.title}}</span>
-		</div>
-	{{/if}}
+	<div class="next-track">
+		<span class="next-label">Next</span>
+		<span class="next-title"></span>
+	</div>
 
 	<span class="now-playing-label"><i class="icon-music icon-white"></i> Now Playing</span>
-	<span class="now-playing-title">{{currentTrack.title}}</span>
+	<span class="now-playing-title"></span>
 </div>
 
 <audio width="100%" controls></audio>
