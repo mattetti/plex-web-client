@@ -2,7 +2,9 @@
 # Wayin integration Ask widget build
 
 echo -e "---------- *** Cleaning build directory *** ----------\n"
-rm -dfr build
+#rm -dfr build
+find build -type f -not -name ".git" -not -name ".gitignore"  | xargs rm
+find build -depth -empty -type d -exec rmdir {} \;
 mkdir -p build/css
 
 # Process CSS
@@ -25,6 +27,9 @@ find build -depth -empty -type d -exec rmdir {} \;
 
 # Copy over server
 cp server.js build/server.js
+cp Procfile build/Procfile
+cp package.json build/package.json
+echo "NODE_ENV=production" > build/.env
 
 # Use this if development index is named something besides index.html
 #echo -e "---------- *** Renaming index.html *** ----------\n"
