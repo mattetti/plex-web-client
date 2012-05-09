@@ -69,7 +69,8 @@ define(
 
 					headers: {
 						'X-Plex-Proxy-Host': server.get('host'),
-						'X-Plex-Proxy-Port': server.get('port')
+						'X-Plex-Proxy-Port': server.get('port'),
+						'Accept-Encoding': 'gzip'
 					},
 
 					success: function (response) {

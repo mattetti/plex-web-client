@@ -1,6 +1,7 @@
 define(
 	[
 		'text!templates/players/MusicPlayerView.tpl',
+		'plex/control/Dispatcher',
 		'plex/control/utils/Transcoder',
 		'plex/model/AppModel',
 		'plex/view/BaseView',
@@ -11,7 +12,7 @@ define(
 		'use!mediaelement'
 	],
 
-	function (template, Transcoder, appModel, BaseView) {
+	function (template, dispatcher, Transcoder, appModel, BaseView) {
 
 		var tpl = Handlebars.compile(template);
 
@@ -20,9 +21,31 @@ define(
 			className: 'animated slideDown',
 
 			player: undefined,
+			nextTrack: undefined,
+
+			initialize: function () {
+				_.bindAll(this, 'onEnded');
+
+				var currentTrack = this.collection.get(this.model.id);
+				var i  = this.collection.indexOf(currentTrack);
+
+				if (i + 1 < this.collection.length) {
+					this.nextTrack = this.collection.at(i + 1);
+				} else {
+					this.nextTrack = undefined;
+				}
+			},
 			
 			render: function () {
-				this.$el.html(tpl(this.model.toJSON()));
+				var data = {
+					currentTrack: this.model.toJSON()
+				};
+
+				if (typeof(this.nextTrack) !== 'undefined') {
+					data.nextTrack = this.nextTrack.toJSON();
+				}
+
+				this.$el.html(tpl(data));
 
 				return this;
 			},
@@ -30,10 +53,14 @@ define(
 			play: function () {
 				var file = Transcoder.file(this.model.get('Media').Part.key);
 
-				console.log(file);
+				console.log('now playing ' + file);
 
 				this.$('audio').attr('src', file);
 				this.$('.now-playing-title').html(this.model.get('title'));
+
+				if (typeof(this.nextTrack) !== 'undefined') {
+					this.$('.next-title').html(this.nextTrack.get('title'));
+				}
 
 				if (typeof(this.player) === 'undefined') {
 					this.player = new MediaElementPlayer('#music-player audio', {
@@ -41,10 +68,11 @@ define(
 						pluginPath: 'swf/',
 						flashName: 'flashmediaelement.swf',
 						success: function (player, element) {
-							console.log('success!');
-							player.addEventListener('ended', this.onEnded, false);
+							console.log('loaded media element player!');
 						}
 					});
+
+					this.player.$media.on('ended', this.onEnded);
 				}
 
 				this.player.load();
@@ -52,7 +80,14 @@ define(
 			},
 
 			onEnded: function (event) {
-				console.log('ended!');
+				if (typeof(this.nextTrack) !== 'undefined') {
+					this.model = this.nextTrack;
+
+					this.initialize();
+					this.play();
+				} else {
+					dispatcher.trigger('stop:music');
+				}
 			}
 		});
 

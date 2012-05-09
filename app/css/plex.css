@@ -7733,7 +7733,7 @@ h1.plex-icon {
 }
 #login-form input[type=text],
 #login-form input[type=password] {
-  padding: 4px 15px;
+  padding: 18px 15px 15px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -7743,7 +7743,7 @@ h1.plex-icon {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   height: 50px;
-  line-height: 50px;
+  line-height: 24px;
   font-size: 24px;
 }
 #login-form .login-actions {
@@ -8713,7 +8713,8 @@ ul.nav .dropdown-menu:after {
   padding: 10px 8px 0;
   font-size: 14px;
 }
-.now-playing-label {
+.now-playing-label,
+.next-label {
   margin-right: 4px;
   opacity: 0.5;
   filter: alpha(opacity=50);
