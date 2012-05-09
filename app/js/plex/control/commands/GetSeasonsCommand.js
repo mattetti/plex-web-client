@@ -15,7 +15,9 @@ define(
 		function onFetchSeasonsSuccess(response) {
 			cachedShow.set('children', response);
 
+			var count = 0;
 			var pending = 0;
+			var unsortedEpisodes = [];
 			var episodes = new VideoCollection();
 
 			// Keep a collection of all the episodes on the show model
@@ -33,6 +35,9 @@ define(
 				if (season.get('leafCount') > 0) {
 					pending++;
 
+					// We need to sort episodes in the order they were requested
+					var sort = count;
+
 					var children = new MediaItemCollection({
 						url: season.get('key')
 					});
@@ -42,18 +47,25 @@ define(
 							pending--;
 
 							season.set('children', response);
-							episodes.add(response.models);
+							unsortedEpisodes[sort] = response;
 
 							// Hide the loading indicator
 							dispatcher.trigger('command:ShowLoading', false);
 
 							if (pending === 0) {
+								// Now that all the episodes have been fetched, insert them in sorted order
+								for (var i = 0; i < unsortedEpisodes.length; i++) {
+									episodes.add(unsortedEpisodes[i].models);
+								}
+
 								// Notify that seasons have loaded
 								dispatcher.trigger('response:GetSeasons', true);
 							}
 						},
 						error: onError
-					})
+					});
+
+					count++;
 				}
 			});
 

@@ -32,6 +32,7 @@ define(
 				this.model.on('change:showHeader', this.onShowHeaderChange, this);
 
 				dispatcher.on('play:music', this.onPlayMusic, this);
+				dispatcher.on('stop:music', this.onStopMusic, this);
 
 				// Listen for changing and destroying subviews
 				this.model.on('change:view', this.onViewChange, this);
@@ -77,17 +78,25 @@ define(
 				}
 			},
 
-			onPlayMusic: function (model) {
+			onPlayMusic: function (artist, track) {
 				this.$el.addClass('music-player-active');
 				
 				if (typeof(this.musicPlayerView) === 'undefined') {
-					this.musicPlayerView = new MusicPlayerView({ model: model });
+					this.musicPlayerView = new MusicPlayerView({ collection: artist.get('tracks'), model: track });
 					this.$el.prepend(this.musicPlayerView.render().el);
 				} else {
-					this.musicPlayerView.model = model;
+					this.musicPlayerView.model = track;
 				}
 
 				this.musicPlayerView.play();
+			},
+
+			onStopMusic: function () {
+				this.$el.removeClass('music-player-active');
+				
+				if (typeof(this.musicPlayerView) !== 'undefined') {
+					this.musicPlayerView.destroy();
+				}
 			},
 
 			onViewChange: function (model, view) {

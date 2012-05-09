@@ -30,7 +30,7 @@ define(
 			onClick: function (event) {
 				event.preventDefault();
 
-				dispatcher.trigger('play:music', this.model);
+				dispatcher.trigger('play:music', appModel.get('item'), this.model);
 			}
 		});
 
