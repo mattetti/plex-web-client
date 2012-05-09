@@ -75,7 +75,7 @@ define(
 					success: function (response) {
 						var m3u8_rel = response.replace(/[\s\S]+(session.+?\.m3u8)[\s\S]+/, '$1');
 						session_id = m3u8_rel.split('/')[1];
-						var m3u8 = baseURL + m3u8_rel + '?X-Plex-Token=' + token;
+						var m3u8 = baseURL + m3u8_rel;
 						
 						$el.attr('src', m3u8);
 					},
