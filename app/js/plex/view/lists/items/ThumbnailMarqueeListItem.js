@@ -2,25 +2,18 @@ define(
 	[
 		'text!templates/lists/items/ThumbnailMarqueeListItem.tpl',
 		'plex/view/BaseView',
-		'signals',
 
 		// Globals
 		'use!backbone',
 		'use!handlebars'
 	],
 
-	function (template, BaseView, signals) {
+	function (template, BaseView) {
 
 		var tpl = Handlebars.compile(template);
 
 		var ThumbnailMarqueeListItem = BaseView.extend({
 			tagName: 'li',
-
-			loadedSignal: undefined,
-			
-			initialize: function () {
-				this.loadedSignal = new signals.Signal();
-			},
 
 			render: function () {
 				this.$el.html(tpl(this.model.toJSON()));
@@ -30,7 +23,7 @@ define(
 			},
 
 			onImageLoad: function (event) {
-				this.loadedSignal.dispatch(event);
+				this.trigger('thumbnailLoaded', this);
 			}
 		});
 

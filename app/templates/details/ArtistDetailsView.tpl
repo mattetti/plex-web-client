@@ -1,5 +1,3 @@
-<audio id="music-player" width="100%" controls></audio>
-
 <h2>{{artist.title}}</h2>
 
 <div class="details-controls">
