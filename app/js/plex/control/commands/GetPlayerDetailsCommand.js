@@ -28,6 +28,9 @@ define(
 
 		function onFetchMetadataSuccess(response) {
 			transcoder.video(item.get('Media').Part.key, onTranscodeSuccess, onTranscodeError);
+			
+			// Hide the loading indicator
+			dispatcher.trigger('command:ShowLoading', false);
 		}
 
 		function onTranscodeSuccess(url, session) {

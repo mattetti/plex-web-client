@@ -31,6 +31,8 @@ define(
 		var VOLUME_BUTTON_OFF_CLASS = 'player-volume-button-off';
 		
 		var FULLSCREEN_BUTTON_CLASS = 'player-fullscreen-button';
+		
+		var NOW_PLAYING_CLASS = 'now-playing';
 
 		var tpl = Handlebars.compile(template);
 		
@@ -53,6 +55,7 @@ define(
 			overlay: false,
 			hideVolume: false,
 			hideFullscreen: false,
+			hideNowPlaying: false,
 			hideControlsTimeout: null,
 
 			events: {
@@ -68,6 +71,7 @@ define(
 				this.overlay = options.overlay;
 				this.hideVolume = options.hideVolume;
 				this.hideFullscreen = options.hideFullscreen;
+				this.hideNowPlaying = options.hideNowPlaying;
 				
 				_.bindAll(this, 'show', 'hide');
 
@@ -94,7 +98,6 @@ define(
 			//
 
 			render: function () {
-				console.log('!!!' + this.model.get('paused'));
 				this.$el.html(tpl(this.model.toJSON()));
 
 				this.$el.prepend(this.seekBar.render().el);
@@ -115,6 +118,10 @@ define(
 				
 				if (this.hideFullscreen === true) {
 					this.$('.' + FULLSCREEN_BUTTON_CLASS).hide();
+				}
+				
+				if (this.hideNowPlaying === true) {
+					this.$('.' + NOW_PLAYING_CLASS).hide();
 				}
 				
 				return this;
@@ -190,8 +197,6 @@ define(
 			onPausedChange: function () {
 				// Update the play/pause button
 				var paused = this.model.get('paused');
-
-				console.log(paused);
 				
 				if (paused) {
 					this.$('.' + PLAY_PAUSE_CLASS).removeClass(PAUSE_CLASS);

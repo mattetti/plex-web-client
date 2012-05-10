@@ -11,6 +11,8 @@ define(
 		soundManager = new SoundManager();
 		soundManager.url = 'swf/';
 		soundManager.flashVersion = 9;
+		soundManager.useFastPolling = true;
+		soundManager.useHighPerformance = true;
 		soundManager.beginDelayedInit();
 	}
 );

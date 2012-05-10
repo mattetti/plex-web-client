@@ -1,7 +1,11 @@
 <a class="player-play-pause-button {{#if paused}}player-pause-button{{/if}}" href="#"></a>
 
-<span class="now-playing-label"><i class="icon-music icon-white"></i> Now Playing</span>
-<span class="now-playing-title"></span>
+<span class="now-playing">
+	<span class="now-playing-label">
+		<i class="{{#if showMusicIcon}}icon-music{{else}}icon-film{{/if}} icon-white"></i> Now Playing
+	</span>
+	<span class="now-playing-title">{{title}}</span>
+</span>
 
 <a class="player-fullscreen-button" href="#"></a>
 

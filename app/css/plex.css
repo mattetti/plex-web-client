@@ -7337,6 +7337,7 @@ footer a.github {
   -ms-transition: opacity 0.1s linear;
   -o-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
+  -webkit-transform: translate3d(0, 0, 0);
 }
 footer a.github:hover {
   opacity: 1;
@@ -7822,6 +7823,7 @@ h1.plex-icon {
   -ms-transition: opacity 0.1s linear;
   -o-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
+  -webkit-transform: translate3d(0, 0, 0);
 }
 #home-btn:hover {
   opacity: 1;
@@ -8688,7 +8690,6 @@ ul.nav .dropdown-menu:after {
   position: fixed;
   left: 0;
   top: 60px;
-  padding-bottom: 2px;
   width: 100%;
   z-index: 3;
   border-bottom: 1px solid #333;
@@ -8717,14 +8718,14 @@ ul.nav .dropdown-menu:after {
   -moz-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
 }
-#music-player .now-playing-label,
-#music-player .now-playing-title {
+.now-playing-label,
+.now-playing-title {
   display: inline-block;
   height: 30px;
   font-size: 14px;
   line-height: 30px;
 }
-#music-player .now-playing-label {
+.now-playing-label {
   margin-right: 4px;
   opacity: 0.5;
   filter: alpha(opacity=50);
@@ -8748,7 +8749,7 @@ video.player-fullscreen {
 }
 .player-controls {
   width: 100%;
-  height: 38px;
+  height: 40px;
   overflow: hidden;
   border-top: 1px solid #000000;
   background-color: #141414;
@@ -8779,6 +8780,7 @@ video.player-fullscreen {
   -ms-transition: height 0.3s ease-in-out;
   -o-transition: height 0.3s ease-in-out;
   transition: height 0.3s ease-in-out;
+  -webkit-transform: translate3d(0, 0, 0);
 }
 .player-controls-collapsed {
   height: 9px;
@@ -8792,14 +8794,14 @@ video.player-fullscreen {
   position: absolute;
   left: 0;
   top: 0;
-  background: url(../img/lens_play.png) no-repeat center;
+  background: url(../img/player_play.png) no-repeat center;
 }
 .player-overlay-replay-button {
   cursor: pointer !important;
   position: absolute;
   left: 0;
   top: 0;
-  background: url(../img/lens_replay.png) no-repeat center;
+  background: url(../img/player_replay.png) no-repeat center;
 }
 .player-play-pause-button,
 .player-fullscreen-button,
@@ -8823,7 +8825,7 @@ video.player-fullscreen {
   transition: none;
 }
 .player-play-pause-button {
-  background: url(../img/lens_controls.png) no-repeat 0 0;
+  background: url(../img/player_controls.png) no-repeat 0 0;
 }
 .player-play-pause-button:hover {
   background-position: -40px 0;
@@ -8836,14 +8838,14 @@ video.player-fullscreen {
 }
 .player-fullscreen-button {
   float: right;
-  background: url(../img/lens_controls.png) no-repeat 0 -330px;
+  background: url(../img/player_controls.png) no-repeat 0 -330px;
 }
 .player-fullscreen-button:hover {
   background-position: -40px -330px;
 }
 .player-volume > .player-slider-button {
   float: right;
-  background: url(../img/lens_controls.png) no-repeat 0 -60px;
+  background: url(../img/player_controls.png) no-repeat 0 -60px;
 }
 .player-volume > .player-slider-button:hover {
   background-position: -40px -60px;
@@ -8861,7 +8863,7 @@ video.player-fullscreen {
   background-position: -40px -120px !important;
 }
 .player-playback-rate > .player-slider-button {
-  background: url(../img/lens_controls.png) no-repeat 0 -150px;
+  background: url(../img/player_controls.png) no-repeat 0 -150px;
 }
 .player-playback-rate > .player-slider-button:hover {
   background-position: -40px -150px;

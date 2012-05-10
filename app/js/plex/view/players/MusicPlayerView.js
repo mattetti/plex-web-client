@@ -2,7 +2,6 @@ define(
 	[
 		'plex/control/Dispatcher',
 		'plex/control/utils/Transcoder',
-		'plex/model/AppModel',
 		'plex/model/PlayerModel',
 		'plex/view/BaseView',
 		'plex/view/players/core/ControlsView',
@@ -13,14 +12,14 @@ define(
 		'use!soundmanager'
 	],
 
-	function (dispatcher, transcoder, appModel, PlayerModel, BaseView, ControlsView) {
+	function (dispatcher, transcoder, PlayerModel, BaseView, ControlsView) {
 
 		var MusicPlayerView = BaseView.extend({
 			id: 'music-player',
 			className: 'animated slideDown',
 
 			playerModel: undefined,
-			player: undefined,
+			controls: undefined,
 
 			sound: undefined,
 			volume: 1, // Used to persist volume from song to song
@@ -30,23 +29,23 @@ define(
 			initialize: function () {
 				_.bindAll(this, 'onPlay', 'whileLoading', 'whitePlaying', 'onFinish');
 
-				this.playerModel = new PlayerModel();
+				this.playerModel = new PlayerModel({ showMusicIcon: true });
 
-				this.player = this.registerView(new ControlsView({
+				this.controls = this.registerView(new ControlsView({
 					model: this.playerModel,
 					hidePlaybackRate: true,
 					hideFullscreen: true
 				}));
 
-				this.addBinding(this.player, 'playPause', this.onControlsPlayPause);
-				this.addBinding(this.player, 'seek', this.onControlsSeek);
-				this.addBinding(this.player, 'change:volume', this.onControlsVolumeChange);
+				this.addBinding(this.controls, 'playPause', this.onControlsPlayPause);
+				this.addBinding(this.controls, 'seek', this.onControlsSeek);
+				this.addBinding(this.controls, 'change:volume', this.onControlsVolumeChange);
 			},
 			
 			render: function () {
 				this.$el.html('');
 
-				this.$el.append(this.player.render().el);
+				this.$el.append(this.controls.render().el);
 
 				return this;
 			},

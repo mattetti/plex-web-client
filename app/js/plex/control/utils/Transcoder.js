@@ -40,7 +40,7 @@ define(
 				return url;
 			},
 
-			video: function (path, success, error) {
+			video: function (path, successCallback, errorCallback) {
 				var server = appModel.get('server');
 				var user = appModel.get('user');
 				var token = server.get('accessToken') ? server.get('accessToken') : user.get('authentication_token');
@@ -77,11 +77,11 @@ define(
 						var session = m3u8Rel.split('/')[1];
 						var m3u8 = baseURL + m3u8Rel;
 
-						success.call(this, m3u8, session);
+						successCallback(m3u8, session);
 					},
 
 					error: function (xhr, status, error) {
-						error(xhr, status, error);
+						errorCallback(xhr, status, error);
 					}
 				})
 			}

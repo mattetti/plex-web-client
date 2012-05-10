@@ -112,6 +112,10 @@ define(
 
 				this.$el.append(view.render().el);
 
+				if (typeof(view.ready) === 'function') {
+					view.ready();
+				}
+
 				// Reset the scroll position to the top of the page
 				window.scrollTo(0, 0);
 			},
