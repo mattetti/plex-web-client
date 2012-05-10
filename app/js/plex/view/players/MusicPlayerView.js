@@ -58,6 +58,10 @@ define(
 
 				this.$('.now-playing-title').html(this.model.get('title'));
 
+				if (typeof(this.sound) !== 'undefined') {
+					this.sound.destruct();
+				}
+
 				this.sound = soundManager.createSound({
 					id: 'track_' + this.model.id,
 					url: file,
@@ -132,6 +136,7 @@ define(
 
 			onFinish: function () {
 				this.sound.destruct();
+				this.sound = undefined;
 
 				if (typeof(this.nextTrack) !== 'undefined') {
 					this.model = this.nextTrack;
