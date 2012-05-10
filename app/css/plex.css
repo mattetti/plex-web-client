@@ -8727,10 +8727,10 @@ ul.nav .dropdown-menu:after {
 }
 .now-playing-label {
   margin-right: 4px;
-  opacity: 0.5;
-  filter: alpha(opacity=50);
-  opacity: 0.5;
-  filter: alpha(opacity=50);
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+  opacity: 0.3;
+  filter: alpha(opacity=30);
 }
 #music-player .player-wrapper,
 #music-player .player-controls {
