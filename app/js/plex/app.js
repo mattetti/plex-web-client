@@ -6,6 +6,7 @@ define(
 		// Globals
 		'plex/control/init/BackboneInit',
 		'plex/control/init/HandlebarsInit',
+		'plex/control/init/SoundManagerInit',
 		'use!date',
 		'use!button',
 		'use!dropdown',

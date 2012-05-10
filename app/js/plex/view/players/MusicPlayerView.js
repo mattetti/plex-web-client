@@ -1,34 +1,52 @@
 define(
 	[
-		'text!templates/players/MusicPlayerView.tpl',
 		'plex/control/Dispatcher',
 		'plex/control/utils/Transcoder',
 		'plex/model/AppModel',
+		'plex/model/PlayerModel',
 		'plex/view/BaseView',
+		'plex/view/players/core/ControlsView',
 
 		// Globals
 		'use!backbone',
 		'use!handlebars',
-		'use!mediaelement'
+		'use!soundmanager'
 	],
 
-	function (template, dispatcher, transcoder, appModel, BaseView) {
-
-		var tpl = Handlebars.compile(template);
+	function (dispatcher, transcoder, appModel, PlayerModel, BaseView, ControlsView) {
 
 		var MusicPlayerView = BaseView.extend({
 			id: 'music-player',
 			className: 'animated slideDown',
 
+			playerModel: undefined,
 			player: undefined,
+
+			sound: undefined,
+			volume: 1, // Used to persist volume from song to song
+
 			nextTrack: undefined,
 
 			initialize: function () {
-				_.bindAll(this, 'onEnded');
+				_.bindAll(this, 'onPlay', 'whileLoading', 'whitePlaying', 'onFinish');
+
+				this.playerModel = new PlayerModel();
+
+				this.player = this.registerView(new ControlsView({
+					model: this.playerModel,
+					hidePlaybackRate: true,
+					hideFullscreen: true
+				}));
+
+				this.addBinding(this.player, 'playPause', this.onControlsPlayPause);
+				this.addBinding(this.player, 'seek', this.onControlsSeek);
+				this.addBinding(this.player, 'change:volume', this.onControlsVolumeChange);
 			},
 			
 			render: function () {
-				this.$el.html(tpl());
+				this.$el.html('');
+
+				this.$el.append(this.player.render().el);
 
 				return this;
 			},
@@ -37,36 +55,21 @@ define(
 				var file = transcoder.file(this.model.get('Media').Part.key);
 
 				this.findNextTrack();
+				this.playerModel.reset();
 
 				this.$('.now-playing-title').html(this.model.get('title'));
 
-				if (typeof(this.nextTrack) !== 'undefined') {
-					this.$('.next-title').html(this.nextTrack.get('title'));
-					this.$('.next-track').show();
-				} else {
-					this.$('.next-track').hide();
-				}
-
-				if (typeof(this.player) === 'undefined') {
-					this.$('audio').attr('src', file);
-
-					this.player = new MediaElementPlayer('#music-player audio', {
-						//mode: 'shim',
-						plugins: ['flash'],
-						pluginPath: 'swf/',
-						flashName: 'flashmediaelement.swf',
-						startVolume: 1,
-						success: function (player, element) {
-							player.play();
-						}
-					});
-
-					this.player.$media.on('ended', this.onEnded);
-				} else {
-					this.player.play();
-				}
-
-				console.log('now playing ' + file);
+				this.sound = soundManager.createSound({
+					id: 'track_' + this.model.id,
+					url: file,
+					autoLoad: true,
+					autoPlay: true,
+					volume: this.volume * 100,
+					onplay: this.onPlay,
+					whileloading: this.whileLoading,
+					whileplaying: this.whitePlaying,
+					onfinish: this.onFinish
+				});
 			},
 
 			findNextTrack: function () {
@@ -80,7 +83,57 @@ define(
 				}
 			},
 
-			onEnded: function (event) {
+			onControlsPlayPause: function () {
+				var paused = this.playerModel.get('paused');
+
+				this.sound.togglePause();
+
+				console.log(paused);
+
+				this.playerModel.set('paused', !paused);
+			},
+
+			onControlsSeek: function (position) {
+				this.sound.setPosition(position * 1000);
+
+				this.playerModel.set({
+					currentTime: position,
+					formattedTime: this.playerModel.secondsToHms(position)
+				});
+			},
+
+			onControlsVolumeChange: function (volume) {
+				this.sound.setVolume(volume * 100);
+
+				this.volume = volume;
+				this.playerModel.set('volume', volume);
+			},
+
+			onPlay: function () {
+				this.playerModel.set({
+					paused: false,
+					volume: this.volume
+				});
+			},
+
+			whileLoading: function () {
+				this.playerModel.set({
+					endBuffer: this.sound.bytesLoaded / this.sound.bytesTotal * (this.sound.durationEstimate / 1000),
+					duration: this.sound.durationEstimate / 1000,
+					formattedDuration: this.playerModel.secondsToHms(this.sound.durationEstimate / 1000)
+				});
+			},
+
+			whitePlaying: function () {
+				this.playerModel.set({
+					currentTime: this.sound.position / 1000,
+					formattedTime: this.playerModel.secondsToHms(this.sound.position / 1000)
+				});
+			},
+
+			onFinish: function () {
+				this.sound.destruct();
+
 				if (typeof(this.nextTrack) !== 'undefined') {
 					this.model = this.nextTrack;
 
