@@ -85,6 +85,7 @@ define(
 					this.musicPlayerView = new MusicPlayerView({ collection: artist.get('tracks'), model: track });
 					this.$el.prepend(this.musicPlayerView.render().el);
 				} else {
+					this.musicPlayerView.collection = artist.get('tracks');
 					this.musicPlayerView.model = track;
 				}
 
@@ -96,6 +97,7 @@ define(
 				
 				if (typeof(this.musicPlayerView) !== 'undefined') {
 					this.musicPlayerView.destroy();
+					this.musicPlayerView = undefined;
 				}
 			},
 
