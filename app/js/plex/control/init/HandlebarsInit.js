@@ -8,7 +8,7 @@ define(
 		'use!handlebars'
 	],
 
-	function (StringUtil, NumberUtil, Transcoder) {
+	function (StringUtil, NumberUtil, transcoder) {
 
 		Handlebars.registerHelper('eq', function (arg1, arg2, ok, bad) {
 			if (arg1 === arg2)
@@ -97,7 +97,7 @@ define(
 		});
 
 		Handlebars.registerHelper('transcodeImage', function (path, width, height) {
-			return Transcoder.image(path, width, height);
+			return transcoder.image(path, width, height);
 		});
 
 		Handlebars.registerHelper('starRating', function (rating) {
@@ -152,13 +152,13 @@ define(
 					var count = parts.length;
 
 					for (var i = 0; i < count; i++) {
-						buttons += '<a class="download-btn btn btn-inverse" rel="tooltip" title="Right Click &rsaquo; Save As..." href="' + Transcoder.file(parts[i].key) + '">';
+						buttons += '<a class="download-btn btn btn-inverse" rel="tooltip" title="Right Click &rsaquo; Save As..." href="' + transcoder.file(parts[i].key) + '">';
 						buttons += '<i class="icon-inbox icon-white"></i> Download (';
 						buttons += NumberUtil.convertBytes(parts[i].size, 1);
 						buttons += ')</a>';
 					}
 				} else {
-					buttons += '<a class="download-btn btn btn-inverse" rel="tooltip" title="Right Click &rsaquo; Save As..." href="' + Transcoder.file(parts.key) + '">';
+					buttons += '<a class="download-btn btn btn-inverse" rel="tooltip" title="Right Click &rsaquo; Save As..." href="' + transcoder.file(parts.key) + '">';
 					buttons += '<i class="icon-inbox icon-white"></i> Download (';
 					buttons += NumberUtil.convertBytes(parts.size, 1);
 					buttons += ')</a>';

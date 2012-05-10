@@ -11,7 +11,7 @@ define(
 		'use!mediaelement'
 	],
 
-	function (template, Transcoder, appModel, BaseView) {
+	function (template, transcoder, appModel, BaseView) {
 
 		var tpl = Handlebars.compile(template);
 
@@ -24,11 +24,6 @@ define(
 			
 			render: function () {
 				this.$el.html(tpl(this.model.toJSON()));
-
-				console.log(this.model);
-
-				// Start transcoding the video
-				Transcoder.video(this.model.get('Media').Part.key, this.$('video'));
 
 				return this;
 			}

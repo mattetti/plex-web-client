@@ -40,7 +40,7 @@ define(
 				return url;
 			},
 
-			video: function (path, $el) {
+			video: function (path, success, error) {
 				var server = appModel.get('server');
 				var user = appModel.get('user');
 				var token = server.get('accessToken') ? server.get('accessToken') : user.get('authentication_token');
@@ -73,15 +73,15 @@ define(
 					},
 
 					success: function (response) {
-						var m3u8_rel = response.replace(/[\s\S]+(session.+?\.m3u8)[\s\S]+/, '$1');
-						session_id = m3u8_rel.split('/')[1];
-						var m3u8 = baseURL + m3u8_rel;
-						
-						$el.attr('src', m3u8);
+						var m3u8Rel = response.replace(/[\s\S]+(session.+?\.m3u8)[\s\S]+/, '$1');
+						var session = m3u8Rel.split('/')[1];
+						var m3u8 = baseURL + m3u8Rel;
+
+						success.call(this, m3u8, session);
 					},
 
 					error: function (xhr, status, error) {
-						console.log('Service error: ' + xhr + '\n' + status + '\n' + error);
+						error(xhr, status, error);
 					}
 				})
 			}

@@ -1,12 +1,13 @@
 define(
 	[
 		'plex/control/Dispatcher',
+		'plex/control/utils/Transcoder',
 		'plex/model/AppModel',
 		'plex/model/MediaItemModel',
 		'plex/view/players/VideoPlayerView'
 	],
 
-	function ( dispatcher, appModel, MediaItemModel, VideoPlayerView) {
+	function ( dispatcher, transcoder, appModel, MediaItemModel, VideoPlayerView) {
 
 		var sections = appModel.get('sections');
 		var item;
@@ -26,6 +27,12 @@ define(
 		}
 
 		function onFetchMetadataSuccess(response) {
+			transcoder.video(item.get('Media').Part.key, onTranscodeSuccess, onTranscodeError);
+		}
+
+		function onTranscodeSuccess(url, session) {
+			item.set('url', url);
+
 			appModel.set({
 				showHeader: true,
 				view: new VideoPlayerView({ model: item }),
@@ -35,6 +42,11 @@ define(
 			
 			// Hide the loading indicator
 			dispatcher.trigger('command:ShowLoading', false);
+		}
+
+		function onTranscodeError(xhr, status, error) {
+			// Show an alert
+			appModel.set({ error: 'This media could not be transcoded.' });
 		}
 
 		function onError(xhr, status, error) {

@@ -12,7 +12,7 @@ define(
 		'use!mediaelement'
 	],
 
-	function (template, dispatcher, Transcoder, appModel, BaseView) {
+	function (template, dispatcher, transcoder, appModel, BaseView) {
 
 		var tpl = Handlebars.compile(template);
 
@@ -34,11 +34,10 @@ define(
 			},
 
 			play: function () {
-				var file = Transcoder.file(this.model.get('Media').Part.key);
+				var file = transcoder.file(this.model.get('Media').Part.key);
 
 				this.findNextTrack();
 
-				this.$('audio').attr('src', file);
 				this.$('.now-playing-title').html(this.model.get('title'));
 
 				if (typeof(this.nextTrack) !== 'undefined') {
@@ -49,20 +48,23 @@ define(
 				}
 
 				if (typeof(this.player) === 'undefined') {
+					this.$('audio').attr('src', file);
+
 					this.player = new MediaElementPlayer('#music-player audio', {
+						//mode: 'shim',
 						plugins: ['flash'],
 						pluginPath: 'swf/',
 						flashName: 'flashmediaelement.swf',
+						startVolume: 1,
 						success: function (player, element) {
-							console.log('loaded media element player!');
+							player.play();
 						}
 					});
 
 					this.player.$media.on('ended', this.onEnded);
+				} else {
+					this.player.play();
 				}
-
-				this.player.load();
-				this.player.play();
 
 				console.log('now playing ' + file);
 			},

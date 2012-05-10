@@ -1,3 +1,3 @@
 <h2>{{title}}</h2>
 
-<video width="100%" controls></video>
+<video src="{{url}}" type="application/x-mpegURL" width="100%" autoplay controls></video>

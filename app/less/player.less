@@ -44,8 +44,13 @@
 
 .mejs-container {
 	position: relative;
+	background: #000;
 	text-align: left;
 	vertical-align: top;
+}
+
+#music-player .mejs-container {
+	background: none;
 }
 
 .mejs-container-fullscreen {
@@ -148,6 +153,11 @@
 	height: 30px;
 	width: 100%;
 	list-style-type: none;
+	#gradient > .vertical(#222, #000);
+}
+
+#music-player .mejs-container .mejs-controls {
+	background: none;
 }
 
 .mejs-container .mejs-controls div {
