@@ -1,6 +1,7 @@
 define(
 	[
 		'text!templates/lists/media/items/AlbumListItem.tpl',
+		'plex/control/Dispatcher',
 		'plex/model/AppModel',
 		'plex/view/BaseView',
 		'plex/view/lists/media/TrackList',
@@ -10,7 +11,7 @@ define(
 		'use!handlebars'
 	],
 
-	function (template, appModel, BaseView, TrackList) {
+	function (template, dispatcher, appModel, BaseView, TrackList) {
 
 		var tpl = Handlebars.compile(template);
 
@@ -18,6 +19,10 @@ define(
 			tagName: 'li',
 
 			trackList: undefined,
+
+			events: {
+				'click .album-link': 'onAlbumClick'
+			},
 
 			initialize: function () {
 				this.trackList = this.registerView(new TrackList({ collection: this.model.get('children') }));
@@ -29,6 +34,13 @@ define(
 				this.$el.append(this.trackList.render().el);
 
 				return this;
+			},
+
+			onAlbumClick: function (event) {
+				event.preventDefault();
+
+				// Start playing the first track in the album
+				dispatcher.trigger('play:music', appModel.get('item'), this.model.get('children').first());
 			}
 		});
 
