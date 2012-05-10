@@ -8736,6 +8736,12 @@ ul.nav .dropdown-menu:after {
 #music-player .player-controls {
   background: none;
 }
+.me-cannot-play {
+  width: 100% !important;
+  height: 500px !important;
+  text-align: center;
+  line-height: 500px !important;
+}
 .player-wrapper {
   position: relative;
   padding: 0 !important;
