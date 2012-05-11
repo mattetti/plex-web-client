@@ -8738,9 +8738,9 @@ ul.nav .dropdown-menu:after {
 }
 .me-cannotplay {
   width: 100% !important;
-  height: 500px !important;
+  height: 400px !important;
   text-align: center;
-  line-height: 500px !important;
+  line-height: 400px !important;
 }
 .player-wrapper {
   position: relative;
