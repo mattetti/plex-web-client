@@ -1,9 +1,8 @@
 #!/bin/bash
 
 echo -e "---------- *** Cleaning build directory *** ----------\n"
-#rm -dfr build
-find build -type f -not -name "*.git" -not -name "*.gitignore"  | xargs rm
-find build -depth -empty -type d -exec rmdir {} \;
+#find build -type f -not -name ".gitignore"  | xargs rm
+#find build -depth -empty -type d -not -name ".git" -exec rmdir {} \;
 mkdir -p build/css
 
 # Process CSS
@@ -17,12 +16,12 @@ node_modules/requirejs/bin/r.js -o app/js/build.js
 echo -e "---------- *** Removing unecessary files and folders *** ----------\n"
 # Remove unnecessary files
 rm build/build.txt
-find build -type f -name "*.less" -o -name "*.tpl" -o -name "*-dev*" | xargs rm
+#find build -type f -name "*.less" -o -name "*.tpl" -o -name "*-dev*" | xargs rm
 # Currently building with Almond, if we need RequireJS features that Almond
 # does not support, make sure to add `-not -name "require*"` to this find
-find build -type f -name "*.js" -not -name "main.js" | xargs rm
+#find build -type f -name "*.js" -not -name "main.js" | xargs rm
 # Remove empty folders
-find build -depth -empty -type d -exec rmdir {} \;
+#find build -depth -empty -type d -exec rmdir {} \;
 
 # Copy over server
 cp server.js build/server.js
