@@ -5035,6 +5035,8 @@ ul.nav .dropdown-menu:after {
 .compact-media-list > li a {
   display: block;
   padding: 5px 0;
+  font-size: 14px;
+  line-height: 16px;
   color: #eee;
   text-decoration: none;
   -webkit-transition: color 0.1s linear;
