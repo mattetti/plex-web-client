@@ -17,7 +17,7 @@ require.config({
 		'base64': 'libs/base64',
 		'sha256': 'libs/jssha256-0.1',
 		'mediaelement': 'libs/mediaelement-2.8.1',
-		'soundmanager': 'libs/soundmanager2',
+		'soundmanager': 'libs/soundmanager2-nodebug',
 		
 		// Require
 		'use': 'libs/require/use-0.2.0',

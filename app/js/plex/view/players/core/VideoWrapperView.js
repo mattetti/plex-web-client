@@ -7,7 +7,8 @@ define(
 		'plex/view/players/core/ControlsView',
 
 		// Globals
-		'use!backbone'
+		'use!backbone',
+		'use!handlebars'
 	],
 	
 	function (template, appModel, BaseView, VideoView, ControlsView) {

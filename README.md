@@ -16,11 +16,7 @@ Installing Build Dependencies
 -----------------------------
 1. Install node.js
 
-    `brew install node`
-
-   Alternatively you can also download the respective package installer from node's website.
-
-2. Install node depencencies
+2. Install node dependencies
 
    From the project repository root:
 

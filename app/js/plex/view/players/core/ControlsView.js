@@ -6,7 +6,8 @@ define(
 		'plex/view/players/core/SliderView',
 
 		// Globals
-		'use!backbone'
+		'use!backbone',
+		'use!handlebars'
 	],
 	
 	function (template, BaseView, SeekBarView, SliderView) {
