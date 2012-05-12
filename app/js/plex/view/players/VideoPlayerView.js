@@ -26,6 +26,7 @@ define(
 
 			initialize: function () {
 				this.playerModel = new PlayerModel({
+					streaming: this.model.get('streaming'),
 					url: this.model.get('url'),
 					title: this.model.get('title')
 				});

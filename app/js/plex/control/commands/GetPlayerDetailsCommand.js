@@ -33,8 +33,11 @@ define(
 			dispatcher.trigger('command:ShowLoading', false);
 		}
 
-		function onTranscodeSuccess(url, session) {
-			item.set('url', url);
+		function onTranscodeSuccess(streaming, url, session) {
+			item.set({
+				streaming: streaming,
+				url: url
+			});
 
 			appModel.set({
 				showHeader: true,

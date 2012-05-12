@@ -1,6 +1,7 @@
 define(
 	[
 		'text!templates/players/core/VideoWrapperView.tpl',
+		'plex/model/AppModel',
 		'plex/view/BaseView',
 		'plex/view/players/core/VideoView',
 		'plex/view/players/core/ControlsView',
@@ -9,7 +10,7 @@ define(
 		'use!backbone'
 	],
 	
-	function (template, BaseView, VideoView, ControlsView) {
+	function (template, appModel, BaseView, VideoView, ControlsView) {
 		
 		//
 		// -------------------- Private --------------------
@@ -104,8 +105,9 @@ define(
 				
 				if ($video.get(0).autoplay === true) {
 					this.$overlayPlayButton.hide();
+					//appModel.set({ loading: true });
 				} else {
-					// hide buffering
+					//appModel.set({ loading: false });
 				}
 				
 				// Match the width and height of the overlay buttons to the video
@@ -182,7 +184,9 @@ define(
 			
 			onBufferingChange: function () {
 				if (this.model.get('buffering') === true) {
+					//appModel.set({ loading: true });
 				} else {
+					//appModel.set({ loading: false });
 				}
 			},
 			

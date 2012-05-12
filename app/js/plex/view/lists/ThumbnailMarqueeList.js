@@ -68,9 +68,12 @@ define(
 			//
 
 			start: function () {
-				if (this.loaded && !this.running && !this.animating) {
+				if (this.loaded && !this.running) {
 					this.running = true;
-					this.addNextThumb();
+
+					if (!this.animating) {
+						this.addNextThumb();
+					}
 				}
 			},
 
@@ -89,9 +92,7 @@ define(
 				item.on('thumbnailLoaded', this.onNextThumbnailLoaded);
 
 				// Register the view so it will be cleaned up on destroy
-				this.registerView(item);
-
-				this.$list.append(item.render().el);
+				this.registerView(item.render());
 			},
 
 			itemWidth: function(item) {
@@ -129,12 +130,6 @@ define(
 					for (var i = 0; i < this.collection.length; i++) {
 						if (i < this.numVisibleItems) {
 							this.onAdd(this.collection.at(i));
-						} else if (i < this.numVisibleItems + 1) {
-							// Load the first off-screen thumbnail upfront to avoid some jankyness
-							var thumb = this.collection.at(i);
-							var img = new Image();
-
-							$(img).attr('src', thumb.get('thumb'));
 						}
 					}
 				}
@@ -154,6 +149,8 @@ define(
 
 			onNextThumbnailLoaded: function (item) {
 				item.off('thumbnailLoaded', this.onThumbnailLoaded);
+
+				this.$list.append(item.el);
 
 				var self = this;
 				var containerWidth = 0;

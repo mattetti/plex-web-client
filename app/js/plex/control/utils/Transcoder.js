@@ -45,8 +45,18 @@ define(
 				var user = appModel.get('user');
 				var token = server.get('accessToken') ? server.get('accessToken') : user.get('authentication_token');
 
+				var video = document.createElement('video');
+				var supportsM3U8 = video.canPlayType('application/x-mpegURL').replace(/^no$/,'');
+				var basePath;
+
+				if (supportsM3U8) {
+					basePath = m3u8Path;
+				} else {
+					basePath = flvPath;
+				}
+
 				var baseURL = 'http://' + server.get('host') + ':' + server.get('port') + '/video/:/transcode/segmented/';
-				var transcodeURL = m3u8Path + 'offset=0&quality=5&url=http%3A%2F%2F127.0.0.1%3A32400' + encodeURIComponent(path) + '&3g=0&httpCookies=&userAgent=';
+				var transcodeURL = basePath + 'offset=0&quality=5&url=http%3A%2F%2F127.0.0.1%3A32400' + encodeURIComponent(path) + '&3g=0&httpCookies=&userAgent=';
 				var time = Math.round(new Date().getTime() / 1000);
 
 				HMAC_SHA256_init(privateKey);
@@ -55,35 +65,45 @@ define(
 				var mac = HMAC_SHA256_finalize();
 				var code = encode64(array_to_string(mac));
 
-				var requestURL = '/api' + transcodeURL;
+				var requestURL = transcodeURL;
 				requestURL += '&X-Plex-Token=' + token;
 				requestURL += '&X-Plex-Access-Key=' + publicKey;
 				requestURL += '&X-Plex-Access-Code=' + encodeURIComponent(code);
 				requestURL += '&X-Plex-Access-Time=' + time;
 
-				$.ajax({
-					type: 'GET',
-					url: requestURL,
-					dataType: 'text',
-					processData: false,
+				if (supportsM3U8) {
+					requestURL = '/api' + requestURL;
 
-					headers: {
-						'X-Plex-Proxy-Host': server.get('host'),
-						'X-Plex-Proxy-Port': server.get('port')
-					},
+					$.ajax({
+						type: 'GET',
+						url: requestURL,
+						dataType: 'text',
+						processData: false,
 
-					success: function (response) {
-						var m3u8Rel = response.replace(/[\s\S]+(session.+?\.m3u8)[\s\S]+/, '$1');
-						var session = m3u8Rel.split('/')[1];
-						var m3u8 = baseURL + m3u8Rel;
+						headers: {
+							'X-Plex-Proxy-Host': server.get('host'),
+							'X-Plex-Proxy-Port': server.get('port')
+						},
 
-						successCallback(m3u8, session);
-					},
+						success: function (response) {
+							console.log(response);
+							var m3u8Rel = response.replace(/[\s\S]+(session.+?\.m3u8)[\s\S]+/, '$1');
+							var session = m3u8Rel.split('/')[1];
+							var m3u8 = baseURL + m3u8Rel;
 
-					error: function (xhr, status, error) {
-						errorCallback(xhr, status, error);
-					}
-				})
+							successCallback(true, m3u8, session);
+						},
+
+						error: function (xhr, status, error) {
+							console.log(status);
+							errorCallback(xhr, status, error);
+						}
+					});
+				} else {
+					var flv = 'http://' + server.get('host') + ':' + server.get('port') + requestURL;
+
+					successCallback(false, flv);
+				}
 			}
 		}
 	}

@@ -28,6 +28,8 @@
 		font-size: 14px;
 		line-height: 14px;
 		color: #eee;
+		@transition: background linear .2s, border linear .2s, box-shadow linear .2s;
+		.transition(@transition);
 
 		&:focus {
 			border-color: #ffc763;

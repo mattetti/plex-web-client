@@ -91,7 +91,7 @@ define(
 				this.el.currentTime = time;
 				
 				if (this.el.paused === false) {
-					this.model.set({buffering: true});
+					this.model.set('buffering', true);
 				}
 			},
 			
@@ -179,10 +179,12 @@ define(
 			},
 			
 			onWaiting: function () {
+				console.log('waiting...');
 				this.model.set('buffering', true);
 			},
 			
 			onPlaying: function () {
+				console.log('playing...');
 				this.model.set('buffering', false);
 			},
 			
