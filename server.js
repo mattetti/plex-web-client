@@ -47,7 +47,7 @@ app.configure(function () {
 
 switch (NODE_ENV) {
 	case 'production':
-		index = 'https://plex.herokuapp.com/build/index.html';
+		index = 'https://plex.herokuapp.com/index.html';
 		break;
 	case 'development':
 		if (watch) {
