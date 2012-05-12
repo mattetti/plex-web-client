@@ -9006,16 +9006,6 @@ video.player-fullscreen {
   background: -o-linear-gradient(top, #2e7ac7 0%, #2970b8 50%, #225e9b 51%, #2465a8 100%);
   background: -ms-linear-gradient(top, #2e7ac7 0%, #2970b8 50%, #225e9b 51%, #2465a8 100%);
   background: linear-gradient(top, #2e7ac7 0%, #2970b8 50%, #225e9b 51%, #2465a8 100%);
-  -webkit-transition: width 0.1s ease-in-out;
-  -moz-transition: width 0.1s ease-in-out;
-  -ms-transition: width 0.1s ease-in-out;
-  -o-transition: width 0.1s ease-in-out;
-  transition: width 0.1s ease-in-out;
-  -webkit-transition: width 0.1s ease-in-out;
-  -moz-transition: width 0.1s ease-in-out;
-  -ms-transition: width 0.1s ease-in-out;
-  -o-transition: width 0.1s ease-in-out;
-  transition: width 0.1s ease-in-out;
 }
 .player-progress-bar {
   position: absolute;
@@ -9078,16 +9068,6 @@ video.player-fullscreen {
   background-image: -ms-radial-gradient(circle, #dddddd, #aaaaaa);
   background-image: -o-radial-gradient(circle, #dddddd, #aaaaaa);
   background-repeat: no-repeat;
-  -webkit-transition: left 0.1s ease-in-out;
-  -moz-transition: left 0.1s ease-in-out;
-  -ms-transition: left 0.1s ease-in-out;
-  -o-transition: left 0.1s ease-in-out;
-  transition: left 0.1s ease-in-out;
-  -webkit-transition: left 0.1s ease-in-out;
-  -moz-transition: left 0.1s ease-in-out;
-  -ms-transition: left 0.1s ease-in-out;
-  -o-transition: left 0.1s ease-in-out;
-  transition: left 0.1s ease-in-out;
 }
 .player-active-slider .player-slider-thumb,
 .player-seek-bar:hover .player-progress-thumb,

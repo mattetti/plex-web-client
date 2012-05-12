@@ -42,7 +42,7 @@ define(
 			initialize: function (options) {
 				_.bindAll(this, 'onSeekBarMouseMove', 'onSeekBarMouseUp');
 				
-				this.model.bind('change:formattedTime', this.onCurrentTimeChange, this);
+				this.model.bind('change:currentTime', this.onCurrentTimeChange, this);
 				this.model.bind('change:startBuffer', this.onBufferChange, this);
 				this.model.bind('change:endBuffer', this.onBufferChange, this);
 			},

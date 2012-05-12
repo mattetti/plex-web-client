@@ -19,6 +19,7 @@
 		'base64': 'libs/base64',
 		'sha256': 'libs/jssha256-0.1',
 		'mediaelement': 'libs/mediaelement-2.8.1',
+		'soundmanager': 'libs/soundmanager2',
 		
 		// Externals
 		'templates': '../templates',
