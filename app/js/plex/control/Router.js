@@ -61,7 +61,7 @@ define(
 			},
 
 			isAuthenticated: function (callback, args) {
-				// Kick the user out if we don't have an ip address
+				// Kick the user out if they are not authenticated
 				if (appModel.get('authenticated') !== true) {
 
 					// Store where the user was trying to go
@@ -194,35 +194,35 @@ define(
 
 			// Navigate Methods
 			onNavigateLogin: function () {
-				this.navigate('!/login', {trigger: true});
+				this.navigate('!/login', { trigger: true });
 			},
 
 			onNavigateQueue: function () {
-				this.navigate('!/queue', {trigger: true});
+				this.navigate('!/queue', { trigger: true });
 			},
 
 			onNavigateServers: function () {
-				this.navigate('!/servers', {trigger: true});
+				this.navigate('!/servers', { trigger: true });
 			},
 
 			onNavigateSections: function (serverID) {
-				this.navigate('!/servers/' + serverID + '/sections/', {trigger: true});
+				this.navigate('!/servers/' + serverID + '/sections/', { trigger: true });
 			},
 
 			onNavigateList: function (serverID, sectionID) {
-				this.navigate('!/servers/' + serverID + '/sections/' + sectionID + '/list', {trigger: true});
+				this.navigate('!/servers/' + serverID + '/sections/' + sectionID + '/list', { trigger: true });
 			},
 
 			onNavigateDetails: function (serverID, sectionID, itemID) {
-				this.navigate('!/servers/' + serverID + '/sections/' + sectionID + '/details/' + itemID, {trigger: true});
+				this.navigate('!/servers/' + serverID + '/sections/' + sectionID + '/details/' + itemID, { trigger: true });
 			},
 
 			onNavigateSeason: function (serverID, sectionID, itemID, seasonID) {
-				this.navigate('!/servers/' + serverID + '/sections/' + sectionID + '/details/' + itemID + '/season/' + seasonID, {trigger: true});
+				this.navigate('!/servers/' + serverID + '/sections/' + sectionID + '/details/' + itemID + '/season/' + seasonID, { trigger: true });
 			},
 
 			onNavigatePlayer: function (serverID, sectionID, itemID) {
-				this.navigate('!/servers/' + serverID + '/sections/' + sectionID + '/player/' + itemID, {trigger: true});
+				this.navigate('!/servers/' + serverID + '/sections/' + sectionID + '/player/' + itemID, { trigger: true });
 			}
 		});
 

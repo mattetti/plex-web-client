@@ -43,7 +43,7 @@ define(
 			},
 			
 			render: function () {
-				this.$el.html('');
+				this.$el.empty();
 
 				this.$el.append(this.controls.render().el);
 

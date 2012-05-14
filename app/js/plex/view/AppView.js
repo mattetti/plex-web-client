@@ -19,8 +19,8 @@ define(
 			
 			model: appModel,
 
-			loadingView: undefined,
-			errorView: undefined,
+			loadingAlert: undefined,
+			errorAlert: undefined,
 			headerView: undefined,
 			musicPlayerView: undefined,
 
@@ -46,22 +46,22 @@ define(
 			},
 
 			onLoadingChange: function (model, loading) {
-				if (loading === true && typeof(this.loadingView) === 'undefined') {
-					this.loadingView = new LoadingAlert();
-					this.$el.append(this.loadingView.render().el);
-				} else if (typeof(this.loadingView) !== 'undefined') {
-					this.loadingView.destroy();
-					this.loadingView = undefined;
+				if (loading === true && typeof(this.loadingAlert) === 'undefined') {
+					this.loadingAlert = new LoadingAlert();
+					this.$el.append(this.loadingAlert.render().el);
+				} else if (typeof(this.loadingAlert) !== 'undefined') {
+					this.loadingAlert.destroy();
+					this.loadingAlert = undefined;
 				}
 			},
 
 			onErrorChange: function (model, error) {
 				if (typeof(error) !== 'undefined') {
-					this.errorView = new ErrorAlert({ error: error });
-					this.$el.append(this.errorView.render().el);
+					this.errorAlert = new ErrorAlert({ error: error });
+					this.$el.append(this.errorAlert.render().el);
 				} else {
-					this.errorView.destroy();
-					this.errorView = undefined;
+					this.errorAlert.destroy();
+					this.errorAlert = undefined;
 				}
 
 				// Reset the error silently so it doesn't trigger this again right away

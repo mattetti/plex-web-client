@@ -13,7 +13,7 @@ define(
 		'use!tooltip'
 	],
 
-	function (Router, commandMap) {
+	function (Router, Commands) {
 		return {
 			init: function () {
 				new Router();
